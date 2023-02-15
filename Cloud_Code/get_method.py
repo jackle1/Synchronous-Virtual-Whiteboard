@@ -49,9 +49,6 @@ def lambda_handler(event: any, context: any):
                         ReturnValues="UPDATED_NEW"
         )
     
-    #table.put_item(Item={"user": user, "visit_count": visit_count})
-    # Increment the visit count and put the item into DynamoDB table.
-    #
     return response
 
 def checking(event):
@@ -60,6 +57,8 @@ def checking(event):
     member = event.get('member', None)
     
     if password == None or roomID == None or member == None:
+        return -1
+    if type(password) != int or type(roomID) != int or type(member) != str:
         return -1
     
     return 1
