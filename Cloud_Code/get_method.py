@@ -1,46 +1,58 @@
-# import the JSON utility package
-import json
-# import the Python math library
-import math
-
-# import the AWS SDK (for Python the package name is boto3)
 import boto3
-# import two packages to help us with dates and date formatting
-from time import gmtime, strftime
+import os
+import json
 
-# create a DynamoDB object using the AWS SDK
-dynamodb = boto3.resource('dynamodb')
-# use the DynamoDB object to select our table
-table = dynamodb.Table('cpen391')
-# store the current time in a human readable format in a variable
-now = strftime("%a, %d %b %Y %H:%M:%S +0000", gmtime())
 
-def lambda_handler(event, context):
+def lambda_handler(event: any, context: any):
 
     if checking(event) == -1:
-        return{
-                "statusCode": 404,
-                "error" : json.dumps("Parameter isnt correct")
-               }
-        
-    password = event['password']
-    roomID = event['roomID']
-    member = event['member']
-    # Now we start checking if the roomID is correct
+        return wrong_arguments("The Parameters given to the rquest are wrong. Please follow the type or the numebr of parameters required!")
 
-    table.
+    user: str = event["member"]
+    room_id = event["roomID"]
+    room_password: int = event['password']
 
+    # Prepare the DynamoDB client
+    dynamodb = boto3.resource("dynamodb")
+    table_name = os.environ["TABLE_NAME"]
+    table = dynamodb.Table(table_name)
 
-
-
-    return {
-        'roomID' : roomID,
-        'statusCode': 200,
-        'body': json.dumps(password),
-        "member": member
-    }
+    # Get the table with the primary key as room_id
+    response_table = table.get_item(Key={"room_id": room_id})
+    response = {}
 
 
+    # If a room exists then we check if the password match
+    if "Item" in response_table:
+        password = response_table["Item"]["room_password"]
+        if password == room_password:
+            # If the password also match that means, we can give back the response with the r, g, b values
+            response["statusCode"] = 200
+            response["R-values"]  = response_table["Item"]["R_values"]
+            response["G-values"]  = response_table["Item"]["G_values"]
+            response["B-values"]  = response_table["Item"]["B_values"]
+        else:
+            return wrong_arguments("Password for the room isnt correct, please try again!")
+    else:
+        return wrong_arguments("Room_id given doesnt exist!")
+
+
+    # If we are at here, we know that everything went well
+    # Lets get the members list in this room 
+    members = response_table["Item"]["members"]
+    if user not in members:
+        members.add(user)
+        # Lets update the table about this new user
+        table.update_item(Key={"room_id": room_id},
+                          UpdateExpression = "set members = :newmembers",
+                          ExpressionAttributeValues = {":newmembers": members},
+                        ReturnValues="UPDATED_NEW"
+        )
+    
+    #table.put_item(Item={"user": user, "visit_count": visit_count})
+    # Increment the visit count and put the item into DynamoDB table.
+    #
+    return response
 
 def checking(event):
     password = event.get('password', None)

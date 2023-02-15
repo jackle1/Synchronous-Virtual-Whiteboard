@@ -1,12 +1,16 @@
 import boto3
 import os
+import json
 
 
 def lambda_handler(event: any, context: any):
 
-    user: str = event["user"]
-    room_id = event["room_id"]
-    room_password: int = event['room_password']
+    if checking(event) == -1:
+        return wrong_arguments("The Parameters given to the rquest are wrong. Please follow the type or the numebr of parameters required!")
+
+    user: str = event["member"]
+    room_id = event["roomID"]
+    room_password: int = event['password']
 
     # Prepare the DynamoDB client
     dynamodb = boto3.resource("dynamodb")
@@ -23,29 +27,55 @@ def lambda_handler(event: any, context: any):
         password = response_table["Item"]["room_password"]
         if password == room_password:
             # If the password also match that means, we can give back the response with the r, g, b values
+            response["statusCode"] = 200
             response["R-values"]  = response_table["Item"]["R_values"]
             response["G-values"]  = response_table["Item"]["G_values"]
             response["B-values"]  = response_table["Item"]["B_values"]
-            response["StatusCode"] = 200
         else:
-            response["StatusCode"] = 404
-            response["errorMessage"] = "Password for the room isnt correct, please try again!"
+            return wrong_arguments("Password for the room isnt correct, please try again!")
     else:
-        response["StatusCode"] = 404
-        response["errorMessage"] = "Room_id given doesnt exist!"
+        return wrong_arguments("Room_id given doesnt exist!")
 
 
-
-    # Increment the visit count and put the item into DynamoDB table.
+    # If we are at here, we know that everything went well
+    # Lets get the members list in this room 
+    members = response_table["Item"]["members"]
+    if user not in members:
+        members.add(user)
+        # Lets update the table about this new user
+        table.update_item(Key={"room_id": room_id},
+                          UpdateExpression = "set members = :newmembers",
+                          ExpressionAttributeValues = {":newmembers": members},
+                        ReturnValues="UPDATED_NEW"
+        )
+    
     #table.put_item(Item={"user": user, "visit_count": visit_count})
+    # Increment the visit count and put the item into DynamoDB table.
+    #
     return response
 
+def checking(event):
+    password = event.get('password', None)
+    roomID = event.get('roomID', None)
+    member = event.get('member', None)
+    
+    if password == None or roomID == None or member == None:
+        return -1
+    
+    return 1
+
+def wrong_arguments(message):
+    return{
+            "statusCode": 404,
+            "error" : json.dumps(message)
+         }
+    
 
 if __name__ == "__main__":
     os.environ["TABLE_NAME"] = "Cpen391"
-    test_event = {"user": "local_pixegami",
-                  "room_id": 0,
-                  "room_password": 1234
+    test_event = {"member": "local_pixegami",
+                  "roomID": 0,
+                  "password": 1234
                 }
     result = lambda_handler(test_event, None)
     print(result)
