@@ -25,6 +25,15 @@ def lambda_handler(event, context):
     person = event['member']
     room_id = event['room_id']
     room_password = event['password']
+
+    # Checking if its a correct input
+    result = checking(r_values, g_values, b_values)
+
+    if(result == -1):
+        return {
+            'statusCode' : 400,
+            'ErrorMessage' : "R, G and B are not list of floats"
+        }
     
     
 
@@ -41,4 +50,13 @@ def lambda_handler(event, context):
     'body': json.dumps('Your result is ' + str(mathResult))
     }
     
-def checking( )
+def checking(a, b, c):
+    # Lets check if this is a list 
+    if(type(a) != list or type(b) != list or type(c) != list):
+        return -1
+    
+    tmp = a
+    while i in range(3):
+        if( i == 0):
+            tmp = a
+        elif()
