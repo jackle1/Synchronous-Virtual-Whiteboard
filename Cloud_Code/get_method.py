@@ -2,6 +2,26 @@ import boto3
 import os
 import json
 
+'''
+Hello, this multi-line comment is for my fellow team mates on what to send for the database on the server
+This is the file for Http GET request
+Make the GET request on https://hbzwo0rl65.execute-api.us-east-1.amazonaws.com/dev/cpen391
+Follow the request body as follows
+    test_event = {
+                    "password": 1234,
+                    "member": "Ranbir",
+                    "roomID": 0
+                }
+This will return a http response on the r,b,g values.
+The response looks something like this 
+    response = {
+        'statusCode' = ____ (Depends if it was a succefull execution or not)
+        'R-values' = ___
+        'G-values' = ___
+        'B-values' = ___
+    }
+
+'''
 
 def lambda_handler(event: any, context: any):
 
