@@ -58,7 +58,7 @@ module DE1_SOC_D8M_RTL(
 	input 		     [3:0]		KEY,
 
 	//////////// LED //////////
-	output		     [9:0]		LEDR,
+	output reg		     [9:0]		LEDR,
 
 	//////////// PS2 //////////
 	inout 		          		PS2_CLK,
@@ -143,6 +143,10 @@ wire        LUT_MIPI_PIXEL_VS;
 wire [9:0]  LUT_MIPI_PIXEL_D  ;
 wire        MIPI_PIXEL_CLK_; 
 wire [9:0]  PCK;
+
+reg stop_capturing_nxt_frame;
+reg capture;
+reg pre_vs;
 //=======================================================
 // Structural coding
 //=======================================================
@@ -216,20 +220,52 @@ sdram_pll u6(
 		               .c1    ( DRAM_CLK ),       //100MHZ   -90 degree
 		               .c0    ( SDRAM_CTRL_CLK )  //100MHZ     0 degree 							
 		              
-	               );		
-						
+	               );
+
+always @(posedge CLOCK_50) begin
+
+end
+
+always @(posedge CLOCK_50) begin
+
+end
+
+// always @(SW[2]) begin
+// 	stop_capturing_nxt_frame <= ~SW[2];
+// end
+
+// always @(posedge MIPI_PIXEL_CLK_& LUT_MIPI_PIXEL_VS) begin
+// 	if(~LUT_MIPI_PIXEL_VS) begin
+// 		capture <= ~stop_capturing_nxt_frame;
+// 	end else begin
+// 		capture <= SW[2];
+// 	end 
+	
+// end
+
+// always @(LUT_MIPI_PIXEL_VS) begin
+// 	if(~LUT_MIPI_PIXEL_VS) begin
+// 		capture <= 0;
+// 	end else if (capture == 0) begin
+// 		capture <= 0;
+// 	end else begin
+// 		capture <= 1;
+// 	end
+// end
+
+
 //------SDRAM CONTROLLER --
 Sdram_Control	   u7	(	//	HOST Side						
 						   .RESET_N     ( KEY[0] ),
 							.CLK         ( SDRAM_CTRL_CLK ) , 
 							//	FIFO Write Side 1
 							.WR1_DATA    ( LUT_MIPI_PIXEL_D[9:0] ),
-							.WR1         ( LUT_MIPI_PIXEL_HS & LUT_MIPI_PIXEL_VS ) ,
+							 .WR1         ( capture & LUT_MIPI_PIXEL_HS & LUT_MIPI_PIXEL_VS ) ,
 							
 							.WR1_ADDR    ( 0 ),
                      .WR1_MAX_ADDR( 640*480 ),
 						   .WR1_LENGTH  ( 256 ) , 
-		               .WR1_LOAD    ( !DLY_RST_0 ),
+		               .WR1_LOAD    ( !DLY_RST_0),
 							.WR1_CLK     ( MIPI_PIXEL_CLK_),
 
                      //	FIFO Read Side 1
@@ -330,7 +366,46 @@ VGA_Controller		u1	(	//	Host Side
 
 
 //------VS FREQUENCY TEST = 60HZ --
-							
+
+ always @(posedge CLOCK2_50) begin
+ 	pre_vs <= LUT_MIPI_PIXEL_VS;
+ 	if(~SW[2] && {pre_vs,LUT_MIPI_PIXEL_VS} == 2'b01) begin
+ 		capture <= 0;
+ 	end else if(~SW[2] && capture == 1 && {pre_vs,LUT_MIPI_PIXEL_VS} == 2'b11) begin
+ 		capture <= 1;
+	end else if(~SW[2] && capture == 0 && {pre_vs,LUT_MIPI_PIXEL_VS} == 2'b11) begin
+ 		capture <= 0;
+ 	end else if(~SW[2] && {pre_vs,LUT_MIPI_PIXEL_VS} == 2'b10) begin
+ 		capture <= 0;
+ 	end else if(SW[2] && capture == 0 && {pre_vs,LUT_MIPI_PIXEL_VS} == 2'b11) begin
+		capture <= 0;
+	end else if(SW[2] && capture == 1 && {pre_vs,LUT_MIPI_PIXEL_VS} == 2'b11) begin
+		capture <= 1;
+	end else if(SW[2] && {pre_vs,LUT_MIPI_PIXEL_VS} == 2'b01) begin
+		capture <= 1;
+	end else if(SW[2] && {pre_vs,LUT_MIPI_PIXEL_VS} == 2'b10) begin
+		capture <= 0;
+	end else begin
+ 		capture <= SW[2];
+ 	end
+ end
+
+always @(*) begin
+	LEDR[0] <= LUT_MIPI_PIXEL_VS;
+	LEDR[3:2] <= {pre_vs,LUT_MIPI_PIXEL_VS};
+	LEDR[5] <= capture;
+end
+
+// always @(posedge CLOCK2_50 or negedge KEY[2]) begin
+// 	pre_vs <= LUT_MIPI_PIXEL_VS;
+	
+// 	if({pre_vs,LUT_MIPI_PIXEL_VS} == 2'b11 && ~KEY[2]) begin
+// 		capture <= 1;
+// 	end else begin
+// 		capture <= 0;
+// 	end
+// end
+
 FpsMonitor uFps( 
 	   .clk50    ( CLOCK2_50 ),
 	   .vs       ( LUT_MIPI_PIXEL_VS ),
@@ -347,6 +422,6 @@ CLOCKMEM  ck2 ( .CLK(MIPI_REFCLK   )   ,.CLK_FREQ  (20000000   ) , . CK_1HZ (D8M
 CLOCKMEM  ck3 ( .CLK(MIPI_PIXEL_CLK_)   ,.CLK_FREQ  (25000000  ) , . CK_1HZ (D8M_CK_HZ3  )  )  ;//25MHZ
 
 
-assign LEDR = { D8M_CK_HZ ,D8M_CK_HZ2,D8M_CK_HZ3 ,5'h0,CAMERA_MIPI_RELAESE ,MIPI_BRIDGE_RELEASE  } ; 
+// assign LEDR = { D8M_CK_HZ ,D8M_CK_HZ2,D8M_CK_HZ3 ,5'h0,CAMERA_MIPI_RELAESE ,MIPI_BRIDGE_RELEASE  } ; 
 
 endmodule
