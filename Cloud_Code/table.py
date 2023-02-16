@@ -28,7 +28,9 @@ def lambda_handler(event: any, context: any):
         tmp = table.scan()
         room_id = -1
         for data in tmp["Items"]:
-            room_id = data['room_id']
+            print(data)
+            if room_id < data['room_id']:
+                room_id = data['room_id']
         
         # Now, we have the latest room_id, so to make a new one with do ++
         room_id += 1
@@ -112,21 +114,6 @@ def lambda_handler(event: any, context: any):
                     )
         return response
 
-
-
-
-        
-            
-
-
-
-
-
-
-
-        
- 
-
 def checking(event):
     password = event.get('password', None)
     roomID = event.get('roomID', None)
@@ -163,7 +150,7 @@ if __name__ == "__main__":
                   "R-values" : [2222],
                   "G-values" : [1,2],
                   "B-values" : [1,2],
-                  "request-for": 2
+                  "request-for": 0
                 }
     result = lambda_handler(test_event, None)
     print(result)

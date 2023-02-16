@@ -3,30 +3,6 @@ import os
 import json
 import random
 
-'''
-Hello, this multi-line comment is for my fellow team mates on what to send for the database on the server
-This is the file for Http POST request
-Make the POST request on https://hbzwo0rl65.execute-api.us-east-1.amazonaws.com/dev/cpen391
-Follow the request body as follows
-    test_event = {
-                "member": "local_pixegami",
-                  "roomID": 0,
-                  "password": 1234,
-                  "R-values" : [2222],
-                  "G-values" : [1,2],
-                  "B-values" : [1,2],
-                  "request-for": 2
-                }
-Even if you dont have the information yet, for example, in creating a new room. Leave the field as blank. However, please do
-it in the required datatype
-For example, 'roomID' = -1 or 'password' = "" or 'R-values' = []
-If the above rule is not followed, then you will recieve an exception 
-Another thing to note is that use the different values of 'request-for' for different behaviour
-request-for means 
-0 : Create a new room and 1 : Update the pixels for a existing room and 2 : User wants to sign out
-
-'''
-
 
 def lambda_handler(event: any, context: any):
 
@@ -52,7 +28,8 @@ def lambda_handler(event: any, context: any):
         tmp = table.scan()
         room_id = -1
         for data in tmp["Items"]:
-            room_id = data['room_id']
+            if room_id < data['room_id']:
+                room_id = data['room_id']
         
         # Now, we have the latest room_id, so to make a new one with do ++
         room_id += 1
