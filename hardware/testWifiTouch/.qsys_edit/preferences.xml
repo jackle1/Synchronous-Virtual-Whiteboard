@@ -3,11 +3,12 @@
  <debug showDebugMenu="0" />
  <systemtable filter="All Interfaces">
   <columns>
-   <connections preferredWidth="143" />
+   <connections preferredWidth="271" />
    <irq preferredWidth="34" />
+   <inputclock preferredWidth="148" />
   </columns>
  </systemtable>
  <library
-   expandedCategories="Library/Interface Protocols,Library/University Program/Communications,Library/University Program,Library/Interface Protocols/Serial,Project,Library" />
+   expandedCategories="Library/DSP,Library/University Program/Audio &amp; Video,Library/University Program/Audio &amp; Video/Video,Library/Processors and Peripherals/Peripherals,Library/University Program/Clock,Project,Library/University Program,Library/DSP/Video and Image Processing,Library,Library/Interface Protocols,Library/Processors and Peripherals,Library/Interface Protocols/Audio &amp; Video" />
  <window width="1938" height="1048" x="-9" y="-9" />
 </preferences>

@@ -67,7 +67,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
   </table>
   <table class="blueBar">
    <tr>
-    <td class="l">2023.02.13.21:10:41</td>
+    <td class="l">2023.03.01.20:51:08</td>
     <td class="r">Datasheet</td>
    </tr>
   </table>
@@ -76,10 +76,6 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
   <div class="greydiv">
    <div style="display:inline-block ; text-align:left">
     <table class="connectionboxes">
-     <tr>
-      <td class="lefthandwire">&#160;&#160;clk_0&#160;</td>
-      <td class="main" rowspan="2">cpu</td>
-     </tr>
      <tr style="height:6px">
       <td></td>
      </tr>
@@ -103,8 +99,17 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      <a href="#module_onchip_memory2_0"><b>onchip_memory2_0</b>
      </a> altera_avalon_onchip_memory2 18.1
      <br/>&#160;&#160;
+     <a href="#module_sdram_controller"><b>sdram_controller</b>
+     </a> altera_avalon_new_sdram_controller 18.1
+     <br/>&#160;&#160;
      <a href="#module_touchscreen_uart"><b>touchscreen_uart</b>
      </a> altera_up_avalon_rs232 17.1
+     <br/>&#160;&#160;
+     <a href="#module_video_pixel_buffer_dma_0"><b>video_pixel_buffer_dma_0</b>
+     </a> altera_up_avalon_video_pixel_buffer_dma 18.0
+     <br/>&#160;&#160;
+     <a href="#module_video_rgb_resampler_0"><b>video_rgb_resampler_0</b>
+     </a> altera_up_avalon_video_rgb_resampler 18.0
      <br/>&#160;&#160;
      <a href="#module_wifi_uart"><b>wifi_uart</b>
      </a> altera_up_avalon_rs232 17.1</span>
@@ -119,10 +124,15 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      <a href="#module_nios2_gen2_0"><b>nios2_gen2_0</b>
      </a>
     </td>
+    <td class="mastermodule" colspan="1">
+     <a href="#module_video_pixel_buffer_dma_0"><b>video_pixel_buffer_dma_0</b>
+     </a>
+    </td>
    </tr>
    <tr>
     <td class="masterl">&#160;data_master</td>
     <td class="masterr">&#160;instruction_master</td>
+    <td class="masterlr">&#160;avalon_pixel_dma_master</td>
    </tr>
    <tr>
     <td class="slavemodule">&#160;
@@ -131,10 +141,12 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     </td>
     <td class="empty"></td>
     <td class="empty"></td>
+    <td class="empty"></td>
    </tr>
    <tr>
     <td class="slaveb">avalon_jtag_slave&#160;</td>
     <td class="addr"><span style="color:#989898">0x</span>00081020</td>
+    <td class="empty"></td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -144,10 +156,12 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     </td>
     <td class="empty"></td>
     <td class="empty"></td>
+    <td class="empty"></td>
    </tr>
    <tr>
     <td class="slaveb">s1&#160;</td>
     <td class="addr"><span style="color:#989898">0x</span>00081000</td>
+    <td class="empty"></td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -157,11 +171,13 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     </td>
     <td class="empty"></td>
     <td class="empty"></td>
+    <td class="empty"></td>
    </tr>
    <tr>
     <td class="slaveb">debug_mem_slave&#160;</td>
     <td class="addr"><span style="color:#989898">0x</span>00080800</td>
     <td class="addr"><span style="color:#989898">0x</span>00080800</td>
+    <td class="empty"></td>
    </tr>
    <tr>
     <td class="slavemodule">&#160;
@@ -170,11 +186,28 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     </td>
     <td class="empty"></td>
     <td class="empty"></td>
+    <td class="empty"></td>
    </tr>
    <tr>
     <td class="slaveb">s1&#160;</td>
     <td class="addr"><span style="color:#989898">0x</span>00040000</td>
     <td class="addr"><span style="color:#989898">0x</span>00040000</td>
+    <td class="empty"></td>
+   </tr>
+   <tr>
+    <td class="slavemodule">&#160;
+     <a href="#module_sdram_controller"><b>sdram_controller</b>
+     </a>
+    </td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+   </tr>
+   <tr>
+    <td class="slaveb">s1&#160;</td>
+    <td class="addr"><span style="color:#989898">0x</span>08000000</td>
+    <td class="empty"></td>
+    <td class="addr"><span style="color:#989898">0x</span>08000000</td>
    </tr>
    <tr>
     <td class="slavemodule">&#160;
@@ -183,10 +216,42 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     </td>
     <td class="empty"></td>
     <td class="empty"></td>
+    <td class="empty"></td>
    </tr>
    <tr>
     <td class="slaveb">avalon_rs232_slave&#160;</td>
     <td class="addr"><span style="color:#989898">0x</span>00081010</td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+   </tr>
+   <tr>
+    <td class="slavemodule">&#160;
+     <a href="#module_video_pixel_buffer_dma_0"><b>video_pixel_buffer_dma_0</b>
+     </a>
+    </td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+   </tr>
+   <tr>
+    <td class="slaveb">avalon_control_slave&#160;</td>
+    <td class="addr"><span style="color:#989898">0x</span>00000000</td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+   </tr>
+   <tr>
+    <td class="slavemodule">&#160;
+     <a href="#module_video_rgb_resampler_0"><b>video_rgb_resampler_0</b>
+     </a>
+    </td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+   </tr>
+   <tr>
+    <td class="slaveb">avalon_rgb_slave&#160;</td>
+    <td class="addr"><span style="color:#989898">0x</span>00810000</td>
+    <td class="empty"></td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -196,60 +261,15 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     </td>
     <td class="empty"></td>
     <td class="empty"></td>
+    <td class="empty"></td>
    </tr>
    <tr>
     <td class="slaveb">avalon_rs232_slave&#160;</td>
     <td class="addr"><span style="color:#989898">0x</span>00081018</td>
     <td class="empty"></td>
+    <td class="empty"></td>
    </tr>
   </table>
-  <a name="module_clk_0"> </a>
-  <div>
-   <hr/>
-   <h2>clk_0</h2>clock_source v18.1
-   <br/>
-   <br/>
-   <br/>
-   <table class="flowbox">
-    <tr>
-     <td class="parametersbox">
-      <h2>Parameters</h2>
-      <table>
-       <tr>
-        <td class="parametername">clockFrequency</td>
-        <td class="parametervalue">50000000</td>
-       </tr>
-       <tr>
-        <td class="parametername">clockFrequencyKnown</td>
-        <td class="parametervalue">true</td>
-       </tr>
-       <tr>
-        <td class="parametername">inputClockFrequency</td>
-        <td class="parametervalue">0</td>
-       </tr>
-       <tr>
-        <td class="parametername">resetSynchronousEdges</td>
-        <td class="parametervalue">NONE</td>
-       </tr>
-       <tr>
-        <td class="parametername">deviceFamily</td>
-        <td class="parametervalue">UNKNOWN</td>
-       </tr>
-       <tr>
-        <td class="parametername">generateLegacySim</td>
-        <td class="parametervalue">false</td>
-       </tr>
-      </table>
-     </td>
-    </tr>
-   </table>&#160;&#160;
-   <table class="flowbox">
-    <tr>
-     <td class="parametersbox">
-      <h2>Software Assignments</h2>(none)</td>
-    </tr>
-   </table>
-  </div>
   <a name="module_jtag_uart_0"> </a>
   <div>
    <hr/>
@@ -258,11 +278,11 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    <div class="greydiv">
     <table class="connectionboxes">
      <tr>
-      <td class="neighbor" rowspan="6">
+      <td class="neighbor" rowspan="4">
        <a href="#module_nios2_gen2_0">nios2_gen2_0</a>
       </td>
       <td class="from">data_master&#160;&#160;</td>
-      <td class="main" rowspan="11">jtag_uart_0</td>
+      <td class="main" rowspan="9">jtag_uart_0</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;avalon_jtag_slave</td>
@@ -273,26 +293,20 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      <tr>
       <td class="to">&#160;&#160;irq</td>
      </tr>
-     <tr>
-      <td class="from">debug_reset_request&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
      <tr style="height:6px">
       <td></td>
      </tr>
      <tr>
       <td class="neighbor" rowspan="4">
-       <a href="#module_clk_0">clk_0</a>
+       <a href="#module_sys_pll_clk">sys_pll_clk</a>
       </td>
-      <td class="from">clk&#160;&#160;</td>
+      <td class="from">sys_clk&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;clk</td>
      </tr>
      <tr>
-      <td class="from">clk_reset&#160;&#160;</td>
+      <td class="from">reset_source&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;reset</td>
@@ -436,15 +450,15 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      </tr>
      <tr>
       <td class="neighbor" rowspan="4">
-       <a href="#module_clk_0">clk_0</a>
+       <a href="#module_sys_pll_clk">sys_pll_clk</a>
       </td>
-      <td class="from">clk&#160;&#160;</td>
+      <td class="from">sys_clk&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;clk</td>
      </tr>
      <tr>
-      <td class="from">clk_reset&#160;&#160;</td>
+      <td class="from">reset_source&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;reset</td>
@@ -621,16 +635,16 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <table class="connectionboxes">
      <tr>
       <td class="neighbor" rowspan="4">
-       <a href="#module_clk_0">clk_0</a>
+       <a href="#module_sys_pll_clk">sys_pll_clk</a>
       </td>
-      <td class="from">clk&#160;&#160;</td>
-      <td class="main" rowspan="36">nios2_gen2_0</td>
+      <td class="from">sys_clk&#160;&#160;</td>
+      <td class="main" rowspan="55">nios2_gen2_0</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;clk</td>
      </tr>
      <tr>
-      <td class="from">clk_reset&#160;&#160;</td>
+      <td class="from">reset_source&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;reset</td>
@@ -639,7 +653,33 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
       <td></td>
       <td class="from">data_master&#160;&#160;</td>
-      <td class="neighbor" rowspan="6">
+      <td class="neighbor" rowspan="4">
+       <a href="#module_video_pixel_buffer_dma_0">video_pixel_buffer_dma_0</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;avalon_control_slave</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">debug_reset_request&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">data_master&#160;&#160;</td>
+      <td class="neighbor" rowspan="4">
        <a href="#module_jtag_uart_0">jtag_uart_0</a>
       </td>
      </tr>
@@ -657,6 +697,22 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
       <td></td>
       <td class="to">&#160;&#160;irq</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">data_master&#160;&#160;</td>
+      <td class="neighbor" rowspan="4">
+       <a href="#module_video_rgb_resampler_0">video_rgb_resampler_0</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;avalon_rgb_slave</td>
      </tr>
      <tr>
       <td></td>
@@ -801,6 +857,64 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
       <td></td>
       <td class="to">&#160;&#160;reset</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">data_master&#160;&#160;</td>
+      <td class="neighbor" rowspan="4">
+       <a href="#module_sdram_controller">sdram_controller</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;s1</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">debug_reset_request&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">debug_reset_request&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_video_pll_0">video_pll_0</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;ref_reset</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">debug_reset_request&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_video_dual_clock_buffer_0">video_dual_clock_buffer_0</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;reset_stream_in</td>
      </tr>
     </table>
    </div>
@@ -1449,7 +1563,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">dataAddrWidth</td>
-        <td class="parametervalue">20</td>
+        <td class="parametervalue">28</td>
        </tr>
        <tr>
         <td class="parametername">tightlyCoupledDataMaster0AddrWidth</td>
@@ -1501,7 +1615,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">dataSlaveMapParam</td>
-        <td class="parametervalue">&lt;address-map&gt;&lt;slave name='onchip_memory2_0.s1' start='0x40000' end='0x80000' type='altera_avalon_onchip_memory2.s1' /&gt;&lt;slave name='nios2_gen2_0.debug_mem_slave' start='0x80800' end='0x81000' type='altera_nios2_gen2.debug_mem_slave' /&gt;&lt;slave name='leds_r.s1' start='0x81000' end='0x81010' type='altera_avalon_pio.s1' /&gt;&lt;slave name='touchscreen_uart.avalon_rs232_slave' start='0x81010' end='0x81018' type='altera_up_avalon_rs232.avalon_rs232_slave' /&gt;&lt;slave name='wifi_uart.avalon_rs232_slave' start='0x81018' end='0x81020' type='altera_up_avalon_rs232.avalon_rs232_slave' /&gt;&lt;slave name='jtag_uart_0.avalon_jtag_slave' start='0x81020' end='0x81028' type='altera_avalon_jtag_uart.avalon_jtag_slave' /&gt;&lt;/address-map&gt;</td>
+        <td class="parametervalue">&lt;address-map&gt;&lt;slave name='video_pixel_buffer_dma_0.avalon_control_slave' start='0x0' end='0x10' type='altera_up_avalon_video_pixel_buffer_dma.avalon_control_slave' /&gt;&lt;slave name='onchip_memory2_0.s1' start='0x40000' end='0x80000' type='altera_avalon_onchip_memory2.s1' /&gt;&lt;slave name='nios2_gen2_0.debug_mem_slave' start='0x80800' end='0x81000' type='altera_nios2_gen2.debug_mem_slave' /&gt;&lt;slave name='leds_r.s1' start='0x81000' end='0x81010' type='altera_avalon_pio.s1' /&gt;&lt;slave name='touchscreen_uart.avalon_rs232_slave' start='0x81010' end='0x81018' type='altera_up_avalon_rs232.avalon_rs232_slave' /&gt;&lt;slave name='wifi_uart.avalon_rs232_slave' start='0x81018' end='0x81020' type='altera_up_avalon_rs232.avalon_rs232_slave' /&gt;&lt;slave name='jtag_uart_0.avalon_jtag_slave' start='0x81020' end='0x81028' type='altera_avalon_jtag_uart.avalon_jtag_slave' /&gt;&lt;slave name='video_rgb_resampler_0.avalon_rgb_slave' start='0x810000' end='0x810004' type='altera_up_avalon_video_rgb_resampler.avalon_rgb_slave' /&gt;&lt;slave name='sdram_controller.s1' start='0x8000000' end='0xC000000' type='altera_avalon_new_sdram_controller.s1' /&gt;&lt;/address-map&gt;</td>
        </tr>
        <tr>
         <td class="parametername">tightlyCoupledDataMaster0MapParam</td>
@@ -1585,11 +1699,11 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">AUTO_CLK_CLOCK_DOMAIN</td>
-        <td class="parametervalue">1</td>
+        <td class="parametervalue">6</td>
        </tr>
        <tr>
         <td class="parametername">AUTO_CLK_RESET_DOMAIN</td>
-        <td class="parametervalue">1</td>
+        <td class="parametervalue">6</td>
        </tr>
        <tr>
         <td class="parametername">deviceFamily</td>
@@ -1638,7 +1752,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">DATA_ADDR_WIDTH</td>
-        <td class="parametervalue">20</td>
+        <td class="parametervalue">28</td>
        </tr>
        <tr>
         <td class="parametername">DCACHE_LINE_SIZE</td>
@@ -1759,15 +1873,15 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      </tr>
      <tr>
       <td class="neighbor" rowspan="4">
-       <a href="#module_clk_0">clk_0</a>
+       <a href="#module_sys_pll_clk">sys_pll_clk</a>
       </td>
-      <td class="from">clk&#160;&#160;</td>
+      <td class="from">sys_clk&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;clk1</td>
      </tr>
      <tr>
-      <td class="from">clk_reset&#160;&#160;</td>
+      <td class="from">reset_source&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;reset1</td>
@@ -1999,6 +2113,377 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     </tr>
    </table>
   </div>
+  <a name="module_sdram_controller"> </a>
+  <div>
+   <hr/>
+   <h2>sdram_controller</h2>altera_avalon_new_sdram_controller v18.1
+   <br/>
+   <div class="greydiv">
+    <table class="connectionboxes">
+     <tr>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_video_pixel_buffer_dma_0">video_pixel_buffer_dma_0</a>
+      </td>
+      <td class="from">avalon_pixel_dma_master&#160;&#160;</td>
+      <td class="main" rowspan="12">sdram_controller</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;s1</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="neighbor" rowspan="4">
+       <a href="#module_nios2_gen2_0">nios2_gen2_0</a>
+      </td>
+      <td class="from">data_master&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;s1</td>
+     </tr>
+     <tr>
+      <td class="from">debug_reset_request&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="neighbor" rowspan="4">
+       <a href="#module_sys_pll_clk">sys_pll_clk</a>
+      </td>
+      <td class="from">sys_clk&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;clk</td>
+     </tr>
+     <tr>
+      <td class="from">reset_source&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+    </table>
+   </div>
+   <br/>
+   <br/>
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Parameters</h2>
+      <table>
+       <tr>
+        <td class="parametername">TAC</td>
+        <td class="parametervalue">5.4</td>
+       </tr>
+       <tr>
+        <td class="parametername">TRCD</td>
+        <td class="parametervalue">15.0</td>
+       </tr>
+       <tr>
+        <td class="parametername">TRFC</td>
+        <td class="parametervalue">70.0</td>
+       </tr>
+       <tr>
+        <td class="parametername">TRP</td>
+        <td class="parametervalue">15.0</td>
+       </tr>
+       <tr>
+        <td class="parametername">TWR</td>
+        <td class="parametervalue">14.0</td>
+       </tr>
+       <tr>
+        <td class="parametername">casLatency</td>
+        <td class="parametervalue">3</td>
+       </tr>
+       <tr>
+        <td class="parametername">columnWidth</td>
+        <td class="parametervalue">10</td>
+       </tr>
+       <tr>
+        <td class="parametername">dataWidth</td>
+        <td class="parametervalue">16</td>
+       </tr>
+       <tr>
+        <td class="parametername">generateSimulationModel</td>
+        <td class="parametervalue">false</td>
+       </tr>
+       <tr>
+        <td class="parametername">initRefreshCommands</td>
+        <td class="parametervalue">2</td>
+       </tr>
+       <tr>
+        <td class="parametername">model</td>
+        <td class="parametervalue">single_Micron_MT48LC4M32B2_7_chip</td>
+       </tr>
+       <tr>
+        <td class="parametername">numberOfBanks</td>
+        <td class="parametervalue">4</td>
+       </tr>
+       <tr>
+        <td class="parametername">numberOfChipSelects</td>
+        <td class="parametervalue">1</td>
+       </tr>
+       <tr>
+        <td class="parametername">pinsSharedViaTriState</td>
+        <td class="parametervalue">false</td>
+       </tr>
+       <tr>
+        <td class="parametername">powerUpDelay</td>
+        <td class="parametervalue">100.0</td>
+       </tr>
+       <tr>
+        <td class="parametername">refreshPeriod</td>
+        <td class="parametervalue">7.8125</td>
+       </tr>
+       <tr>
+        <td class="parametername">rowWidth</td>
+        <td class="parametervalue">13</td>
+       </tr>
+       <tr>
+        <td class="parametername">masteredTristateBridgeSlave</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">TMRD</td>
+        <td class="parametervalue">3</td>
+       </tr>
+       <tr>
+        <td class="parametername">initNOPDelay</td>
+        <td class="parametervalue">0.0</td>
+       </tr>
+       <tr>
+        <td class="parametername">registerDataIn</td>
+        <td class="parametervalue">true</td>
+       </tr>
+       <tr>
+        <td class="parametername">clockRate</td>
+        <td class="parametervalue">50000000</td>
+       </tr>
+       <tr>
+        <td class="parametername">componentName</td>
+        <td class="parametervalue">cpu_sdram_controller</td>
+       </tr>
+       <tr>
+        <td class="parametername">size</td>
+        <td class="parametervalue">67108864</td>
+       </tr>
+       <tr>
+        <td class="parametername">addressWidth</td>
+        <td class="parametervalue">25</td>
+       </tr>
+       <tr>
+        <td class="parametername">bankWidth</td>
+        <td class="parametervalue">2</td>
+       </tr>
+       <tr>
+        <td class="parametername">deviceFamily</td>
+        <td class="parametervalue">UNKNOWN</td>
+       </tr>
+       <tr>
+        <td class="parametername">generateLegacySim</td>
+        <td class="parametervalue">false</td>
+       </tr>
+      </table>
+     </td>
+    </tr>
+   </table>&#160;&#160;
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Software Assignments</h2>
+      <table>
+       <tr>
+        <td class="parametername">CAS_LATENCY</td>
+        <td class="parametervalue">3</td>
+       </tr>
+       <tr>
+        <td class="parametername">CONTENTS_INFO</td>
+        <td class="parametervalue"></td>
+       </tr>
+       <tr>
+        <td class="parametername">INIT_NOP_DELAY</td>
+        <td class="parametervalue">0.0</td>
+       </tr>
+       <tr>
+        <td class="parametername">INIT_REFRESH_COMMANDS</td>
+        <td class="parametervalue">2</td>
+       </tr>
+       <tr>
+        <td class="parametername">IS_INITIALIZED</td>
+        <td class="parametervalue">1</td>
+       </tr>
+       <tr>
+        <td class="parametername">POWERUP_DELAY</td>
+        <td class="parametervalue">100.0</td>
+       </tr>
+       <tr>
+        <td class="parametername">REFRESH_PERIOD</td>
+        <td class="parametervalue">7.8125</td>
+       </tr>
+       <tr>
+        <td class="parametername">REGISTER_DATA_IN</td>
+        <td class="parametervalue">1</td>
+       </tr>
+       <tr>
+        <td class="parametername">SDRAM_ADDR_WIDTH</td>
+        <td class="parametervalue">25</td>
+       </tr>
+       <tr>
+        <td class="parametername">SDRAM_BANK_WIDTH</td>
+        <td class="parametervalue">2</td>
+       </tr>
+       <tr>
+        <td class="parametername">SDRAM_COL_WIDTH</td>
+        <td class="parametervalue">10</td>
+       </tr>
+       <tr>
+        <td class="parametername">SDRAM_DATA_WIDTH</td>
+        <td class="parametervalue">16</td>
+       </tr>
+       <tr>
+        <td class="parametername">SDRAM_NUM_BANKS</td>
+        <td class="parametervalue">4</td>
+       </tr>
+       <tr>
+        <td class="parametername">SDRAM_NUM_CHIPSELECTS</td>
+        <td class="parametervalue">1</td>
+       </tr>
+       <tr>
+        <td class="parametername">SDRAM_ROW_WIDTH</td>
+        <td class="parametervalue">13</td>
+       </tr>
+       <tr>
+        <td class="parametername">SHARED_DATA</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">SIM_MODEL_BASE</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">STARVATION_INDICATOR</td>
+        <td class="parametervalue">0</td>
+       </tr>
+       <tr>
+        <td class="parametername">TRISTATE_BRIDGE_SLAVE</td>
+        <td class="parametervalue">""</td>
+       </tr>
+       <tr>
+        <td class="parametername">T_AC</td>
+        <td class="parametervalue">5.4</td>
+       </tr>
+       <tr>
+        <td class="parametername">T_MRD</td>
+        <td class="parametervalue">3</td>
+       </tr>
+       <tr>
+        <td class="parametername">T_RCD</td>
+        <td class="parametervalue">15.0</td>
+       </tr>
+       <tr>
+        <td class="parametername">T_RFC</td>
+        <td class="parametervalue">70.0</td>
+       </tr>
+       <tr>
+        <td class="parametername">T_RP</td>
+        <td class="parametervalue">15.0</td>
+       </tr>
+       <tr>
+        <td class="parametername">T_WR</td>
+        <td class="parametervalue">14.0</td>
+       </tr>
+      </table>
+     </td>
+    </tr>
+   </table>
+  </div>
+  <a name="module_sys_pll_clk"> </a>
+  <div>
+   <hr/>
+   <h2>sys_pll_clk</h2>altera_up_avalon_sys_sdram_pll v18.0
+   <br/>
+   <br/>
+   <br/>
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Parameters</h2>
+      <table>
+       <tr>
+        <td class="parametername">gui_refclk</td>
+        <td class="parametervalue">50.0</td>
+       </tr>
+       <tr>
+        <td class="parametername">refclk</td>
+        <td class="parametervalue">50.0</td>
+       </tr>
+       <tr>
+        <td class="parametername">gui_outclk</td>
+        <td class="parametervalue">50.0</td>
+       </tr>
+       <tr>
+        <td class="parametername">outclk</td>
+        <td class="parametervalue">50.0</td>
+       </tr>
+       <tr>
+        <td class="parametername">CIII_boards</td>
+        <td class="parametervalue">DE0</td>
+       </tr>
+       <tr>
+        <td class="parametername">CIV_boards</td>
+        <td class="parametervalue">DE2-115</td>
+       </tr>
+       <tr>
+        <td class="parametername">CV_boards</td>
+        <td class="parametervalue">DE1-SoC</td>
+       </tr>
+       <tr>
+        <td class="parametername">MAX10_boards</td>
+        <td class="parametervalue">DE10-Lite</td>
+       </tr>
+       <tr>
+        <td class="parametername">other_boards</td>
+        <td class="parametervalue">None</td>
+       </tr>
+       <tr>
+        <td class="parametername">board</td>
+        <td class="parametervalue">DE1-SoC</td>
+       </tr>
+       <tr>
+        <td class="parametername">device_family</td>
+        <td class="parametervalue">CYCLONEV</td>
+       </tr>
+       <tr>
+        <td class="parametername">AUTO_DEVICE</td>
+        <td class="parametervalue">5CSEMA5F31C6</td>
+       </tr>
+       <tr>
+        <td class="parametername">AUTO_DEVICE_SPEEDGRADE</td>
+        <td class="parametervalue">6</td>
+       </tr>
+       <tr>
+        <td class="parametername">deviceFamily</td>
+        <td class="parametervalue">UNKNOWN</td>
+       </tr>
+       <tr>
+        <td class="parametername">generateLegacySim</td>
+        <td class="parametervalue">false</td>
+       </tr>
+      </table>
+     </td>
+    </tr>
+   </table>&#160;&#160;
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Software Assignments</h2>(none)</td>
+    </tr>
+   </table>
+  </div>
   <a name="module_touchscreen_uart"> </a>
   <div>
    <hr/>
@@ -2033,15 +2518,15 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      </tr>
      <tr>
       <td class="neighbor" rowspan="4">
-       <a href="#module_clk_0">clk_0</a>
+       <a href="#module_sys_pll_clk">sys_pll_clk</a>
       </td>
-      <td class="from">clk&#160;&#160;</td>
+      <td class="from">sys_clk&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;clk</td>
      </tr>
      <tr>
-      <td class="from">clk_reset&#160;&#160;</td>
+      <td class="from">reset_source&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;reset</td>
@@ -2106,6 +2591,639 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     </tr>
    </table>
   </div>
+  <a name="module_vga_controller"> </a>
+  <div>
+   <hr/>
+   <h2>vga_controller</h2>altera_up_avalon_video_vga_controller v18.0
+   <br/>
+   <div class="greydiv">
+    <table class="connectionboxes">
+     <tr>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_video_dual_clock_buffer_0">video_dual_clock_buffer_0</a>
+      </td>
+      <td class="from">avalon_dc_buffer_source&#160;&#160;</td>
+      <td class="main" rowspan="7">vga_controller</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;avalon_vga_sink</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="neighbor" rowspan="4">
+       <a href="#module_video_pll_0">video_pll_0</a>
+      </td>
+      <td class="from">vga_clk&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;clk</td>
+     </tr>
+     <tr>
+      <td class="from">reset_source&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+    </table>
+   </div>
+   <br/>
+   <br/>
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Parameters</h2>
+      <table>
+       <tr>
+        <td class="parametername">board</td>
+        <td class="parametervalue">DE1-SoC</td>
+       </tr>
+       <tr>
+        <td class="parametername">device</td>
+        <td class="parametervalue">VGA Connector</td>
+       </tr>
+       <tr>
+        <td class="parametername">resolution</td>
+        <td class="parametervalue">VGA 640x480</td>
+       </tr>
+       <tr>
+        <td class="parametername">underflow_flag</td>
+        <td class="parametervalue">false</td>
+       </tr>
+       <tr>
+        <td class="parametername">AUTO_DEVICE_FAMILY</td>
+        <td class="parametervalue">CYCLONEV</td>
+       </tr>
+       <tr>
+        <td class="parametername">AUTO_CLK_CLOCK_RATE</td>
+        <td class="parametervalue">25000000</td>
+       </tr>
+       <tr>
+        <td class="parametername">deviceFamily</td>
+        <td class="parametervalue">Cyclone V</td>
+       </tr>
+       <tr>
+        <td class="parametername">generateLegacySim</td>
+        <td class="parametervalue">false</td>
+       </tr>
+      </table>
+     </td>
+    </tr>
+   </table>&#160;&#160;
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Software Assignments</h2>(none)</td>
+    </tr>
+   </table>
+  </div>
+  <a name="module_video_dual_clock_buffer_0"> </a>
+  <div>
+   <hr/>
+   <h2>video_dual_clock_buffer_0</h2>altera_up_avalon_video_dual_clock_buffer v18.0
+   <br/>
+   <div class="greydiv">
+    <table class="connectionboxes">
+     <tr>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_video_rgb_resampler_0">video_rgb_resampler_0</a>
+      </td>
+      <td class="from">avalon_rgb_source&#160;&#160;</td>
+      <td class="main" rowspan="17">video_dual_clock_buffer_0</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;avalon_dc_buffer_sink</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="neighbor" rowspan="4">
+       <a href="#module_sys_pll_clk">sys_pll_clk</a>
+      </td>
+      <td class="from">sys_clk&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;clock_stream_in</td>
+     </tr>
+     <tr>
+      <td class="from">reset_source&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;reset_stream_in</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="neighbor" rowspan="4">
+       <a href="#module_video_pll_0">video_pll_0</a>
+      </td>
+      <td class="from">vga_clk&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;clock_stream_out</td>
+     </tr>
+     <tr>
+      <td class="from">reset_source&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;reset_stream_out</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_nios2_gen2_0">nios2_gen2_0</a>
+      </td>
+      <td class="from">debug_reset_request&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;reset_stream_in</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">avalon_dc_buffer_source&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_vga_controller">vga_controller</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;avalon_vga_sink</td>
+     </tr>
+    </table>
+   </div>
+   <br/>
+   <br/>
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Parameters</h2>
+      <table>
+       <tr>
+        <td class="parametername">color_bits</td>
+        <td class="parametervalue">10</td>
+       </tr>
+       <tr>
+        <td class="parametername">color_planes</td>
+        <td class="parametervalue">3</td>
+       </tr>
+       <tr>
+        <td class="parametername">AUTO_DEVICE_FAMILY</td>
+        <td class="parametervalue">CYCLONEV</td>
+       </tr>
+       <tr>
+        <td class="parametername">AUTO_CLOCK_STREAM_IN_CLOCK_RATE</td>
+        <td class="parametervalue">50000000</td>
+       </tr>
+       <tr>
+        <td class="parametername">AUTO_CLOCK_STREAM_OUT_CLOCK_RATE</td>
+        <td class="parametervalue">25000000</td>
+       </tr>
+       <tr>
+        <td class="parametername">deviceFamily</td>
+        <td class="parametervalue">Cyclone V</td>
+       </tr>
+       <tr>
+        <td class="parametername">generateLegacySim</td>
+        <td class="parametervalue">false</td>
+       </tr>
+      </table>
+     </td>
+    </tr>
+   </table>&#160;&#160;
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Software Assignments</h2>(none)</td>
+    </tr>
+   </table>
+  </div>
+  <a name="module_video_pixel_buffer_dma_0"> </a>
+  <div>
+   <hr/>
+   <h2>video_pixel_buffer_dma_0</h2>altera_up_avalon_video_pixel_buffer_dma v18.0
+   <br/>
+   <div class="greydiv">
+    <table class="connectionboxes">
+     <tr>
+      <td class="neighbor" rowspan="4">
+       <a href="#module_nios2_gen2_0">nios2_gen2_0</a>
+      </td>
+      <td class="from">data_master&#160;&#160;</td>
+      <td class="main" rowspan="14">video_pixel_buffer_dma_0</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;avalon_control_slave</td>
+     </tr>
+     <tr>
+      <td class="from">debug_reset_request&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="neighbor" rowspan="4">
+       <a href="#module_sys_pll_clk">sys_pll_clk</a>
+      </td>
+      <td class="from">sys_clk&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;clk</td>
+     </tr>
+     <tr>
+      <td class="from">reset_source&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">avalon_pixel_dma_master&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_sdram_controller">sdram_controller</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;s1</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">avalon_pixel_source&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_video_rgb_resampler_0">video_rgb_resampler_0</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;avalon_rgb_sink</td>
+     </tr>
+    </table>
+   </div>
+   <br/>
+   <br/>
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Parameters</h2>
+      <table>
+       <tr>
+        <td class="parametername">addr_mode</td>
+        <td class="parametervalue">Consecutive</td>
+       </tr>
+       <tr>
+        <td class="parametername">start_address</td>
+        <td class="parametervalue">134217728</td>
+       </tr>
+       <tr>
+        <td class="parametername">back_start_address</td>
+        <td class="parametervalue">134217728</td>
+       </tr>
+       <tr>
+        <td class="parametername">image_width</td>
+        <td class="parametervalue">640</td>
+       </tr>
+       <tr>
+        <td class="parametername">image_height</td>
+        <td class="parametervalue">480</td>
+       </tr>
+       <tr>
+        <td class="parametername">color_space</td>
+        <td class="parametervalue">16-bit RGB</td>
+       </tr>
+       <tr>
+        <td class="parametername">AUTO_DEVICE_FAMILY</td>
+        <td class="parametervalue">CYCLONEV</td>
+       </tr>
+       <tr>
+        <td class="parametername">AUTO_CLK_CLOCK_RATE</td>
+        <td class="parametervalue">50000000</td>
+       </tr>
+       <tr>
+        <td class="parametername">deviceFamily</td>
+        <td class="parametervalue">Cyclone V</td>
+       </tr>
+       <tr>
+        <td class="parametername">generateLegacySim</td>
+        <td class="parametervalue">false</td>
+       </tr>
+      </table>
+     </td>
+    </tr>
+   </table>&#160;&#160;
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Software Assignments</h2>(none)</td>
+    </tr>
+   </table>
+  </div>
+  <a name="module_video_pll_0"> </a>
+  <div>
+   <hr/>
+   <h2>video_pll_0</h2>altera_up_avalon_video_pll v18.0
+   <br/>
+   <div class="greydiv">
+    <table class="connectionboxes">
+     <tr>
+      <td class="neighbor" rowspan="4">
+       <a href="#module_sys_pll_clk">sys_pll_clk</a>
+      </td>
+      <td class="from">sys_clk&#160;&#160;</td>
+      <td class="main" rowspan="16">video_pll_0</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;ref_clk</td>
+     </tr>
+     <tr>
+      <td class="from">reset_source&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;ref_reset</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_nios2_gen2_0">nios2_gen2_0</a>
+      </td>
+      <td class="from">debug_reset_request&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;ref_reset</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">vga_clk&#160;&#160;</td>
+      <td class="neighbor" rowspan="4">
+       <a href="#module_vga_controller">vga_controller</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;clk</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">reset_source&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">vga_clk&#160;&#160;</td>
+      <td class="neighbor" rowspan="4">
+       <a href="#module_video_dual_clock_buffer_0">video_dual_clock_buffer_0</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;clock_stream_out</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">reset_source&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;reset_stream_out</td>
+     </tr>
+    </table>
+   </div>
+   <br/>
+   <br/>
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Parameters</h2>
+      <table>
+       <tr>
+        <td class="parametername">gui_refclk</td>
+        <td class="parametervalue">50.0</td>
+       </tr>
+       <tr>
+        <td class="parametername">refclk</td>
+        <td class="parametervalue">50.0</td>
+       </tr>
+       <tr>
+        <td class="parametername">video_in_clk_en</td>
+        <td class="parametervalue">true</td>
+       </tr>
+       <tr>
+        <td class="parametername">camera</td>
+        <td class="parametervalue">8MP Digital Camera (D8M-GPIO)</td>
+       </tr>
+       <tr>
+        <td class="parametername">vga_clk_en</td>
+        <td class="parametervalue">true</td>
+       </tr>
+       <tr>
+        <td class="parametername">gui_resolution</td>
+        <td class="parametervalue">VGA 640x480</td>
+       </tr>
+       <tr>
+        <td class="parametername">resolution</td>
+        <td class="parametervalue">VGA 640x480</td>
+       </tr>
+       <tr>
+        <td class="parametername">lcd_clk_en</td>
+        <td class="parametervalue">false</td>
+       </tr>
+       <tr>
+        <td class="parametername">lcd</td>
+        <td class="parametervalue">7" LCD on VEEK-MT and MTL/MTL2 Modules</td>
+       </tr>
+       <tr>
+        <td class="parametername">device_family</td>
+        <td class="parametervalue">CYCLONEV</td>
+       </tr>
+       <tr>
+        <td class="parametername">AUTO_DEVICE</td>
+        <td class="parametervalue">5CSEMA5F31C6</td>
+       </tr>
+       <tr>
+        <td class="parametername">AUTO_DEVICE_SPEEDGRADE</td>
+        <td class="parametervalue">6</td>
+       </tr>
+       <tr>
+        <td class="parametername">deviceFamily</td>
+        <td class="parametervalue">UNKNOWN</td>
+       </tr>
+       <tr>
+        <td class="parametername">generateLegacySim</td>
+        <td class="parametervalue">false</td>
+       </tr>
+      </table>
+     </td>
+    </tr>
+   </table>&#160;&#160;
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Software Assignments</h2>(none)</td>
+    </tr>
+   </table>
+  </div>
+  <a name="module_video_rgb_resampler_0"> </a>
+  <div>
+   <hr/>
+   <h2>video_rgb_resampler_0</h2>altera_up_avalon_video_rgb_resampler v18.0
+   <br/>
+   <div class="greydiv">
+    <table class="connectionboxes">
+     <tr>
+      <td class="neighbor" rowspan="4">
+       <a href="#module_nios2_gen2_0">nios2_gen2_0</a>
+      </td>
+      <td class="from">data_master&#160;&#160;</td>
+      <td class="main" rowspan="14">video_rgb_resampler_0</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;avalon_rgb_slave</td>
+     </tr>
+     <tr>
+      <td class="from">debug_reset_request&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_video_pixel_buffer_dma_0">video_pixel_buffer_dma_0</a>
+      </td>
+      <td class="from">avalon_pixel_source&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;avalon_rgb_sink</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="neighbor" rowspan="4">
+       <a href="#module_sys_pll_clk">sys_pll_clk</a>
+      </td>
+      <td class="from">sys_clk&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;clk</td>
+     </tr>
+     <tr>
+      <td class="from">reset_source&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;reset</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">avalon_rgb_source&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_video_dual_clock_buffer_0">video_dual_clock_buffer_0</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;avalon_dc_buffer_sink</td>
+     </tr>
+    </table>
+   </div>
+   <br/>
+   <br/>
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Parameters</h2>
+      <table>
+       <tr>
+        <td class="parametername">input_type</td>
+        <td class="parametervalue">16-bit RGB</td>
+       </tr>
+       <tr>
+        <td class="parametername">output_type</td>
+        <td class="parametervalue">30-bit RGB</td>
+       </tr>
+       <tr>
+        <td class="parametername">alpha</td>
+        <td class="parametervalue">1023</td>
+       </tr>
+       <tr>
+        <td class="parametername">input_bits</td>
+        <td class="parametervalue">16</td>
+       </tr>
+       <tr>
+        <td class="parametername">input_planes</td>
+        <td class="parametervalue">1</td>
+       </tr>
+       <tr>
+        <td class="parametername">output_bits</td>
+        <td class="parametervalue">10</td>
+       </tr>
+       <tr>
+        <td class="parametername">output_planes</td>
+        <td class="parametervalue">3</td>
+       </tr>
+       <tr>
+        <td class="parametername">AUTO_DEVICE_FAMILY</td>
+        <td class="parametervalue">CYCLONEV</td>
+       </tr>
+       <tr>
+        <td class="parametername">AUTO_CLK_CLOCK_RATE</td>
+        <td class="parametervalue">50000000</td>
+       </tr>
+       <tr>
+        <td class="parametername">deviceFamily</td>
+        <td class="parametervalue">Cyclone V</td>
+       </tr>
+       <tr>
+        <td class="parametername">generateLegacySim</td>
+        <td class="parametervalue">false</td>
+       </tr>
+      </table>
+     </td>
+    </tr>
+   </table>&#160;&#160;
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Software Assignments</h2>(none)</td>
+    </tr>
+   </table>
+  </div>
   <a name="module_wifi_uart"> </a>
   <div>
    <hr/>
@@ -2140,15 +3258,15 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      </tr>
      <tr>
       <td class="neighbor" rowspan="4">
-       <a href="#module_clk_0">clk_0</a>
+       <a href="#module_sys_pll_clk">sys_pll_clk</a>
       </td>
-      <td class="from">clk&#160;&#160;</td>
+      <td class="from">sys_clk&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;clk</td>
      </tr>
      <tr>
-      <td class="from">clk_reset&#160;&#160;</td>
+      <td class="from">reset_source&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;reset</td>
@@ -2215,8 +3333,8 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
   </div>
   <table class="blueBar">
    <tr>
-    <td class="l">generation took 0.03 seconds</td>
-    <td class="r">rendering took 0.21 seconds</td>
+    <td class="l">generation took 0.00 seconds</td>
+    <td class="r">rendering took 0.02 seconds</td>
    </tr>
   </table>
  </body>

@@ -1477,7 +1477,7 @@ inline unsigned char getUart(alt_up_rs232_dev* uart)
    409a4:	0004154c 	andi	zero,zero,4181
    409a8:	00041604 	movi	zero,4184
    409ac:	00041604 	movi	zero,4184
-   409b0:	00041540 	call	4154 <__reset-0x3beac>
+   409b0:	00041540 	call	4154 <__alt_mem_onchip_memory2_0-0x3beac>
    409b4:	00041604 	movi	zero,4184
    409b8:	00041604 	movi	zero,4184
    409bc:	00041604 	movi	zero,4184
@@ -1491,15 +1491,15 @@ inline unsigned char getUart(alt_up_rs232_dev* uart)
    409dc:	00040c30 	cmpltui	zero,zero,4144
    409e0:	00041604 	movi	zero,4184
    409e4:	00040cbc 	xorhi	zero,zero,4146
-   409e8:	00040c80 	call	40c8 <__reset-0x3bf38>
-   409ec:	00040c80 	call	40c8 <__reset-0x3bf38>
-   409f0:	00040c80 	call	40c8 <__reset-0x3bf38>
-   409f4:	00040c80 	call	40c8 <__reset-0x3bf38>
-   409f8:	00040c80 	call	40c8 <__reset-0x3bf38>
-   409fc:	00040c80 	call	40c8 <__reset-0x3bf38>
-   40a00:	00040c80 	call	40c8 <__reset-0x3bf38>
-   40a04:	00040c80 	call	40c8 <__reset-0x3bf38>
-   40a08:	00040c80 	call	40c8 <__reset-0x3bf38>
+   409e8:	00040c80 	call	40c8 <__alt_mem_onchip_memory2_0-0x3bf38>
+   409ec:	00040c80 	call	40c8 <__alt_mem_onchip_memory2_0-0x3bf38>
+   409f0:	00040c80 	call	40c8 <__alt_mem_onchip_memory2_0-0x3bf38>
+   409f4:	00040c80 	call	40c8 <__alt_mem_onchip_memory2_0-0x3bf38>
+   409f8:	00040c80 	call	40c8 <__alt_mem_onchip_memory2_0-0x3bf38>
+   409fc:	00040c80 	call	40c8 <__alt_mem_onchip_memory2_0-0x3bf38>
+   40a00:	00040c80 	call	40c8 <__alt_mem_onchip_memory2_0-0x3bf38>
+   40a04:	00040c80 	call	40c8 <__alt_mem_onchip_memory2_0-0x3bf38>
+   40a08:	00040c80 	call	40c8 <__alt_mem_onchip_memory2_0-0x3bf38>
    40a0c:	00041604 	movi	zero,4184
    40a10:	00041604 	movi	zero,4184
    40a14:	00041604 	movi	zero,4184
@@ -1510,7 +1510,7 @@ inline unsigned char getUart(alt_up_rs232_dev* uart)
    40a28:	00041604 	movi	zero,4184
    40a2c:	00041604 	movi	zero,4184
    40a30:	00041604 	movi	zero,4184
-   40a34:	00040d80 	call	40d8 <__reset-0x3bf28>
+   40a34:	00040d80 	call	40d8 <__alt_mem_onchip_memory2_0-0x3bf28>
    40a38:	00040cc8 	cmpgei	zero,zero,4147
    40a3c:	00041604 	movi	zero,4184
    40a40:	00040cc8 	cmpgei	zero,zero,4147
@@ -3748,7 +3748,7 @@ inline unsigned char getUart(alt_up_rs232_dev* uart)
    42d18:	00043944 	movi	zero,4325
    42d1c:	00043944 	movi	zero,4325
    42d20:	00043944 	movi	zero,4325
-   42d24:	00043000 	call	4300 <__reset-0x3bd00>
+   42d24:	00043000 	call	4300 <__alt_mem_onchip_memory2_0-0x3bd00>
    42d28:	000430c8 	cmpgei	zero,zero,4291
    42d2c:	00043944 	movi	zero,4325
    42d30:	000430c8 	cmpgei	zero,zero,4291
@@ -3759,7 +3759,7 @@ inline unsigned char getUart(alt_up_rs232_dev* uart)
    42d44:	00043174 	movhi	zero,4293
    42d48:	00043944 	movi	zero,4325
    42d4c:	00043944 	movi	zero,4325
-   42d50:	00043180 	call	4318 <__reset-0x3bce8>
+   42d50:	00043180 	call	4318 <__alt_mem_onchip_memory2_0-0x3bce8>
    42d54:	00043944 	movi	zero,4325
    42d58:	00043944 	movi	zero,4325
    42d5c:	00043944 	movi	zero,4325
@@ -11571,7 +11571,7 @@ inline unsigned char getUart(alt_up_rs232_dev* uart)
    4a51c:	0004a850 	cmplti	zero,zero,4769
    4a520:	0004acc4 	movi	zero,4787
    4a524:	0004a67c 	xorhi	zero,zero,4761
-   4a528:	0004ad00 	call	4ad0 <__reset-0x3b530>
+   4a528:	0004ad00 	call	4ad0 <__alt_mem_onchip_memory2_0-0x3b530>
    4a52c:	0004acc4 	movi	zero,4787
    4a530:	0004acf4 	movhi	zero,4787
    4a534:	0004ac88 	cmpgei	zero,zero,4786
@@ -11638,7 +11638,7 @@ inline unsigned char getUart(alt_up_rs232_dev* uart)
    4a628:	0004aa98 	cmpnei	zero,zero,4778
    4a62c:	0004a864 	muli	zero,zero,4769
    4a630:	0004a688 	cmpgei	zero,zero,4762
-   4a634:	0004ac00 	call	4ac0 <__reset-0x3b540>
+   4a634:	0004ac00 	call	4ac0 <__alt_mem_onchip_memory2_0-0x3b540>
    4a638:	0004acc4 	movi	zero,4787
    4a63c:	0004abac 	andhi	zero,zero,4782
    4a640:	0004acc4 	movi	zero,4787
@@ -12983,7 +12983,7 @@ inline unsigned char getUart(alt_up_rs232_dev* uart)
    4bb14:	0004c3ac 	andhi	zero,zero,4878
    4bb18:	0004beac 	andhi	zero,zero,4858
    4bb1c:	0004c3ac 	andhi	zero,zero,4878
-   4bb20:	0004bec0 	call	4bec <__reset-0x3b414>
+   4bb20:	0004bec0 	call	4bec <__alt_mem_onchip_memory2_0-0x3b414>
    4bb24:	0004bef8 	rdprs	zero,zero,4859
    4bb28:	0004bbf8 	rdprs	zero,zero,4847
    4bb2c:	0004bea0 	cmpeqi	zero,zero,4858
@@ -16349,12 +16349,12 @@ inline unsigned char getUart(alt_up_rs232_dev* uart)
    4eec4:	0004f0ec 	andhi	zero,zero,5059
    4eec8:	0004ef28 	cmpgeui	zero,zero,5052
    4eecc:	0004f0ec 	andhi	zero,zero,5059
-   4eed0:	0004f0c0 	call	4f0c <__reset-0x3b0f4>
+   4eed0:	0004f0c0 	call	4f0c <__alt_mem_onchip_memory2_0-0x3b0f4>
    4eed4:	0004f0ec 	andhi	zero,zero,5059
    4eed8:	0004ef28 	cmpgeui	zero,zero,5052
    4eedc:	0004ef34 	movhi	zero,5052
    4eee0:	0004ef34 	movhi	zero,5052
-   4eee4:	0004f0c0 	call	4f0c <__reset-0x3b0f4>
+   4eee4:	0004f0c0 	call	4f0c <__alt_mem_onchip_memory2_0-0x3b0f4>
    4eee8:	0004ef28 	cmpgeui	zero,zero,5052
    4eeec:	0004ef18 	cmpnei	zero,zero,5052
    4eef0:	0004ef18 	cmpnei	zero,zero,5052
@@ -17133,15 +17133,15 @@ inline unsigned char getUart(alt_up_rs232_dev* uart)
    4fae4:	0004fd38 	rdprs	zero,zero,5108
    4fae8:	0004fb44 	movi	zero,5101
    4faec:	0004fb44 	movi	zero,5101
-   4faf0:	0004fb40 	call	4fb4 <__reset-0x3b04c>
+   4faf0:	0004fb40 	call	4fb4 <__alt_mem_onchip_memory2_0-0x3b04c>
    4faf4:	0004fd14 	movui	zero,5108
    4faf8:	0004fd14 	movui	zero,5108
    4fafc:	0004fcfc 	xorhi	zero,zero,5107
-   4fb00:	0004fb40 	call	4fb4 <__reset-0x3b04c>
+   4fb00:	0004fb40 	call	4fb4 <__alt_mem_onchip_memory2_0-0x3b04c>
    4fb04:	0004fd14 	movui	zero,5108
    4fb08:	0004fcfc 	xorhi	zero,zero,5107
    4fb0c:	0004fd14 	movui	zero,5108
-   4fb10:	0004fb40 	call	4fb4 <__reset-0x3b04c>
+   4fb10:	0004fb40 	call	4fb4 <__alt_mem_onchip_memory2_0-0x3b04c>
    4fb14:	0004fd24 	muli	zero,zero,5108
    4fb18:	0004fd24 	muli	zero,zero,5108
    4fb1c:	0004fd24 	muli	zero,zero,5108
@@ -22867,7 +22867,7 @@ alt_exception_cause_generated_bad_addr(alt_exception_cause cause)
    53484:	d9400015 	stw	r5,0(sp)
    53488:	d9800115 	stw	r6,4(sp)
    5348c:	d9c00215 	stw	r7,8(sp)
-   53490:	00000000 	call	0 <__reset-0x40000>
+   53490:	00000000 	call	0 <__alt_mem_onchip_memory2_0-0x40000>
    53494:	d9400017 	ldw	r5,0(sp)
    53498:	d9800117 	ldw	r6,4(sp)
    5349c:	d9c00217 	ldw	r7,8(sp)
@@ -22951,7 +22951,7 @@ alt_exception_cause_generated_bad_addr(alt_exception_cause cause)
    535cc:	10003226 	beq	r2,zero,53698 <__call_exitprocs+0x178>
    535d0:	a009883a 	mov	r4,r20
    535d4:	98800015 	stw	r2,0(r19)
-   535d8:	00000000 	call	0 <__reset-0x40000>
+   535d8:	00000000 	call	0 <__alt_mem_onchip_memory2_0-0x40000>
    535dc:	9d000017 	ldw	r20,0(r19)
    535e0:	a03fe41e 	bne	r20,zero,53574 <__alt_data_end+0xfffd3574>
    535e4:	dfc00a17 	ldw	ra,40(sp)

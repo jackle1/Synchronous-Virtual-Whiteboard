@@ -1,0 +1,1698 @@
+Archive member included to satisfy reference by file (symbol)
+
+d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-divmod.o)
+                              obj/default/main.o (__divsi3)
+d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-mul.o)
+                              obj/default/main.o (__mulsi3)
+../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_load.o)
+                              ../testWifiTouchVGA_bsp//obj/HAL/src/crt0.o (alt_load)
+../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_main.o)
+                              ../testWifiTouchVGA_bsp//obj/HAL/src/crt0.o (alt_main)
+../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_putstr.o)
+                              obj/default/main.o (alt_putstr)
+../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_sys_init.o)
+                              ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_main.o) (alt_irq_init)
+../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
+                              ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_sys_init.o) (altera_avalon_jtag_uart_read_fd)
+../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_init.o)
+                              ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_sys_init.o) (altera_avalon_jtag_uart_init)
+../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_ioctl.o)
+                              ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o) (altera_avalon_jtag_uart_ioctl)
+../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+                              ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o) (altera_avalon_jtag_uart_read)
+../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+                              ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o) (altera_avalon_jtag_uart_write)
+../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_up_avalon_rs232.o)
+                              ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_sys_init.o) (alt_up_rs232_read_fd)
+../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_alarm_start.o)
+                              ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_init.o) (alt_alarm_start)
+../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_close.o)
+                              ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_main.o) (close)
+../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+                              ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_load.o) (alt_dcache_flush_all)
+../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_dev.o)
+                              ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_sys_init.o) (alt_dev_list)
+../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
+                              ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_sys_init.o) (alt_dev_llist_insert)
+../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_do_ctors.o)
+                              ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_main.o) (_do_ctors)
+../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_do_dtors.o)
+                              ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_main.o) (_do_dtors)
+../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_errno.o)
+                              ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_close.o) (alt_errno)
+../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_find_dev.o)
+                              ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_up_avalon_rs232.o) (alt_find_dev)
+../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+                              ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_load.o) (alt_icache_flush_all)
+../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_io_redirect.o)
+                              ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_main.o) (alt_io_redirect)
+../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_register.o)
+                              ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_init.o) (alt_irq_register)
+../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_vars.o)
+                              ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_register.o) (alt_irq_active)
+../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_open.o)
+                              ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_io_redirect.o) (open)
+../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_release_fd.o)
+                              ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_close.o) (alt_release_fd)
+../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_tick.o)
+                              ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_init.o) (_alt_tick_rate)
+../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+                              ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_sys_init.o) (altera_nios2_gen2_irq_init)
+../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_find_file.o)
+                              ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_open.o) (alt_find_file)
+../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_get_fd.o)
+                              ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_open.o) (alt_get_fd)
+../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_entry.o)
+                              ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_register.o) (alt_irq_entry)
+../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_handler.o)
+                              ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_register.o) (alt_irq)
+../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_exception_entry.o)
+                              ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_entry.o) (alt_exception)
+../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
+                              ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_exception_entry.o) (alt_instruction_exception_entry)
+d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-atexit.o)
+                              ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_main.o) (atexit)
+d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-exit.o)
+                              ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_main.o) (exit)
+d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fputs.o)
+                              ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_putstr.o) (fputs)
+d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fvwrite.o)
+                              d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fputs.o) (__sfvwrite_r)
+d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-impure.o)
+                              d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-exit.o) (_global_impure_ptr)
+d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-int_errno.o)
+                              ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_close.o) (errno)
+d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-mallocr.o)
+                              d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fvwrite.o) (_malloc_r)
+d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memchr.o)
+                              d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fvwrite.o) (memchr)
+d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memcmp.o)
+                              ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_find_dev.o) (memcmp)
+d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memcpy.o)
+                              ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o) (memcpy)
+d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memmove.o)
+                              d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fvwrite.o) (memmove)
+d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-reallocr.o)
+                              d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fvwrite.o) (_realloc_r)
+d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-sbrkr.o)
+                              d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-mallocr.o) (_sbrk_r)
+d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-strlen.o)
+                              ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_find_dev.o) (strlen)
+d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-wsetup.o)
+                              d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fvwrite.o) (__swsetup_r)
+d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-__atexit.o)
+                              d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-atexit.o) (__register_exitproc)
+d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-__call_atexit.o)
+                              d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-exit.o) (__call_exitprocs)
+d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fflush.o)
+                              d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fvwrite.o) (_fflush_r)
+d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-findfp.o)
+                              d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fputs.o) (__sinit)
+d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-freer.o)
+                              d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fvwrite.o) (_free_r)
+d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fwalk.o)
+                              d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-findfp.o) (_fwalk)
+d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-makebuf.o)
+                              d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-wsetup.o) (__smakebuf_r)
+d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memset.o)
+                              d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-findfp.o) (memset)
+d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-stdio.o)
+                              d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-findfp.o) (__sread)
+d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-writer.o)
+                              d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-stdio.o) (_write_r)
+d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(closer.o)
+                              d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-stdio.o) (_close_r)
+d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fclose.o)
+                              d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-findfp.o) (_fclose_r)
+d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fstatr.o)
+                              d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-makebuf.o) (_fstat_r)
+d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-isattyr.o)
+                              d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-makebuf.o) (_isatty_r)
+d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-lseekr.o)
+                              d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-stdio.o) (_lseek_r)
+d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-readr.o)
+                              d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-stdio.o) (_read_r)
+../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_exit.o)
+                              d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-exit.o) (_exit)
+../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_fstat.o)
+                              d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fstatr.o) (fstat)
+../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_isatty.o)
+                              d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-isattyr.o) (isatty)
+../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_lseek.o)
+                              d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-lseekr.o) (lseek)
+../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_malloc_lock.o)
+                              d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-mallocr.o) (__malloc_lock)
+../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_read.o)
+                              d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-readr.o) (read)
+../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_sbrk.o)
+                              d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-sbrkr.o) (sbrk)
+../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_write.o)
+                              d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-writer.o) (write)
+
+Allocating common symbols
+Common symbol       size              file
+
+alt_irq             0x100             ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_handler.o)
+errno               0x4               d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-int_errno.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+reset            0x0000000000040000 0x0000000000000020
+onchip_memory2_0 0x0000000000040020 0x000000000003ffe0
+sdram_controller 0x0000000008000000 0x0000000004000000
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD ../testWifiTouchVGA_bsp//obj/HAL/src/crt0.o
+LOAD obj/default/main.o
+LOAD d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libstdc++.a
+LOAD d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libm.a
+LOAD d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a
+START GROUP
+LOAD d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a
+LOAD d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a
+LOAD ../testWifiTouchVGA_bsp/\libhal_bsp.a
+LOAD d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libm.a
+END GROUP
+LOAD d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a
+                0x0000000000040000                __alt_mem_onchip_memory2_0 = 0x40000
+                0x0000000008000000                __alt_mem_sdram_controller = 0x8000000
+
+.entry          0x0000000000040000       0x20
+ *(.entry)
+ .entry         0x0000000000040000       0x20 ../testWifiTouchVGA_bsp//obj/HAL/src/crt0.o
+                0x0000000000040000                __reset
+
+.exceptions     0x0000000000040020      0x214
+                0x0000000000040020                PROVIDE (__ram_exceptions_start, ABSOLUTE (.))
+                0x0000000000040020                . = ALIGN (0x20)
+ *(.irq)
+ *(.exceptions.entry.label)
+ .exceptions.entry.label
+                0x0000000000040020        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_entry.o)
+                0x0000000000040020                alt_irq_entry
+ .exceptions.entry.label
+                0x0000000000040020        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_exception_entry.o)
+                0x0000000000040020                alt_exception
+ *(.exceptions.entry.user)
+ *(.exceptions.entry.ecc_fatal)
+ *(.exceptions.entry)
+ .exceptions.entry
+                0x0000000000040020       0x54 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_exception_entry.o)
+ *(.exceptions.irqtest.user)
+ *(.exceptions.irqtest)
+ .exceptions.irqtest
+                0x0000000000040074       0x10 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_entry.o)
+ *(.exceptions.irqhandler.user)
+ *(.exceptions.irqhandler)
+ .exceptions.irqhandler
+                0x0000000000040084        0x4 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_entry.o)
+ *(.exceptions.irqreturn.user)
+ *(.exceptions.irqreturn)
+ .exceptions.irqreturn
+                0x0000000000040088        0x4 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_entry.o)
+ *(.exceptions.notirq.label)
+ .exceptions.notirq.label
+                0x000000000004008c        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_entry.o)
+ *(.exceptions.notirq.user)
+ *(.exceptions.notirq)
+ .exceptions.notirq
+                0x000000000004008c        0x8 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_exception_entry.o)
+ *(.exceptions.soft.user)
+ *(.exceptions.soft)
+ *(.exceptions.unknown.user)
+ *(.exceptions.unknown)
+ .exceptions.unknown
+                0x0000000000040094       0x14 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_exception_entry.o)
+ *(.exceptions.exit.label)
+ .exceptions.exit.label
+                0x00000000000400a8        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_entry.o)
+ .exceptions.exit.label
+                0x00000000000400a8        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_exception_entry.o)
+ *(.exceptions.exit.user)
+ *(.exceptions.exit)
+ .exceptions.exit
+                0x00000000000400a8       0x54 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_exception_entry.o)
+ *(.exceptions)
+ .exceptions    0x00000000000400fc       0xd8 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_handler.o)
+                0x00000000000400fc                alt_irq_handler
+ .exceptions    0x00000000000401d4       0x60 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
+                0x00000000000401d4                alt_instruction_exception_entry
+                0x0000000000040234                PROVIDE (__ram_exceptions_end, ABSOLUTE (.))
+                0x0000000000040020                PROVIDE (__flash_exceptions_start, LOADADDR (.exceptions))
+
+.text           0x0000000000040234     0x5db0
+                [!provide]                        PROVIDE (stext, ABSOLUTE (.))
+ *(.interp)
+ *(.hash)
+ *(.dynsym)
+ *(.dynstr)
+ *(.gnu.version)
+ *(.gnu.version_d)
+ *(.gnu.version_r)
+ *(.rel.init)
+ *(.rela.init)
+ *(.rel.text .rel.text.* .rel.gnu.linkonce.t.*)
+ *(.rela.text .rela.text.* .rela.gnu.linkonce.t.*)
+ *(.rel.fini)
+ *(.rela.fini)
+ *(.rel.rodata .rel.rodata.* .rel.gnu.linkonce.r.*)
+ *(.rela.rodata .rela.rodata.* .rela.gnu.linkonce.r.*)
+ *(.rel.data .rel.data.* .rel.gnu.linkonce.d.*)
+ *(.rela.data .rela.data.* .rela.gnu.linkonce.d.*)
+ *(.rel.tdata .rel.tdata.* .rel.gnu.linkonce.td.*)
+ *(.rela.tdata .rela.tdata.* .rela.gnu.linkonce.td.*)
+ *(.rel.tbss .rel.tbss.* .rel.gnu.linkonce.tb.*)
+ *(.rela.tbss .rela.tbss.* .rela.gnu.linkonce.tb.*)
+ *(.rel.ctors)
+ *(.rela.ctors)
+ *(.rel.dtors)
+ *(.rela.dtors)
+ *(.rel.got)
+ *(.rela.got)
+ *(.rel.sdata .rel.sdata.* .rel.gnu.linkonce.s.*)
+ *(.rela.sdata .rela.sdata.* .rela.gnu.linkonce.s.*)
+ *(.rel.sbss .rel.sbss.* .rel.gnu.linkonce.sb.*)
+ *(.rela.sbss .rela.sbss.* .rela.gnu.linkonce.sb.*)
+ *(.rel.sdata2 .rel.sdata2.* .rel.gnu.linkonce.s2.*)
+ *(.rela.sdata2 .rela.sdata2.* .rela.gnu.linkonce.s2.*)
+ *(.rel.sbss2 .rel.sbss2.* .rel.gnu.linkonce.sb2.*)
+ *(.rela.sbss2 .rela.sbss2.* .rela.gnu.linkonce.sb2.*)
+ *(.rel.bss .rel.bss.* .rel.gnu.linkonce.b.*)
+ *(.rela.bss .rela.bss.* .rela.gnu.linkonce.b.*)
+ *(.rel.plt)
+ *(.rela.plt)
+ *(.rel.dyn)
+ *(.init)
+ *(.plt)
+ *(.text .stub .text.* .gnu.linkonce.t.*)
+ .text          0x0000000000040234       0x3c ../testWifiTouchVGA_bsp//obj/HAL/src/crt0.o
+                0x0000000000040234                _start
+ .text          0x0000000000040270      0x37c obj/default/main.o
+                0x0000000000040270                main
+                0x000000000004033c                getUart
+                0x0000000000040384                getTouchscreenCoords
+                0x0000000000040440                checkEmpty
+                0x000000000004046c                translateTouchscreenVGACoords
+                0x0000000000040504                clearVGA
+                0x0000000000040570                paintPixel
+ .text          0x00000000000405ec      0x1b4 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-divmod.o)
+                0x00000000000405ec                __divsi3
+                0x0000000000040670                __modsi3
+                0x00000000000406e4                __udivsi3
+                0x0000000000040748                __umodsi3
+ .text          0x00000000000407a0       0x28 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-mul.o)
+                0x00000000000407a0                __mulsi3
+ .text          0x00000000000407c8       0xec ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_load.o)
+                0x0000000000040830                alt_load
+ .text          0x00000000000408b4       0x7c ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_main.o)
+                0x00000000000408b4                alt_main
+ .text          0x0000000000040930       0x3c ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_putstr.o)
+                0x0000000000040930                alt_putstr
+ .text          0x000000000004096c      0x388 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_sys_init.o)
+                0x00000000000409a0                alt_irq_init
+                0x00000000000409d8                alt_sys_init
+ .text          0x0000000000040cf4      0x164 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
+                0x0000000000040cf4                altera_avalon_jtag_uart_read_fd
+                0x0000000000040d54                altera_avalon_jtag_uart_write_fd
+                0x0000000000040db4                altera_avalon_jtag_uart_close_fd
+                0x0000000000040e04                altera_avalon_jtag_uart_ioctl_fd
+ .text          0x0000000000040e58      0x3cc ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_init.o)
+                0x0000000000040e58                altera_avalon_jtag_uart_init
+                0x00000000000411bc                altera_avalon_jtag_uart_close
+ .text          0x0000000000041224       0xf0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_ioctl.o)
+                0x0000000000041224                altera_avalon_jtag_uart_ioctl
+ .text          0x0000000000041314      0x21c ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+                0x0000000000041314                altera_avalon_jtag_uart_read
+ .text          0x0000000000041530      0x224 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+                0x0000000000041530                altera_avalon_jtag_uart_write
+ .text          0x0000000000041754      0x390 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_up_avalon_rs232.o)
+                0x0000000000041754                alt_up_rs232_enable_read_interrupt
+                0x00000000000417b0                alt_up_rs232_disable_read_interrupt
+                0x0000000000041810                alt_up_rs232_get_used_space_in_read_FIFO
+                0x0000000000041850                alt_up_rs232_get_available_space_in_write_FIFO
+                0x000000000004188c                alt_up_rs232_check_parity
+                0x00000000000418d0                alt_up_rs232_write_data
+                0x0000000000041910                alt_up_rs232_read_data
+                0x0000000000041984                alt_up_rs232_read_fd
+                0x0000000000041a14                alt_up_rs232_write_fd
+                0x0000000000041aa8                alt_up_rs232_open_dev
+ .text          0x0000000000041ae4      0x12c ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_alarm_start.o)
+                0x0000000000041ae4                alt_alarm_start
+ .text          0x0000000000041c10      0x114 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_close.o)
+                0x0000000000041c4c                close
+ .text          0x0000000000041d24       0x20 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+                0x0000000000041d24                alt_dcache_flush_all
+ .text          0x0000000000041d44       0x2c ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_dev.o)
+ .text          0x0000000000041d70       0xe0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
+                0x0000000000041dac                alt_dev_llist_insert
+ .text          0x0000000000041e50       0x60 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_do_ctors.o)
+                0x0000000000041e50                _do_ctors
+ .text          0x0000000000041eb0       0x60 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_do_dtors.o)
+                0x0000000000041eb0                _do_dtors
+ .text          0x0000000000041f10        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_errno.o)
+ .text          0x0000000000041f10       0x90 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_find_dev.o)
+                0x0000000000041f10                alt_find_dev
+ .text          0x0000000000041fa0       0x20 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+                0x0000000000041fa0                alt_icache_flush_all
+ .text          0x0000000000041fc0      0x160 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_io_redirect.o)
+                0x00000000000420a4                alt_io_redirect
+ .text          0x0000000000042120      0x180 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_register.o)
+                0x0000000000042120                alt_irq_register
+ .text          0x00000000000422a0        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_vars.o)
+ .text          0x00000000000422a0      0x284 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_open.o)
+                0x00000000000423c8                open
+ .text          0x0000000000042524       0x84 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_release_fd.o)
+                0x0000000000042524                alt_release_fd
+ .text          0x00000000000425a8      0x1a4 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_tick.o)
+                0x00000000000425a8                alt_alarm_stop
+                0x0000000000042644                alt_tick
+ .text          0x000000000004274c       0x24 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+                0x000000000004274c                altera_nios2_gen2_irq_init
+ .text          0x0000000000042770      0x108 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_find_file.o)
+                0x0000000000042770                alt_find_file
+ .text          0x0000000000042878       0xc4 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_get_fd.o)
+                0x0000000000042878                alt_get_fd
+ .text          0x000000000004293c        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_entry.o)
+ .text          0x000000000004293c        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_handler.o)
+ .text          0x000000000004293c        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_exception_entry.o)
+ .text          0x000000000004293c       0x9c ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
+                0x000000000004293c                alt_exception_cause_generated_bad_addr
+ .text          0x00000000000429d8        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-atexit.o)
+ .text.atexit   0x00000000000429d8       0x14 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-atexit.o)
+                0x00000000000429d8                atexit
+ .text          0x00000000000429ec        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-exit.o)
+ .text.exit     0x00000000000429ec       0x38 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-exit.o)
+                0x00000000000429ec                exit
+ .text          0x0000000000042a24        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fputs.o)
+ .text._fputs_r
+                0x0000000000042a24       0x9c d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fputs.o)
+                0x0000000000042a24                _fputs_r
+ .text.fputs    0x0000000000042ac0       0x18 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fputs.o)
+                0x0000000000042ac0                fputs
+ .text          0x0000000000042ad8        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fvwrite.o)
+ .text.__sfvwrite_r
+                0x0000000000042ad8      0x4c8 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fvwrite.o)
+                0x0000000000042ad8                __sfvwrite_r
+ .text          0x0000000000042fa0        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-impure.o)
+ .text          0x0000000000042fa0        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-int_errno.o)
+ .text          0x0000000000042fa0        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-mallocr.o)
+ .text._malloc_r
+                0x0000000000042fa0      0x80c d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-mallocr.o)
+                0x0000000000042fa0                _malloc_r
+ .text          0x00000000000437ac        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memchr.o)
+ .text.memchr   0x00000000000437ac       0xe4 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memchr.o)
+                0x00000000000437ac                memchr
+ .text          0x0000000000043890        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memcmp.o)
+ .text.memcmp   0x0000000000043890       0x7c d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memcmp.o)
+                0x0000000000043890                memcmp
+ .text          0x000000000004390c        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memcpy.o)
+ .text.memcpy   0x000000000004390c      0x148 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memcpy.o)
+                0x000000000004390c                memcpy
+ .text          0x0000000000043a54        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memmove.o)
+ .text.memmove  0x0000000000043a54      0x15c d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memmove.o)
+                0x0000000000043a54                memmove
+ .text          0x0000000000043bb0        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-reallocr.o)
+ .text._realloc_r
+                0x0000000000043bb0      0x564 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-reallocr.o)
+                0x0000000000043bb0                _realloc_r
+ .text          0x0000000000044114        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-sbrkr.o)
+ .text._sbrk_r  0x0000000000044114       0x54 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-sbrkr.o)
+                0x0000000000044114                _sbrk_r
+ .text          0x0000000000044168        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-strlen.o)
+ .text.strlen   0x0000000000044168       0x98 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-strlen.o)
+                0x0000000000044168                strlen
+ .text          0x0000000000044200        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-wsetup.o)
+ .text.__swsetup_r
+                0x0000000000044200      0x154 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-wsetup.o)
+                0x0000000000044200                __swsetup_r
+ .text          0x0000000000044354        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-__atexit.o)
+ .text.__register_exitproc
+                0x0000000000044354      0x118 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-__atexit.o)
+                0x0000000000044354                __register_exitproc
+ .text          0x000000000004446c        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-__call_atexit.o)
+ .text.__call_exitprocs
+                0x000000000004446c      0x180 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-__call_atexit.o)
+                0x000000000004446c                __call_exitprocs
+ .text          0x00000000000445ec        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fflush.o)
+ .text.__sflush_r
+                0x00000000000445ec      0x21c d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fflush.o)
+                0x00000000000445ec                __sflush_r
+ .text._fflush_r
+                0x0000000000044808       0x5c d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fflush.o)
+                0x0000000000044808                _fflush_r
+ .text.fflush   0x0000000000044864       0x30 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fflush.o)
+                0x0000000000044864                fflush
+ .text          0x0000000000044894        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-findfp.o)
+ .text.__fp_unlock
+                0x0000000000044894        0x8 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-findfp.o)
+ .text._cleanup_r
+                0x000000000004489c        0xc d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-findfp.o)
+                0x000000000004489c                _cleanup_r
+ .text.__sinit.part.1
+                0x00000000000448a8      0x19c d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-findfp.o)
+ .text.__fp_lock
+                0x0000000000044a44        0x8 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-findfp.o)
+ .text.__sfmoreglue
+                0x0000000000044a4c       0x78 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-findfp.o)
+                0x0000000000044a4c                __sfmoreglue
+ .text.__sfp    0x0000000000044ac4      0x118 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-findfp.o)
+                0x0000000000044ac4                __sfp
+ .text._cleanup
+                0x0000000000044bdc       0x18 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-findfp.o)
+                0x0000000000044bdc                _cleanup
+ .text.__sinit  0x0000000000044bf4       0x10 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-findfp.o)
+                0x0000000000044bf4                __sinit
+ .text.__sfp_lock_acquire
+                0x0000000000044c04        0x4 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-findfp.o)
+                0x0000000000044c04                __sfp_lock_acquire
+ .text.__sfp_lock_release
+                0x0000000000044c08        0x4 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-findfp.o)
+                0x0000000000044c08                __sfp_lock_release
+ .text.__sinit_lock_acquire
+                0x0000000000044c0c        0x4 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-findfp.o)
+                0x0000000000044c0c                __sinit_lock_acquire
+ .text.__sinit_lock_release
+                0x0000000000044c10        0x4 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-findfp.o)
+                0x0000000000044c10                __sinit_lock_release
+ .text.__fp_lock_all
+                0x0000000000044c14       0x18 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-findfp.o)
+                0x0000000000044c14                __fp_lock_all
+ .text.__fp_unlock_all
+                0x0000000000044c2c       0x18 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-findfp.o)
+                0x0000000000044c2c                __fp_unlock_all
+ .text          0x0000000000044c44        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-freer.o)
+ .text._malloc_trim_r
+                0x0000000000044c44      0x124 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-freer.o)
+                0x0000000000044c44                _malloc_trim_r
+ .text._free_r  0x0000000000044d68      0x310 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-freer.o)
+                0x0000000000044d68                _free_r
+ .text          0x0000000000045078        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fwalk.o)
+ .text._fwalk   0x0000000000045078       0xc4 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fwalk.o)
+                0x0000000000045078                _fwalk
+ .text._fwalk_reent
+                0x000000000004513c       0xc4 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fwalk.o)
+                0x000000000004513c                _fwalk_reent
+ .text          0x0000000000045200        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-makebuf.o)
+ .text.__smakebuf_r
+                0x0000000000045200      0x1bc d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-makebuf.o)
+                0x0000000000045200                __smakebuf_r
+ .text          0x00000000000453bc        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memset.o)
+ .text.memset   0x00000000000453bc      0x128 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memset.o)
+                0x00000000000453bc                memset
+ .text          0x00000000000454e4        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-stdio.o)
+ .text.__sread  0x00000000000454e4       0x54 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-stdio.o)
+                0x00000000000454e4                __sread
+ .text.__seofread
+                0x0000000000045538        0x8 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-stdio.o)
+                0x0000000000045538                __seofread
+ .text.__swrite
+                0x0000000000045540       0x7c d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-stdio.o)
+                0x0000000000045540                __swrite
+ .text.__sseek  0x00000000000455bc       0x5c d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-stdio.o)
+                0x00000000000455bc                __sseek
+ .text.__sclose
+                0x0000000000045618        0x8 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-stdio.o)
+                0x0000000000045618                __sclose
+ .text          0x0000000000045620        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-writer.o)
+ .text._write_r
+                0x0000000000045620       0x60 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-writer.o)
+                0x0000000000045620                _write_r
+ .text          0x0000000000045680        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(closer.o)
+ .text._close_r
+                0x0000000000045680       0x54 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(closer.o)
+                0x0000000000045680                _close_r
+ .text          0x00000000000456d4        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fclose.o)
+ .text._fclose_r
+                0x00000000000456d4       0xf0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fclose.o)
+                0x00000000000456d4                _fclose_r
+ .text.fclose   0x00000000000457c4       0x14 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fclose.o)
+                0x00000000000457c4                fclose
+ .text          0x00000000000457d8        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fstatr.o)
+ .text._fstat_r
+                0x00000000000457d8       0x5c d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fstatr.o)
+                0x00000000000457d8                _fstat_r
+ .text          0x0000000000045834        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-isattyr.o)
+ .text._isatty_r
+                0x0000000000045834       0x54 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-isattyr.o)
+                0x0000000000045834                _isatty_r
+ .text          0x0000000000045888        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-lseekr.o)
+ .text._lseek_r
+                0x0000000000045888       0x60 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-lseekr.o)
+                0x0000000000045888                _lseek_r
+ .text          0x00000000000458e8        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-readr.o)
+ .text._read_r  0x00000000000458e8       0x60 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-readr.o)
+                0x00000000000458e8                _read_r
+ .text          0x0000000000045948       0x34 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_exit.o)
+                0x0000000000045948                _exit
+ .text          0x000000000004597c       0xf4 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_fstat.o)
+                0x00000000000459b8                fstat
+ .text          0x0000000000045a70       0xe8 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_isatty.o)
+                0x0000000000045aac                isatty
+ .text          0x0000000000045b58      0x118 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_lseek.o)
+                0x0000000000045b94                lseek
+ .text          0x0000000000045c70       0x48 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_malloc_lock.o)
+                0x0000000000045c70                __malloc_lock
+                0x0000000000045c94                __malloc_unlock
+ .text          0x0000000000045cb8      0x140 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_read.o)
+                0x0000000000045cf4                read
+ .text          0x0000000000045df8       0xb0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_sbrk.o)
+                0x0000000000045df8                sbrk
+ .text          0x0000000000045ea8      0x13c ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_write.o)
+                0x0000000000045ee4                write
+ *(.gnu.warning.*)
+ *(.fini)
+                [!provide]                        PROVIDE (__etext, ABSOLUTE (.))
+                [!provide]                        PROVIDE (_etext, ABSOLUTE (.))
+                [!provide]                        PROVIDE (etext, ABSOLUTE (.))
+ *(.eh_frame_hdr)
+                0x0000000000045fe4                . = ALIGN (0x4)
+                [!provide]                        PROVIDE (__preinit_array_start, ABSOLUTE (.))
+ *(.preinit_array)
+                [!provide]                        PROVIDE (__preinit_array_end, ABSOLUTE (.))
+                [!provide]                        PROVIDE (__init_array_start, ABSOLUTE (.))
+ *(.init_array)
+                [!provide]                        PROVIDE (__init_array_end, ABSOLUTE (.))
+                [!provide]                        PROVIDE (__fini_array_start, ABSOLUTE (.))
+ *(.fini_array)
+                [!provide]                        PROVIDE (__fini_array_end, ABSOLUTE (.))
+ *(.eh_frame)
+ *(.gcc_except_table .gcc_except_table.*)
+ *(.dynamic)
+                0x0000000000045fe4                PROVIDE (__CTOR_LIST__, ABSOLUTE (.))
+ *(.ctors)
+ *(SORT(.ctors.*))
+                0x0000000000045fe4                PROVIDE (__CTOR_END__, ABSOLUTE (.))
+                0x0000000000045fe4                PROVIDE (__DTOR_LIST__, ABSOLUTE (.))
+ *(.dtors)
+ *(SORT(.dtors.*))
+                0x0000000000045fe4                PROVIDE (__DTOR_END__, ABSOLUTE (.))
+ *(.jcr)
+                0x0000000000045fe4                . = ALIGN (0x4)
+
+.rodata         0x0000000008000000       0xb4 load address 0x0000000000045fe4
+                0x0000000008000000                PROVIDE (__ram_rodata_start, ABSOLUTE (.))
+                0x0000000008000000                . = ALIGN (0x4)
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata        0x0000000008000000       0x15 obj/default/main.o
+ *fill*         0x0000000008000015        0x3 
+ .rodata        0x0000000008000018       0x11 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_main.o)
+ *fill*         0x0000000008000029        0x3 
+ .rodata        0x000000000800002c       0x77 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_sys_init.o)
+ *fill*         0x00000000080000a3        0x1 
+ .rodata        0x00000000080000a4        0xa ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_dev.o)
+ *fill*         0x00000000080000ae        0x2 
+ .rodata.str1.4
+                0x00000000080000b0        0x4 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-impure.o)
+                                          0x2 (size before relaxing)
+ *(.rodata1)
+                0x00000000080000b4                . = ALIGN (0x4)
+                0x00000000080000b4                PROVIDE (__ram_rodata_end, ABSOLUTE (.))
+                0x0000000000045fe4                PROVIDE (__flash_rodata_start, LOADADDR (.rodata))
+
+.rwdata         0x00000000080000b4     0x1b5c load address 0x0000000000046098
+                0x00000000080000b4                PROVIDE (__ram_rwdata_start, ABSOLUTE (.))
+                0x00000000080000b4                . = ALIGN (0x4)
+ *(.got.plt)
+ *(.got)
+ *(.data1)
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data          0x00000000080000b4        0x0 ../testWifiTouchVGA_bsp//obj/HAL/src/crt0.o
+ .data          0x00000000080000b4        0x0 obj/default/main.o
+ .data          0x00000000080000b4        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-divmod.o)
+ .data          0x00000000080000b4        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-mul.o)
+ .data          0x00000000080000b4        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_load.o)
+ .data          0x00000000080000b4        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_main.o)
+ .data          0x00000000080000b4        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_putstr.o)
+ .data          0x00000000080000b4     0x1150 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .data          0x0000000008001204        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
+ .data          0x0000000008001204        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_init.o)
+ .data          0x0000000008001204        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_ioctl.o)
+ .data          0x0000000008001204        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+ .data          0x0000000008001204        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .data          0x0000000008001204        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_up_avalon_rs232.o)
+ .data          0x0000000008001204        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_alarm_start.o)
+ .data          0x0000000008001204        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_close.o)
+ .data          0x0000000008001204        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .data          0x0000000008001204      0x1a8 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_dev.o)
+                0x0000000008001204                alt_dev_null
+                0x000000000800122c                alt_fd_list
+ .data          0x00000000080013ac        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
+ .data          0x00000000080013ac        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_do_ctors.o)
+ .data          0x00000000080013ac        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_do_dtors.o)
+ .data          0x00000000080013ac        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_errno.o)
+ .data          0x00000000080013ac        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_find_dev.o)
+ .data          0x00000000080013ac        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .data          0x00000000080013ac        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_io_redirect.o)
+ .data          0x00000000080013ac        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_register.o)
+ .data          0x00000000080013ac        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_vars.o)
+ .data          0x00000000080013ac        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_open.o)
+ .data          0x00000000080013ac        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_release_fd.o)
+ .data          0x00000000080013ac        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_tick.o)
+ .data          0x00000000080013ac        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .data          0x00000000080013ac        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_find_file.o)
+ .data          0x00000000080013ac        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_get_fd.o)
+ .data          0x00000000080013ac        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_entry.o)
+ .data          0x00000000080013ac        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_handler.o)
+ .data          0x00000000080013ac        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_exception_entry.o)
+ .data          0x00000000080013ac        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
+ .data          0x00000000080013ac        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-atexit.o)
+ .data          0x00000000080013ac        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-exit.o)
+ .data          0x00000000080013ac        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fputs.o)
+ .data          0x00000000080013ac        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fvwrite.o)
+ .data          0x00000000080013ac        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-impure.o)
+ .data.impure_data
+                0x00000000080013ac      0x424 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-impure.o)
+ .data          0x00000000080017d0        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-int_errno.o)
+ .data          0x00000000080017d0        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-mallocr.o)
+ .data.__malloc_av_
+                0x00000000080017d0      0x408 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-mallocr.o)
+                0x00000000080017d0                __malloc_av_
+ .data          0x0000000008001bd8        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memchr.o)
+ .data          0x0000000008001bd8        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memcmp.o)
+ .data          0x0000000008001bd8        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memcpy.o)
+ .data          0x0000000008001bd8        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memmove.o)
+ .data          0x0000000008001bd8        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-reallocr.o)
+ .data          0x0000000008001bd8        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-sbrkr.o)
+ .data          0x0000000008001bd8        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-strlen.o)
+ .data          0x0000000008001bd8        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-wsetup.o)
+ .data          0x0000000008001bd8        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-__atexit.o)
+ .data          0x0000000008001bd8        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-__call_atexit.o)
+ .data          0x0000000008001bd8        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fflush.o)
+ .data          0x0000000008001bd8        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-findfp.o)
+ .data          0x0000000008001bd8        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-freer.o)
+ .data          0x0000000008001bd8        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fwalk.o)
+ .data          0x0000000008001bd8        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-makebuf.o)
+ .data          0x0000000008001bd8        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memset.o)
+ .data          0x0000000008001bd8        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-stdio.o)
+ .data          0x0000000008001bd8        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-writer.o)
+ .data          0x0000000008001bd8        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(closer.o)
+ .data          0x0000000008001bd8        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fclose.o)
+ .data          0x0000000008001bd8        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fstatr.o)
+ .data          0x0000000008001bd8        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-isattyr.o)
+ .data          0x0000000008001bd8        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-lseekr.o)
+ .data          0x0000000008001bd8        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-readr.o)
+ .data          0x0000000008001bd8        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_exit.o)
+ .data          0x0000000008001bd8        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_fstat.o)
+ .data          0x0000000008001bd8        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_isatty.o)
+ .data          0x0000000008001bd8        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_lseek.o)
+ .data          0x0000000008001bd8        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_malloc_lock.o)
+ .data          0x0000000008001bd8        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_read.o)
+ .data          0x0000000008001bd8        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_sbrk.o)
+ .data          0x0000000008001bd8        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_write.o)
+                0x0000000008009bd8                _gp = ABSOLUTE ((. + 0x8000))
+                [!provide]                        PROVIDE (gp, _gp)
+ *(.rwdata .rwdata.*)
+ *(.sdata .sdata.* .gnu.linkonce.s.*)
+ .sdata         0x0000000008001bd8       0x14 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_dev.o)
+                0x0000000008001bd8                alt_fs_list
+                0x0000000008001be0                alt_dev_list
+                0x0000000008001be8                alt_max_fd
+ .sdata         0x0000000008001bec        0x4 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_errno.o)
+                0x0000000008001bec                alt_errno
+ .sdata         0x0000000008001bf0        0x4 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_vars.o)
+                0x0000000008001bf0                alt_priority_mask
+ .sdata         0x0000000008001bf4        0x8 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_tick.o)
+                0x0000000008001bf4                alt_alarm_list
+ .sdata._global_impure_ptr
+                0x0000000008001bfc        0x4 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-impure.o)
+                0x0000000008001bfc                _global_impure_ptr
+ .sdata._impure_ptr
+                0x0000000008001c00        0x4 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-impure.o)
+                0x0000000008001c00                _impure_ptr
+ .sdata.__malloc_sbrk_base
+                0x0000000008001c04        0x4 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-mallocr.o)
+                0x0000000008001c04                __malloc_sbrk_base
+ .sdata.__malloc_trim_threshold
+                0x0000000008001c08        0x4 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-mallocr.o)
+                0x0000000008001c08                __malloc_trim_threshold
+ .sdata         0x0000000008001c0c        0x4 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_sbrk.o)
+ *(.sdata2 .sdata2.* .gnu.linkonce.s2.*)
+                0x0000000008001c10                . = ALIGN (0x4)
+                0x0000000008001c10                _edata = ABSOLUTE (.)
+                [!provide]                        PROVIDE (edata, ABSOLUTE (.))
+                0x0000000008001c10                PROVIDE (__ram_rwdata_end, ABSOLUTE (.))
+                0x0000000000046098                PROVIDE (__flash_rwdata_start, LOADADDR (.rwdata))
+
+.bss            0x0000000008001c10      0x154 load address 0x0000000000047bf4
+                0x0000000008001c10                __bss_start = ABSOLUTE (.)
+                [!provide]                        PROVIDE (__sbss_start, ABSOLUTE (.))
+                [!provide]                        PROVIDE (___sbss_start, ABSOLUTE (.))
+ *(.dynsbss)
+ *(.sbss .sbss.* .gnu.linkonce.sb.*)
+ .sbss          0x0000000008001c10        0xc ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_main.o)
+                0x0000000008001c10                alt_argc
+                0x0000000008001c14                alt_argv
+                0x0000000008001c18                alt_envp
+ .sbss          0x0000000008001c1c        0x4 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_vars.o)
+                0x0000000008001c1c                alt_irq_active
+ .sbss          0x0000000008001c20        0x8 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_tick.o)
+                0x0000000008001c20                _alt_tick_rate
+                0x0000000008001c24                _alt_nticks
+ .sbss          0x0000000008001c28        0x4 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
+                0x0000000008001c28                alt_instruction_exception_handler
+ .sbss          0x0000000008001c2c        0x4 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-int_errno.o)
+                0x0000000008001c2c                errno
+ .sbss.__malloc_max_total_mem
+                0x0000000008001c30        0x4 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-mallocr.o)
+                0x0000000008001c30                __malloc_max_total_mem
+ .sbss.__malloc_max_sbrked_mem
+                0x0000000008001c34        0x4 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-mallocr.o)
+                0x0000000008001c34                __malloc_max_sbrked_mem
+ .sbss.__malloc_top_pad
+                0x0000000008001c38        0x4 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-mallocr.o)
+                0x0000000008001c38                __malloc_top_pad
+ *(.sbss2 .sbss2.* .gnu.linkonce.sb2.*)
+ *(.scommon)
+                [!provide]                        PROVIDE (__sbss_end, ABSOLUTE (.))
+                [!provide]                        PROVIDE (___sbss_end, ABSOLUTE (.))
+ *(.dynbss)
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ .bss           0x0000000008001c3c        0x0 ../testWifiTouchVGA_bsp//obj/HAL/src/crt0.o
+ .bss           0x0000000008001c3c        0x0 obj/default/main.o
+ .bss           0x0000000008001c3c        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-divmod.o)
+ .bss           0x0000000008001c3c        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-mul.o)
+ .bss           0x0000000008001c3c        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_load.o)
+ .bss           0x0000000008001c3c        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_main.o)
+ .bss           0x0000000008001c3c        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_putstr.o)
+ .bss           0x0000000008001c3c        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .bss           0x0000000008001c3c        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
+ .bss           0x0000000008001c3c        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_init.o)
+ .bss           0x0000000008001c3c        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_ioctl.o)
+ .bss           0x0000000008001c3c        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+ .bss           0x0000000008001c3c        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .bss           0x0000000008001c3c        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_up_avalon_rs232.o)
+ .bss           0x0000000008001c3c        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_alarm_start.o)
+ .bss           0x0000000008001c3c        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_close.o)
+ .bss           0x0000000008001c3c        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .bss           0x0000000008001c3c        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_dev.o)
+ .bss           0x0000000008001c3c        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
+ .bss           0x0000000008001c3c        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_do_ctors.o)
+ .bss           0x0000000008001c3c        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_do_dtors.o)
+ .bss           0x0000000008001c3c        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_errno.o)
+ .bss           0x0000000008001c3c        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_find_dev.o)
+ .bss           0x0000000008001c3c        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .bss           0x0000000008001c3c        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_io_redirect.o)
+ .bss           0x0000000008001c3c        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_register.o)
+ .bss           0x0000000008001c3c        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_vars.o)
+ .bss           0x0000000008001c3c        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_open.o)
+ .bss           0x0000000008001c3c        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_release_fd.o)
+ .bss           0x0000000008001c3c        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_tick.o)
+ .bss           0x0000000008001c3c        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .bss           0x0000000008001c3c        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_find_file.o)
+ .bss           0x0000000008001c3c        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_get_fd.o)
+ .bss           0x0000000008001c3c        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_entry.o)
+ .bss           0x0000000008001c3c        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_handler.o)
+ .bss           0x0000000008001c3c        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_exception_entry.o)
+ .bss           0x0000000008001c3c        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
+ .bss           0x0000000008001c3c        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-atexit.o)
+ .bss           0x0000000008001c3c        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-exit.o)
+ .bss           0x0000000008001c3c        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fputs.o)
+ .bss           0x0000000008001c3c        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fvwrite.o)
+ .bss           0x0000000008001c3c        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-impure.o)
+ .bss           0x0000000008001c3c        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-int_errno.o)
+ .bss           0x0000000008001c3c        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-mallocr.o)
+ .bss.__malloc_current_mallinfo
+                0x0000000008001c3c       0x28 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-mallocr.o)
+                0x0000000008001c3c                __malloc_current_mallinfo
+ .bss           0x0000000008001c64        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memchr.o)
+ .bss           0x0000000008001c64        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memcmp.o)
+ .bss           0x0000000008001c64        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memcpy.o)
+ .bss           0x0000000008001c64        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memmove.o)
+ .bss           0x0000000008001c64        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-reallocr.o)
+ .bss           0x0000000008001c64        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-sbrkr.o)
+ .bss           0x0000000008001c64        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-strlen.o)
+ .bss           0x0000000008001c64        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-wsetup.o)
+ .bss           0x0000000008001c64        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-__atexit.o)
+ .bss           0x0000000008001c64        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-__call_atexit.o)
+ .bss           0x0000000008001c64        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fflush.o)
+ .bss           0x0000000008001c64        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-findfp.o)
+ .bss           0x0000000008001c64        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-freer.o)
+ .bss           0x0000000008001c64        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fwalk.o)
+ .bss           0x0000000008001c64        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-makebuf.o)
+ .bss           0x0000000008001c64        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memset.o)
+ .bss           0x0000000008001c64        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-stdio.o)
+ .bss           0x0000000008001c64        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-writer.o)
+ .bss           0x0000000008001c64        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(closer.o)
+ .bss           0x0000000008001c64        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fclose.o)
+ .bss           0x0000000008001c64        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fstatr.o)
+ .bss           0x0000000008001c64        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-isattyr.o)
+ .bss           0x0000000008001c64        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-lseekr.o)
+ .bss           0x0000000008001c64        0x0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-readr.o)
+ .bss           0x0000000008001c64        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_exit.o)
+ .bss           0x0000000008001c64        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_fstat.o)
+ .bss           0x0000000008001c64        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_isatty.o)
+ .bss           0x0000000008001c64        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_lseek.o)
+ .bss           0x0000000008001c64        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_malloc_lock.o)
+ .bss           0x0000000008001c64        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_read.o)
+ .bss           0x0000000008001c64        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_sbrk.o)
+ .bss           0x0000000008001c64        0x0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_write.o)
+ *(COMMON)
+ COMMON         0x0000000008001c64      0x100 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_handler.o)
+                0x0000000008001c64                alt_irq
+                0x0000000008001d64                . = ALIGN (0x4)
+                0x0000000008001d64                __bss_end = ABSOLUTE (.)
+
+.onchip_memory2_0
+                0x0000000000047bf4        0x0
+                [!provide]                        PROVIDE (_alt_partition_onchip_memory2_0_start, ABSOLUTE (.))
+ *(.onchip_memory2_0 .onchip_memory2_0. onchip_memory2_0.*)
+                0x0000000000047bf4                . = ALIGN (0x4)
+                [!provide]                        PROVIDE (_alt_partition_onchip_memory2_0_end, ABSOLUTE (.))
+                [!provide]                        PROVIDE (_alt_partition_onchip_memory2_0_load_addr, LOADADDR (.onchip_memory2_0))
+
+.sdram_controller
+                0x0000000008001d64        0x0 load address 0x0000000000047bf4
+                [!provide]                        PROVIDE (_alt_partition_sdram_controller_start, ABSOLUTE (.))
+ *(.sdram_controller .sdram_controller. sdram_controller.*)
+                0x0000000008001d64                . = ALIGN (0x4)
+                [!provide]                        PROVIDE (_alt_partition_sdram_controller_end, ABSOLUTE (.))
+                0x0000000008001d64                _end = ABSOLUTE (.)
+                0x0000000008001d64                end = ABSOLUTE (.)
+                0x0000000008001d64                __alt_stack_base = ABSOLUTE (.)
+                [!provide]                        PROVIDE (_alt_partition_sdram_controller_load_addr, LOADADDR (.sdram_controller))
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x0000000000000000       0x23
+ *(.comment)
+ .comment       0x0000000000000000       0x23 obj/default/main.o
+                                         0x24 (size before relaxing)
+ .comment       0x0000000000000023       0x24 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-divmod.o)
+ .comment       0x0000000000000023       0x24 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-mul.o)
+ .comment       0x0000000000000023       0x24 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_load.o)
+ .comment       0x0000000000000023       0x24 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_main.o)
+ .comment       0x0000000000000023       0x24 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_putstr.o)
+ .comment       0x0000000000000023       0x24 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .comment       0x0000000000000023       0x24 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
+ .comment       0x0000000000000023       0x24 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_init.o)
+ .comment       0x0000000000000023       0x24 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_ioctl.o)
+ .comment       0x0000000000000023       0x24 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+ .comment       0x0000000000000023       0x24 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .comment       0x0000000000000023       0x24 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_up_avalon_rs232.o)
+ .comment       0x0000000000000023       0x24 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_alarm_start.o)
+ .comment       0x0000000000000023       0x24 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_close.o)
+ .comment       0x0000000000000023       0x24 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .comment       0x0000000000000023       0x24 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_dev.o)
+ .comment       0x0000000000000023       0x24 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
+ .comment       0x0000000000000023       0x24 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_do_ctors.o)
+ .comment       0x0000000000000023       0x24 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_do_dtors.o)
+ .comment       0x0000000000000023       0x24 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_errno.o)
+ .comment       0x0000000000000023       0x24 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_find_dev.o)
+ .comment       0x0000000000000023       0x24 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .comment       0x0000000000000023       0x24 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_io_redirect.o)
+ .comment       0x0000000000000023       0x24 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_register.o)
+ .comment       0x0000000000000023       0x24 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_vars.o)
+ .comment       0x0000000000000023       0x24 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_open.o)
+ .comment       0x0000000000000023       0x24 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_release_fd.o)
+ .comment       0x0000000000000023       0x24 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_tick.o)
+ .comment       0x0000000000000023       0x24 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .comment       0x0000000000000023       0x24 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_find_file.o)
+ .comment       0x0000000000000023       0x24 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_get_fd.o)
+ .comment       0x0000000000000023       0x24 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_handler.o)
+ .comment       0x0000000000000023       0x24 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
+ .comment       0x0000000000000023       0x24 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-atexit.o)
+ .comment       0x0000000000000023       0x24 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-exit.o)
+ .comment       0x0000000000000023       0x24 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fputs.o)
+ .comment       0x0000000000000023       0x24 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fvwrite.o)
+ .comment       0x0000000000000023       0x24 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-impure.o)
+ .comment       0x0000000000000023       0x24 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-int_errno.o)
+ .comment       0x0000000000000023       0x24 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-mallocr.o)
+ .comment       0x0000000000000023       0x24 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memchr.o)
+ .comment       0x0000000000000023       0x24 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memcmp.o)
+ .comment       0x0000000000000023       0x24 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memcpy.o)
+ .comment       0x0000000000000023       0x24 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memmove.o)
+ .comment       0x0000000000000023       0x24 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-reallocr.o)
+ .comment       0x0000000000000023       0x24 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-sbrkr.o)
+ .comment       0x0000000000000023       0x24 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-strlen.o)
+ .comment       0x0000000000000023       0x24 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-wsetup.o)
+ .comment       0x0000000000000023       0x24 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-__atexit.o)
+ .comment       0x0000000000000023       0x24 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-__call_atexit.o)
+ .comment       0x0000000000000023       0x24 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fflush.o)
+ .comment       0x0000000000000023       0x24 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-findfp.o)
+ .comment       0x0000000000000023       0x24 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-freer.o)
+ .comment       0x0000000000000023       0x24 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fwalk.o)
+ .comment       0x0000000000000023       0x24 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-makebuf.o)
+ .comment       0x0000000000000023       0x24 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memset.o)
+ .comment       0x0000000000000023       0x24 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-stdio.o)
+ .comment       0x0000000000000023       0x24 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-writer.o)
+ .comment       0x0000000000000023       0x24 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(closer.o)
+ .comment       0x0000000000000023       0x24 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fclose.o)
+ .comment       0x0000000000000023       0x24 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fstatr.o)
+ .comment       0x0000000000000023       0x24 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-isattyr.o)
+ .comment       0x0000000000000023       0x24 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-lseekr.o)
+ .comment       0x0000000000000023       0x24 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-readr.o)
+ .comment       0x0000000000000023       0x24 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_exit.o)
+ .comment       0x0000000000000023       0x24 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_fstat.o)
+ .comment       0x0000000000000023       0x24 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_isatty.o)
+ .comment       0x0000000000000023       0x24 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_lseek.o)
+ .comment       0x0000000000000023       0x24 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_malloc_lock.o)
+ .comment       0x0000000000000023       0x24 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_read.o)
+ .comment       0x0000000000000023       0x24 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_sbrk.o)
+ .comment       0x0000000000000023       0x24 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_write.o)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x0000000000000000      0xa30
+ *(.debug_aranges)
+ .debug_aranges
+                0x0000000000000000       0x28 ../testWifiTouchVGA_bsp//obj/HAL/src/crt0.o
+ .debug_aranges
+                0x0000000000000028       0x20 obj/default/main.o
+ .debug_aranges
+                0x0000000000000048       0x20 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-divmod.o)
+ .debug_aranges
+                0x0000000000000068       0x20 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-mul.o)
+ .debug_aranges
+                0x0000000000000088       0x20 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_load.o)
+ .debug_aranges
+                0x00000000000000a8       0x20 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_main.o)
+ .debug_aranges
+                0x00000000000000c8       0x20 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_putstr.o)
+ .debug_aranges
+                0x00000000000000e8       0x20 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .debug_aranges
+                0x0000000000000108       0x20 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
+ .debug_aranges
+                0x0000000000000128       0x20 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_init.o)
+ .debug_aranges
+                0x0000000000000148       0x20 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_ioctl.o)
+ .debug_aranges
+                0x0000000000000168       0x20 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+ .debug_aranges
+                0x0000000000000188       0x20 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_aranges
+                0x00000000000001a8       0x20 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_up_avalon_rs232.o)
+ .debug_aranges
+                0x00000000000001c8       0x20 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_alarm_start.o)
+ .debug_aranges
+                0x00000000000001e8       0x20 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_close.o)
+ .debug_aranges
+                0x0000000000000208       0x20 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .debug_aranges
+                0x0000000000000228       0x20 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_dev.o)
+ .debug_aranges
+                0x0000000000000248       0x20 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
+ .debug_aranges
+                0x0000000000000268       0x20 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_do_ctors.o)
+ .debug_aranges
+                0x0000000000000288       0x20 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_do_dtors.o)
+ .debug_aranges
+                0x00000000000002a8       0x18 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_errno.o)
+ .debug_aranges
+                0x00000000000002c0       0x20 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_find_dev.o)
+ .debug_aranges
+                0x00000000000002e0       0x20 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .debug_aranges
+                0x0000000000000300       0x20 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_io_redirect.o)
+ .debug_aranges
+                0x0000000000000320       0x20 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_register.o)
+ .debug_aranges
+                0x0000000000000340       0x18 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_vars.o)
+ .debug_aranges
+                0x0000000000000358       0x20 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_open.o)
+ .debug_aranges
+                0x0000000000000378       0x20 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_release_fd.o)
+ .debug_aranges
+                0x0000000000000398       0x20 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_tick.o)
+ .debug_aranges
+                0x00000000000003b8       0x20 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .debug_aranges
+                0x00000000000003d8       0x20 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_find_file.o)
+ .debug_aranges
+                0x00000000000003f8       0x20 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_get_fd.o)
+ .debug_aranges
+                0x0000000000000418       0x30 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_entry.o)
+ .debug_aranges
+                0x0000000000000448       0x20 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_handler.o)
+ .debug_aranges
+                0x0000000000000468       0x38 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_exception_entry.o)
+ .debug_aranges
+                0x00000000000004a0       0x28 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
+ .debug_aranges
+                0x00000000000004c8       0x20 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-atexit.o)
+ .debug_aranges
+                0x00000000000004e8       0x20 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-exit.o)
+ .debug_aranges
+                0x0000000000000508       0x28 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fputs.o)
+ .debug_aranges
+                0x0000000000000530       0x20 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fvwrite.o)
+ .debug_aranges
+                0x0000000000000550       0x18 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-impure.o)
+ .debug_aranges
+                0x0000000000000568       0x18 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-int_errno.o)
+ .debug_aranges
+                0x0000000000000580       0x20 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-mallocr.o)
+ .debug_aranges
+                0x00000000000005a0       0x20 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memchr.o)
+ .debug_aranges
+                0x00000000000005c0       0x20 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memcmp.o)
+ .debug_aranges
+                0x00000000000005e0       0x20 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memcpy.o)
+ .debug_aranges
+                0x0000000000000600       0x20 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memmove.o)
+ .debug_aranges
+                0x0000000000000620       0x20 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-reallocr.o)
+ .debug_aranges
+                0x0000000000000640       0x20 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-sbrkr.o)
+ .debug_aranges
+                0x0000000000000660       0x20 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-strlen.o)
+ .debug_aranges
+                0x0000000000000680       0x20 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-wsetup.o)
+ .debug_aranges
+                0x00000000000006a0       0x20 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-__atexit.o)
+ .debug_aranges
+                0x00000000000006c0       0x20 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-__call_atexit.o)
+ .debug_aranges
+                0x00000000000006e0       0x30 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fflush.o)
+ .debug_aranges
+                0x0000000000000710       0x68 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-findfp.o)
+ .debug_aranges
+                0x0000000000000778       0x28 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-freer.o)
+ .debug_aranges
+                0x00000000000007a0       0x28 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fwalk.o)
+ .debug_aranges
+                0x00000000000007c8       0x20 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-makebuf.o)
+ .debug_aranges
+                0x00000000000007e8       0x20 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memset.o)
+ .debug_aranges
+                0x0000000000000808       0x40 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-stdio.o)
+ .debug_aranges
+                0x0000000000000848       0x20 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-writer.o)
+ .debug_aranges
+                0x0000000000000868       0x20 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(closer.o)
+ .debug_aranges
+                0x0000000000000888       0x28 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fclose.o)
+ .debug_aranges
+                0x00000000000008b0       0x20 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fstatr.o)
+ .debug_aranges
+                0x00000000000008d0       0x20 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-isattyr.o)
+ .debug_aranges
+                0x00000000000008f0       0x20 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-lseekr.o)
+ .debug_aranges
+                0x0000000000000910       0x20 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-readr.o)
+ .debug_aranges
+                0x0000000000000930       0x20 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_exit.o)
+ .debug_aranges
+                0x0000000000000950       0x20 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_fstat.o)
+ .debug_aranges
+                0x0000000000000970       0x20 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_isatty.o)
+ .debug_aranges
+                0x0000000000000990       0x20 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_lseek.o)
+ .debug_aranges
+                0x00000000000009b0       0x20 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_malloc_lock.o)
+ .debug_aranges
+                0x00000000000009d0       0x20 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_read.o)
+ .debug_aranges
+                0x00000000000009f0       0x20 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_sbrk.o)
+ .debug_aranges
+                0x0000000000000a10       0x20 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_write.o)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x0000000000000000    0x1733b
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x0000000000000000       0x81 ../testWifiTouchVGA_bsp//obj/HAL/src/crt0.o
+ .debug_info    0x0000000000000081      0x239 obj/default/main.o
+ .debug_info    0x00000000000002ba      0x2c6 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-divmod.o)
+ .debug_info    0x0000000000000580       0xb4 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-mul.o)
+ .debug_info    0x0000000000000634      0x145 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_load.o)
+ .debug_info    0x0000000000000779      0x157 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_main.o)
+ .debug_info    0x00000000000008d0      0x8a8 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_putstr.o)
+ .debug_info    0x0000000000001178      0x698 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .debug_info    0x0000000000001810      0x52e ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
+ .debug_info    0x0000000000001d3e      0x3c3 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_init.o)
+ .debug_info    0x0000000000002101      0x280 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_ioctl.o)
+ .debug_info    0x0000000000002381      0x35b ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+ .debug_info    0x00000000000026dc      0x356 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_info    0x0000000000002a32      0x568 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_up_avalon_rs232.o)
+ .debug_info    0x0000000000002f9a      0x2e2 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_alarm_start.o)
+ .debug_info    0x000000000000327c      0x321 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_close.o)
+ .debug_info    0x000000000000359d       0x92 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .debug_info    0x000000000000362f      0x49c ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_dev.o)
+ .debug_info    0x0000000000003acb      0x1a9 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
+ .debug_info    0x0000000000003c74       0x83 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_do_ctors.o)
+ .debug_info    0x0000000000003cf7       0x83 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_do_dtors.o)
+ .debug_info    0x0000000000003d7a       0xa6 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_errno.o)
+ .debug_info    0x0000000000003e20      0x2e9 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_find_dev.o)
+ .debug_info    0x0000000000004109       0x92 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .debug_info    0x000000000000419b      0x4a5 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_io_redirect.o)
+ .debug_info    0x0000000000004640      0x329 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_register.o)
+ .debug_info    0x0000000000004969       0x88 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_vars.o)
+ .debug_info    0x00000000000049f1      0x3bb ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_open.o)
+ .debug_info    0x0000000000004dac      0x2b0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_release_fd.o)
+ .debug_info    0x000000000000505c      0x2af ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_tick.o)
+ .debug_info    0x000000000000530b       0xb8 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .debug_info    0x00000000000053c3      0x2e6 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_find_file.o)
+ .debug_info    0x00000000000056a9      0x310 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_get_fd.o)
+ .debug_info    0x00000000000059b9       0x8a ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_entry.o)
+ .debug_info    0x0000000000005a43      0x1a7 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_handler.o)
+ .debug_info    0x0000000000005bea       0x90 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_exception_entry.o)
+ .debug_info    0x0000000000005c7a      0x1e7 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
+ .debug_info    0x0000000000005e61       0xfe d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-atexit.o)
+ .debug_info    0x0000000000005f5f      0x8e4 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-exit.o)
+ .debug_info    0x0000000000006843      0xa41 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fputs.o)
+ .debug_info    0x0000000000007284      0xbb8 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fvwrite.o)
+ .debug_info    0x0000000000007e3c      0x8a1 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-impure.o)
+ .debug_info    0x00000000000086dd       0x8a d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-int_errno.o)
+ .debug_info    0x0000000000008767      0xd57 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-mallocr.o)
+ .debug_info    0x00000000000094be      0x132 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memchr.o)
+ .debug_info    0x00000000000095f0      0x11a d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memcmp.o)
+ .debug_info    0x000000000000970a      0x144 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memcpy.o)
+ .debug_info    0x000000000000984e      0x13a d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memmove.o)
+ .debug_info    0x0000000000009988      0xc6b d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-reallocr.o)
+ .debug_info    0x000000000000a5f3      0x900 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-sbrkr.o)
+ .debug_info    0x000000000000aef3       0xe2 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-strlen.o)
+ .debug_info    0x000000000000afd5      0x936 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-wsetup.o)
+ .debug_info    0x000000000000b90b      0x934 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-__atexit.o)
+ .debug_info    0x000000000000c23f      0x965 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-__call_atexit.o)
+ .debug_info    0x000000000000cba4      0xa93 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fflush.o)
+ .debug_info    0x000000000000d637      0xd36 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-findfp.o)
+ .debug_info    0x000000000000e36d      0xbf7 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-freer.o)
+ .debug_info    0x000000000000ef64      0x9b0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fwalk.o)
+ .debug_info    0x000000000000f914      0xad8 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-makebuf.o)
+ .debug_info    0x00000000000103ec      0x121 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memset.o)
+ .debug_info    0x000000000001050d      0xb32 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-stdio.o)
+ .debug_info    0x000000000001103f      0x928 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-writer.o)
+ .debug_info    0x0000000000011967      0x8df d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(closer.o)
+ .debug_info    0x0000000000012246      0xa23 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fclose.o)
+ .debug_info    0x0000000000012c69      0xa5d d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fstatr.o)
+ .debug_info    0x00000000000136c6      0x8df d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-isattyr.o)
+ .debug_info    0x0000000000013fa5      0x90b d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-lseekr.o)
+ .debug_info    0x00000000000148b0      0x921 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-readr.o)
+ .debug_info    0x00000000000151d1      0x116 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_exit.o)
+ .debug_info    0x00000000000152e7      0x488 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_fstat.o)
+ .debug_info    0x000000000001576f      0x48b ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_isatty.o)
+ .debug_info    0x0000000000015bfa      0x352 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_lseek.o)
+ .debug_info    0x0000000000015f4c      0x8b6 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_malloc_lock.o)
+ .debug_info    0x0000000000016802      0x4b0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_read.o)
+ .debug_info    0x0000000000016cb2      0x1d2 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_sbrk.o)
+ .debug_info    0x0000000000016e84      0x4b7 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_write.o)
+
+.debug_abbrev   0x0000000000000000     0x619a
+ *(.debug_abbrev)
+ .debug_abbrev  0x0000000000000000       0x12 ../testWifiTouchVGA_bsp//obj/HAL/src/crt0.o
+ .debug_abbrev  0x0000000000000012      0x101 obj/default/main.o
+ .debug_abbrev  0x0000000000000113      0x10e d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-divmod.o)
+ .debug_abbrev  0x0000000000000221       0x6f d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-mul.o)
+ .debug_abbrev  0x0000000000000290       0x9f ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_load.o)
+ .debug_abbrev  0x000000000000032f       0xc1 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_main.o)
+ .debug_abbrev  0x00000000000003f0      0x1af ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_putstr.o)
+ .debug_abbrev  0x000000000000059f      0x178 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .debug_abbrev  0x0000000000000717      0x127 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
+ .debug_abbrev  0x000000000000083e      0x19e ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_init.o)
+ .debug_abbrev  0x00000000000009dc      0x111 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_ioctl.o)
+ .debug_abbrev  0x0000000000000aed      0x1aa ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+ .debug_abbrev  0x0000000000000c97      0x1a8 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_abbrev  0x0000000000000e3f      0x135 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_up_avalon_rs232.o)
+ .debug_abbrev  0x0000000000000f74      0x162 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_alarm_start.o)
+ .debug_abbrev  0x00000000000010d6      0x11f ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_close.o)
+ .debug_abbrev  0x00000000000011f5       0x42 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .debug_abbrev  0x0000000000001237       0xd9 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_dev.o)
+ .debug_abbrev  0x0000000000001310      0x114 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
+ .debug_abbrev  0x0000000000001424       0x79 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_do_ctors.o)
+ .debug_abbrev  0x000000000000149d       0x79 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_do_dtors.o)
+ .debug_abbrev  0x0000000000001516       0x5a ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_errno.o)
+ .debug_abbrev  0x0000000000001570       0xf0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_find_dev.o)
+ .debug_abbrev  0x0000000000001660       0x42 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .debug_abbrev  0x00000000000016a2      0x114 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_io_redirect.o)
+ .debug_abbrev  0x00000000000017b6      0x186 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_register.o)
+ .debug_abbrev  0x000000000000193c       0x40 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_vars.o)
+ .debug_abbrev  0x000000000000197c      0x148 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_open.o)
+ .debug_abbrev  0x0000000000001ac4       0xde ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_release_fd.o)
+ .debug_abbrev  0x0000000000001ba2      0x16b ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_tick.o)
+ .debug_abbrev  0x0000000000001d0d       0x67 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .debug_abbrev  0x0000000000001d74       0xf0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_find_file.o)
+ .debug_abbrev  0x0000000000001e64      0x10d ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_get_fd.o)
+ .debug_abbrev  0x0000000000001f71       0x12 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_entry.o)
+ .debug_abbrev  0x0000000000001f83      0x13a ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_handler.o)
+ .debug_abbrev  0x00000000000020bd       0x12 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_exception_entry.o)
+ .debug_abbrev  0x00000000000020cf       0xdc ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
+ .debug_abbrev  0x00000000000021ab       0xaa d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-atexit.o)
+ .debug_abbrev  0x0000000000002255      0x1e5 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-exit.o)
+ .debug_abbrev  0x000000000000243a      0x241 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fputs.o)
+ .debug_abbrev  0x000000000000267b      0x228 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fvwrite.o)
+ .debug_abbrev  0x00000000000028a3      0x18f d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-impure.o)
+ .debug_abbrev  0x0000000000002a32       0x37 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-int_errno.o)
+ .debug_abbrev  0x0000000000002a69      0x29d d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-mallocr.o)
+ .debug_abbrev  0x0000000000002d06       0xab d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memchr.o)
+ .debug_abbrev  0x0000000000002db1       0x7f d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memcmp.o)
+ .debug_abbrev  0x0000000000002e30       0xa3 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memcpy.o)
+ .debug_abbrev  0x0000000000002ed3       0x9c d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memmove.o)
+ .debug_abbrev  0x0000000000002f6f      0x231 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-reallocr.o)
+ .debug_abbrev  0x00000000000031a0      0x20a d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-sbrkr.o)
+ .debug_abbrev  0x00000000000033aa       0x90 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-strlen.o)
+ .debug_abbrev  0x000000000000343a      0x218 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-wsetup.o)
+ .debug_abbrev  0x0000000000003652      0x21e d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-__atexit.o)
+ .debug_abbrev  0x0000000000003870      0x22e d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-__call_atexit.o)
+ .debug_abbrev  0x0000000000003a9e      0x2a0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fflush.o)
+ .debug_abbrev  0x0000000000003d3e      0x3ad d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-findfp.o)
+ .debug_abbrev  0x00000000000040eb      0x264 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-freer.o)
+ .debug_abbrev  0x000000000000434f      0x1d1 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fwalk.o)
+ .debug_abbrev  0x0000000000004520      0x20f d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-makebuf.o)
+ .debug_abbrev  0x000000000000472f       0xae d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memset.o)
+ .debug_abbrev  0x00000000000047dd      0x239 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-stdio.o)
+ .debug_abbrev  0x0000000000004a16      0x1eb d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-writer.o)
+ .debug_abbrev  0x0000000000004c01      0x1e6 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(closer.o)
+ .debug_abbrev  0x0000000000004de7      0x2a2 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fclose.o)
+ .debug_abbrev  0x0000000000005089      0x1f5 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fstatr.o)
+ .debug_abbrev  0x000000000000527e      0x1e6 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-isattyr.o)
+ .debug_abbrev  0x0000000000005464      0x1f5 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-lseekr.o)
+ .debug_abbrev  0x0000000000005659      0x1e6 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-readr.o)
+ .debug_abbrev  0x000000000000583f       0xd0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_exit.o)
+ .debug_abbrev  0x000000000000590f      0x11f ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_fstat.o)
+ .debug_abbrev  0x0000000000005a2e      0x11f ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_isatty.o)
+ .debug_abbrev  0x0000000000005b4d      0x11f ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_lseek.o)
+ .debug_abbrev  0x0000000000005c6c      0x1b4 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_malloc_lock.o)
+ .debug_abbrev  0x0000000000005e20      0x12e ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_read.o)
+ .debug_abbrev  0x0000000000005f4e      0x119 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_sbrk.o)
+ .debug_abbrev  0x0000000000006067      0x133 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_write.o)
+
+.debug_line     0x0000000000000000     0x6d01
+ *(.debug_line)
+ .debug_line    0x0000000000000000       0x66 ../testWifiTouchVGA_bsp//obj/HAL/src/crt0.o
+ .debug_line    0x0000000000000066       0x8b obj/default/main.o
+ .debug_line    0x00000000000000f1      0x105 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-divmod.o)
+ .debug_line    0x00000000000001f6       0x80 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-mul.o)
+ .debug_line    0x0000000000000276       0x8e ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_load.o)
+ .debug_line    0x0000000000000304       0xd1 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_main.o)
+ .debug_line    0x00000000000003d5      0x12f ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_putstr.o)
+ .debug_line    0x0000000000000504      0x1ee ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .debug_line    0x00000000000006f2      0x12f ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
+ .debug_line    0x0000000000000821      0x19f ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_init.o)
+ .debug_line    0x00000000000009c0      0x131 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_ioctl.o)
+ .debug_line    0x0000000000000af1      0x185 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+ .debug_line    0x0000000000000c76      0x184 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_line    0x0000000000000dfa      0x13e ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_up_avalon_rs232.o)
+ .debug_line    0x0000000000000f38      0x10d ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_alarm_start.o)
+ .debug_line    0x0000000000001045      0x16e ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_close.o)
+ .debug_line    0x00000000000011b3       0x51 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .debug_line    0x0000000000001204      0x101 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_dev.o)
+ .debug_line    0x0000000000001305       0xcf ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
+ .debug_line    0x00000000000013d4       0x59 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_do_ctors.o)
+ .debug_line    0x000000000000142d       0x59 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_do_dtors.o)
+ .debug_line    0x0000000000001486       0x51 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_errno.o)
+ .debug_line    0x00000000000014d7       0xb5 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_find_dev.o)
+ .debug_line    0x000000000000158c       0x4f ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .debug_line    0x00000000000015db      0x13e ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_io_redirect.o)
+ .debug_line    0x0000000000001719      0x155 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_register.o)
+ .debug_line    0x000000000000186e       0x50 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_vars.o)
+ .debug_line    0x00000000000018be      0x12b ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_open.o)
+ .debug_line    0x00000000000019e9       0xb0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_release_fd.o)
+ .debug_line    0x0000000000001a99      0x113 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_tick.o)
+ .debug_line    0x0000000000001bac       0x8d ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .debug_line    0x0000000000001c39       0xd1 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_find_file.o)
+ .debug_line    0x0000000000001d0a       0xd7 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_get_fd.o)
+ .debug_line    0x0000000000001de1       0x6b ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_entry.o)
+ .debug_line    0x0000000000001e4c       0xcd ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_handler.o)
+ .debug_line    0x0000000000001f19       0xb3 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_exception_entry.o)
+ .debug_line    0x0000000000001fcc       0xb9 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
+ .debug_line    0x0000000000002085       0xe7 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-atexit.o)
+ .debug_line    0x000000000000216c      0x1fc d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-exit.o)
+ .debug_line    0x0000000000002368      0x23b d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fputs.o)
+ .debug_line    0x00000000000025a3      0x346 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fvwrite.o)
+ .debug_line    0x00000000000028e9      0x160 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-impure.o)
+ .debug_line    0x0000000000002a49       0x5f d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-int_errno.o)
+ .debug_line    0x0000000000002aa8      0x3fc d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-mallocr.o)
+ .debug_line    0x0000000000002ea4      0x18d d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memchr.o)
+ .debug_line    0x0000000000003031      0x176 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memcmp.o)
+ .debug_line    0x00000000000031a7      0x18c d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memcpy.o)
+ .debug_line    0x0000000000003333      0x18d d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memmove.o)
+ .debug_line    0x00000000000034c0      0x2f5 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-reallocr.o)
+ .debug_line    0x00000000000037b5      0x1e9 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-sbrkr.o)
+ .debug_line    0x000000000000399e      0x16f d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-strlen.o)
+ .debug_line    0x0000000000003b0d      0x266 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-wsetup.o)
+ .debug_line    0x0000000000003d73      0x21f d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-__atexit.o)
+ .debug_line    0x0000000000003f92      0x23a d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-__call_atexit.o)
+ .debug_line    0x00000000000041cc      0x2ea d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fflush.o)
+ .debug_line    0x00000000000044b6      0x375 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-findfp.o)
+ .debug_line    0x000000000000482b      0x2f7 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-freer.o)
+ .debug_line    0x0000000000004b22      0x23a d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fwalk.o)
+ .debug_line    0x0000000000004d5c      0x274 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-makebuf.o)
+ .debug_line    0x0000000000004fd0      0x18f d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memset.o)
+ .debug_line    0x000000000000515f      0x26a d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-stdio.o)
+ .debug_line    0x00000000000053c9      0x1f6 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-writer.o)
+ .debug_line    0x00000000000055bf      0x1f6 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(closer.o)
+ .debug_line    0x00000000000057b5      0x239 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fclose.o)
+ .debug_line    0x00000000000059ee      0x1ff d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fstatr.o)
+ .debug_line    0x0000000000005bed      0x1f7 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-isattyr.o)
+ .debug_line    0x0000000000005de4      0x1f6 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-lseekr.o)
+ .debug_line    0x0000000000005fda      0x1f5 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-readr.o)
+ .debug_line    0x00000000000061cf       0xad ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_exit.o)
+ .debug_line    0x000000000000627c      0x167 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_fstat.o)
+ .debug_line    0x00000000000063e3      0x16b ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_isatty.o)
+ .debug_line    0x000000000000654e      0x16c ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_lseek.o)
+ .debug_line    0x00000000000066ba      0x134 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_malloc_lock.o)
+ .debug_line    0x00000000000067ee      0x1ee ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_read.o)
+ .debug_line    0x00000000000069dc      0x138 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_sbrk.o)
+ .debug_line    0x0000000000006b14      0x1ed ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_write.o)
+
+.debug_frame    0x0000000000000000     0x1734
+ *(.debug_frame)
+ .debug_frame   0x0000000000000000      0x114 obj/default/main.o
+ .debug_frame   0x0000000000000114       0x50 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-divmod.o)
+ .debug_frame   0x0000000000000164       0x20 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-mul.o)
+ .debug_frame   0x0000000000000184       0x5c ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_load.o)
+ .debug_frame   0x00000000000001e0       0x2c ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_main.o)
+ .debug_frame   0x000000000000020c       0x38 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_putstr.o)
+ .debug_frame   0x0000000000000244       0x88 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .debug_frame   0x00000000000002cc       0xb0 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
+ .debug_frame   0x000000000000037c       0xa4 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_init.o)
+ .debug_frame   0x0000000000000420       0x34 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_ioctl.o)
+ .debug_frame   0x0000000000000454       0x38 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+ .debug_frame   0x000000000000048c       0x38 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_frame   0x00000000000004c4      0x188 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_up_avalon_rs232.o)
+ .debug_frame   0x000000000000064c       0x34 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_alarm_start.o)
+ .debug_frame   0x0000000000000680       0x60 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_close.o)
+ .debug_frame   0x00000000000006e0       0x34 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .debug_frame   0x0000000000000714       0x34 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_dev.o)
+ .debug_frame   0x0000000000000748       0x60 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
+ .debug_frame   0x00000000000007a8       0x38 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_do_ctors.o)
+ .debug_frame   0x00000000000007e0       0x38 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_do_dtors.o)
+ .debug_frame   0x0000000000000818       0x38 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_find_dev.o)
+ .debug_frame   0x0000000000000850       0x34 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .debug_frame   0x0000000000000884       0x64 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_io_redirect.o)
+ .debug_frame   0x00000000000008e8       0x34 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_register.o)
+ .debug_frame   0x000000000000091c       0x8c ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_open.o)
+ .debug_frame   0x00000000000009a8       0x3c ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_release_fd.o)
+ .debug_frame   0x00000000000009e4       0x5c ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_tick.o)
+ .debug_frame   0x0000000000000a40       0x34 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .debug_frame   0x0000000000000a74       0x38 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_find_file.o)
+ .debug_frame   0x0000000000000aac       0x3c ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_get_fd.o)
+ .debug_frame   0x0000000000000ae8       0x38 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_handler.o)
+ .debug_frame   0x0000000000000b20       0x5c ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
+ .debug_frame   0x0000000000000b7c       0x20 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-atexit.o)
+ .debug_frame   0x0000000000000b9c       0x28 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-exit.o)
+ .debug_frame   0x0000000000000bc4       0x48 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fputs.o)
+ .debug_frame   0x0000000000000c0c       0x78 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fvwrite.o)
+ .debug_frame   0x0000000000000c84       0x54 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-mallocr.o)
+ .debug_frame   0x0000000000000cd8       0x20 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memchr.o)
+ .debug_frame   0x0000000000000cf8       0x20 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memcmp.o)
+ .debug_frame   0x0000000000000d18       0x38 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memcpy.o)
+ .debug_frame   0x0000000000000d50       0x20 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memmove.o)
+ .debug_frame   0x0000000000000d70       0x70 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-reallocr.o)
+ .debug_frame   0x0000000000000de0       0x38 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-sbrkr.o)
+ .debug_frame   0x0000000000000e18       0x20 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-strlen.o)
+ .debug_frame   0x0000000000000e38       0x38 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-wsetup.o)
+ .debug_frame   0x0000000000000e70       0x38 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-__atexit.o)
+ .debug_frame   0x0000000000000ea8       0x54 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-__call_atexit.o)
+ .debug_frame   0x0000000000000efc       0x7c d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fflush.o)
+ .debug_frame   0x0000000000000f78      0x160 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-findfp.o)
+ .debug_frame   0x00000000000010d8       0x70 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-freer.o)
+ .debug_frame   0x0000000000001148       0x90 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fwalk.o)
+ .debug_frame   0x00000000000011d8       0x4c d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-makebuf.o)
+ .debug_frame   0x0000000000001224       0x20 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memset.o)
+ .debug_frame   0x0000000000001244       0xb4 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-stdio.o)
+ .debug_frame   0x00000000000012f8       0x38 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-writer.o)
+ .debug_frame   0x0000000000001330       0x38 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(closer.o)
+ .debug_frame   0x0000000000001368       0x54 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fclose.o)
+ .debug_frame   0x00000000000013bc       0x38 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fstatr.o)
+ .debug_frame   0x00000000000013f4       0x38 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-isattyr.o)
+ .debug_frame   0x000000000000142c       0x38 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-lseekr.o)
+ .debug_frame   0x0000000000001464       0x38 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-readr.o)
+ .debug_frame   0x000000000000149c       0x2c ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_exit.o)
+ .debug_frame   0x00000000000014c8       0x60 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_fstat.o)
+ .debug_frame   0x0000000000001528       0x60 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_isatty.o)
+ .debug_frame   0x0000000000001588       0x60 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_lseek.o)
+ .debug_frame   0x00000000000015e8       0x58 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_malloc_lock.o)
+ .debug_frame   0x0000000000001640       0x60 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_read.o)
+ .debug_frame   0x00000000000016a0       0x34 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_sbrk.o)
+ .debug_frame   0x00000000000016d4       0x60 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_write.o)
+
+.debug_str      0x0000000000000000     0x2a7e
+ *(.debug_str)
+ .debug_str     0x0000000000000000      0x147 obj/default/main.o
+                                        0x158 (size before relaxing)
+ .debug_str     0x0000000000000147      0x191 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-divmod.o)
+                                        0x1d2 (size before relaxing)
+ .debug_str     0x00000000000002d8       0x40 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-mul.o)
+                                        0x193 (size before relaxing)
+ .debug_str     0x0000000000000318      0x178 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_load.o)
+                                        0x225 (size before relaxing)
+ .debug_str     0x0000000000000490       0x91 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_main.o)
+                                        0x1d9 (size before relaxing)
+ .debug_str     0x0000000000000521      0x368 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_putstr.o)
+                                        0x516 (size before relaxing)
+ .debug_str     0x0000000000000889      0x336 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_sys_init.o)
+                                        0x535 (size before relaxing)
+ .debug_str     0x0000000000000bbf       0xb9 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_fd.o)
+                                        0x3b7 (size before relaxing)
+ .debug_str     0x0000000000000c78       0xd1 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_init.o)
+                                        0x36c (size before relaxing)
+ .debug_str     0x0000000000000d49       0x4a ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_ioctl.o)
+                                        0x2a6 (size before relaxing)
+ .debug_str     0x0000000000000d93       0x7f ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+                                        0x31c (size before relaxing)
+ .debug_str     0x0000000000000e12       0x4a ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+                                        0x31d (size before relaxing)
+ .debug_str     0x0000000000000e5c      0x182 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_up_avalon_rs232.o)
+                                        0x37f (size before relaxing)
+ .debug_str     0x0000000000000fde       0x59 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_alarm_start.o)
+                                        0x2b2 (size before relaxing)
+ .debug_str     0x0000000000001037       0x44 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_close.o)
+                                        0x21e (size before relaxing)
+ .debug_str     0x000000000000107b       0x34 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+                                        0x168 (size before relaxing)
+ .debug_str     0x00000000000010af      0x119 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_dev.o)
+                                        0x318 (size before relaxing)
+ .debug_str     0x00000000000011c8       0x34 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_dev_llist_insert.o)
+                                        0x1df (size before relaxing)
+ .debug_str     0x00000000000011fc       0x48 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_do_ctors.o)
+                                         0xe3 (size before relaxing)
+ .debug_str     0x0000000000001244       0x4c ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_do_dtors.o)
+                                         0xe2 (size before relaxing)
+ .debug_str     0x0000000000001290       0x14 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_errno.o)
+                                        0x158 (size before relaxing)
+ .debug_str     0x00000000000012a4       0x24 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_find_dev.o)
+                                        0x1ff (size before relaxing)
+ .debug_str     0x00000000000012c8       0x34 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+                                        0x168 (size before relaxing)
+ .debug_str     0x00000000000012fc       0x56 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_io_redirect.o)
+                                        0x329 (size before relaxing)
+ .debug_str     0x0000000000001352       0x77 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_register.o)
+                                        0x21b (size before relaxing)
+ .debug_str     0x00000000000013c9       0x17 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_vars.o)
+                                        0x14d (size before relaxing)
+ .debug_str     0x00000000000013e0       0x29 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_open.o)
+                                        0x25e (size before relaxing)
+ .debug_str     0x0000000000001409       0x28 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_release_fd.o)
+                                        0x1e6 (size before relaxing)
+ .debug_str     0x0000000000001431       0x4a ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_tick.o)
+                                        0x286 (size before relaxing)
+ .debug_str     0x000000000000147b       0x3b ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+                                        0x198 (size before relaxing)
+ .debug_str     0x00000000000014b6       0x26 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_find_file.o)
+                                        0x20d (size before relaxing)
+ .debug_str     0x00000000000014dc       0x30 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_get_fd.o)
+                                        0x22f (size before relaxing)
+ .debug_str     0x000000000000150c       0x3a ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_handler.o)
+                                        0x1cb (size before relaxing)
+ .debug_str     0x0000000000001546      0x48b ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
+                                        0x5b3 (size before relaxing)
+ .debug_str     0x00000000000019d1      0x17c d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-atexit.o)
+                                        0x221 (size before relaxing)
+ .debug_str     0x0000000000001b4d       0x5f d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-exit.o)
+                                        0x5be (size before relaxing)
+ .debug_str     0x0000000000001bac      0x140 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fputs.o)
+                                        0x61f (size before relaxing)
+ .debug_str     0x0000000000001cec       0xa4 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fvwrite.o)
+                                        0x647 (size before relaxing)
+ .debug_str     0x0000000000001d90       0xd6 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-impure.o)
+                                        0x5b5 (size before relaxing)
+ .debug_str     0x0000000000001e66       0x3f d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-int_errno.o)
+                                        0x1dd (size before relaxing)
+ .debug_str     0x0000000000001ea5      0x22c d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-mallocr.o)
+                                        0x7ba (size before relaxing)
+ .debug_str     0x00000000000020d1       0xe1 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memchr.o)
+                                        0x1fe (size before relaxing)
+ .debug_str     0x00000000000021b2       0x44 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memcmp.o)
+                                        0x1e4 (size before relaxing)
+ .debug_str     0x00000000000021f6       0x64 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memcpy.o)
+                                        0x20b (size before relaxing)
+ .debug_str     0x000000000000225a       0x47 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memmove.o)
+                                        0x217 (size before relaxing)
+ .debug_str     0x00000000000022a1       0x4e d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-reallocr.o)
+                                        0x696 (size before relaxing)
+ .debug_str     0x00000000000022ef       0x4f d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-sbrkr.o)
+                                        0x5ab (size before relaxing)
+ .debug_str     0x000000000000233e       0x4a d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-strlen.o)
+                                        0x1f7 (size before relaxing)
+ .debug_str     0x0000000000002388       0x49 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-wsetup.o)
+                                        0x5d4 (size before relaxing)
+ .debug_str     0x00000000000023d1       0x3f d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-__atexit.o)
+                                        0x5f6 (size before relaxing)
+ .debug_str     0x0000000000002410       0x65 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-__call_atexit.o)
+                                        0x5e2 (size before relaxing)
+ .debug_str     0x0000000000002475       0x6c d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fflush.o)
+                                        0x615 (size before relaxing)
+ .debug_str     0x00000000000024e1      0x11c d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-findfp.o)
+                                        0x6cb (size before relaxing)
+ .debug_str     0x00000000000025fd       0x34 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-freer.o)
+                                        0x704 (size before relaxing)
+ .debug_str     0x0000000000002631       0x4a d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fwalk.o)
+                                        0x5ba (size before relaxing)
+ .debug_str     0x000000000000267b       0x5b d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-makebuf.o)
+                                        0x6b7 (size before relaxing)
+ .debug_str     0x00000000000026d6       0x3d d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memset.o)
+                                        0x1f8 (size before relaxing)
+ .debug_str     0x0000000000002713       0x9b d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-stdio.o)
+                                        0x609 (size before relaxing)
+ .debug_str     0x00000000000027ae       0x3c d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-writer.o)
+                                        0x5af (size before relaxing)
+ .debug_str     0x00000000000027ea       0x3c d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(closer.o)
+                                        0x59f (size before relaxing)
+ .debug_str     0x0000000000002826       0x52 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fclose.o)
+                                        0x602 (size before relaxing)
+ .debug_str     0x0000000000002878       0x42 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fstatr.o)
+                                        0x68b (size before relaxing)
+ .debug_str     0x00000000000028ba       0x44 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-isattyr.o)
+                                        0x5a2 (size before relaxing)
+ .debug_str     0x00000000000028fe       0x3c d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-lseekr.o)
+                                        0x5a6 (size before relaxing)
+ .debug_str     0x000000000000293a       0x3b d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-readr.o)
+                                        0x5ac (size before relaxing)
+ .debug_str     0x0000000000002975       0x2a ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_exit.o)
+                                        0x18d (size before relaxing)
+ .debug_str     0x000000000000299f       0x14 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_fstat.o)
+                                        0x2ff (size before relaxing)
+ .debug_str     0x00000000000029b3       0x15 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_isatty.o)
+                                        0x307 (size before relaxing)
+ .debug_str     0x00000000000029c8       0x14 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_lseek.o)
+                                        0x224 (size before relaxing)
+ .debug_str     0x00000000000029dc       0x1a ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_malloc_lock.o)
+                                        0x522 (size before relaxing)
+ .debug_str     0x00000000000029f6       0x13 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_read.o)
+                                        0x30a (size before relaxing)
+ .debug_str     0x0000000000002a09       0x61 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_sbrk.o)
+                                        0x210 (size before relaxing)
+ .debug_str     0x0000000000002a6a       0x14 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_write.o)
+                                        0x30b (size before relaxing)
+
+.debug_loc      0x0000000000000000     0x4ae9
+ *(.debug_loc)
+ .debug_loc     0x0000000000000000      0x4ce d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-divmod.o)
+ .debug_loc     0x00000000000004ce       0x93 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-mul.o)
+ .debug_loc     0x0000000000000561       0x2c d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-atexit.o)
+ .debug_loc     0x000000000000058d       0x1e d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-exit.o)
+ .debug_loc     0x00000000000005ab      0x126 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fputs.o)
+ .debug_loc     0x00000000000006d1      0x5c7 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fvwrite.o)
+ .debug_loc     0x0000000000000c98      0xb1b d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-mallocr.o)
+ .debug_loc     0x00000000000017b3      0x1a1 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memchr.o)
+ .debug_loc     0x0000000000001954      0x126 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memcmp.o)
+ .debug_loc     0x0000000000001a7a      0x266 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memcpy.o)
+ .debug_loc     0x0000000000001ce0      0x308 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memmove.o)
+ .debug_loc     0x0000000000001fe8      0xde4 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-reallocr.o)
+ .debug_loc     0x0000000000002dcc       0x58 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-sbrkr.o)
+ .debug_loc     0x0000000000002e24       0x47 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-strlen.o)
+ .debug_loc     0x0000000000002e6b       0xa2 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-wsetup.o)
+ .debug_loc     0x0000000000002f0d      0x185 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-__atexit.o)
+ .debug_loc     0x0000000000003092      0x1ce d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-__call_atexit.o)
+ .debug_loc     0x0000000000003260      0x36f d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fflush.o)
+ .debug_loc     0x00000000000035cf      0x2f9 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-findfp.o)
+ .debug_loc     0x00000000000038c8      0x4e7 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-freer.o)
+ .debug_loc     0x0000000000003daf      0x25b d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fwalk.o)
+ .debug_loc     0x000000000000400a      0x122 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-makebuf.o)
+ .debug_loc     0x000000000000412c      0x1a6 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memset.o)
+ .debug_loc     0x00000000000042d2      0x33a d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-stdio.o)
+ .debug_loc     0x000000000000460c       0xb0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-writer.o)
+ .debug_loc     0x00000000000046bc       0x58 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(closer.o)
+ .debug_loc     0x0000000000004714      0x199 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fclose.o)
+ .debug_loc     0x00000000000048ad       0x84 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fstatr.o)
+ .debug_loc     0x0000000000004931       0x58 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-isattyr.o)
+ .debug_loc     0x0000000000004989       0xb0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-lseekr.o)
+ .debug_loc     0x0000000000004a39       0xb0 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-readr.o)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_alt_sim_info
+                0x0000000000000000       0x10
+ *(.debug_alt_sim_info)
+ .debug_alt_sim_info
+                0x0000000000000000       0x10 ../testWifiTouchVGA_bsp//obj/HAL/src/crt0.o
+                0x000000000c000000                __alt_data_end = 0xc000000
+                0x000000000c000000                PROVIDE (__alt_stack_pointer, __alt_data_end)
+                [!provide]                        PROVIDE (__alt_stack_limit, __alt_stack_base)
+                0x0000000008001d64                PROVIDE (__alt_heap_start, end)
+                0x000000000c000000                PROVIDE (__alt_heap_limit, 0xc000000)
+OUTPUT(testWifiTouchVGA.elf elf32-littlenios2)
+
+.debug_ranges   0x0000000000000000      0x680
+ .debug_ranges  0x0000000000000000       0x20 ../testWifiTouchVGA_bsp//obj/HAL/src/crt0.o
+ .debug_ranges  0x0000000000000020       0x60 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-divmod.o)
+ .debug_ranges  0x0000000000000080       0x30 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_init.o)
+ .debug_ranges  0x00000000000000b0       0x18 ../testWifiTouchVGA_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_read.o)
+ .debug_ranges  0x00000000000000c8       0x28 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_entry.o)
+ .debug_ranges  0x00000000000000f0       0x10 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_irq_handler.o)
+ .debug_ranges  0x0000000000000100       0x30 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_exception_entry.o)
+ .debug_ranges  0x0000000000000130       0x18 ../testWifiTouchVGA_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
+ .debug_ranges  0x0000000000000148       0x10 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-atexit.o)
+ .debug_ranges  0x0000000000000158       0x10 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-exit.o)
+ .debug_ranges  0x0000000000000168       0x30 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fputs.o)
+ .debug_ranges  0x0000000000000198       0x30 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fvwrite.o)
+ .debug_ranges  0x00000000000001c8       0x48 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-mallocr.o)
+ .debug_ranges  0x0000000000000210       0x10 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memchr.o)
+ .debug_ranges  0x0000000000000220       0x10 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memcmp.o)
+ .debug_ranges  0x0000000000000230       0x10 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memcpy.o)
+ .debug_ranges  0x0000000000000240       0x10 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memmove.o)
+ .debug_ranges  0x0000000000000250      0x148 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-reallocr.o)
+ .debug_ranges  0x0000000000000398       0x10 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-sbrkr.o)
+ .debug_ranges  0x00000000000003a8       0x10 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-strlen.o)
+ .debug_ranges  0x00000000000003b8       0x40 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-wsetup.o)
+ .debug_ranges  0x00000000000003f8       0x10 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-__atexit.o)
+ .debug_ranges  0x0000000000000408       0x30 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-__call_atexit.o)
+ .debug_ranges  0x0000000000000438       0x58 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fflush.o)
+ .debug_ranges  0x0000000000000490       0xc8 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-findfp.o)
+ .debug_ranges  0x0000000000000558       0x18 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-freer.o)
+ .debug_ranges  0x0000000000000570       0x18 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fwalk.o)
+ .debug_ranges  0x0000000000000588       0x10 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-makebuf.o)
+ .debug_ranges  0x0000000000000598       0x10 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-memset.o)
+ .debug_ranges  0x00000000000005a8       0x30 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-stdio.o)
+ .debug_ranges  0x00000000000005d8       0x10 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-writer.o)
+ .debug_ranges  0x00000000000005e8       0x10 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(closer.o)
+ .debug_ranges  0x00000000000005f8       0x48 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fclose.o)
+ .debug_ranges  0x0000000000000640       0x10 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-fstatr.o)
+ .debug_ranges  0x0000000000000650       0x10 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-isattyr.o)
+ .debug_ranges  0x0000000000000660       0x10 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-lseekr.o)
+ .debug_ranges  0x0000000000000670       0x10 d:/programs/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/lib/mno-hw-mul\libc.a(lib_a-readr.o)
