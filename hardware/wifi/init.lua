@@ -72,10 +72,11 @@ wifi.eventmon.register(wifi.eventmon.STA_DISCONNECTED, wifi_disconnect_event)
 --print("Connecting to WiFi access point...")
 wifi.setmode(wifi.STATION)
 wifi.sta.config({ssid=SSID, pwd=PASSWORD})
-
+--[[
 uart.on("data", 8,
     function(data)
         --print("receive from uart", data)
         make_post(data)
         --uart.write(0, string.byte(data))
     end, 0)
+]]--

@@ -59,15 +59,15 @@ module cpu_video_rgb_resampler_0 (
  *                           Parameter Declarations                          *
  *****************************************************************************/
 
-parameter IDW			= 15;
+parameter IDW			= 23;
 parameter ODW			= 29;
 
-parameter IEW			= 0;
+parameter IEW			= 1;
 parameter OEW			= 1;
 
 parameter ALPHA			= 10'h3FF;
 
-parameter STATUS_IN		= 16'h0014;
+parameter STATUS_IN		= 16'h0017;
 parameter STATUS_OUT	= 16'h0019;
 
 /*****************************************************************************
@@ -179,9 +179,9 @@ end
 assign stream_in_ready = stream_out_ready | ~stream_out_valid;
 
 // Internal Assignments
-assign r = {stream_in_data[15:11], stream_in_data[15:11]};
-assign g = {stream_in_data[10: 5], stream_in_data[10: 7]};
-assign b = {stream_in_data[ 4: 0], stream_in_data[ 4: 0]};
+assign r = {stream_in_data[23:16], stream_in_data[23:22]};
+assign g = {stream_in_data[15: 8], stream_in_data[15:14]};
+assign b = {stream_in_data[ 7: 0], stream_in_data[ 7: 6]};
 
 assign a = ALPHA;
 

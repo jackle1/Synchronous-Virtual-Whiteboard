@@ -35,43 +35,43 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   9 .debug_aranges 00000a30  00000000  00000000  00008c38  2**3
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_info   0001733b  00000000  00000000  00009668  2**0
+ 10 .debug_info   00017381  00000000  00000000  00009668  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_abbrev 0000619a  00000000  00000000  000209a3  2**0
+ 11 .debug_abbrev 0000619a  00000000  00000000  000209e9  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_line   00006d01  00000000  00000000  00026b3d  2**0
+ 12 .debug_line   00006d01  00000000  00000000  00026b83  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_frame  00001734  00000000  00000000  0002d840  2**2
+ 13 .debug_frame  00001734  00000000  00000000  0002d884  2**2
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_str    00002a7e  00000000  00000000  0002ef74  2**0
+ 14 .debug_str    00002a7e  00000000  00000000  0002efb8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_loc    00004ae9  00000000  00000000  000319f2  2**0
+ 15 .debug_loc    00004ae9  00000000  00000000  00031a36  2**0
                   CONTENTS, READONLY, DEBUGGING
- 16 .debug_alt_sim_info 00000010  00000000  00000000  000364dc  2**2
+ 16 .debug_alt_sim_info 00000010  00000000  00000000  00036520  2**2
                   CONTENTS, READONLY, DEBUGGING
- 17 .debug_ranges 00000680  00000000  00000000  000364f0  2**3
+ 17 .debug_ranges 00000680  00000000  00000000  00036530  2**3
                   CONTENTS, READONLY, DEBUGGING
- 18 .thread_model 00000003  00000000  00000000  00039306  2**0
+ 18 .thread_model 00000003  00000000  00000000  00039346  2**0
                   CONTENTS, READONLY
- 19 .cpu          0000000c  00000000  00000000  00039309  2**0
+ 19 .cpu          0000000c  00000000  00000000  00039349  2**0
                   CONTENTS, READONLY
- 20 .qsys         00000001  00000000  00000000  00039315  2**0
+ 20 .qsys         00000001  00000000  00000000  00039355  2**0
                   CONTENTS, READONLY
- 21 .simulation_enabled 00000001  00000000  00000000  00039316  2**0
+ 21 .simulation_enabled 00000001  00000000  00000000  00039356  2**0
                   CONTENTS, READONLY
- 22 .stderr_dev   0000000b  00000000  00000000  00039317  2**0
+ 22 .stderr_dev   0000000b  00000000  00000000  00039357  2**0
                   CONTENTS, READONLY
- 23 .stdin_dev    0000000b  00000000  00000000  00039322  2**0
+ 23 .stdin_dev    0000000b  00000000  00000000  00039362  2**0
                   CONTENTS, READONLY
- 24 .stdout_dev   0000000b  00000000  00000000  0003932d  2**0
+ 24 .stdout_dev   0000000b  00000000  00000000  0003936d  2**0
                   CONTENTS, READONLY
- 25 .sopc_system_name 00000003  00000000  00000000  00039338  2**0
+ 25 .sopc_system_name 00000003  00000000  00000000  00039378  2**0
                   CONTENTS, READONLY
- 26 .quartus_project_dir 0000002e  00000000  00000000  0003933b  2**0
+ 26 .quartus_project_dir 0000002e  00000000  00000000  0003937b  2**0
                   CONTENTS, READONLY
- 27 .jdi          00004a36  00000000  00000000  00039369  2**0
+ 27 .jdi          00004a36  00000000  00000000  000393a9  2**0
                   CONTENTS, READONLY
- 28 .sopcinfo     00063163  00000000  00000000  0003dd9f  2**0
+ 28 .sopcinfo     00063163  00000000  00000000  0003dddf  2**0
                   CONTENTS, READONLY
 SYMBOL TABLE:
 00040000 l    d  .entry	00000000 .entry
@@ -871,6 +871,7 @@ int main()
    402e4:	01000234 	movhi	r4,8
    402e8:	21040404 	addi	r4,r4,4112
    402ec:	00403840 	call	40384 <getTouchscreenCoords>
+        //printf("Hi mary %d\n", x);
         translateTouchscreenVGACoords(&x, &vga_x, &y, &vga_y);
    402f0:	e17fff04 	addi	r5,fp,-4
    402f4:	e13ffe04 	addi	r4,fp,-8
@@ -6840,7 +6841,7 @@ alt_exception_cause_generated_bad_addr(alt_exception_cause cause)
    443d0:	d9400015 	stw	r5,0(sp)
    443d4:	d9800115 	stw	r6,4(sp)
    443d8:	d9c00215 	stw	r7,8(sp)
-   443dc:	00000000 	call	0 <__reset-0x40000>
+   443dc:	00000000 	call	0 <__alt_mem_onchip_memory2_0-0x40000>
    443e0:	d9400017 	ldw	r5,0(sp)
    443e4:	d9800117 	ldw	r6,4(sp)
    443e8:	d9c00217 	ldw	r7,8(sp)
@@ -6924,7 +6925,7 @@ alt_exception_cause_generated_bad_addr(alt_exception_cause cause)
    44518:	10003226 	beq	r2,zero,445e4 <__call_exitprocs+0x178>
    4451c:	a009883a 	mov	r4,r20
    44520:	98800015 	stw	r2,0(r19)
-   44524:	00000000 	call	0 <__reset-0x40000>
+   44524:	00000000 	call	0 <__alt_mem_onchip_memory2_0-0x40000>
    44528:	9d000017 	ldw	r20,0(r19)
    4452c:	a03fe41e 	bne	r20,zero,444c0 <__alt_data_end+0xf40444c0>
    44530:	dfc00a17 	ldw	ra,40(sp)

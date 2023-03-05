@@ -9,6 +9,7 @@
   </columns>
  </systemtable>
  <library
-   expandedCategories="Library/DSP,Library/University Program/Audio &amp; Video,Library/University Program/Audio &amp; Video/Video,Library/Processors and Peripherals/Peripherals,Library/University Program/Clock,Project,Library/University Program,Library/DSP/Video and Image Processing,Library,Library/Interface Protocols,Library/Processors and Peripherals,Library/Interface Protocols/Audio &amp; Video" />
+   expandedCategories="Library/University Program/Clock,Library/University Program/Audio &amp; Video/Video,Library/Interface Protocols,Library/DSP,Library/Interface Protocols/Audio &amp; Video,Library,Library/Processors and Peripherals,Library/DSP/Video and Image Processing,Library/University Program/Audio &amp; Video,Library/Processors and Peripherals/Peripherals,Library/University Program,Project" />
  <window width="1938" height="1048" x="-9" y="-9" />
+ <hdlexample language="VERILOG" />
 </preferences>

@@ -17,3 +17,8 @@ testWifiTouch/software/.metadata
 
 wifi/credentials.lua
 wifi/test/node_modules
+
+testHPS/db/
+testHPS/incremental_db/
+testHPS/simulation/
+testHPS/output_files/

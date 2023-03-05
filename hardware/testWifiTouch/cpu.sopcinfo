@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="cpu" kind="cpu" version="1.0" fabric="QSYS">
  <!-- Format version 18.1 625 (Future versions may contain additional information.) -->
- <!-- 2023.03.01.20:51:08 -->
+ <!-- 2023.03.02.17:45:21 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1677732668</value>
+  <value>1677807921</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -8901,7 +8901,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="start_address">
    <type>int</type>
-   <value>134217728</value>
+   <value>150994944</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -8909,7 +8909,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="back_start_address">
    <type>int</type>
-   <value>134217728</value>
+   <value>150994944</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -8933,7 +8933,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="color_space">
    <type>java.lang.String</type>
-   <value>16-bit RGB</value>
+   <value>24-bit RGB</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -9376,7 +9376,7 @@ parameters are a RESULT of the module parameters. -->
    <port>
     <name>master_readdata</name>
     <direction>Input</direction>
-    <width>16</width>
+    <width>32</width>
     <role>readdata</role>
    </port>
    <memoryBlock>
@@ -9792,7 +9792,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="dataBitsPerSymbol">
     <type>int</type>
-    <value>16</value>
+    <value>8</value>
     <derived>false</derived>
     <enabled>true</enabled>
     <visible>true</visible>
@@ -9856,7 +9856,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="symbolsPerBeat">
     <type>int</type>
-    <value>1</value>
+    <value>3</value>
     <derived>false</derived>
     <enabled>true</enabled>
     <visible>false</visible>
@@ -9907,7 +9907,7 @@ parameters are a RESULT of the module parameters. -->
    <port>
     <name>stream_data</name>
     <direction>Output</direction>
-    <width>16</width>
+    <width>24</width>
     <role>data</role>
    </port>
   </interface>
@@ -10345,7 +10345,7 @@ parameters are a RESULT of the module parameters. -->
 the requested settings for a module instance. -->
   <parameter name="input_type">
    <type>java.lang.String</type>
-   <value>16-bit RGB</value>
+   <value>24-bit RGB</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -10369,7 +10369,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="input_bits">
    <type>int</type>
-   <value>16</value>
+   <value>8</value>
    <derived>true</derived>
    <enabled>false</enabled>
    <visible>false</visible>
@@ -10377,7 +10377,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="input_planes">
    <type>int</type>
-   <value>1</value>
+   <value>3</value>
    <derived>true</derived>
    <enabled>false</enabled>
    <visible>false</visible>
@@ -10571,7 +10571,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="dataBitsPerSymbol">
     <type>int</type>
-    <value>16</value>
+    <value>8</value>
     <derived>false</derived>
     <enabled>true</enabled>
     <visible>true</visible>
@@ -10635,7 +10635,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="symbolsPerBeat">
     <type>int</type>
-    <value>1</value>
+    <value>3</value>
     <derived>false</derived>
     <enabled>true</enabled>
     <visible>false</visible>
@@ -10686,7 +10686,7 @@ parameters are a RESULT of the module parameters. -->
    <port>
     <name>stream_in_data</name>
     <direction>Input</direction>
-    <width>16</width>
+    <width>24</width>
     <role>data</role>
    </port>
   </interface>

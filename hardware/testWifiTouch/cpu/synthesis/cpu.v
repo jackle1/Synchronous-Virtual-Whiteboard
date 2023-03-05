@@ -37,7 +37,7 @@ module cpu (
 	wire         video_dual_clock_buffer_0_avalon_dc_buffer_source_startofpacket;            // video_dual_clock_buffer_0:stream_out_startofpacket -> vga_controller:startofpacket
 	wire         video_dual_clock_buffer_0_avalon_dc_buffer_source_endofpacket;              // video_dual_clock_buffer_0:stream_out_endofpacket -> vga_controller:endofpacket
 	wire         video_pixel_buffer_dma_0_avalon_pixel_source_valid;                         // video_pixel_buffer_dma_0:stream_valid -> video_rgb_resampler_0:stream_in_valid
-	wire  [15:0] video_pixel_buffer_dma_0_avalon_pixel_source_data;                          // video_pixel_buffer_dma_0:stream_data -> video_rgb_resampler_0:stream_in_data
+	wire  [23:0] video_pixel_buffer_dma_0_avalon_pixel_source_data;                          // video_pixel_buffer_dma_0:stream_data -> video_rgb_resampler_0:stream_in_data
 	wire         video_pixel_buffer_dma_0_avalon_pixel_source_ready;                         // video_rgb_resampler_0:stream_in_ready -> video_pixel_buffer_dma_0:stream_ready
 	wire         video_pixel_buffer_dma_0_avalon_pixel_source_startofpacket;                 // video_pixel_buffer_dma_0:stream_startofpacket -> video_rgb_resampler_0:stream_in_startofpacket
 	wire         video_pixel_buffer_dma_0_avalon_pixel_source_endofpacket;                   // video_pixel_buffer_dma_0:stream_endofpacket -> video_rgb_resampler_0:stream_in_endofpacket
@@ -49,7 +49,7 @@ module cpu (
 	wire         sys_pll_clk_sys_clk_clk;                                                    // sys_pll_clk:sys_clk_clk -> [irq_mapper:clk, jtag_uart_0:clk, leds_r:clk, mm_interconnect_0:sys_pll_clk_sys_clk_clk, nios2_gen2_0:clk, onchip_memory2_0:clk, rst_controller:clk, rst_controller_001:clk, sdram_controller:clk, touchscreen_uart:clk, video_dual_clock_buffer_0:clk_stream_in, video_pixel_buffer_dma_0:clk, video_pll_0:ref_clk_clk, video_rgb_resampler_0:clk, wifi_uart:clk]
 	wire         video_pll_0_vga_clk_clk;                                                    // video_pll_0:vga_clk_clk -> [rst_controller_002:clk, vga_controller:clk, video_dual_clock_buffer_0:clk_stream_out]
 	wire         video_pixel_buffer_dma_0_avalon_pixel_dma_master_waitrequest;               // mm_interconnect_0:video_pixel_buffer_dma_0_avalon_pixel_dma_master_waitrequest -> video_pixel_buffer_dma_0:master_waitrequest
-	wire  [15:0] video_pixel_buffer_dma_0_avalon_pixel_dma_master_readdata;                  // mm_interconnect_0:video_pixel_buffer_dma_0_avalon_pixel_dma_master_readdata -> video_pixel_buffer_dma_0:master_readdata
+	wire  [31:0] video_pixel_buffer_dma_0_avalon_pixel_dma_master_readdata;                  // mm_interconnect_0:video_pixel_buffer_dma_0_avalon_pixel_dma_master_readdata -> video_pixel_buffer_dma_0:master_readdata
 	wire  [31:0] video_pixel_buffer_dma_0_avalon_pixel_dma_master_address;                   // video_pixel_buffer_dma_0:master_address -> mm_interconnect_0:video_pixel_buffer_dma_0_avalon_pixel_dma_master_address
 	wire         video_pixel_buffer_dma_0_avalon_pixel_dma_master_read;                      // video_pixel_buffer_dma_0:master_read -> mm_interconnect_0:video_pixel_buffer_dma_0_avalon_pixel_dma_master_read
 	wire         video_pixel_buffer_dma_0_avalon_pixel_dma_master_readdatavalid;             // mm_interconnect_0:video_pixel_buffer_dma_0_avalon_pixel_dma_master_readdatavalid -> video_pixel_buffer_dma_0:master_readdatavalid

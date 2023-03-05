@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Mar 1, 2023 8:59:53 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1677733193209</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Mar 2, 2023 6:13:49 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1677809629355</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>D:\CPEN391\l2b-25-forks\hardware\testWifiTouch\software\testWifiTouchVGA_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\cpu.sopcinfo</SopcDesignFile>

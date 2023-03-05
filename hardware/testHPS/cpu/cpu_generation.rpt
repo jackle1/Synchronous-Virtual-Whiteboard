@@ -1,0 +1,192 @@
+Info: Starting: Create block symbol file (.bsf)
+Info: qsys-generate D:\CPEN391\l2b-25-forks\hardware\testHPS\cpu.qsys --block-symbol-file --output-directory=D:\CPEN391\l2b-25-forks\hardware\testHPS\cpu --family="Cyclone V" --part=5CSEMA5F31C6
+Progress: Loading testHPS/cpu.qsys
+Progress: Reading input file
+Progress: Adding hps_0 [altera_hps 18.1]
+Progress: Parameterizing module hps_0
+Progress: Adding master_0 [altera_jtag_avalon_master 18.1]
+Progress: Parameterizing module master_0
+Progress: Adding pixel_buffer [altera_up_avalon_video_pixel_buffer_dma 18.0]
+Progress: Parameterizing module pixel_buffer
+Progress: Adding rgb_resampler [altera_up_avalon_video_rgb_resampler 18.0]
+Progress: Parameterizing module rgb_resampler
+Progress: Adding sdram_controller [altera_avalon_new_sdram_controller 18.1]
+Progress: Parameterizing module sdram_controller
+Progress: Adding sys_clk [altera_up_avalon_sys_sdram_pll 18.0]
+Progress: Parameterizing module sys_clk
+Progress: Adding touchscreen_uart [altera_up_avalon_rs232 17.1]
+Progress: Parameterizing module touchscreen_uart
+Progress: Adding vga_controller [altera_up_avalon_video_vga_controller 18.0]
+Progress: Parameterizing module vga_controller
+Progress: Adding video_dual_clock_buffer_0 [altera_up_avalon_video_dual_clock_buffer 18.0]
+Progress: Parameterizing module video_dual_clock_buffer_0
+Progress: Adding video_pll_0 [altera_up_avalon_video_pll 18.0]
+Progress: Parameterizing module video_pll_0
+Progress: Adding wifi_uart [altera_up_avalon_rs232 17.1]
+Progress: Parameterizing module wifi_uart
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: cpu.hps_0: HPS Main PLL counter settings: n = 0  m = 73
+Info: cpu.hps_0: HPS peripherial PLL counter settings: n = 0  m = 39
+Warning: cpu.hps_0: "Configuration/HPS-to-FPGA user 0 clock frequency" (desired_cfg_clk_mhz) requested 100.0 MHz, but only achieved 97.368421 MHz
+Warning: cpu.hps_0: "QSPI clock frequency" (desired_qspi_clk_mhz) requested 400.0 MHz, but only achieved 370.0 MHz
+Warning: cpu.hps_0: 1 or more output clock frequencies cannot be achieved precisely, consider revising desired output clock frequencies.
+Info: cpu.rgb_resampler: RGB Resampling: 16 (bits) x 1 (planes) -> 10 (bits) x 3 (planes)
+Info: cpu.sdram_controller: SDRAM Controller will only be supported in Quartus Prime Standard Edition in the future release.
+Info: cpu.sys_clk: Refclk Freq: 50.0
+Info: cpu.vga_controller: Video Output Stream: Format: 640 x 480 with Color: 10 (bits) x 3 (planes) converted to 8 (bits) per color plane
+Info: qsys-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: qsys-generate D:\CPEN391\l2b-25-forks\hardware\testHPS\cpu.qsys --synthesis=VERILOG --output-directory=D:\CPEN391\l2b-25-forks\hardware\testHPS\cpu\synthesis --family="Cyclone V" --part=5CSEMA5F31C6
+Progress: Loading testHPS/cpu.qsys
+Progress: Reading input file
+Progress: Adding hps_0 [altera_hps 18.1]
+Progress: Parameterizing module hps_0
+Progress: Adding master_0 [altera_jtag_avalon_master 18.1]
+Progress: Parameterizing module master_0
+Progress: Adding pixel_buffer [altera_up_avalon_video_pixel_buffer_dma 18.0]
+Progress: Parameterizing module pixel_buffer
+Progress: Adding rgb_resampler [altera_up_avalon_video_rgb_resampler 18.0]
+Progress: Parameterizing module rgb_resampler
+Progress: Adding sdram_controller [altera_avalon_new_sdram_controller 18.1]
+Progress: Parameterizing module sdram_controller
+Progress: Adding sys_clk [altera_up_avalon_sys_sdram_pll 18.0]
+Progress: Parameterizing module sys_clk
+Progress: Adding touchscreen_uart [altera_up_avalon_rs232 17.1]
+Progress: Parameterizing module touchscreen_uart
+Progress: Adding vga_controller [altera_up_avalon_video_vga_controller 18.0]
+Progress: Parameterizing module vga_controller
+Progress: Adding video_dual_clock_buffer_0 [altera_up_avalon_video_dual_clock_buffer 18.0]
+Progress: Parameterizing module video_dual_clock_buffer_0
+Progress: Adding video_pll_0 [altera_up_avalon_video_pll 18.0]
+Progress: Parameterizing module video_pll_0
+Progress: Adding wifi_uart [altera_up_avalon_rs232 17.1]
+Progress: Parameterizing module wifi_uart
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: cpu.hps_0: HPS Main PLL counter settings: n = 0  m = 73
+Info: cpu.hps_0: HPS peripherial PLL counter settings: n = 0  m = 39
+Warning: cpu.hps_0: "Configuration/HPS-to-FPGA user 0 clock frequency" (desired_cfg_clk_mhz) requested 100.0 MHz, but only achieved 97.368421 MHz
+Warning: cpu.hps_0: "QSPI clock frequency" (desired_qspi_clk_mhz) requested 400.0 MHz, but only achieved 370.0 MHz
+Warning: cpu.hps_0: 1 or more output clock frequencies cannot be achieved precisely, consider revising desired output clock frequencies.
+Info: cpu.rgb_resampler: RGB Resampling: 16 (bits) x 1 (planes) -> 10 (bits) x 3 (planes)
+Info: cpu.sdram_controller: SDRAM Controller will only be supported in Quartus Prime Standard Edition in the future release.
+Info: cpu.sys_clk: Refclk Freq: 50.0
+Info: cpu.vga_controller: Video Output Stream: Format: 640 x 480 with Color: 10 (bits) x 3 (planes) converted to 8 (bits) per color plane
+Info: cpu: Generating cpu "cpu" for QUARTUS_SYNTH
+Info: Interconnect is inserted between master master_0.master and slave hps_0.f2h_axi_slave because the master is of type avalon and the slave is of type axi.
+Warning: hps_0.f2h_irq0: Cannot connect clock for irq_mapper.sender
+Warning: hps_0.f2h_irq0: Cannot connect reset for irq_mapper.sender
+Warning: hps_0.f2h_irq1: Cannot connect clock for irq_mapper_001.sender
+Warning: hps_0.f2h_irq1: Cannot connect reset for irq_mapper_001.sender
+Info: hps_0: "Running  for module: hps_0"
+Info: hps_0: HPS Main PLL counter settings: n = 0  m = 73
+Info: hps_0: HPS peripherial PLL counter settings: n = 0  m = 39
+Warning: hps_0: "Configuration/HPS-to-FPGA user 0 clock frequency" (desired_cfg_clk_mhz) requested 100.0 MHz, but only achieved 97.368421 MHz
+Warning: hps_0: "QSPI clock frequency" (desired_qspi_clk_mhz) requested 400.0 MHz, but only achieved 370.0 MHz
+Warning: hps_0: 1 or more output clock frequencies cannot be achieved precisely, consider revising desired output clock frequencies.
+Info: hps_0: "cpu" instantiated altera_hps "hps_0"
+Info: master_0: "cpu" instantiated altera_jtag_avalon_master "master_0"
+Info: pixel_buffer: Starting Generation of VGA Pixel Buffer
+Info: pixel_buffer: "cpu" instantiated altera_up_avalon_video_pixel_buffer_dma "pixel_buffer"
+Info: rgb_resampler: Starting Generation of Video RGB Resampler
+Info: rgb_resampler: "cpu" instantiated altera_up_avalon_video_rgb_resampler "rgb_resampler"
+Info: sdram_controller: Starting RTL generation for module 'cpu_sdram_controller'
+Info: sdram_controller:   Generation command is [exec D:/programs/intelfpga_lite/18.1/quartus/bin64/perl/bin/perl.exe -I D:/programs/intelfpga_lite/18.1/quartus/bin64/perl/lib -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin/europa -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin/perl_lib -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin -I D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller -- D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller/generate_rtl.pl --name=cpu_sdram_controller --dir=C:/Users/ADMINI~1/AppData/Local/Temp/alt9418_7948923473334854777.dir/0110_sdram_controller_gen/ --quartus_dir=D:/programs/intelfpga_lite/18.1/quartus --verilog --config=C:/Users/ADMINI~1/AppData/Local/Temp/alt9418_7948923473334854777.dir/0110_sdram_controller_gen//cpu_sdram_controller_component_configuration.pl  --do_build_sim=0  ]
+Info: sdram_controller: Done RTL generation for module 'cpu_sdram_controller'
+Info: sdram_controller: "cpu" instantiated altera_avalon_new_sdram_controller "sdram_controller"
+Info: sys_clk: "cpu" instantiated altera_up_avalon_sys_sdram_pll "sys_clk"
+Info: touchscreen_uart: Starting Generation of RS232 UART
+Info: touchscreen_uart: "cpu" instantiated altera_up_avalon_rs232 "touchscreen_uart"
+Info: vga_controller: Starting Generation of VGA Controller
+Info: vga_controller: "cpu" instantiated altera_up_avalon_video_vga_controller "vga_controller"
+Info: video_dual_clock_buffer_0: Starting Generation of the Dual Clock Buffer
+Info: video_dual_clock_buffer_0: "cpu" instantiated altera_up_avalon_video_dual_clock_buffer "video_dual_clock_buffer_0"
+Info: video_pll_0: "cpu" instantiated altera_up_avalon_video_pll "video_pll_0"
+Info: wifi_uart: Starting Generation of RS232 UART
+Info: wifi_uart: "cpu" instantiated altera_up_avalon_rs232 "wifi_uart"
+Info: Reusing file D:/CPEN391/l2b-25-forks/hardware/testHPS/cpu/synthesis/submodules/altera_up_rs232_counters.v
+Info: Reusing file D:/CPEN391/l2b-25-forks/hardware/testHPS/cpu/synthesis/submodules/altera_up_rs232_in_deserializer.v
+Info: Reusing file D:/CPEN391/l2b-25-forks/hardware/testHPS/cpu/synthesis/submodules/altera_up_rs232_out_serializer.v
+Info: Reusing file D:/CPEN391/l2b-25-forks/hardware/testHPS/cpu/synthesis/submodules/altera_up_sync_fifo.v
+Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
+Info: mm_interconnect_0: "cpu" instantiated altera_mm_interconnect "mm_interconnect_0"
+Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_001: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_002: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_003: Inserting error_adapter: error_adapter_0
+Info: mm_interconnect_1: "cpu" instantiated altera_mm_interconnect "mm_interconnect_1"
+Info: mm_interconnect_2: "cpu" instantiated altera_mm_interconnect "mm_interconnect_2"
+Info: irq_mapper: "cpu" instantiated altera_irq_mapper "irq_mapper"
+Info: irq_mapper_001: "cpu" instantiated altera_irq_mapper "irq_mapper_001"
+Info: rst_controller: "cpu" instantiated altera_reset_controller "rst_controller"
+Info: fpga_interfaces: "hps_0" instantiated altera_interface_generator "fpga_interfaces"
+Info: hps_io: "hps_0" instantiated altera_hps_io "hps_io"
+Info: jtag_phy_embedded_in_jtag_master: "master_0" instantiated altera_jtag_dc_streaming "jtag_phy_embedded_in_jtag_master"
+Info: timing_adt: "master_0" instantiated timing_adapter "timing_adt"
+Info: fifo: "master_0" instantiated altera_avalon_sc_fifo "fifo"
+Info: b2p: "master_0" instantiated altera_avalon_st_bytes_to_packets "b2p"
+Info: p2b: "master_0" instantiated altera_avalon_st_packets_to_bytes "p2b"
+Info: transacto: "master_0" instantiated altera_avalon_packets_to_master "transacto"
+Info: b2p_adapter: "master_0" instantiated channel_adapter "b2p_adapter"
+Info: p2b_adapter: "master_0" instantiated channel_adapter "p2b_adapter"
+Info: sys_pll: "sys_clk" instantiated altera_pll "sys_pll"
+Info: reset_from_locked: "sys_clk" instantiated altera_up_avalon_reset_from_locked_signal "reset_from_locked"
+Info: video_pll: "video_pll_0" instantiated altera_pll "video_pll"
+Info: pixel_buffer_avalon_pixel_dma_master_translator: "mm_interconnect_0" instantiated altera_merlin_master_translator "pixel_buffer_avalon_pixel_dma_master_translator"
+Info: sdram_controller_s1_translator: "mm_interconnect_0" instantiated altera_merlin_slave_translator "sdram_controller_s1_translator"
+Info: hps_0_h2f_axi_master_agent: "mm_interconnect_0" instantiated altera_merlin_axi_master_ni "hps_0_h2f_axi_master_agent"
+Info: pixel_buffer_avalon_pixel_dma_master_agent: "mm_interconnect_0" instantiated altera_merlin_master_agent "pixel_buffer_avalon_pixel_dma_master_agent"
+Info: sdram_controller_s1_agent: "mm_interconnect_0" instantiated altera_merlin_slave_agent "sdram_controller_s1_agent"
+Info: router: "mm_interconnect_0" instantiated altera_merlin_router "router"
+Info: router_002: "mm_interconnect_0" instantiated altera_merlin_router "router_002"
+Info: router_003: "mm_interconnect_0" instantiated altera_merlin_router "router_003"
+Info: sdram_controller_s1_burst_adapter: "mm_interconnect_0" instantiated altera_merlin_burst_adapter "sdram_controller_s1_burst_adapter"
+Info: Reusing file D:/CPEN391/l2b-25-forks/hardware/testHPS/cpu/synthesis/submodules/altera_merlin_address_alignment.sv
+Info: Reusing file D:/CPEN391/l2b-25-forks/hardware/testHPS/cpu/synthesis/submodules/altera_avalon_st_pipeline_stage.sv
+Info: Reusing file D:/CPEN391/l2b-25-forks/hardware/testHPS/cpu/synthesis/submodules/altera_avalon_st_pipeline_base.v
+Info: cmd_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux"
+Info: cmd_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux"
+Info: rsp_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_demux"
+Info: rsp_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux"
+Info: Reusing file D:/CPEN391/l2b-25-forks/hardware/testHPS/cpu/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: hps_0_h2f_axi_master_wr_rsp_width_adapter: "mm_interconnect_0" instantiated altera_merlin_width_adapter "hps_0_h2f_axi_master_wr_rsp_width_adapter"
+Info: Reusing file D:/CPEN391/l2b-25-forks/hardware/testHPS/cpu/synthesis/submodules/altera_merlin_address_alignment.sv
+Info: Reusing file D:/CPEN391/l2b-25-forks/hardware/testHPS/cpu/synthesis/submodules/altera_merlin_burst_uncompressor.sv
+Info: avalon_st_adapter: "mm_interconnect_0" instantiated altera_avalon_st_adapter "avalon_st_adapter"
+Info: router: "mm_interconnect_1" instantiated altera_merlin_router "router"
+Info: router_002: "mm_interconnect_1" instantiated altera_merlin_router "router_002"
+Info: hps_0_h2f_lw_axi_master_wr_limiter: "mm_interconnect_1" instantiated altera_merlin_traffic_limiter "hps_0_h2f_lw_axi_master_wr_limiter"
+Info: Reusing file D:/CPEN391/l2b-25-forks/hardware/testHPS/cpu/synthesis/submodules/altera_avalon_sc_fifo.v
+Info: Reusing file D:/CPEN391/l2b-25-forks/hardware/testHPS/cpu/synthesis/submodules/altera_avalon_st_pipeline_base.v
+Info: cmd_demux: "mm_interconnect_1" instantiated altera_merlin_demultiplexer "cmd_demux"
+Info: cmd_mux: "mm_interconnect_1" instantiated altera_merlin_multiplexer "cmd_mux"
+Info: Reusing file D:/CPEN391/l2b-25-forks/hardware/testHPS/cpu/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: rsp_demux: "mm_interconnect_1" instantiated altera_merlin_demultiplexer "rsp_demux"
+Info: rsp_mux: "mm_interconnect_1" instantiated altera_merlin_multiplexer "rsp_mux"
+Info: Reusing file D:/CPEN391/l2b-25-forks/hardware/testHPS/cpu/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: avalon_st_adapter: "mm_interconnect_1" instantiated altera_avalon_st_adapter "avalon_st_adapter"
+Info: hps_0_f2h_axi_slave_agent: "mm_interconnect_2" instantiated altera_merlin_axi_slave_ni "hps_0_f2h_axi_slave_agent"
+Info: Reusing file D:/CPEN391/l2b-25-forks/hardware/testHPS/cpu/synthesis/submodules/altera_merlin_burst_uncompressor.sv
+Info: Reusing file D:/CPEN391/l2b-25-forks/hardware/testHPS/cpu/synthesis/submodules/altera_avalon_sc_fifo.v
+Info: Reusing file D:/CPEN391/l2b-25-forks/hardware/testHPS/cpu/synthesis/submodules/altera_merlin_address_alignment.sv
+Info: router: "mm_interconnect_2" instantiated altera_merlin_router "router"
+Info: router_001: "mm_interconnect_2" instantiated altera_merlin_router "router_001"
+Info: cmd_demux: "mm_interconnect_2" instantiated altera_merlin_demultiplexer "cmd_demux"
+Info: cmd_mux: "mm_interconnect_2" instantiated altera_merlin_multiplexer "cmd_mux"
+Info: Reusing file D:/CPEN391/l2b-25-forks/hardware/testHPS/cpu/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: rsp_demux: "mm_interconnect_2" instantiated altera_merlin_demultiplexer "rsp_demux"
+Info: rsp_mux: "mm_interconnect_2" instantiated altera_merlin_multiplexer "rsp_mux"
+Info: Reusing file D:/CPEN391/l2b-25-forks/hardware/testHPS/cpu/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: border: "hps_io" instantiated altera_interface_generator "border"
+Info: error_adapter_0: "avalon_st_adapter" instantiated error_adapter "error_adapter_0"
+Info: error_adapter_0: "avalon_st_adapter" instantiated error_adapter "error_adapter_0"
+Info: cpu: Done "cpu" with 64 modules, 136 files
+Info: qsys-generate succeeded.
+Info: Finished: Create HDL design files for synthesis

@@ -1,4 +1,5 @@
 #include "sys/alt_stdio.h"
+#include <stdio.h>
 #include "system.h"
 
 unsigned char getUart (volatile unsigned char * uart);
@@ -32,6 +33,7 @@ int main()
 		  {
 			  unsigned short x, y, vga_x, vga_y;
         getTouchscreenCoords(TOUCHSCREEN_UART, &x, &y);
+        //printf("Hi mary %d\n", x);
         translateTouchscreenVGACoords(&x, &vga_x, &y, &vga_y);
         paintPixel(VGA_BASE, vga_x, vga_y, COLOUR_BLACK);
 		  }

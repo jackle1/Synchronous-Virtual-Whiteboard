@@ -13,7 +13,7 @@ ws:on("close", function(_, status)
   print('connection closed', status)
   ws = nil -- required to Lua gc the websocket client
 end)
-ws:connect("ws://192.168.1.90:3001")
+ws:connect("ws://192.168.137.1:8080")
 print("CONNECTED TO ", SERVER)
 if (ws) then
     ws:close()
