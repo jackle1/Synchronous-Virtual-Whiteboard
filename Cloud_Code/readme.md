@@ -49,9 +49,11 @@ This is just a example, you need to enter the information as per your needs besi
 
 In this, the control of action is controlled by the value in request_for header.
 These are the values for request_for that are supported
+```
 0: Create new room
 1: Update pixels at the server
 2: Sign out 
+```
 
 Even though, you may not have the values to the header at the moment, for example in creating a new room, just put appropriate garbage value of the right type of the variable.
 For example, 
