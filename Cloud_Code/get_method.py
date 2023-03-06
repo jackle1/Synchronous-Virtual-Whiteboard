@@ -23,7 +23,7 @@ The response looks something like this
 
 '''
 
-def lambda_handler(event: any, context: any):
+def lambda_handler(event, context):
 
     if checking(event) == -1:
         return wrong_arguments("The Parameters given to the rquest are wrong. Please follow the type or the numebr of parameters required!")
@@ -60,6 +60,9 @@ def lambda_handler(event: any, context: any):
     # If we are at here, we know that everything went well
     # Lets get the members list in this room 
     members = response_table["Item"]["members"]
+    if members == None:
+        members = set()
+        print("Here")
     if user not in members:
         members.add(user)
         # Lets update the table about this new user
@@ -68,7 +71,9 @@ def lambda_handler(event: any, context: any):
                           ExpressionAttributeValues = {":newmembers": members},
                         ReturnValues="UPDATED_NEW"
         )
-    
+    # Sending the active members on this room 
+    response["members"] = members
+
     return response
 
 def checking(event):
@@ -86,6 +91,18 @@ def checking(event):
 def wrong_arguments(message):
     return{
             "statusCode": 404,
-            "error" : json.dumps(message)
+            "error" : (message)
          }
+
+
+if __name__ == "__main__":
+    os.environ["TABLE_NAME"] = "Cpen391"
+
+    test_event = {
+	"password": 2361,
+	"member": "Ranbir",
+	"roomID": 2
+}
+    result = lambda_handler(test_event, None)
+    print(result)
     

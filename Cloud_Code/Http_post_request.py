@@ -3,6 +3,9 @@ import os
 import json
 import random
 
+# This is the dimension of the array m x n pixels
+m = 2
+n = 2
 
 def lambda_handler(event: any, context: any):
 
@@ -15,6 +18,10 @@ def lambda_handler(event: any, context: any):
     R_values = event["R-values"]
     G_values = event["G-values"]
     B_values = event["B-values"]
+    x = event['x']
+    y = event['y']
+
+
 
     # Over here request-for means 0 : Create a new room and 1 : Update the pixels for a existing room and 2 : User wants to sign out
     request_for = event["request-for"]
@@ -39,6 +46,24 @@ def lambda_handler(event: any, context: any):
         pasword = random.randrange(1000, 10000)
         members = {member}
 
+        # Making a new Array of size m and n
+        R_array = []
+        G_array = []
+        B_array = []
+        for i in range(m):
+            tmp = []
+            for j in range(n):
+                # Putting white background
+                tmp.append(100)
+            R_array.append(tmp)
+            G_array.append(tmp)
+            B_array.append(tmp)
+
+                
+        R_values = R_array
+        G_values = G_array
+        B_values = B_array
+
         # Creating and putting this new room
         table.put_item(
             Item={
@@ -56,6 +81,9 @@ def lambda_handler(event: any, context: any):
         response["new_room_id"] = room_id
         response["new_password"] = pasword
         response['members'] = members
+        response["R_values"] = R_values
+        response["G_values"] = G_values
+        response["B-values"] = B_values
 
         return response
     
@@ -74,19 +102,31 @@ def lambda_handler(event: any, context: any):
                 if member not in response_table["Item"]["members"]:
                     return wrong_arguments("You are not a member in this room, first please sign in!")
                 
+                # First getting the pixel
+                R = response_table["Item"]["R_values"]
+                G = response_table["Item"]["G_values"]
+                B = response_table["Item"]["B_values"]
+
+                # Updating the local copy of the pixels
+                R[x][y] = R_values[0]
+                G[x][y] = G_values[0]
+                B[x][y] = B_values[0]
+                
+                # I am updating the pixels here
                 table.put_item(
                     Item={
                         'room_id': roomID,
                         'room_password': password,
                         'members': response_table["Item"]["members"],
-                        'R_values': R_values,
-                        'G_values': G_values,
-                        'B_values': B_values
+                        'R_values': R,
+                        'G_values': G,
+                        'B_values': B
                     }
                 )
                 return {
                     'stausCode': 200,
-                    'message': json.dumps("The server has been updated!")
+                    'message': ("The server has been updated!"),
+                    'members': (list(response_table["Item"]["members"]))
                 }
             else:
                 return wrong_arguments("Password for the room isnt correct, please try again!")
@@ -98,13 +138,17 @@ def lambda_handler(event: any, context: any):
         response_table = table.get_item(Key={"room_id": roomID})
         response = {
             'statusCode': 200,
-            'Message': json.dumps("Sign out completed!")
+            'Message': ("Sign out completed!")
         }
+        if response_table["Item"]["members"] == None:
+            pass
 
-        if "Item" in response_table:
+        elif "Item" in response_table:
             if member in response_table["Item"]["members"]:
                     members = response_table["Item"]["members"]
                     members.remove(member)
+                    if len(members) == 0:
+                        members = None
                     # Update the member list on server
                     table.update_item(Key={"room_id": roomID},
                             UpdateExpression = "set members = :newmembers",
@@ -121,8 +165,10 @@ def checking(event):
     G_values = event.get("G-values", None)
     B_values = event.get("B-values", None)
     request_for = event.get("request-for", None)
+    x = event.get('x', None)
+    y = event.get('y', None)
     
-    if password == None or roomID == None or member == None or R_values == None or G_values == None or B_values == None or request_for == None :
+    if password == None or roomID == None or member == None or R_values == None or G_values == None or B_values == None or request_for == None or x == None or y == None :
         return -1
 
     if type(password) != int or type(roomID) != int or type(member) != str or type(R_values) != list or type(G_values) != list or type(B_values) != list or type(request_for) != int :
@@ -130,12 +176,30 @@ def checking(event):
 
     if request_for != 0 and request_for != 1 and request_for != 2:
         return -1
+    if x < 0 or y < 0 or x >= m or y >= n:
+        return -1
     
     return 1
 
 def wrong_arguments(message):
     return{
             "statusCode": 404,
-            "error" : json.dumps(message)
-         }
+            "error" : message
+        }
+    
+if __name__ == "__main__":
+    os.environ["TABLE_NAME"] = "Cpen391"
+    test_event = {
+                "member": "Ranbir",
+                  "roomID": 2,
+                  "password": 2361,
+                  "R-values" : [1],
+                  "G-values" : [1],
+                  "B-values" : [1],
+                  "request-for": 0,
+                  "x": 1,
+                  "y": 1
+                }
+    result = lambda_handler(test_event, None)
+    print(result)
     
