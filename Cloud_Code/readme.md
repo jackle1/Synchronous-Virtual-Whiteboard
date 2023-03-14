@@ -21,7 +21,7 @@ https://hbzwo0rl65.execute-api.us-east-1.amazonaws.com/dev/cpen391?RoomID=????
 You can see the sample result below
 
 ```
-https://hbzwo0rl65.execute-api.us-east-1.amazonaws.com/dev/cpen391?RoomID=4187&User=Ranbir
+https://hbzwo0rl65.execute-api.us-east-1.amazonaws.com/dev/cpen391?RoomID=8862&User=Ranbir
 {"statusCode": 200, "R-values": [[100, 100], [100, 1]], "G-values": [[100, 100], [100, 1]], "B-values": [[100, 100], [100, 1]], "members": ["De1-Soc"]}
 ```
 ### POST body requirements
