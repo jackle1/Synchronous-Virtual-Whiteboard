@@ -31,15 +31,13 @@ https://hbzwo0rl65.execute-api.us-east-1.amazonaws.com/dev/cpen391
 
 *Requirements for body are*:
 ```
-data = {
-                "member": "Ranbir",
-                  "roomID": 4187,
-                  "R-values" : 1,
-                  "G-values" : 1,
-                  "B-values" : 1,
+{
+                  "member": "Ranbir",
+                  "roomID": 8862,
+                  'RGB': 121212,
                   "request-for": 1,
-                  "x": 0,
-                  "y": 0
+                  "x": 1,
+                  "y": 1
                 }
 ```
 
