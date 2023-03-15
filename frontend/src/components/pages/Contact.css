@@ -1,0 +1,42 @@
+ .contact-container {
+    background: url('/public/images/contactform.jpg') center center/cover no-repeat;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+    object-fit: contain;
+  } 
+  
+  
+  .contact-container > h1 {
+    color: #fff;
+    text-shadow:0 0 5px #000;
+    font-size: 100px;
+    margin-top: 20px;
+    align-self: center;
+  }
+  
+  .contact-container > p {
+    margin-top: 8px;
+    color: #fff;
+    font-size: 32px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+      'Lucida Sans', Arial, sans-serif;
+  }
+
+  .textbox {
+    height:50px;
+    font-size:14pt;
+    margin-top: 8px;
+  }
+
+  .messagebox {
+    height:150px;
+    width: 400px;
+    font-size:14pt;
+    margin-top: 8px;
+  }
+  

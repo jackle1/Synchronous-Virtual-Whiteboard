@@ -1,84 +1,66 @@
 import boto3
 import os
 import json
+import csv
+from io import StringIO
 
-'''
-Hello, this multi-line comment is for my fellow team mates on what to send for the database on the server
-This is the file for Http GET request
-Make the GET request on https://hbzwo0rl65.execute-api.us-east-1.amazonaws.com/dev/cpen391
-Follow the request body as follows
-    test_event = {
-                    "password": 1234,
-                    "member": "Ranbir",
-                    "roomID": 0
-                }
-This will return a http response on the r,b,g values.
-The response looks something like this 
-    response = {
-        'statusCode' = ____ (Depends if it was a succefull execution or not)
-        'R-values' = ___
-        'G-values' = ___
-        'B-values' = ___
-    }
+s3 = boto3.client('s3')
 
-'''
+def lambda_handler(event, context):
 
-def lambda_handler(event: any, context: any):
+    # if checking(event) == -1:
+    #     return wrong_arguments("The Parameters given to the rquest are wrong. Please follow the type or the numebr of parameters required!")
 
-    if checking(event) == -1:
-        return wrong_arguments("The Parameters given to the rquest are wrong. Please follow the type or the numebr of parameters required!")
+    # param = event['params']
+    # event = param['querystring']
 
-    user: str = event["member"]
-    room_id = event["roomID"]
-    room_password: int = event['password']
+
+    member = event.get('member', "De1-Soc")
+    room_password: int = int(event['RoomID'])
 
     # Prepare the DynamoDB client
     dynamodb = boto3.resource("dynamodb")
     table_name = os.environ["TABLE_NAME"]
     table = dynamodb.Table(table_name)
 
-    # Get the table with the primary key as room_id
-    response_table = table.get_item(Key={"room_id": room_id})
-    response = {}
+    # Finding the room with the password as given in the request header
+    tables = table.scan()
 
-
-    # If a room exists then we check if the password match
-    if "Item" in response_table:
-        password = response_table["Item"]["room_password"]
-        if password == room_password:
-            # If the password also match that means, we can give back the response with the r, g, b values
-            response["statusCode"] = 200
-            response["R-values"]  = response_table["Item"]["R_values"]
-            response["G-values"]  = response_table["Item"]["G_values"]
-            response["B-values"]  = response_table["Item"]["B_values"]
-        else:
-            return wrong_arguments("Password for the room isnt correct, please try again!")
-    else:
-        return wrong_arguments("Room_id given doesnt exist!")
-
-
-    # If we are at here, we know that everything went well
-    # Lets get the members list in this room 
-    members = response_table["Item"]["members"]
-    if user not in members:
-        members.add(user)
-        # Lets update the table about this new user
-        table.update_item(Key={"room_id": room_id},
+    # Finding if the password matches
+    for data in tables["Items"]:
+        if data["room_password"] == room_password:
+            # Found the table data we wanted 
+            members = data["members"]
+            if member not in members:
+                members.add(member)
+                # Updating the server as well 
+                table.update_item(Key={"room_id": data["room_id"]},
                           UpdateExpression = "set members = :newmembers",
                           ExpressionAttributeValues = {":newmembers": members},
                         ReturnValues="UPDATED_NEW"
-        )
-    
-    return response
+                )
+            
+
+
+            response = {}
+            response["statusCode"] = 200
+            response["RGB"] = get_values()
+            response["members"] = list(members)
+            return response
+        
+    # At this point, we know the data isnt in the server with the matching room_password
+    return {
+        "statusCode": 404,
+        "Error": "No such room exists"
+    }
 
 def checking(event):
-    password = event.get('password', None)
-    roomID = event.get('roomID', None)
-    member = event.get('member', None)
+    password = event.get('RoomID', None)
+    member = event.get('member', "De1-Soc")
     
-    if password == None or roomID == None or member == None:
+    if password == None or member == None:
         return -1
-    if type(password) != int or type(roomID) != int or type(member) != str:
+    if type(password) != int or type(member) != str:
         return -1
     
     return 1
@@ -86,6 +68,36 @@ def checking(event):
 def wrong_arguments(message):
     return{
             "statusCode": 404,
-            "error" : json.dumps(message)
+            "error" : message
          }
+
+def get_values():
+    bucket_name = 'cpen391'
+    file_key = '/tmp/roomID_8862.csv'
+
+    # Retrieve the CSV file from S3
+    s3_object = s3.get_object(Bucket=bucket_name, Key=file_key)
+    csv_content = s3_object['Body'].read().decode('utf-8')
+
+    # Process the CSV data
+    csv_reader = csv.reader(StringIO(csv_content))
+    rows = []
+    for row in csv_reader:
+        # Convert the row to integers and append it to the list
+        int_row = [int(x) for x in row]
+        rows.append(int_row)
+
+    # Return the integer 2D array
+    return rows
+
+if __name__ == "__main__":
+    os.environ["TABLE_NAME"] = "Cpen391"
+
+    test_event = {
+	"RoomID": 8862,
+	"member": "Ranbir",
+
+}
+    result = lambda_handler(test_event, None)
+    print(result)
     

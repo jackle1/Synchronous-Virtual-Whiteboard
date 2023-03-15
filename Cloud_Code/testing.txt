@@ -1,6 +1,5 @@
-For GET Request,
+POST body requirement for getting the values from the server 
 
-A Normal One 
 {
 	"password": 1234,
 	"member": "Ranbir",
@@ -8,95 +7,20 @@ A Normal One
 }
 
 
-Wrong Room_ID
+
+POST body requirement for putting stuff to the servers
+Request_for controls what action to be done at the server
+0: Create new room
+1: Update pixels at the server
+2: Sign out 
 {
-	"password": 1234,
-	"member": "Ranbir",
-	"roomID": 12
-}
-
-Wrong Password
-
-{
-	"password": 12,
-	"member": "Ranbir",
-	"roomID": 0
-}
-
-Another Room that was created 
-{
-	"password": 2922,
-	"member": "Ranbir",
-	"roomID": 1
-}
-
-
-
-
-For POST Request,
-
-Parameter are wrong
-{
-	"password": 2922,
-	"member": "Ranbir",
-	"roomID": 1
-}
-
-Wrong datatype of parameter
-{
-  "member": "local_pixegami",
-  "roomID": "0",
-  "password": "1234",
-  "R-values" : [121212121, 1212121212],
-  "G-values" : [1,2],
-  "B-values" : [1,2],
-  "request-for": 2
-}
-
-{
-  "member": "local_pixegami",
-  "roomID": 0,
-  "password": 1234,
-  "R-values" : [121212121, 1212121212],
-  "G-values" : [1,2],
-  "B-values" : [1,2],
-  "request-for": 4
-}
-
-
-
-0 : Create a new room 
-{
-	"member": "local_pixegami",
-  "roomID": 1,
-  "password": 1930,
-  "R-values" : [2222],
-  "G-values" : [1,2],
-  "B-values" : [1,2],
-  "request-for": 0
-}
-
-1 : Update pixels
-Sign in required
-{
-	"member": "local_pixegami",
-  "roomID": 1,
-  "password": 1930,
-  "R-values" : [2222],
-  "G-values" : [1,2],
-  "B-values" : [1,2],
-  "request-for": 0
-}
-
-
-2 : Sign out 
-{
-  "member": "local_pixegami",
-  "roomID": 0,
-  "password": 1234,
-  "R-values" : [121212121, 1212121212],
-  "G-values" : [1,2],
-  "B-values" : [1,2],
-  "request-for": 2
-}
-
+    "member": "Ranbir",
+      "roomID": 2,
+      "password": 2361,
+      "R-values" : [1],
+      "G-values" : [1],
+      "B-values" : [1],
+      "request-for": 2,
+      "x": 1,
+      "y": 1
+};

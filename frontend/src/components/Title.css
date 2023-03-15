@@ -1,0 +1,47 @@
+.title-container {
+    background: url('/public/images/scribble-background.jpg') center center/cover no-repeat;
+    height: 30vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center;
+    align-items: center; */
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.1);
+    object-fit: contain;
+    border-bottom: solid;
+    border-bottom-width: 0.5vh;
+  }
+  
+  .title-container > h1 {
+    color: #fff;
+    font-size: 100px;
+    text-shadow: 0 0 5px #000;
+    margin-top: 55px;
+    align-self: center;
+  }
+  
+  .title-container > p {
+    margin-top: 200px;
+    color: #000;
+    padding-left: 200px;
+    padding-right: 200px;
+    text-shadow: 0 0 5px #fff;
+    font-size: 32px;
+    align-self: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+      'Lucida Sans', Arial, sans-serif;
+  }
+
+  .title-description {
+    margin-top: 50px;
+    padding-bottom: 100px;
+    color: #000;
+    padding-left: 200px;
+    padding-right: 200px;
+    text-shadow: 0 0 5px #fff;
+    font-size: 32px;
+    align-self: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+      'Lucida Sans', Arial, sans-serif;
+  }
+  

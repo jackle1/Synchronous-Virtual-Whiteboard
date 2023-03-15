@@ -28,7 +28,6 @@ def lambda_handler(event: any, context: any):
         tmp = table.scan()
         room_id = -1
         for data in tmp["Items"]:
-            print(data)
             if room_id < data['room_id']:
                 room_id = data['room_id']
         
