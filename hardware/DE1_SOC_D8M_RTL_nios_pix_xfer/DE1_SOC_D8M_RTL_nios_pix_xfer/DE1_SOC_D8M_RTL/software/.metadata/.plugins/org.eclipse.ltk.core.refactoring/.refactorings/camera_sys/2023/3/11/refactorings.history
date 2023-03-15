@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;camera_sys/camera_pix_xfer.c&apos; to &apos;camera_pixel_xfer.c&apos;" description="Rename resource &apos;camera_pix_xfer.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="camera_pix_xfer.c" name="camera_pixel_xfer.c" stamp="1678911751586" updateReferences="true"/>
+</session>
