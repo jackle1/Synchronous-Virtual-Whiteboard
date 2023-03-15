@@ -1,5 +1,8 @@
 import requests
 import json
+import time
+
+start_time = time.time()
 
 url = "https://hbzwo0rl65.execute-api.us-east-1.amazonaws.com/dev/cpen391"
 
@@ -12,15 +15,12 @@ url = "https://hbzwo0rl65.execute-api.us-east-1.amazonaws.com/dev/cpen391"
 # }
 
 data = {
-                "member": "Ranbir",
-                  "roomID": 2,
-                  "password": 5277,
-                  "R-values" : [1],
-                  "G-values" : [1],
-                  "B-values" : [1],
+                  "member": "Ranbir",
+                  "roomID": 8862,
+                  'RGB': 12,
                   "request-for": 1,
-                  "x": 0,
-                  "y": 0
+                  "x": 1,
+                  "y": 1
                 }
 
 # Convert the data to a JSON string
@@ -41,3 +41,8 @@ if response.status_code == 200:
 else:
     # handle error cases
     print("Error:", response.status_code)
+
+end_time = time.time()
+elapsed_time = end_time - start_time
+
+print(f"Elapsed time: {elapsed_time:.2f} seconds")

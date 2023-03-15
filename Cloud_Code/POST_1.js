@@ -7,11 +7,12 @@ const data =
 };
 
 
-
-fetch(url, {
+var e = fetch(url, {
   method: 'POST',
   body: JSON.stringify(data)
 })
   .then(response => response.json())
   .then(data => console.log(data))
   .catch(error => console.error(error));
+
+console.log(e)
