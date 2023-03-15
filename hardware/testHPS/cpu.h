@@ -32,18 +32,6 @@
 #define PIXEL_BUFFER_END 0xf
 
 /*
- * Macros for device 'wifi_uart', class 'altera_up_avalon_rs232'
- * The macros are prefixed with 'WIFI_UART_'.
- * The prefix is the slave descriptor.
- */
-#define WIFI_UART_COMPONENT_TYPE altera_up_avalon_rs232
-#define WIFI_UART_COMPONENT_NAME wifi_uart
-#define WIFI_UART_BASE 0x10
-#define WIFI_UART_SPAN 8
-#define WIFI_UART_END 0x17
-#define WIFI_UART_IRQ 1
-
-/*
  * Macros for device 'touchscreen_uart', class 'altera_up_avalon_rs232'
  * The macros are prefixed with 'TOUCHSCREEN_UART_'.
  * The prefix is the slave descriptor.
@@ -65,6 +53,78 @@
 #define RGB_RESAMPLER_BASE 0x20
 #define RGB_RESAMPLER_SPAN 4
 #define RGB_RESAMPLER_END 0x23
+
+/*
+ * Macros for device 'switches_pio', class 'altera_avalon_pio'
+ * The macros are prefixed with 'SWITCHES_PIO_'.
+ * The prefix is the slave descriptor.
+ */
+#define SWITCHES_PIO_COMPONENT_TYPE altera_avalon_pio
+#define SWITCHES_PIO_COMPONENT_NAME switches_pio
+#define SWITCHES_PIO_BASE 0x30
+#define SWITCHES_PIO_SPAN 16
+#define SWITCHES_PIO_END 0x3f
+#define SWITCHES_PIO_BIT_CLEARING_EDGE_REGISTER 0
+#define SWITCHES_PIO_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define SWITCHES_PIO_CAPTURE 0
+#define SWITCHES_PIO_DATA_WIDTH 10
+#define SWITCHES_PIO_DO_TEST_BENCH_WIRING 0
+#define SWITCHES_PIO_DRIVEN_SIM_VALUE 0
+#define SWITCHES_PIO_EDGE_TYPE NONE
+#define SWITCHES_PIO_FREQ 50000000
+#define SWITCHES_PIO_HAS_IN 1
+#define SWITCHES_PIO_HAS_OUT 0
+#define SWITCHES_PIO_HAS_TRI 0
+#define SWITCHES_PIO_IRQ_TYPE NONE
+#define SWITCHES_PIO_RESET_VALUE 0
+
+/*
+ * Macros for device 'buttons_pio', class 'altera_avalon_pio'
+ * The macros are prefixed with 'BUTTONS_PIO_'.
+ * The prefix is the slave descriptor.
+ */
+#define BUTTONS_PIO_COMPONENT_TYPE altera_avalon_pio
+#define BUTTONS_PIO_COMPONENT_NAME buttons_pio
+#define BUTTONS_PIO_BASE 0x40
+#define BUTTONS_PIO_SPAN 16
+#define BUTTONS_PIO_END 0x4f
+#define BUTTONS_PIO_BIT_CLEARING_EDGE_REGISTER 0
+#define BUTTONS_PIO_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define BUTTONS_PIO_CAPTURE 0
+#define BUTTONS_PIO_DATA_WIDTH 4
+#define BUTTONS_PIO_DO_TEST_BENCH_WIRING 0
+#define BUTTONS_PIO_DRIVEN_SIM_VALUE 0
+#define BUTTONS_PIO_EDGE_TYPE NONE
+#define BUTTONS_PIO_FREQ 50000000
+#define BUTTONS_PIO_HAS_IN 1
+#define BUTTONS_PIO_HAS_OUT 0
+#define BUTTONS_PIO_HAS_TRI 0
+#define BUTTONS_PIO_IRQ_TYPE NONE
+#define BUTTONS_PIO_RESET_VALUE 0
+
+/*
+ * Macros for device 'hexes_pio', class 'altera_avalon_pio'
+ * The macros are prefixed with 'HEXES_PIO_'.
+ * The prefix is the slave descriptor.
+ */
+#define HEXES_PIO_COMPONENT_TYPE altera_avalon_pio
+#define HEXES_PIO_COMPONENT_NAME hexes_pio
+#define HEXES_PIO_BASE 0x50
+#define HEXES_PIO_SPAN 16
+#define HEXES_PIO_END 0x5f
+#define HEXES_PIO_BIT_CLEARING_EDGE_REGISTER 0
+#define HEXES_PIO_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define HEXES_PIO_CAPTURE 0
+#define HEXES_PIO_DATA_WIDTH 28
+#define HEXES_PIO_DO_TEST_BENCH_WIRING 0
+#define HEXES_PIO_DRIVEN_SIM_VALUE 0
+#define HEXES_PIO_EDGE_TYPE NONE
+#define HEXES_PIO_FREQ 50000000
+#define HEXES_PIO_HAS_IN 0
+#define HEXES_PIO_HAS_OUT 1
+#define HEXES_PIO_HAS_TRI 0
+#define HEXES_PIO_IRQ_TYPE NONE
+#define HEXES_PIO_RESET_VALUE 268435455
 
 /*
  * Macros for device 'sdram_controller', class 'altera_avalon_new_sdram_controller'

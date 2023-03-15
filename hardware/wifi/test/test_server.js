@@ -3,6 +3,7 @@
 const express = require("express");
 const WebSocket = require("ws");
 const http = require("http");
+const path = require('path')
 
 const PORT = process.env.PORT || 8080;
 
@@ -23,6 +24,11 @@ app.post('/test', (req, res) => {
     let y = req.body.substring(4, 8);
     console.log(`Got Post with: (${x}, ${y}) ${req.body}; Will send: ${toSend}`);
     return res.status(200).set('Content-Type', 'text/plain').send(String.fromCharCode(toSend));
+});
+
+app.get('/file', (req, res) => {
+    const filepath = path.join(__dirname, 'room_number.bin');
+    res.sendFile(filepath);
 });
 
 io.on('connection',function(ws,req){

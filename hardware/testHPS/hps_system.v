@@ -230,8 +230,6 @@ module hps_system (
 
         .touch_uart_RXD(GPIO_1[31]),            // touchscreen_uart.rxd
 		.touch_uart_TXD(GPIO_1[30]),            //                 .txd
-		.wifi_uart_RXD(GPIO_1[35]),                   //        wifi_uart.rxd
-		.wifi_uart_TXD(GPIO_1[34]),                    //                 .txd
 
         .vga_CLK(VGA_CLK),
         .vga_HS(VGA_HS),
@@ -252,7 +250,13 @@ module hps_system (
         .sdram_dqm({DRAM_UDQM, DRAM_LDQM}),
         .sdram_ras_n(DRAM_RAS_N),
         .sdram_we_n(DRAM_WE_N),
+        .buttons_export(KEY),
+        .switches_export(SW),
+        .hexes_export({HEX3, HEX2, HEX1, HEX0})
     );
+
+    assign HEX4 = 7'h7F;
+    assign HEX5= 7'h7F;
 		
 
 endmodule

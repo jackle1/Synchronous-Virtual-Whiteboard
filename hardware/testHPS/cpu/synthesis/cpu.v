@@ -4,7 +4,9 @@
 
 `timescale 1 ps / 1 ps
 module cpu (
+		input  wire [3:0]  buttons_export,                  //    buttons.export
 		input  wire        clk_clk,                         //        clk.clk
+		output wire [27:0] hexes_export,                    //      hexes.export
 		output wire        hps_io_hps_io_emac1_inst_TX_CLK, //     hps_io.hps_io_emac1_inst_TX_CLK
 		output wire        hps_io_hps_io_emac1_inst_TXD0,   //           .hps_io_emac1_inst_TXD0
 		output wire        hps_io_hps_io_emac1_inst_TXD1,   //           .hps_io_emac1_inst_TXD1
@@ -88,6 +90,7 @@ module cpu (
 		output wire        sdram_ras_n,                     //           .ras_n
 		output wire        sdram_we_n,                      //           .we_n
 		output wire        sdram_clk_clk,                   //  sdram_clk.clk
+		input  wire [9:0]  switches_export,                 //   switches.export
 		input  wire        touch_uart_RXD,                  // touch_uart.RXD
 		output wire        touch_uart_TXD,                  //           .TXD
 		output wire        vga_CLK,                         //        vga.CLK
@@ -97,9 +100,7 @@ module cpu (
 		output wire        vga_SYNC,                        //           .SYNC
 		output wire [7:0]  vga_R,                           //           .R
 		output wire [7:0]  vga_G,                           //           .G
-		output wire [7:0]  vga_B,                           //           .B
-		input  wire        wifi_uart_RXD,                   //  wifi_uart.RXD
-		output wire        wifi_uart_TXD                    //           .TXD
+		output wire [7:0]  vga_B                            //           .B
 	);
 
 	wire         video_dual_clock_buffer_0_avalon_dc_buffer_source_valid;          // video_dual_clock_buffer_0:stream_out_valid -> vga_controller:valid
@@ -117,7 +118,7 @@ module cpu (
 	wire         rgb_resampler_avalon_rgb_source_ready;                            // video_dual_clock_buffer_0:stream_in_ready -> rgb_resampler:stream_out_ready
 	wire         rgb_resampler_avalon_rgb_source_startofpacket;                    // rgb_resampler:stream_out_startofpacket -> video_dual_clock_buffer_0:stream_in_startofpacket
 	wire         rgb_resampler_avalon_rgb_source_endofpacket;                      // rgb_resampler:stream_out_endofpacket -> video_dual_clock_buffer_0:stream_in_endofpacket
-	wire         sys_clk_sys_clk_clk;                                              // sys_clk:sys_clk_clk -> [hps_0:f2h_axi_clk, hps_0:h2f_axi_clk, hps_0:h2f_lw_axi_clk, master_0:clk_clk, mm_interconnect_0:sys_clk_sys_clk_clk, mm_interconnect_1:sys_clk_sys_clk_clk, mm_interconnect_2:sys_clk_sys_clk_clk, pixel_buffer:clk, rgb_resampler:clk, rst_controller:clk, rst_controller_002:clk, sdram_controller:clk, touchscreen_uart:clk, video_dual_clock_buffer_0:clk_stream_in, video_pll_0:ref_clk_clk, wifi_uart:clk]
+	wire         sys_clk_sys_clk_clk;                                              // sys_clk:sys_clk_clk -> [buttons_pio:clk, hexes_pio:clk, hps_0:f2h_axi_clk, hps_0:h2f_axi_clk, hps_0:h2f_lw_axi_clk, master_0:clk_clk, mm_interconnect_0:sys_clk_sys_clk_clk, mm_interconnect_1:sys_clk_sys_clk_clk, mm_interconnect_2:sys_clk_sys_clk_clk, pixel_buffer:clk, rgb_resampler:clk, rst_controller:clk, rst_controller_002:clk, sdram_controller:clk, switches_pio:clk, touchscreen_uart:clk, video_dual_clock_buffer_0:clk_stream_in, video_pll_0:ref_clk_clk]
 	wire         video_pll_0_vga_clk_clk;                                          // video_pll_0:vga_clk_clk -> [rst_controller_001:clk, vga_controller:clk, video_dual_clock_buffer_0:clk_stream_out]
 	wire         sys_clk_reset_source_reset;                                       // sys_clk:reset_source_reset -> [master_0:clk_reset_reset, rst_controller:reset_in0, video_pll_0:ref_reset_reset]
 	wire         pixel_buffer_avalon_pixel_dma_master_waitrequest;                 // mm_interconnect_0:pixel_buffer_avalon_pixel_dma_master_waitrequest -> pixel_buffer:master_waitrequest
@@ -222,13 +223,15 @@ module cpu (
 	wire   [3:0] mm_interconnect_1_touchscreen_uart_avalon_rs232_slave_byteenable; // mm_interconnect_1:touchscreen_uart_avalon_rs232_slave_byteenable -> touchscreen_uart:byteenable
 	wire         mm_interconnect_1_touchscreen_uart_avalon_rs232_slave_write;      // mm_interconnect_1:touchscreen_uart_avalon_rs232_slave_write -> touchscreen_uart:write
 	wire  [31:0] mm_interconnect_1_touchscreen_uart_avalon_rs232_slave_writedata;  // mm_interconnect_1:touchscreen_uart_avalon_rs232_slave_writedata -> touchscreen_uart:writedata
-	wire         mm_interconnect_1_wifi_uart_avalon_rs232_slave_chipselect;        // mm_interconnect_1:wifi_uart_avalon_rs232_slave_chipselect -> wifi_uart:chipselect
-	wire  [31:0] mm_interconnect_1_wifi_uart_avalon_rs232_slave_readdata;          // wifi_uart:readdata -> mm_interconnect_1:wifi_uart_avalon_rs232_slave_readdata
-	wire   [0:0] mm_interconnect_1_wifi_uart_avalon_rs232_slave_address;           // mm_interconnect_1:wifi_uart_avalon_rs232_slave_address -> wifi_uart:address
-	wire         mm_interconnect_1_wifi_uart_avalon_rs232_slave_read;              // mm_interconnect_1:wifi_uart_avalon_rs232_slave_read -> wifi_uart:read
-	wire   [3:0] mm_interconnect_1_wifi_uart_avalon_rs232_slave_byteenable;        // mm_interconnect_1:wifi_uart_avalon_rs232_slave_byteenable -> wifi_uart:byteenable
-	wire         mm_interconnect_1_wifi_uart_avalon_rs232_slave_write;             // mm_interconnect_1:wifi_uart_avalon_rs232_slave_write -> wifi_uart:write
-	wire  [31:0] mm_interconnect_1_wifi_uart_avalon_rs232_slave_writedata;         // mm_interconnect_1:wifi_uart_avalon_rs232_slave_writedata -> wifi_uart:writedata
+	wire  [31:0] mm_interconnect_1_switches_pio_s1_readdata;                       // switches_pio:readdata -> mm_interconnect_1:switches_pio_s1_readdata
+	wire   [1:0] mm_interconnect_1_switches_pio_s1_address;                        // mm_interconnect_1:switches_pio_s1_address -> switches_pio:address
+	wire  [31:0] mm_interconnect_1_buttons_pio_s1_readdata;                        // buttons_pio:readdata -> mm_interconnect_1:buttons_pio_s1_readdata
+	wire   [1:0] mm_interconnect_1_buttons_pio_s1_address;                         // mm_interconnect_1:buttons_pio_s1_address -> buttons_pio:address
+	wire         mm_interconnect_1_hexes_pio_s1_chipselect;                        // mm_interconnect_1:hexes_pio_s1_chipselect -> hexes_pio:chipselect
+	wire  [31:0] mm_interconnect_1_hexes_pio_s1_readdata;                          // hexes_pio:readdata -> mm_interconnect_1:hexes_pio_s1_readdata
+	wire   [1:0] mm_interconnect_1_hexes_pio_s1_address;                           // mm_interconnect_1:hexes_pio_s1_address -> hexes_pio:address
+	wire         mm_interconnect_1_hexes_pio_s1_write;                             // mm_interconnect_1:hexes_pio_s1_write -> hexes_pio:write_n
+	wire  [31:0] mm_interconnect_1_hexes_pio_s1_writedata;                         // mm_interconnect_1:hexes_pio_s1_writedata -> hexes_pio:writedata
 	wire  [31:0] master_0_master_readdata;                                         // mm_interconnect_2:master_0_master_readdata -> master_0:master_readdata
 	wire         master_0_master_waitrequest;                                      // mm_interconnect_2:master_0_master_waitrequest -> master_0:master_waitrequest
 	wire  [31:0] master_0_master_address;                                          // master_0:master_address -> mm_interconnect_2:master_0_master_address
@@ -276,14 +279,32 @@ module cpu (
 	wire   [4:0] mm_interconnect_2_hps_0_f2h_axi_slave_aruser;                     // mm_interconnect_2:hps_0_f2h_axi_slave_aruser -> hps_0:f2h_ARUSER
 	wire         mm_interconnect_2_hps_0_f2h_axi_slave_rvalid;                     // hps_0:f2h_RVALID -> mm_interconnect_2:hps_0_f2h_axi_slave_rvalid
 	wire         irq_mapper_receiver0_irq;                                         // touchscreen_uart:irq -> irq_mapper:receiver0_irq
-	wire         irq_mapper_receiver1_irq;                                         // wifi_uart:irq -> irq_mapper:receiver1_irq
 	wire  [31:0] hps_0_f2h_irq0_irq;                                               // irq_mapper:sender_irq -> hps_0:f2h_irq_p0
 	wire  [31:0] hps_0_f2h_irq1_irq;                                               // irq_mapper_001:sender_irq -> hps_0:f2h_irq_p1
-	wire         rst_controller_reset_out_reset;                                   // rst_controller:reset_out -> [mm_interconnect_0:pixel_buffer_reset_reset_bridge_in_reset_reset, mm_interconnect_1:pixel_buffer_reset_reset_bridge_in_reset_reset, mm_interconnect_2:master_0_clk_reset_reset_bridge_in_reset_reset, mm_interconnect_2:master_0_master_translator_reset_reset_bridge_in_reset_reset, pixel_buffer:reset, rgb_resampler:reset, sdram_controller:reset_n, touchscreen_uart:reset, video_dual_clock_buffer_0:reset_stream_in, wifi_uart:reset]
+	wire         rst_controller_reset_out_reset;                                   // rst_controller:reset_out -> [buttons_pio:reset_n, hexes_pio:reset_n, mm_interconnect_0:pixel_buffer_reset_reset_bridge_in_reset_reset, mm_interconnect_1:pixel_buffer_reset_reset_bridge_in_reset_reset, mm_interconnect_2:master_0_clk_reset_reset_bridge_in_reset_reset, mm_interconnect_2:master_0_master_translator_reset_reset_bridge_in_reset_reset, pixel_buffer:reset, rgb_resampler:reset, sdram_controller:reset_n, switches_pio:reset_n, touchscreen_uart:reset, video_dual_clock_buffer_0:reset_stream_in]
 	wire         rst_controller_001_reset_out_reset;                               // rst_controller_001:reset_out -> [vga_controller:reset, video_dual_clock_buffer_0:reset_stream_out]
 	wire         video_pll_0_reset_source_reset;                                   // video_pll_0:reset_source_reset -> rst_controller_001:reset_in0
 	wire         rst_controller_002_reset_out_reset;                               // rst_controller_002:reset_out -> [mm_interconnect_0:hps_0_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset_reset, mm_interconnect_1:hps_0_h2f_lw_axi_master_agent_clk_reset_reset_bridge_in_reset_reset, mm_interconnect_2:hps_0_f2h_axi_slave_agent_reset_sink_reset_bridge_in_reset_reset]
 	wire         hps_0_h2f_reset_reset;                                            // hps_0:h2f_rst_n -> rst_controller_002:reset_in0
+
+	cpu_buttons_pio buttons_pio (
+		.clk      (sys_clk_sys_clk_clk),                       //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),           //               reset.reset_n
+		.address  (mm_interconnect_1_buttons_pio_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_buttons_pio_s1_readdata), //                    .readdata
+		.in_port  (buttons_export)                             // external_connection.export
+	);
+
+	cpu_hexes_pio hexes_pio (
+		.clk        (sys_clk_sys_clk_clk),                       //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),           //               reset.reset_n
+		.address    (mm_interconnect_1_hexes_pio_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_1_hexes_pio_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_1_hexes_pio_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_1_hexes_pio_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_1_hexes_pio_s1_readdata),   //                    .readdata
+		.out_port   (hexes_export)                               // external_connection.export
+	);
 
 	cpu_hps_0 #(
 		.F2S_Width (2),
@@ -559,6 +580,14 @@ module cpu (
 		.zs_we_n        (sdram_we_n)                                           //      .export
 	);
 
+	cpu_switches_pio switches_pio (
+		.clk      (sys_clk_sys_clk_clk),                        //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),            //               reset.reset_n
+		.address  (mm_interconnect_1_switches_pio_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_switches_pio_s1_readdata), //                    .readdata
+		.in_port  (switches_export)                             // external_connection.export
+	);
+
 	cpu_sys_clk sys_clk (
 		.ref_clk_clk        (clk_clk),                    //      ref_clk.clk
 		.ref_reset_reset    (reset_reset),                //    ref_reset.reset
@@ -622,21 +651,6 @@ module cpu (
 		.ref_reset_reset    (sys_clk_reset_source_reset),     //    ref_reset.reset
 		.vga_clk_clk        (video_pll_0_vga_clk_clk),        //      vga_clk.clk
 		.reset_source_reset (video_pll_0_reset_source_reset)  // reset_source.reset
-	);
-
-	cpu_wifi_uart wifi_uart (
-		.clk        (sys_clk_sys_clk_clk),                                       //                clk.clk
-		.reset      (rst_controller_reset_out_reset),                            //              reset.reset
-		.address    (mm_interconnect_1_wifi_uart_avalon_rs232_slave_address),    // avalon_rs232_slave.address
-		.chipselect (mm_interconnect_1_wifi_uart_avalon_rs232_slave_chipselect), //                   .chipselect
-		.byteenable (mm_interconnect_1_wifi_uart_avalon_rs232_slave_byteenable), //                   .byteenable
-		.read       (mm_interconnect_1_wifi_uart_avalon_rs232_slave_read),       //                   .read
-		.write      (mm_interconnect_1_wifi_uart_avalon_rs232_slave_write),      //                   .write
-		.writedata  (mm_interconnect_1_wifi_uart_avalon_rs232_slave_writedata),  //                   .writedata
-		.readdata   (mm_interconnect_1_wifi_uart_avalon_rs232_slave_readdata),   //                   .readdata
-		.irq        (irq_mapper_receiver1_irq),                                  //          interrupt.irq
-		.UART_RXD   (wifi_uart_RXD),                                             // external_interface.export
-		.UART_TXD   (wifi_uart_TXD)                                              //                   .export
 	);
 
 	cpu_mm_interconnect_0 mm_interconnect_0 (
@@ -736,6 +750,13 @@ module cpu (
 		.sys_clk_sys_clk_clk                                                 (sys_clk_sys_clk_clk),                                              //                                               sys_clk_sys_clk.clk
 		.hps_0_h2f_lw_axi_master_agent_clk_reset_reset_bridge_in_reset_reset (rst_controller_002_reset_out_reset),                               // hps_0_h2f_lw_axi_master_agent_clk_reset_reset_bridge_in_reset.reset
 		.pixel_buffer_reset_reset_bridge_in_reset_reset                      (rst_controller_reset_out_reset),                                   //                      pixel_buffer_reset_reset_bridge_in_reset.reset
+		.buttons_pio_s1_address                                              (mm_interconnect_1_buttons_pio_s1_address),                         //                                                buttons_pio_s1.address
+		.buttons_pio_s1_readdata                                             (mm_interconnect_1_buttons_pio_s1_readdata),                        //                                                              .readdata
+		.hexes_pio_s1_address                                                (mm_interconnect_1_hexes_pio_s1_address),                           //                                                  hexes_pio_s1.address
+		.hexes_pio_s1_write                                                  (mm_interconnect_1_hexes_pio_s1_write),                             //                                                              .write
+		.hexes_pio_s1_readdata                                               (mm_interconnect_1_hexes_pio_s1_readdata),                          //                                                              .readdata
+		.hexes_pio_s1_writedata                                              (mm_interconnect_1_hexes_pio_s1_writedata),                         //                                                              .writedata
+		.hexes_pio_s1_chipselect                                             (mm_interconnect_1_hexes_pio_s1_chipselect),                        //                                                              .chipselect
 		.pixel_buffer_avalon_control_slave_address                           (mm_interconnect_1_pixel_buffer_avalon_control_slave_address),      //                             pixel_buffer_avalon_control_slave.address
 		.pixel_buffer_avalon_control_slave_write                             (mm_interconnect_1_pixel_buffer_avalon_control_slave_write),        //                                                              .write
 		.pixel_buffer_avalon_control_slave_read                              (mm_interconnect_1_pixel_buffer_avalon_control_slave_read),         //                                                              .read
@@ -744,20 +765,15 @@ module cpu (
 		.pixel_buffer_avalon_control_slave_byteenable                        (mm_interconnect_1_pixel_buffer_avalon_control_slave_byteenable),   //                                                              .byteenable
 		.rgb_resampler_avalon_rgb_slave_read                                 (mm_interconnect_1_rgb_resampler_avalon_rgb_slave_read),            //                                rgb_resampler_avalon_rgb_slave.read
 		.rgb_resampler_avalon_rgb_slave_readdata                             (mm_interconnect_1_rgb_resampler_avalon_rgb_slave_readdata),        //                                                              .readdata
+		.switches_pio_s1_address                                             (mm_interconnect_1_switches_pio_s1_address),                        //                                               switches_pio_s1.address
+		.switches_pio_s1_readdata                                            (mm_interconnect_1_switches_pio_s1_readdata),                       //                                                              .readdata
 		.touchscreen_uart_avalon_rs232_slave_address                         (mm_interconnect_1_touchscreen_uart_avalon_rs232_slave_address),    //                           touchscreen_uart_avalon_rs232_slave.address
 		.touchscreen_uart_avalon_rs232_slave_write                           (mm_interconnect_1_touchscreen_uart_avalon_rs232_slave_write),      //                                                              .write
 		.touchscreen_uart_avalon_rs232_slave_read                            (mm_interconnect_1_touchscreen_uart_avalon_rs232_slave_read),       //                                                              .read
 		.touchscreen_uart_avalon_rs232_slave_readdata                        (mm_interconnect_1_touchscreen_uart_avalon_rs232_slave_readdata),   //                                                              .readdata
 		.touchscreen_uart_avalon_rs232_slave_writedata                       (mm_interconnect_1_touchscreen_uart_avalon_rs232_slave_writedata),  //                                                              .writedata
 		.touchscreen_uart_avalon_rs232_slave_byteenable                      (mm_interconnect_1_touchscreen_uart_avalon_rs232_slave_byteenable), //                                                              .byteenable
-		.touchscreen_uart_avalon_rs232_slave_chipselect                      (mm_interconnect_1_touchscreen_uart_avalon_rs232_slave_chipselect), //                                                              .chipselect
-		.wifi_uart_avalon_rs232_slave_address                                (mm_interconnect_1_wifi_uart_avalon_rs232_slave_address),           //                                  wifi_uart_avalon_rs232_slave.address
-		.wifi_uart_avalon_rs232_slave_write                                  (mm_interconnect_1_wifi_uart_avalon_rs232_slave_write),             //                                                              .write
-		.wifi_uart_avalon_rs232_slave_read                                   (mm_interconnect_1_wifi_uart_avalon_rs232_slave_read),              //                                                              .read
-		.wifi_uart_avalon_rs232_slave_readdata                               (mm_interconnect_1_wifi_uart_avalon_rs232_slave_readdata),          //                                                              .readdata
-		.wifi_uart_avalon_rs232_slave_writedata                              (mm_interconnect_1_wifi_uart_avalon_rs232_slave_writedata),         //                                                              .writedata
-		.wifi_uart_avalon_rs232_slave_byteenable                             (mm_interconnect_1_wifi_uart_avalon_rs232_slave_byteenable),        //                                                              .byteenable
-		.wifi_uart_avalon_rs232_slave_chipselect                             (mm_interconnect_1_wifi_uart_avalon_rs232_slave_chipselect)         //                                                              .chipselect
+		.touchscreen_uart_avalon_rs232_slave_chipselect                      (mm_interconnect_1_touchscreen_uart_avalon_rs232_slave_chipselect)  //                                                              .chipselect
 	);
 
 	cpu_mm_interconnect_2 mm_interconnect_2 (
@@ -817,7 +833,6 @@ module cpu (
 		.clk           (),                         //       clk.clk
 		.reset         (),                         // clk_reset.reset
 		.receiver0_irq (irq_mapper_receiver0_irq), // receiver0.irq
-		.receiver1_irq (irq_mapper_receiver1_irq), // receiver1.irq
 		.sender_irq    (hps_0_f2h_irq0_irq)        //    sender.irq
 	);
 

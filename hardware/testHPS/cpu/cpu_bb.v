@@ -1,5 +1,6 @@
 
 module cpu (
+	clk_clk,
 	hps_io_hps_io_emac1_inst_TX_CLK,
 	hps_io_hps_io_emac1_inst_TXD0,
 	hps_io_hps_io_emac1_inst_TXD1,
@@ -72,9 +73,7 @@ module cpu (
 	memory_mem_odt,
 	memory_mem_dm,
 	memory_oct_rzqin,
-	clk_clk,
 	reset_reset,
-	sdram_clk_clk,
 	sdram_addr,
 	sdram_ba,
 	sdram_cas_n,
@@ -84,6 +83,10 @@ module cpu (
 	sdram_dqm,
 	sdram_ras_n,
 	sdram_we_n,
+	sdram_clk_clk,
+	switches_export,
+	touch_uart_RXD,
+	touch_uart_TXD,
 	vga_CLK,
 	vga_HS,
 	vga_VS,
@@ -92,11 +95,10 @@ module cpu (
 	vga_R,
 	vga_G,
 	vga_B,
-	wifi_uart_RXD,
-	wifi_uart_TXD,
-	touch_uart_RXD,
-	touch_uart_TXD);	
+	buttons_export,
+	hexes_export);	
 
+	input		clk_clk;
 	output		hps_io_hps_io_emac1_inst_TX_CLK;
 	output		hps_io_hps_io_emac1_inst_TXD0;
 	output		hps_io_hps_io_emac1_inst_TXD1;
@@ -169,9 +171,7 @@ module cpu (
 	output		memory_mem_odt;
 	output	[3:0]	memory_mem_dm;
 	input		memory_oct_rzqin;
-	input		clk_clk;
 	input		reset_reset;
-	output		sdram_clk_clk;
 	output	[12:0]	sdram_addr;
 	output	[1:0]	sdram_ba;
 	output		sdram_cas_n;
@@ -181,6 +181,10 @@ module cpu (
 	output	[1:0]	sdram_dqm;
 	output		sdram_ras_n;
 	output		sdram_we_n;
+	output		sdram_clk_clk;
+	input	[9:0]	switches_export;
+	input		touch_uart_RXD;
+	output		touch_uart_TXD;
 	output		vga_CLK;
 	output		vga_HS;
 	output		vga_VS;
@@ -189,8 +193,6 @@ module cpu (
 	output	[7:0]	vga_R;
 	output	[7:0]	vga_G;
 	output	[7:0]	vga_B;
-	input		wifi_uart_RXD;
-	output		wifi_uart_TXD;
-	input		touch_uart_RXD;
-	output		touch_uart_TXD;
+	input	[3:0]	buttons_export;
+	output	[27:0]	hexes_export;
 endmodule

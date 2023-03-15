@@ -8,6 +8,6 @@
   </columns>
  </systemtable>
  <library
-   expandedCategories="Library/University Program,Library,Library/Interface Protocols/Serial,Project,Library/Interface Protocols,Library/University Program/Communications" />
- <window width="1938" height="1048" x="-9" y="-9" />
+   expandedCategories="Library/Basic Functions,Library,Library/Basic Functions/Simulation; Debug and Verification/Simulation,Library/Interface Protocols,Library/Basic Functions/Clocks; PLLs and Resets,Project,Library/Interface Protocols/Transceiver PHY,Library/Basic Functions/Bridges and Adaptors,Library/Basic Functions/Bridges and Adaptors/Reset,Library/Basic Functions/Simulation; Debug and Verification" />
+ <window width="1920" height="1030" x="0" y="0" />
 </preferences>

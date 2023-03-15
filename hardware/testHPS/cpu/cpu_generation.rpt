@@ -2,6 +2,10 @@ Info: Starting: Create block symbol file (.bsf)
 Info: qsys-generate D:\CPEN391\l2b-25-forks\hardware\testHPS\cpu.qsys --block-symbol-file --output-directory=D:\CPEN391\l2b-25-forks\hardware\testHPS\cpu --family="Cyclone V" --part=5CSEMA5F31C6
 Progress: Loading testHPS/cpu.qsys
 Progress: Reading input file
+Progress: Adding buttons_pio [altera_avalon_pio 18.1]
+Progress: Parameterizing module buttons_pio
+Progress: Adding hexes_pio [altera_avalon_pio 18.1]
+Progress: Parameterizing module hexes_pio
 Progress: Adding hps_0 [altera_hps 18.1]
 Progress: Parameterizing module hps_0
 Progress: Adding master_0 [altera_jtag_avalon_master 18.1]
@@ -12,6 +16,8 @@ Progress: Adding rgb_resampler [altera_up_avalon_video_rgb_resampler 18.0]
 Progress: Parameterizing module rgb_resampler
 Progress: Adding sdram_controller [altera_avalon_new_sdram_controller 18.1]
 Progress: Parameterizing module sdram_controller
+Progress: Adding switches_pio [altera_avalon_pio 18.1]
+Progress: Parameterizing module switches_pio
 Progress: Adding sys_clk [altera_up_avalon_sys_sdram_pll 18.0]
 Progress: Parameterizing module sys_clk
 Progress: Adding touchscreen_uart [altera_up_avalon_rs232 17.1]
@@ -28,6 +34,7 @@ Progress: Building connections
 Progress: Parameterizing connections
 Progress: Validating
 Progress: Done reading input file
+Info: cpu.buttons_pio: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
 Info: cpu.hps_0: HPS Main PLL counter settings: n = 0  m = 73
 Info: cpu.hps_0: HPS peripherial PLL counter settings: n = 0  m = 39
 Warning: cpu.hps_0: "Configuration/HPS-to-FPGA user 0 clock frequency" (desired_cfg_clk_mhz) requested 100.0 MHz, but only achieved 97.368421 MHz
@@ -35,6 +42,7 @@ Warning: cpu.hps_0: "QSPI clock frequency" (desired_qspi_clk_mhz) requested 400.
 Warning: cpu.hps_0: 1 or more output clock frequencies cannot be achieved precisely, consider revising desired output clock frequencies.
 Info: cpu.rgb_resampler: RGB Resampling: 16 (bits) x 1 (planes) -> 10 (bits) x 3 (planes)
 Info: cpu.sdram_controller: SDRAM Controller will only be supported in Quartus Prime Standard Edition in the future release.
+Info: cpu.switches_pio: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
 Info: cpu.sys_clk: Refclk Freq: 50.0
 Info: cpu.vga_controller: Video Output Stream: Format: 640 x 480 with Color: 10 (bits) x 3 (planes) converted to 8 (bits) per color plane
 Info: qsys-generate succeeded.
@@ -44,6 +52,10 @@ Info: Starting: Create HDL design files for synthesis
 Info: qsys-generate D:\CPEN391\l2b-25-forks\hardware\testHPS\cpu.qsys --synthesis=VERILOG --output-directory=D:\CPEN391\l2b-25-forks\hardware\testHPS\cpu\synthesis --family="Cyclone V" --part=5CSEMA5F31C6
 Progress: Loading testHPS/cpu.qsys
 Progress: Reading input file
+Progress: Adding buttons_pio [altera_avalon_pio 18.1]
+Progress: Parameterizing module buttons_pio
+Progress: Adding hexes_pio [altera_avalon_pio 18.1]
+Progress: Parameterizing module hexes_pio
 Progress: Adding hps_0 [altera_hps 18.1]
 Progress: Parameterizing module hps_0
 Progress: Adding master_0 [altera_jtag_avalon_master 18.1]
@@ -54,6 +66,8 @@ Progress: Adding rgb_resampler [altera_up_avalon_video_rgb_resampler 18.0]
 Progress: Parameterizing module rgb_resampler
 Progress: Adding sdram_controller [altera_avalon_new_sdram_controller 18.1]
 Progress: Parameterizing module sdram_controller
+Progress: Adding switches_pio [altera_avalon_pio 18.1]
+Progress: Parameterizing module switches_pio
 Progress: Adding sys_clk [altera_up_avalon_sys_sdram_pll 18.0]
 Progress: Parameterizing module sys_clk
 Progress: Adding touchscreen_uart [altera_up_avalon_rs232 17.1]
@@ -70,6 +84,7 @@ Progress: Building connections
 Progress: Parameterizing connections
 Progress: Validating
 Progress: Done reading input file
+Info: cpu.buttons_pio: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
 Info: cpu.hps_0: HPS Main PLL counter settings: n = 0  m = 73
 Info: cpu.hps_0: HPS peripherial PLL counter settings: n = 0  m = 39
 Warning: cpu.hps_0: "Configuration/HPS-to-FPGA user 0 clock frequency" (desired_cfg_clk_mhz) requested 100.0 MHz, but only achieved 97.368421 MHz
@@ -77,6 +92,7 @@ Warning: cpu.hps_0: "QSPI clock frequency" (desired_qspi_clk_mhz) requested 400.
 Warning: cpu.hps_0: 1 or more output clock frequencies cannot be achieved precisely, consider revising desired output clock frequencies.
 Info: cpu.rgb_resampler: RGB Resampling: 16 (bits) x 1 (planes) -> 10 (bits) x 3 (planes)
 Info: cpu.sdram_controller: SDRAM Controller will only be supported in Quartus Prime Standard Edition in the future release.
+Info: cpu.switches_pio: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
 Info: cpu.sys_clk: Refclk Freq: 50.0
 Info: cpu.vga_controller: Video Output Stream: Format: 640 x 480 with Color: 10 (bits) x 3 (planes) converted to 8 (bits) per color plane
 Info: cpu: Generating cpu "cpu" for QUARTUS_SYNTH
@@ -85,6 +101,14 @@ Warning: hps_0.f2h_irq0: Cannot connect clock for irq_mapper.sender
 Warning: hps_0.f2h_irq0: Cannot connect reset for irq_mapper.sender
 Warning: hps_0.f2h_irq1: Cannot connect clock for irq_mapper_001.sender
 Warning: hps_0.f2h_irq1: Cannot connect reset for irq_mapper_001.sender
+Info: buttons_pio: Starting RTL generation for module 'cpu_buttons_pio'
+Info: buttons_pio:   Generation command is [exec D:/programs/intelfpga_lite/18.1/quartus/bin64/perl/bin/perl.exe -I D:/programs/intelfpga_lite/18.1/quartus/bin64/perl/lib -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin/europa -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin/perl_lib -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin -I D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=cpu_buttons_pio --dir=C:/Users/ADMINI~1/AppData/Local/Temp/alt9423_2335088067458814673.dir/0166_buttons_pio_gen/ --quartus_dir=D:/programs/intelfpga_lite/18.1/quartus --verilog --config=C:/Users/ADMINI~1/AppData/Local/Temp/alt9423_2335088067458814673.dir/0166_buttons_pio_gen//cpu_buttons_pio_component_configuration.pl  --do_build_sim=0  ]
+Info: buttons_pio: Done RTL generation for module 'cpu_buttons_pio'
+Info: buttons_pio: "cpu" instantiated altera_avalon_pio "buttons_pio"
+Info: hexes_pio: Starting RTL generation for module 'cpu_hexes_pio'
+Info: hexes_pio:   Generation command is [exec D:/programs/intelfpga_lite/18.1/quartus/bin64/perl/bin/perl.exe -I D:/programs/intelfpga_lite/18.1/quartus/bin64/perl/lib -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin/europa -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin/perl_lib -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin -I D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=cpu_hexes_pio --dir=C:/Users/ADMINI~1/AppData/Local/Temp/alt9423_2335088067458814673.dir/0167_hexes_pio_gen/ --quartus_dir=D:/programs/intelfpga_lite/18.1/quartus --verilog --config=C:/Users/ADMINI~1/AppData/Local/Temp/alt9423_2335088067458814673.dir/0167_hexes_pio_gen//cpu_hexes_pio_component_configuration.pl  --do_build_sim=0  ]
+Info: hexes_pio: Done RTL generation for module 'cpu_hexes_pio'
+Info: hexes_pio: "cpu" instantiated altera_avalon_pio "hexes_pio"
 Info: hps_0: "Running  for module: hps_0"
 Info: hps_0: HPS Main PLL counter settings: n = 0  m = 73
 Info: hps_0: HPS peripherial PLL counter settings: n = 0  m = 39
@@ -98,9 +122,13 @@ Info: pixel_buffer: "cpu" instantiated altera_up_avalon_video_pixel_buffer_dma "
 Info: rgb_resampler: Starting Generation of Video RGB Resampler
 Info: rgb_resampler: "cpu" instantiated altera_up_avalon_video_rgb_resampler "rgb_resampler"
 Info: sdram_controller: Starting RTL generation for module 'cpu_sdram_controller'
-Info: sdram_controller:   Generation command is [exec D:/programs/intelfpga_lite/18.1/quartus/bin64/perl/bin/perl.exe -I D:/programs/intelfpga_lite/18.1/quartus/bin64/perl/lib -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin/europa -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin/perl_lib -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin -I D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller -- D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller/generate_rtl.pl --name=cpu_sdram_controller --dir=C:/Users/ADMINI~1/AppData/Local/Temp/alt9418_7948923473334854777.dir/0110_sdram_controller_gen/ --quartus_dir=D:/programs/intelfpga_lite/18.1/quartus --verilog --config=C:/Users/ADMINI~1/AppData/Local/Temp/alt9418_7948923473334854777.dir/0110_sdram_controller_gen//cpu_sdram_controller_component_configuration.pl  --do_build_sim=0  ]
+Info: sdram_controller:   Generation command is [exec D:/programs/intelfpga_lite/18.1/quartus/bin64/perl/bin/perl.exe -I D:/programs/intelfpga_lite/18.1/quartus/bin64/perl/lib -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin/europa -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin/perl_lib -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin -I D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller -- D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller/generate_rtl.pl --name=cpu_sdram_controller --dir=C:/Users/ADMINI~1/AppData/Local/Temp/alt9423_2335088067458814673.dir/0170_sdram_controller_gen/ --quartus_dir=D:/programs/intelfpga_lite/18.1/quartus --verilog --config=C:/Users/ADMINI~1/AppData/Local/Temp/alt9423_2335088067458814673.dir/0170_sdram_controller_gen//cpu_sdram_controller_component_configuration.pl  --do_build_sim=0  ]
 Info: sdram_controller: Done RTL generation for module 'cpu_sdram_controller'
 Info: sdram_controller: "cpu" instantiated altera_avalon_new_sdram_controller "sdram_controller"
+Info: switches_pio: Starting RTL generation for module 'cpu_switches_pio'
+Info: switches_pio:   Generation command is [exec D:/programs/intelfpga_lite/18.1/quartus/bin64/perl/bin/perl.exe -I D:/programs/intelfpga_lite/18.1/quartus/bin64/perl/lib -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin/europa -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin/perl_lib -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin -I D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=cpu_switches_pio --dir=C:/Users/ADMINI~1/AppData/Local/Temp/alt9423_2335088067458814673.dir/0171_switches_pio_gen/ --quartus_dir=D:/programs/intelfpga_lite/18.1/quartus --verilog --config=C:/Users/ADMINI~1/AppData/Local/Temp/alt9423_2335088067458814673.dir/0171_switches_pio_gen//cpu_switches_pio_component_configuration.pl  --do_build_sim=0  ]
+Info: switches_pio: Done RTL generation for module 'cpu_switches_pio'
+Info: switches_pio: "cpu" instantiated altera_avalon_pio "switches_pio"
 Info: sys_clk: "cpu" instantiated altera_up_avalon_sys_sdram_pll "sys_clk"
 Info: touchscreen_uart: Starting Generation of RS232 UART
 Info: touchscreen_uart: "cpu" instantiated altera_up_avalon_rs232 "touchscreen_uart"
@@ -109,18 +137,14 @@ Info: vga_controller: "cpu" instantiated altera_up_avalon_video_vga_controller "
 Info: video_dual_clock_buffer_0: Starting Generation of the Dual Clock Buffer
 Info: video_dual_clock_buffer_0: "cpu" instantiated altera_up_avalon_video_dual_clock_buffer "video_dual_clock_buffer_0"
 Info: video_pll_0: "cpu" instantiated altera_up_avalon_video_pll "video_pll_0"
-Info: wifi_uart: Starting Generation of RS232 UART
-Info: wifi_uart: "cpu" instantiated altera_up_avalon_rs232 "wifi_uart"
-Info: Reusing file D:/CPEN391/l2b-25-forks/hardware/testHPS/cpu/synthesis/submodules/altera_up_rs232_counters.v
-Info: Reusing file D:/CPEN391/l2b-25-forks/hardware/testHPS/cpu/synthesis/submodules/altera_up_rs232_in_deserializer.v
-Info: Reusing file D:/CPEN391/l2b-25-forks/hardware/testHPS/cpu/synthesis/submodules/altera_up_rs232_out_serializer.v
-Info: Reusing file D:/CPEN391/l2b-25-forks/hardware/testHPS/cpu/synthesis/submodules/altera_up_sync_fifo.v
 Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
 Info: mm_interconnect_0: "cpu" instantiated altera_mm_interconnect "mm_interconnect_0"
 Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
 Info: avalon_st_adapter_001: Inserting error_adapter: error_adapter_0
 Info: avalon_st_adapter_002: Inserting error_adapter: error_adapter_0
 Info: avalon_st_adapter_003: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_004: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_005: Inserting error_adapter: error_adapter_0
 Info: mm_interconnect_1: "cpu" instantiated altera_mm_interconnect "mm_interconnect_1"
 Info: mm_interconnect_2: "cpu" instantiated altera_mm_interconnect "mm_interconnect_2"
 Info: irq_mapper: "cpu" instantiated altera_irq_mapper "irq_mapper"
@@ -187,6 +211,6 @@ Info: Reusing file D:/CPEN391/l2b-25-forks/hardware/testHPS/cpu/synthesis/submod
 Info: border: "hps_io" instantiated altera_interface_generator "border"
 Info: error_adapter_0: "avalon_st_adapter" instantiated error_adapter "error_adapter_0"
 Info: error_adapter_0: "avalon_st_adapter" instantiated error_adapter "error_adapter_0"
-Info: cpu: Done "cpu" with 64 modules, 136 files
+Info: cpu: Done "cpu" with 66 modules, 138 files
 Info: qsys-generate succeeded.
 Info: Finished: Create HDL design files for synthesis

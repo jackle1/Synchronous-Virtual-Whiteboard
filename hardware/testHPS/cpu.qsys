@@ -9,6 +9,48 @@
    categories="System" />
  <parameter name="bonusData"><![CDATA[bonusData 
 {
+   element buttons_pio
+   {
+      datum _sortIndex
+      {
+         value = "11";
+         type = "int";
+      }
+   }
+   element buttons_pio.s1
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "64";
+         type = "String";
+      }
+   }
+   element hexes_pio
+   {
+      datum _sortIndex
+      {
+         value = "12";
+         type = "int";
+      }
+   }
+   element hexes_pio.s1
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "80";
+         type = "String";
+      }
+   }
    element hps_0
    {
       datum _sortIndex
@@ -19,6 +61,11 @@
    }
    element hps_0.f2h_axi_slave
    {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
       datum baseAddress
       {
          value = "0";
@@ -37,12 +84,17 @@
    {
       datum _sortIndex
       {
-         value = "7";
+         value = "6";
          type = "int";
       }
    }
    element pixel_buffer.avalon_control_slave
    {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
       datum baseAddress
       {
          value = "0";
@@ -53,12 +105,17 @@
    {
       datum _sortIndex
       {
-         value = "8";
+         value = "7";
          type = "int";
       }
    }
    element rgb_resampler.avalon_rgb_slave
    {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
       datum baseAddress
       {
          value = "32";
@@ -86,6 +143,27 @@
          type = "String";
       }
    }
+   element switches_pio
+   {
+      datum _sortIndex
+      {
+         value = "10";
+         type = "int";
+      }
+   }
+   element switches_pio.s1
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "48";
+         type = "String";
+      }
+   }
    element sys_clk
    {
       datum _sortIndex
@@ -98,12 +176,17 @@
    {
       datum _sortIndex
       {
-         value = "6";
+         value = "5";
          type = "int";
       }
    }
    element touchscreen_uart.avalon_rs232_slave
    {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
       datum baseAddress
       {
          value = "24";
@@ -114,7 +197,7 @@
    {
       datum _sortIndex
       {
-         value = "10";
+         value = "9";
          type = "int";
       }
    }
@@ -122,7 +205,7 @@
    {
       datum _sortIndex
       {
-         value = "9";
+         value = "8";
          type = "int";
       }
    }
@@ -138,12 +221,17 @@
    {
       datum _sortIndex
       {
-         value = "5";
+         value = "13";
          type = "int";
       }
    }
    element wifi_uart.avalon_rs232_slave
    {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
       datum baseAddress
       {
          value = "16";
@@ -171,7 +259,17 @@
  <parameter name="timeStamp" value="0" />
  <parameter name="useTestBenchNamingPattern" value="false" />
  <instanceScript></instanceScript>
+ <interface
+   name="buttons"
+   internal="buttons_pio.external_connection"
+   type="conduit"
+   dir="end" />
  <interface name="clk" internal="sys_clk.ref_clk" type="clock" dir="end" />
+ <interface
+   name="hexes"
+   internal="hexes_pio.external_connection"
+   type="conduit"
+   dir="end" />
  <interface name="hps_io" internal="hps_0.hps_io" type="conduit" dir="end" />
  <interface name="memory" internal="hps_0.memory" type="conduit" dir="end" />
  <interface name="reset" internal="sys_clk.ref_reset" type="reset" dir="end" />
@@ -186,6 +284,11 @@
    type="clock"
    dir="start" />
  <interface
+   name="switches"
+   internal="switches_pio.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
    name="touch_uart"
    internal="touchscreen_uart.external_interface"
    type="conduit"
@@ -195,11 +298,39 @@
    internal="vga_controller.external_interface"
    type="conduit"
    dir="end" />
- <interface
-   name="wifi_uart"
-   internal="wifi_uart.external_interface"
-   type="conduit"
-   dir="end" />
+ <interface name="wifi_uart" internal="wifi_uart.external_interface" />
+ <module
+   name="buttons_pio"
+   kind="altera_avalon_pio"
+   version="18.1"
+   enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Input" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="4" />
+ </module>
+ <module name="hexes_pio" kind="altera_avalon_pio" version="18.1" enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="268435455" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="28" />
+ </module>
  <module name="hps_0" kind="altera_hps" version="18.1" enabled="1">
   <parameter name="ABSTRACT_REAL_COMPARE_TEST" value="false" />
   <parameter name="ABS_RAM_MEM_INIT_FILENAME" value="meminit" />
@@ -783,7 +914,7 @@
   <parameter name="casLatency" value="3" />
   <parameter name="clockRate" value="50000000" />
   <parameter name="columnWidth" value="10" />
-  <parameter name="componentName">cpu_sdram_controller</parameter>
+  <parameter name="componentName">$${FILENAME}_sdram_controller</parameter>
   <parameter name="dataWidth" value="16" />
   <parameter name="generateSimulationModel" value="false" />
   <parameter name="initNOPDelay" value="0.0" />
@@ -797,6 +928,24 @@
   <parameter name="refreshPeriod" value="7.8125" />
   <parameter name="registerDataIn" value="true" />
   <parameter name="rowWidth" value="13" />
+ </module>
+ <module
+   name="switches_pio"
+   kind="altera_avalon_pio"
+   version="18.1"
+   enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Input" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="10" />
  </module>
  <module
    name="sys_clk"
@@ -870,7 +1019,7 @@
    name="wifi_uart"
    kind="altera_up_avalon_rs232"
    version="17.1"
-   enabled="1">
+   enabled="0">
   <parameter name="AUTO_CLK_CLOCK_RATE" value="50000000" />
   <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
   <parameter name="avalon_bus_type" value="Memory Mapped" />
@@ -936,6 +1085,33 @@
  <connection
    kind="avalon"
    version="18.1"
+   start="hps_0.h2f_lw_axi_master"
+   end="switches_pio.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0030" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="hps_0.h2f_lw_axi_master"
+   end="buttons_pio.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0040" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="hps_0.h2f_lw_axi_master"
+   end="hexes_pio.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0050" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
    start="master_0.master"
    end="hps_0.f2h_axi_slave">
   <parameter name="arbitrationPriority" value="1" />
@@ -987,6 +1163,21 @@
    version="18.1"
    start="sys_clk.sys_clk"
    end="wifi_uart.clk" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="sys_clk.sys_clk"
+   end="switches_pio.clk" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="sys_clk.sys_clk"
+   end="buttons_pio.clk" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="sys_clk.sys_clk"
+   end="hexes_pio.clk" />
  <connection
    kind="clock"
    version="18.1"
@@ -1076,6 +1267,21 @@
    version="18.1"
    start="sys_clk.reset_source"
    end="touchscreen_uart.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="sys_clk.reset_source"
+   end="switches_pio.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="sys_clk.reset_source"
+   end="buttons_pio.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="sys_clk.reset_source"
+   end="hexes_pio.reset" />
  <connection
    kind="reset"
    version="18.1"
