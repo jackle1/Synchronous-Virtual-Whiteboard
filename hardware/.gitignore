@@ -22,3 +22,10 @@ testHPS/db/
 testHPS/incremental_db/
 testHPS/simulation/
 testHPS/output_files/
+
+DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/db/
+DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/incremental_db/
+DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/simulation/
+DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/output_files/
+DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/software/.metadata
+DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/camera_eclipse/.metadata
