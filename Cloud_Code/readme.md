@@ -16,7 +16,7 @@ They are at the same endpoint!
 ### GET Request Requirements
 
 Make a GET Request with the string query parameters:
-https://hbzwo0rl65.execute-api.us-east-1.amazonaws.com/dev/cpen391?RoomID=????
+https://hbzwo0rl65.execute-api.us-east-1.amazonaws.com/dev/cpen391?RoomID=8862
 
 You can see the sample result below
 
