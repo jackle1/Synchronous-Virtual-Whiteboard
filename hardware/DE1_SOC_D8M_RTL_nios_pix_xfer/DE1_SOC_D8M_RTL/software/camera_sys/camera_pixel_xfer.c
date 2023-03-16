@@ -4,14 +4,14 @@
 #include "stdlib.h"
 #include "sys/alt_stdio.h"
 
-#define IMG_TRANSFER_BASE   0x1000
+#define IMG_TRANSFER_BASE   IMG_CPU_READER_0_BASE
 #define PIXEL_RDY           IMG_TRANSFER_BASE + 0
 #define ACK_PIXEL           IMG_TRANSFER_BASE + 1
 #define PIXEL_DATA          IMG_TRANSFER_BASE + 2
 
-#define KEY_2_BASE 			0x1020
+#define KEY_2_BASE 			KEY_2_BASE
 
-#define JTAG_BASE			0x1030
+#define JTAG_BASE			JTAG_UART_0_BASE
 
 int curr_pixel_data;
  unsigned int pixel_count;
