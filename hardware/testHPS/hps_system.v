@@ -286,7 +286,7 @@ module hps_system (
         .sdram_cas_n(hps_dram_cas_n),
         .sdram_cke(hps_dram_cke),
         .sdram_cs_n(hps_dram_cs_n),
-        .sdram_dq(DRAM_DQ),
+        .sdram_dq(hps_dram_dq),
         .sdram_dqm({hps_dram_udqm, hps_dram_ldqm}),
         .sdram_ras_n(hps_dram_ras_n),
         .sdram_we_n(hps_dram_we_n),
@@ -335,7 +335,7 @@ module hps_system (
 	    .DRAM_CKE(camera_dram_cke),
 	    .DRAM_CLK(camera_dram_clk),
 	    .DRAM_CS_N(camera_dram_cs_n),
-	    .DRAM_DQ(DRAM_DQ),
+	    .DRAM_DQ(camera_dq),
         .DRAM_LDQM(camera_dram_ldqm),
         .DRAM_RAS_N(camera_dram_ras_n),
 	    .DRAM_UDQM(camera_dram_udqm),
@@ -401,7 +401,8 @@ module hps_system (
         .rd2_req(rd2_req),
         .rd2_start_addr(PIC_START_ADDR),
         .rd2_max_addr(PIC_START_ADDR + 640*480),
-        .rd2_len(256)
+        .rd2_len(256),
+        .sdram_oe(sdram_oe)
     );
 
     assign cpu_hex4 = 7'h7F;
@@ -436,6 +437,10 @@ assign DRAM_ADDR = SW[8] ? camera_dram_addr : hps_dram_addr;
 assign DRAM_BA = SW[8] ? camera_dram_ba : hps_dram_ba;
 assign {DRAM_CAS_N, DRAM_CKE, DRAM_CS_N, DRAM_LDQM, DRAM_RAS_N, DRAM_UDQM, DRAM_WE_N} = SW[8] ? {camera_dram_cas_n, camera_dram_cke, camera_dram_cs_n, camera_dram_ldqm, camera_dram_ras_n, camera_dram_udqm, camera_dram_we_n} : {hps_dram_cas_n, hps_dram_cke, hps_dram_cs_n, hps_dram_ldqm, hps_dram_ras_n, hps_dram_udqm, hps_dram_we_n};
 assign DRAM_CLK = SW[8] ? camera_dram_clk : hps_dram_clk;
+
+wire sdram_oe;
+assign camera_dq = ~sdram_oe ? DRAM_DQ : 16'bz;
+assign DRAM_DQ = SW[8] ? (sdram_oe ? camera_dq : 16'bz) : hps_dram_dq;
 
 wire [6:0] cam_hex0, cam_hex1, cam_hex2, cam_hex3, cam_hex4, cam_hex5, cam_hex6;
 wire [6:0] cpu_hex0, cpu_hex1, cpu_hex2, cpu_hex3, cpu_hex4, cpu_hex5, cpu_hex6;

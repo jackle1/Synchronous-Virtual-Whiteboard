@@ -79,7 +79,8 @@ module Sdram_Control (
     CAS_N,
     WE_N,
     DQ,
-    DQM
+    DQM,
+	sdram_oe
 );
 
 
@@ -137,6 +138,9 @@ output                          CAS_N;                  //SDRAM Column address S
 output                          WE_N;                   //SDRAM write enable
 inout   [`DSIZE-1:0]            DQ;                     //SDRAM data bus
 output [`DSIZE/8-1:0]           DQM;                    //SDRAM data mask lines
+
+output sdram_oe;
+assign sdram_oe = oe;
 
 
 
