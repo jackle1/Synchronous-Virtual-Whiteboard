@@ -1,5 +1,19 @@
 // https://people.ece.cornell.edu/land/courses/ece5760/DE1_SOC/HPS_FPGA/pio_test/ghrd_top.v
 module hps_system (
+       //////////// ADC //////////
+	output		          		ADC_CONVST,
+	output		          		ADC_DIN,
+	input 		          		ADC_DOUT,
+	output		          		ADC_SCLK,
+
+	//////////// Audio //////////
+	input 		          		AUD_ADCDAT,
+	inout 		          		AUD_ADCLRCK,
+	inout 		          		AUD_BCLK,
+	output		          		AUD_DACDAT,
+	inout 		          		AUD_DACLRCK,
+	output		          		AUD_XCK,
+
       ///////// CLOCK /////////
       input 		          		CLOCK2_50,
       input 		          		CLOCK3_50,
@@ -101,11 +115,21 @@ module hps_system (
       input              HPS_USB_NXT,
       output             HPS_USB_STP,
 
+      //////////// IR //////////
+	  input 		          		IRDA_RXD,
+	  output		          		IRDA_TXD,
+
       ///////// KEY /////////
       input       [3:0]  KEY,
 
       ///////// LEDR /////////
       output      [9:0]  LEDR,
+
+      //////////// PS2 //////////
+	inout 		          		PS2_CLK,
+	inout 		          		PS2_CLK2,
+	inout 		          		PS2_DAT,
+	inout 		          		PS2_DAT2,
 
       ///////// SW /////////
       input       [9:0]  SW,
@@ -285,6 +309,7 @@ module hps_system (
     wire [3:0] out_state;   //for debugging only
     wire [31:0] pix_rdy_out;   //for debugging only
     wire [23:0] pix_rgb_out;   //for debugging only
+    wire img_captured;
 
     DE1_SOC_D8M_RTL camera (
         .ADC_CONVST(ADC_CONVST),
