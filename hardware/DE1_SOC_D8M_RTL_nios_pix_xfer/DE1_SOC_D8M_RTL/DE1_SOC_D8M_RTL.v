@@ -101,8 +101,14 @@ module DE1_SOC_D8M_RTL(
 	output		          		MIPI_REFCLK,
 	output		          		MIPI_RESET_n,
 	//////////// GPIO_0, GPIO_0 connect to GPIO Default //////////
-	inout 		    [35:0]		GPIO 	
-	
+	inout 		    [35:0]		GPIO,
+
+	output reg					img_captured,
+	output [9:0]				rd2_pixel_data,   
+	input						rd2_req,
+	input [`ASIZE-1:0]			rd2_start_addr,
+	input [`ASIZE-1:0]			rd2_max_addr,
+	input [10:0]				rd2_len
 );
 //=============================================================================
 // REG/WIRE declarations
@@ -230,8 +236,8 @@ always @(posedge CLOCK_50) begin
 
 end
 
-wire [9:0] rd2_pixel_data;   //= img_cpu_reader sdram_data
-wire rd2_req;   //== img_cpu_reader rd_req
+//wire [9:0] rd2_pixel_data;   //= img_cpu_reader sdram_data
+//wire rd2_req;   //== img_cpu_reader rd_req
 wire rd2_clear;   //== rd_fifo_clear
 
 //------SDRAM CONTROLLER --
@@ -260,9 +266,9 @@ Sdram_Control	   u7	(	//	HOST Side
 							//	FIFO Read Side 2
 							.RD2_DATA(rd2_pixel_data),
 							.RD2(rd2_req),
-							.RD2_ADDR(PIC_START_ADDR),
-							.RD2_MAX_ADDR(PIC_START_ADDR + 640*480),
-							.RD2_LENGTH(256),
+							.RD2_ADDR(rd2_start_addr),
+							.RD2_MAX_ADDR(rd2_max_addr),
+							.RD2_LENGTH(rd2_len),
 							.RD2_LOAD(rd2_clear),
 							.RD2_CLK(CLOCK_50),
 											
@@ -356,7 +362,7 @@ VGA_Controller		u1	(	//	Host Side
 
 
 wire img_rd_done, pixel_ready, cpu_rdy;
-reg img_captured;
+// reg img_captured;
 wire [7:0] img_r, img_g, img_b;
 
 wire [3:0] curr_state;
@@ -365,44 +371,44 @@ wire [8:0] loop_count;
 
 // assign cpu_rdy = ~KEY[2];
 
-img_cpu_reader sdram_pix_reader (
-	.clk(CLOCK2_50),
-	.img_captured(img_captured),
-    .ack(cpu_rdy),
-    .pixel_rdy(pixel_ready),
-    .img_done(img_rd_done),
-    .RED2(img_r),
-    .GREEN2(img_g),
-    .BLUE2(img_b),
-    .rd2_data(rd2_pixel_data),
-    .rd2_req(rd2_req),
-    .start_addr(PIC_START_ADDR),
-    .max_addr(PIC_START_ADDR + 640*480),
-    .rd_len(256),
-	.curr_state(curr_state),
-	.rst_n(KEY[0]),
-	.send_img(KEY[3]),
-	.loop_count(loop_count)
-);
+// img_cpu_reader sdram_pix_reader (
+// 	.clk(CLOCK2_50),
+// 	.img_captured(img_captured),
+//     .ack(cpu_rdy),
+//     .pixel_rdy(pixel_ready),
+//     .img_done(img_rd_done),
+//     .RED2(img_r),
+//     .GREEN2(img_g),
+//     .BLUE2(img_b),
+//     .rd2_data(rd2_pixel_data),
+//     .rd2_req(rd2_req),
+//     .start_addr(PIC_START_ADDR),
+//     .max_addr(PIC_START_ADDR + 640*480),
+//     .rd_len(256),
+// 	.curr_state(curr_state),
+// 	.rst_n(KEY[0]),
+// 	.send_img(KEY[3]),
+// 	.loop_count(loop_count)
+// );
 
 wire [3:0] out_state;
 wire [31:0] pix_rdy_out;
 wire [23:0] pix_rgb_out;
 wire cpu_pix_rdy;
 
-camera_module img_reader(
-		.clk_clk(CLOCK_50),                                    //                           clk.clk
-		.img_cpu_reader_0_cpu_rdy_cpu_rdy(cpu_pix_rdy),           //      img_cpu_reader_0_cpu_rdy.cpu_rdy
-		.img_cpu_reader_0_get_next_pix_get_next_pix(cpu_rdy), // img_cpu_reader_0_get_next_pix.get_next_pix
-		.img_cpu_reader_0_img_done_img_done(img_rd_done),         //     img_cpu_reader_0_img_done.img_done
-		.img_cpu_reader_0_out_state_out_state(out_state),       //    img_cpu_reader_0_out_state.out_state
-		.img_cpu_reader_0_pix_data_pixel_data({img_r, img_g, img_b}),       //     img_cpu_reader_0_pix_data.pixel_data
-		.img_cpu_reader_0_pix_rdy_pix_rdy(pixel_ready),           //      img_cpu_reader_0_pix_rdy.pix_rdy
-		.img_cpu_reader_0_pix_rdy_out_pix_rdy_out(pix_rdy_out),   //  img_cpu_reader_0_pix_rdy_out.pix_rdy_out
-		.img_cpu_reader_0_pix_rgb_out_pix_rgb_out(pix_rgb_out),   //  img_cpu_reader_0_pix_rgb_out.pix_rgb_out
-		.reset_reset_n(KEY[0]),                               //                         reset.reset_n
-		.pio_in_export(~KEY[2])
-	);
+// camera_module img_reader(
+// 		.clk_clk(CLOCK_50),                                    //                           clk.clk
+// 		.img_cpu_reader_0_cpu_rdy_cpu_rdy(cpu_pix_rdy),           //      img_cpu_reader_0_cpu_rdy.cpu_rdy
+// 		.img_cpu_reader_0_get_next_pix_get_next_pix(cpu_rdy), // img_cpu_reader_0_get_next_pix.get_next_pix
+// 		.img_cpu_reader_0_img_done_img_done(img_rd_done),         //     img_cpu_reader_0_img_done.img_done
+// 		.img_cpu_reader_0_out_state_out_state(out_state),       //    img_cpu_reader_0_out_state.out_state
+// 		.img_cpu_reader_0_pix_data_pixel_data({img_r, img_g, img_b}),       //     img_cpu_reader_0_pix_data.pixel_data
+// 		.img_cpu_reader_0_pix_rdy_pix_rdy(pixel_ready),           //      img_cpu_reader_0_pix_rdy.pix_rdy
+// 		.img_cpu_reader_0_pix_rdy_out_pix_rdy_out(pix_rdy_out),   //  img_cpu_reader_0_pix_rdy_out.pix_rdy_out
+// 		.img_cpu_reader_0_pix_rgb_out_pix_rgb_out(pix_rgb_out),   //  img_cpu_reader_0_pix_rgb_out.pix_rgb_out
+// 		.reset_reset_n(KEY[0]),                               //                         reset.reset_n
+// 		.pio_in_export(~KEY[2])
+// 	);
 
 //always @(posedge CLOCK2_50) begin
 //	LEDR[9] <= img_captured;

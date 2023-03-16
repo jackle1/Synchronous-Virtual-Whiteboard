@@ -30,6 +30,14 @@
          type = "String";
       }
    }
+   element cpu
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Cyclone V";
+         type = "String";
+      }
+   }
    element hexes_pio
    {
       datum _sortIndex
@@ -69,6 +77,22 @@
       datum baseAddress
       {
          value = "0";
+         type = "String";
+      }
+   }
+   element img_cpu_reader_0
+   {
+      datum _sortIndex
+      {
+         value = "13";
+         type = "int";
+      }
+   }
+   element img_cpu_reader_0.avalon_slave_0
+   {
+      datum baseAddress
+      {
+         value = "96";
          type = "String";
       }
    }
@@ -221,7 +245,7 @@
    {
       datum _sortIndex
       {
-         value = "13";
+         value = "14";
          type = "int";
       }
    }
@@ -271,6 +295,46 @@
    type="conduit"
    dir="end" />
  <interface name="hps_io" internal="hps_0.hps_io" type="conduit" dir="end" />
+ <interface
+   name="img_cpu_reader_0_cpu_rdy"
+   internal="img_cpu_reader_0.cpu_rdy"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="img_cpu_reader_0_get_next_pix"
+   internal="img_cpu_reader_0.get_next_pix"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="img_cpu_reader_0_img_done"
+   internal="img_cpu_reader_0.img_done"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="img_cpu_reader_0_out_state"
+   internal="img_cpu_reader_0.out_state"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="img_cpu_reader_0_pix_rdy"
+   internal="img_cpu_reader_0.pix_rdy"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="img_cpu_reader_0_pix_rdy_out"
+   internal="img_cpu_reader_0.pix_rdy_out"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="img_cpu_reader_0_pix_rgb_out"
+   internal="img_cpu_reader_0.pix_rgb_out"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="img_cpu_reader_0_pixel_data"
+   internal="img_cpu_reader_0.pixel_data"
+   type="conduit"
+   dir="end" />
  <interface name="memory" internal="hps_0.memory" type="conduit" dir="end" />
  <interface name="reset" internal="sys_clk.ref_reset" type="reset" dir="end" />
  <interface
@@ -862,6 +926,11 @@
   <parameter name="use_default_mpu_clk" value="true" />
  </module>
  <module
+   name="img_cpu_reader_0"
+   kind="img_cpu_reader"
+   version="1.0"
+   enabled="1" />
+ <module
    name="master_0"
    kind="altera_jtag_avalon_master"
    version="18.1"
@@ -1086,6 +1155,15 @@
    kind="avalon"
    version="18.1"
    start="hps_0.h2f_lw_axi_master"
+   end="img_cpu_reader_0.avalon_slave_0">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0060" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="hps_0.h2f_lw_axi_master"
    end="switches_pio.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x0030" />
@@ -1178,6 +1256,11 @@
    version="18.1"
    start="sys_clk.sys_clk"
    end="hexes_pio.clk" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="sys_clk.sys_clk"
+   end="img_cpu_reader_0.clock" />
  <connection
    kind="clock"
    version="18.1"
@@ -1282,6 +1365,11 @@
    version="18.1"
    start="sys_clk.reset_source"
    end="hexes_pio.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="sys_clk.reset_source"
+   end="img_cpu_reader_0.reset_sink" />
  <connection
    kind="reset"
    version="18.1"

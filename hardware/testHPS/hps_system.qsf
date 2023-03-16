@@ -1142,7 +1142,6 @@ set_global_assignment -name ECO_REGENERATE_REPORT ON
 set_global_assignment -name VERILOG_FILE hps_system.v
 set_global_assignment -name QIP_FILE cpu/synthesis/cpu.qip
 set_global_assignment -name SYSTEMVERILOG_FILE ../DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/image_transfer/sdram_img_read_write.sv
-set_global_assignment -name QIP_FILE ../DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/camera_module/synthesis/camera_module.qip
 set_global_assignment -name VERILOG_FILE ../DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/DE1_SOC_D8M_RTL.v
 set_global_assignment -name SOURCE_FILE ../DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/VGA_Controller/VGA_Param.h
 set_global_assignment -name VERILOG_FILE ../DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/VGA_Controller/VGA_Controller.v

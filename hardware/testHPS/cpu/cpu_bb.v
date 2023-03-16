@@ -1,6 +1,8 @@
 
 module cpu (
+	buttons_export,
 	clk_clk,
+	hexes_export,
 	hps_io_hps_io_emac1_inst_TX_CLK,
 	hps_io_hps_io_emac1_inst_TXD0,
 	hps_io_hps_io_emac1_inst_TXD1,
@@ -95,10 +97,18 @@ module cpu (
 	vga_R,
 	vga_G,
 	vga_B,
-	buttons_export,
-	hexes_export);	
+	img_cpu_reader_0_cpu_rdy_cpu_rdy,
+	img_cpu_reader_0_get_next_pix_get_next_pix,
+	img_cpu_reader_0_img_done_img_done,
+	img_cpu_reader_0_out_state_out_state,
+	img_cpu_reader_0_pix_rdy_pix_rdy,
+	img_cpu_reader_0_pix_rdy_out_pix_rdy_out,
+	img_cpu_reader_0_pix_rgb_out_pix_rgb_out,
+	img_cpu_reader_0_pixel_data_pixel_data);	
 
+	input	[3:0]	buttons_export;
 	input		clk_clk;
+	output	[27:0]	hexes_export;
 	output		hps_io_hps_io_emac1_inst_TX_CLK;
 	output		hps_io_hps_io_emac1_inst_TXD0;
 	output		hps_io_hps_io_emac1_inst_TXD1;
@@ -193,6 +203,12 @@ module cpu (
 	output	[7:0]	vga_R;
 	output	[7:0]	vga_G;
 	output	[7:0]	vga_B;
-	input	[3:0]	buttons_export;
-	output	[27:0]	hexes_export;
+	output		img_cpu_reader_0_cpu_rdy_cpu_rdy;
+	output		img_cpu_reader_0_get_next_pix_get_next_pix;
+	input		img_cpu_reader_0_img_done_img_done;
+	output	[3:0]	img_cpu_reader_0_out_state_out_state;
+	input		img_cpu_reader_0_pix_rdy_pix_rdy;
+	output	[31:0]	img_cpu_reader_0_pix_rdy_out_pix_rdy_out;
+	output	[23:0]	img_cpu_reader_0_pix_rgb_out_pix_rgb_out;
+	input	[23:0]	img_cpu_reader_0_pixel_data_pixel_data;
 endmodule

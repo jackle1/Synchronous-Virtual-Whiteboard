@@ -2,9 +2,9 @@
 module hps_system (
       ///////// CLOCK /////////
       input 		          		CLOCK2_50,
-        input 		          		CLOCK3_50,
-        input 		          		CLOCK4_50,
-        input 		          		CLOCK_50,
+      input 		          		CLOCK3_50,
+      input 		          		CLOCK4_50,
+      input 		          		CLOCK_50,
 
       ///////// DRAM /////////
       output      [12:0] DRAM_ADDR,
@@ -268,8 +268,23 @@ module hps_system (
         .sdram_we_n(hps_dram_we_n),
         .buttons_export(KEY),
         .switches_export(SW),
-        .hexes_export({cpu_hex3, cpu_hex2, cpu_hex1, cpu_hex0})
+        .hexes_export({cpu_hex3, cpu_hex2, cpu_hex1, cpu_hex0}),
+
+        //img_cpu_reader
+        .img_cpu_reader_0_cpu_rdy_cpu_rdy(cpu_pix_rdy),
+		.img_cpu_reader_0_get_next_pix_get_next_pix(get_next_pix),
+		.img_cpu_reader_0_img_done_img_done(img_rd_done),
+		.img_cpu_reader_0_out_state_out_state(out_state), 
+		.img_cpu_reader_0_pix_rdy_pix_rdy(pixel_ready), 
+		.img_cpu_reader_0_pix_rdy_out_pix_rdy_out(pix_rdy_out), 
+		.img_cpu_reader_0_pix_rgb_out_pix_rgb_out(pix_rgb_out), 
+		.img_cpu_reader_0_pixel_data_pixel_data({img_r, img_g, img_b}), 
     );
+
+    wire cpu_pix_rdy;
+    wire [3:0] out_state;   //for debugging only
+    wire [31:0] pix_rdy_out;   //for debugging only
+    wire [23:0] pix_rgb_out;   //for debugging only
 
     DE1_SOC_D8M_RTL camera (
         .ADC_CONVST(ADC_CONVST),
@@ -356,6 +371,12 @@ module hps_system (
 	    .MIPI_REFCLK(MIPI_REFCLK),
 	    .MIPI_RESET_n(MIPI_RESET_n),
 
+        .img_captured(img_captured),
+        .rd2_pixel_data(rd2_pixel_data),
+        .rd2_req(rd2_req),
+        .rd2_start_addr(PIC_START_ADDR),
+        .rd2_max_addr(PIC_START_ADDR + 640*480),
+        .rd2_len(256)
     );
 
     assign cpu_hex4 = 7'h7F;
@@ -380,10 +401,6 @@ wire[15:0] camera_dq, dram_dq_interconnect, hps_dram_dq;
 wire camera_dram_cas_n, camera_dram_cke, camera_dram_cs_n, camera_dram_ldqm, camera_dram_ras_n, camera_dram_udqm, camera_dram_we_n, hps_dram_cas_n, hps_dram_cke, hps_dram_cs_n, hps_dram_ldqm, hps_dram_ras_n, hps_dram_udqm, hps_dram_we_n;
 wire camera_dram_clk, hps_dram_clk; 
 
-// wire sdram_oe;
-// assign camera_dq = ~sdram_oe ? DRAM_DQ : 16'bz;
-// assign DRAM_DQ = SW[8] ? (sdram_oe ? camera_dq : 16'bz) : 16'b0;
-
 assign DRAM_ADDR = SW[8] ? camera_dram_addr : hps_dram_addr;
 assign DRAM_BA = SW[8] ? camera_dram_ba : hps_dram_ba;
 assign {DRAM_CAS_N, DRAM_CKE, DRAM_CS_N, DRAM_LDQM, DRAM_RAS_N, DRAM_UDQM, DRAM_WE_N} = SW[8] ? {camera_dram_cas_n, camera_dram_cke, camera_dram_cs_n, camera_dram_ldqm, camera_dram_ras_n, camera_dram_udqm, camera_dram_we_n} : {hps_dram_cas_n, hps_dram_cke, hps_dram_cs_n, hps_dram_ldqm, hps_dram_ras_n, hps_dram_udqm, hps_dram_we_n};
@@ -392,5 +409,34 @@ assign DRAM_CLK = SW[8] ? camera_dram_clk : hps_dram_clk;
 wire [6:0] cam_hex0, cam_hex1, cam_hex2, cam_hex3, cam_hex4, cam_hex5, cam_hex6;
 wire [6:0] cpu_hex0, cpu_hex1, cpu_hex2, cpu_hex3, cpu_hex4, cpu_hex5, cpu_hex6;
 assign {HEX6, HEX5, HEX4, HEX3, HEX2, HEX1, HEX0} = SW[8] ? {cam_hex0, cam_hex1, cam_hex2, cam_hex3, cam_hex4, cam_hex5, cam_hex6} : {cpu_hex0, cpu_hex1, cpu_hex2, cpu_hex3, cpu_hex4, cpu_hex5, cpu_hex6};
+
+wire get_next_pix;  //cpu_rdy on img_cpu_reader
+wire [7:0] img_r, img_g, img_b;
+wire img_rd_done, pixel_ready;
+wire [3:0] curr_state;   //debugging purposes
+wire [8:0] loop_count;  //debugging purposes
+wire rd2_req;  //req next pixel from D8M read fifo 2
+wire [9:0] rd2_pixel_data;   //= img_cpu_reader sdram_data
+
+img_cpu_reader sdram_pix_reader (
+	.clk(CLOCK2_50),
+	.img_captured(img_captured),
+    .ack(get_next_pix),
+    .pixel_rdy(pixel_ready),
+    .img_done(img_rd_done),
+    .RED2(img_r),
+    .GREEN2(img_g),
+    .BLUE2(img_b),
+    .rd2_data(rd2_pixel_data),
+    .rd2_req(rd2_req),
+    .start_addr(PIC_START_ADDR),
+    .max_addr(PIC_START_ADDR + 640*480),
+    .rd_len(256),
+	.curr_state(curr_state),
+	.rst_n(KEY[0]),
+	.send_img(KEY[3]),
+	.loop_count(loop_count)
+);
+
 
 endmodule
