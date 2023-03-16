@@ -231,78 +231,58 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_0[6] -entity DE
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_0[7] -entity DE1_SoC
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_0[8] -entity DE1_SoC
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_0[9] -entity DE1_SoC
-set_location_assignment PIN_AB17 -to GPIO_1[0]
-set_location_assignment PIN_AG26 -to GPIO_1[10]
-set_location_assignment PIN_AH24 -to GPIO_1[11]
-set_location_assignment PIN_AH27 -to GPIO_1[12]
-set_location_assignment PIN_AJ27 -to GPIO_1[13]
-set_location_assignment PIN_AK29 -to GPIO_1[14]
-set_location_assignment PIN_AK28 -to GPIO_1[15]
-set_location_assignment PIN_AK27 -to GPIO_1[16]
-set_location_assignment PIN_AJ26 -to GPIO_1[17]
-set_location_assignment PIN_AK26 -to GPIO_1[18]
-set_location_assignment PIN_AH25 -to GPIO_1[19]
-set_location_assignment PIN_AA21 -to GPIO_1[1]
-set_location_assignment PIN_AJ25 -to GPIO_1[20]
-set_location_assignment PIN_AJ24 -to GPIO_1[21]
-set_location_assignment PIN_AK24 -to GPIO_1[22]
-set_location_assignment PIN_AG23 -to GPIO_1[23]
-set_location_assignment PIN_AK23 -to GPIO_1[24]
-set_location_assignment PIN_AH23 -to GPIO_1[25]
-set_location_assignment PIN_AK22 -to GPIO_1[26]
-set_location_assignment PIN_AJ22 -to GPIO_1[27]
-set_location_assignment PIN_AH22 -to GPIO_1[28]
-set_location_assignment PIN_AG22 -to GPIO_1[29]
-set_location_assignment PIN_AB21 -to GPIO_1[2]
-set_location_assignment PIN_AF24 -to GPIO_1[30]
-set_location_assignment PIN_AF23 -to GPIO_1[31]
-set_location_assignment PIN_AE22 -to GPIO_1[32]
-set_location_assignment PIN_AD21 -to GPIO_1[33]
-set_location_assignment PIN_AA20 -to GPIO_1[34]
-set_location_assignment PIN_AC22 -to GPIO_1[35]
-set_location_assignment PIN_AC23 -to GPIO_1[3]
-set_location_assignment PIN_AD24 -to GPIO_1[4]
-set_location_assignment PIN_AE23 -to GPIO_1[5]
-set_location_assignment PIN_AE24 -to GPIO_1[6]
-set_location_assignment PIN_AF25 -to GPIO_1[7]
-set_location_assignment PIN_AF26 -to GPIO_1[8]
-set_location_assignment PIN_AG25 -to GPIO_1[9]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[0] -entity DE1_SoC
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[10] -entity DE1_SoC
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[11] -entity DE1_SoC
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[12] -entity DE1_SoC
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[13] -entity DE1_SoC
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[14] -entity DE1_SoC
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[15] -entity DE1_SoC
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[16] -entity DE1_SoC
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[17] -entity DE1_SoC
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[18] -entity DE1_SoC
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[19] -entity DE1_SoC
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[1] -entity DE1_SoC
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[20] -entity DE1_SoC
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[21] -entity DE1_SoC
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[22] -entity DE1_SoC
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[23] -entity DE1_SoC
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[24] -entity DE1_SoC
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[25] -entity DE1_SoC
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[26] -entity DE1_SoC
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[27] -entity DE1_SoC
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[28] -entity DE1_SoC
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[29] -entity DE1_SoC
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[2] -entity DE1_SoC
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[30] -entity DE1_SoC
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[31] -entity DE1_SoC
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[32] -entity DE1_SoC
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[33] -entity DE1_SoC
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[34] -entity DE1_SoC
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[35] -entity DE1_SoC
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[3] -entity DE1_SoC
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[4] -entity DE1_SoC
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[5] -entity DE1_SoC
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[6] -entity DE1_SoC
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[7] -entity DE1_SoC
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[8] -entity DE1_SoC
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[9] -entity DE1_SoC
+
+#============================================================
+# GPIO_1, GPIO_1 connect to D8M-GPIO
+#============================================================
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to CAMERA_I2C_SCL -entity DE1_SoC
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to CAMERA_I2C_SDA -entity DE1_SoC
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to CAMERA_PWDN_n -entity DE1_SoC
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to MIPI_CS_n -entity DE1_SoC
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to MIPI_I2C_SCL -entity DE1_SoC
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to MIPI_I2C_SDA -entity DE1_SoC
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to MIPI_MCLK -entity DE1_SoC
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to MIPI_PIXEL_CLK -entity DE1_SoC
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to MIPI_PIXEL_D[0] -entity DE1_SoC
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to MIPI_PIXEL_D[1] -entity DE1_SoC
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to MIPI_PIXEL_D[2] -entity DE1_SoC
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to MIPI_PIXEL_D[3] -entity DE1_SoC
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to MIPI_PIXEL_D[4] -entity DE1_SoC
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to MIPI_PIXEL_D[5] -entity DE1_SoC
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to MIPI_PIXEL_D[6] -entity DE1_SoC
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to MIPI_PIXEL_D[7] -entity DE1_SoC
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to MIPI_PIXEL_D[8] -entity DE1_SoC
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to MIPI_PIXEL_D[9] -entity DE1_SoC
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to MIPI_PIXEL_HS -entity DE1_SoC
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to MIPI_PIXEL_VS -entity DE1_SoC
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to MIPI_REFCLK -entity DE1_SoC
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to MIPI_RESET_n -entity DE1_SoC
+set_location_assignment PIN_AK22 -to CAMERA_I2C_SCL
+set_location_assignment PIN_AJ22 -to CAMERA_I2C_SDA
+set_location_assignment PIN_AH23 -to CAMERA_PWDN_n
+set_location_assignment PIN_AG23 -to MIPI_CS_n
+set_location_assignment PIN_AF24 -to MIPI_I2C_SCL
+set_location_assignment PIN_AF23 -to MIPI_I2C_SDA
+set_location_assignment PIN_AH22 -to MIPI_MCLK
+#pin 0 of GPIO1
+#set_location_assignment PIN_AB17 -to MIPI_PIXEL_CLK
+#pin 1 of GPIO1
+set_location_assignment PIN_AA21 -to MIPI_PIXEL_CLK
+set_location_assignment PIN_AC23 -to MIPI_PIXEL_D[0]
+set_location_assignment PIN_AD24 -to MIPI_PIXEL_D[1]
+set_location_assignment PIN_AE23 -to MIPI_PIXEL_D[2]
+set_location_assignment PIN_AE24 -to MIPI_PIXEL_D[3]
+set_location_assignment PIN_AF25 -to MIPI_PIXEL_D[4]
+set_location_assignment PIN_AF26 -to MIPI_PIXEL_D[5]
+set_location_assignment PIN_AG25 -to MIPI_PIXEL_D[6]
+set_location_assignment PIN_AG26 -to MIPI_PIXEL_D[7]
+set_location_assignment PIN_AH24 -to MIPI_PIXEL_D[8]
+set_location_assignment PIN_AH27 -to MIPI_PIXEL_D[9]
+set_location_assignment PIN_AK24 -to MIPI_PIXEL_HS
+set_location_assignment PIN_AJ25 -to MIPI_PIXEL_VS
+set_location_assignment PIN_AK26 -to MIPI_REFCLK
+set_location_assignment PIN_AK23 -to MIPI_RESET_n
+
 set_location_assignment PIN_AE26 -to HEX0[0]
 set_location_assignment PIN_AE27 -to HEX0[1]
 set_location_assignment PIN_AE28 -to HEX0[2]
@@ -876,8 +856,6 @@ set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to HPS_DDR3_WE_N -e
 set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to HPS_DDR3_RESET_N -entity DE1_SoC
 set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to HPS_DDR3_CK_P -entity DE1_SoC
 set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to HPS_DDR3_CK_N -entity DE1_SoC
-set_global_assignment -name QIP_FILE cpu/synthesis/cpu.qip
-set_global_assignment -name VERILOG_FILE hps_system.v
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
@@ -1161,4 +1139,51 @@ set_global_assignment -name USE_DLL_FREQUENCY_FOR_DQS_DELAY_CHAIN ON
 set_global_assignment -name UNIPHY_SEQUENCER_DQS_CONFIG_ENABLE ON
 set_global_assignment -name OPTIMIZE_MULTI_CORNER_TIMING ON
 set_global_assignment -name ECO_REGENERATE_REPORT ON
+set_global_assignment -name VERILOG_FILE hps_system.v
+set_global_assignment -name QIP_FILE cpu/synthesis/cpu.qip
+set_global_assignment -name SYSTEMVERILOG_FILE ../DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/image_transfer/sdram_img_read_write.sv
+set_global_assignment -name QIP_FILE ../DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/camera_module/synthesis/camera_module.qip
+set_global_assignment -name VERILOG_FILE ../DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/DE1_SOC_D8M_RTL.v
+set_global_assignment -name SOURCE_FILE ../DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/VGA_Controller/VGA_Param.h
+set_global_assignment -name VERILOG_FILE ../DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/VGA_Controller/VGA_Controller.v
+set_global_assignment -name VERILOG_FILE ../DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/V_Sdram_Control/Sdram_WR_FIFO.v
+set_global_assignment -name VERILOG_FILE ../DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/V_Sdram_Control/Sdram_RD_FIFO.v
+set_global_assignment -name SOURCE_FILE ../DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/V_Sdram_Control/Sdram_Params.h
+set_global_assignment -name VERILOG_FILE ../DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/V_Sdram_Control/Sdram_Control.v
+set_global_assignment -name VERILOG_FILE ../DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/V_Sdram_Control/sdr_data_path.v
+set_global_assignment -name VERILOG_FILE ../DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/V_Sdram_Control/control_interface.v
+set_global_assignment -name VERILOG_FILE ../DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/V_Sdram_Control/command.v
+set_global_assignment -name VERILOG_FILE ../DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/V_D8M/VGA_RD_COUNTER.v
+set_global_assignment -name VERILOG_FILE ../DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/V_D8M/RAW2RGB_J.v
+set_global_assignment -name VERILOG_FILE ../DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/V_D8M/RAW_RGB_BIN.v
+set_global_assignment -name VERILOG_FILE ../DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/V_D8M/RAM_READ_COUNTER.v
+set_global_assignment -name VERILOG_FILE ../DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/V_D8M/ON_CHIP_FRAM.v
+set_global_assignment -name VERILOG_FILE ../DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/V_D8M/MIPI_CAMERA_CONFIG.v
+set_global_assignment -name VERILOG_FILE ../DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/V_D8M/MIPI_BRIDGE_CONFIG.v
+set_global_assignment -name VERILOG_FILE ../DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/V_D8M/MIPI_BRIDGE_CAMERA_Config.v
+set_global_assignment -name VERILOG_FILE ../DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/V_D8M/Line_Buffer_J.v
+set_global_assignment -name VERILOG_FILE ../DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/V_D8M/int_line.v
+set_global_assignment -name VERILOG_FILE ../DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/V_Auto/VCM_I2C.v
+set_global_assignment -name VERILOG_FILE ../DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/V_Auto/VCM_CTRL_P.v
+set_global_assignment -name VERILOG_FILE ../DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/V_Auto/MODIFY_SYNC.v
+set_global_assignment -name VERILOG_FILE ../DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/V_Auto/LCD_COUNTER.v
+set_global_assignment -name VERILOG_FILE ../DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/V_Auto/I2C_DELAY.v
+set_global_assignment -name VERILOG_FILE ../DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/V_Auto/FOCUS_ADJ.v
+set_global_assignment -name VERILOG_FILE ../DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/V_Auto/F_VCM.v
+set_global_assignment -name VERILOG_FILE ../DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/V_Auto/AUTO_SYNC_MODIFY.v
+set_global_assignment -name VERILOG_FILE ../DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/V_Auto/AUTO_FOCUS_ON.v
+set_global_assignment -name QIP_FILE ../DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/V/VIDEO_PLL.qip
+set_global_assignment -name VERILOG_FILE ../DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/V/SEG7_LUT_8.v
+set_global_assignment -name VERILOG_FILE ../DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/V/SEG7_LUT.v
+set_global_assignment -name VERILOG_FILE ../DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/V/sdram_pll.v
+set_global_assignment -name VERILOG_FILE ../DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/V/RESET_DELAY.v
+set_global_assignment -name VERILOG_FILE ../DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/V/pll_test.v
+set_global_assignment -name VERILOG_FILE ../DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/V/I2C_WRITE_WDATA.v
+set_global_assignment -name VERILOG_FILE ../DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/V/I2C_WRITE_PTR.v
+set_global_assignment -name VERILOG_FILE ../DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/V/I2C_RESET_DELAY.v
+set_global_assignment -name VERILOG_FILE ../DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/V/I2C_READ_DATA.v
+set_global_assignment -name VERILOG_FILE ../DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/V/FpsMonitor.v
+set_global_assignment -name VERILOG_FILE ../DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/V/D8M_LUT.v
+set_global_assignment -name VERILOG_FILE ../DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/V/CLOCKMEM.v
+set_global_assignment -name VERILOG_FILE ../DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/V/CLOCK_DELAY.v
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

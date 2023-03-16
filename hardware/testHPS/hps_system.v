@@ -1,7 +1,10 @@
 // https://people.ece.cornell.edu/land/courses/ece5760/DE1_SOC/HPS_FPGA/pio_test/ghrd_top.v
 module hps_system (
       ///////// CLOCK /////////
-      input              CLOCK_50,
+      input 		          		CLOCK2_50,
+        input 		          		CLOCK3_50,
+        input 		          		CLOCK4_50,
+        input 		          		CLOCK_50,
 
       ///////// DRAM /////////
       output      [12:0] DRAM_ADDR,
@@ -25,8 +28,6 @@ module hps_system (
 
       ///////// GPIO /////////
       inout     [35:0]         GPIO_0,
-      inout     [35:0]         GPIO_1,
- 
 
       ///////// HEX0 /////////
       output      [6:0]  HEX0,
@@ -124,7 +125,22 @@ module hps_system (
       output             VGA_HS,
       output      [7:0]  VGA_R,
       output             VGA_SYNC_N,
-      output             VGA_VS
+      output             VGA_VS,
+
+      //////////// GPIO_1, GPIO_1 connect to D8M-GPIO //////////
+	output 		          		CAMERA_I2C_SCL,
+	inout 		          		CAMERA_I2C_SDA,
+	output		          		CAMERA_PWDN_n,
+	output		          		MIPI_CS_n,
+	inout 		          		MIPI_I2C_SCL,
+	inout 		          		MIPI_I2C_SDA,
+	output		          		MIPI_MCLK,
+	input 		          		MIPI_PIXEL_CLK,
+	input 		     [9:0]		MIPI_PIXEL_D,
+	input 		          		MIPI_PIXEL_HS,
+	input 		          		MIPI_PIXEL_VS,
+	output		          		MIPI_REFCLK,
+	output		          		MIPI_RESET_n
 );
 
     cpu c (
@@ -228,35 +244,153 @@ module hps_system (
 
         .reset_reset(~KEY[0]),
 
-        .touch_uart_RXD(GPIO_1[31]),            // touchscreen_uart.rxd
-		.touch_uart_TXD(GPIO_1[30]),            //                 .txd
+        .touch_uart_RXD(GPIO_0[31]),            // touchscreen_uart.rxd
+		.touch_uart_TXD(GPIO_0[30]),            //                 .txd
 
-        .vga_CLK(VGA_CLK),
-        .vga_HS(VGA_HS),
-        .vga_VS(VGA_VS),
-        .vga_BLANK(VGA_BLANK_N),
-        .vga_SYNC(VGA_SYNC_N),
-        .vga_R(VGA_R),
-        .vga_G(VGA_G),
-        .vga_B(VGA_B),
+        .vga_CLK(hps_vga_clk),
+        .vga_HS(hps_vga_hs),
+        .vga_VS(hps_vga_vs),
+        .vga_BLANK(hps_vga_blank_n),
+        .vga_SYNC(hps_vga_sync_n),
+        .vga_R(hps_vga_r),
+        .vga_G(hps_vga_g),
+        .vga_B(hps_vga_b),
 
-        .sdram_clk_clk(DRAM_CLK),
-        .sdram_addr(DRAM_ADDR),
-        .sdram_ba(DRAM_BA),
-        .sdram_cas_n(DRAM_CAS_N),
-        .sdram_cke(DRAM_CKE),
-        .sdram_cs_n(DRAM_CS_N),
+        .sdram_clk_clk(hps_dram_clk),
+        .sdram_addr(hps_dram_addr),
+        .sdram_ba(hps_dram_ba),
+        .sdram_cas_n(hps_dram_cas_n),
+        .sdram_cke(hps_dram_cke),
+        .sdram_cs_n(hps_dram_cs_n),
         .sdram_dq(DRAM_DQ),
-        .sdram_dqm({DRAM_UDQM, DRAM_LDQM}),
-        .sdram_ras_n(DRAM_RAS_N),
-        .sdram_we_n(DRAM_WE_N),
+        .sdram_dqm({hps_dram_udqm, hps_dram_ldqm}),
+        .sdram_ras_n(hps_dram_ras_n),
+        .sdram_we_n(hps_dram_we_n),
         .buttons_export(KEY),
         .switches_export(SW),
-        .hexes_export({HEX3, HEX2, HEX1, HEX0})
+        .hexes_export({cpu_hex3, cpu_hex2, cpu_hex1, cpu_hex0})
     );
 
-    assign HEX4 = 7'h7F;
-    assign HEX5= 7'h7F;
-		
+    DE1_SOC_D8M_RTL camera (
+        .ADC_CONVST(ADC_CONVST),
+	    .ADC_DIN(ADC_DIN),
+	    .ADC_DOUT(ADC_DOUT),
+	    .ADC_SCLK(ADC_SCLK),
+
+        .AUD_ADCDAT(AUD_ADCDAT),
+        .AUD_ADCLRCK(AUD_ADCLRCK),
+        .AUD_BCLK(AUD_BCLK),
+        .AUD_DACDAT(AUD_DACDAT),
+        .AUD_DACLRCK(AUD_DACLRCK),
+        .AUD_XCK(AUD_XCK),
+
+        .CLOCK2_50(CLOCK2_50),
+        .CLOCK3_50(CLOCK3_50),
+        .CLOCK4_50(CLOCK4_50),
+        .CLOCK_50(CLOCK_50),
+
+        .DRAM_ADDR(camera_dram_addr),
+	    .DRAM_BA(camera_dram_ba),
+	    .DRAM_CAS_N(camera_dram_cas_n),
+	    .DRAM_CKE(camera_dram_cke),
+	    .DRAM_CLK(camera_dram_clk),
+	    .DRAM_CS_N(camera_dram_cs_n),
+	    .DRAM_DQ(DRAM_DQ),
+        .DRAM_LDQM(camera_dram_ldqm),
+        .DRAM_RAS_N(camera_dram_ras_n),
+	    .DRAM_UDQM(camera_dram_udqm),
+	    .DRAM_WE_N(camera_dram_we_n),
+
+        .FPGA_I2C_SCLK(FPGA_I2C_SCLK),
+        .FPGA_I2C_SDAT(FPGA_I2C_SDAT),
+
+        .GPIO(GPIO_0),
+
+        .HEX0(cam_hex0),
+        .HEX1(cam_hex1),
+        .HEX2(cam_hex2),
+        .HEX3(cam_hex3),
+        .HEX4(cam_hex4),
+        .HEX5(cam_hex5),
+
+        .IRDA_RXD(IRDA_RXD),
+        .IRDA_TXD(IRDA_TXD),
+
+        .KEY(KEY),
+
+        .LEDR(LEDR),
+
+        .PS2_CLK(PS2_CLK),
+        .PS2_CLK2(PS2_CLK2),
+        .PS2_DAT(PS2_DAT),
+        .PS2_DAT2(PS2_DAT2),
+
+        .SW(SW),
+
+        .TD_CLK27(TD_CLK27),
+        .TD_DATA(TD_DATA),
+        .TD_HS(TD_HS),
+        .TD_RESET_N(TD_RESET_N),
+        .TD_VS(TD_VS),
+
+        .VGA_BLANK_N(camera_vga_blank_n),
+        .VGA_B(camera_vga_b),
+        .VGA_CLK(camera_vga_clk),
+        .VGA_G(camera_vga_g),
+        .VGA_HS(camera_vga_hs),
+        .VGA_R(camera_vga_r),
+        .VGA_SYNC_N(camera_vga_sync_n),
+        .VGA_VS(camera_vga_vs),
+
+        .CAMERA_I2C_SCL(CAMERA_I2C_SCL),
+        .CAMERA_I2C_SDA(CAMERA_I2C_SDA),
+        .CAMERA_PWDN_n(CAMERA_PWDN_n),
+        .MIPI_CS_n(MIPI_CS_n),
+	    .MIPI_I2C_SCL(MIPI_I2C_SCL),
+	    .MIPI_I2C_SDA(MIPI_I2C_SDA),
+	    .MIPI_MCLK(MIPI_MCLK),
+	    .MIPI_PIXEL_CLK(MIPI_PIXEL_CLK),
+	    .MIPI_PIXEL_D(MIPI_PIXEL_D),
+	    .MIPI_PIXEL_HS(MIPI_PIXEL_HS),
+	    .MIPI_PIXEL_VS(MIPI_PIXEL_VS),
+	    .MIPI_REFCLK(MIPI_REFCLK),
+	    .MIPI_RESET_n(MIPI_RESET_n),
+
+    );
+
+    assign cpu_hex4 = 7'h7F;
+    assign cpu_hex5 = 7'h7F;
+
+    //----Multiplex between VGA and Camera----
+//DE1 VGA output
+wire [7:0] camera_vga_r, camera_vga_g, camera_vga_b, hps_vga_r, hps_vga_g, hps_vga_b;
+wire camera_vga_hs, camera_vga_vs, hps_vga_hs, hps_vga_vs;
+wire camera_vga_blank_n, camera_vga_sync_n, hps_vga_blank_n, hps_vga_sync_n;
+wire camera_vga_clk, hps_vga_clk;
+
+assign {VGA_R, VGA_G, VGA_B} = SW[8] ? {camera_vga_r, camera_vga_g, camera_vga_b} : {hps_vga_r, hps_vga_g, hps_vga_b};
+assign {VGA_HS, VGA_VS} = SW[8] ? {camera_vga_hs, camera_vga_vs} : {hps_vga_hs, hps_vga_vs};
+assign {VGA_BLANK_N, VGA_SYNC_N} = SW[8] ? {camera_vga_blank_n, camera_vga_sync_n} : {hps_vga_blank_n, hps_vga_sync_n};
+assign VGA_CLK = SW[8] ? camera_vga_clk : hps_vga_clk;
+
+//DE1 DRAM Output
+wire[12:0] camera_dram_addr, hps_dram_addr;
+wire[1:0] camera_dram_ba, hps_dram_ba;
+wire[15:0] camera_dq, dram_dq_interconnect, hps_dram_dq;
+wire camera_dram_cas_n, camera_dram_cke, camera_dram_cs_n, camera_dram_ldqm, camera_dram_ras_n, camera_dram_udqm, camera_dram_we_n, hps_dram_cas_n, hps_dram_cke, hps_dram_cs_n, hps_dram_ldqm, hps_dram_ras_n, hps_dram_udqm, hps_dram_we_n;
+wire camera_dram_clk, hps_dram_clk; 
+
+// wire sdram_oe;
+// assign camera_dq = ~sdram_oe ? DRAM_DQ : 16'bz;
+// assign DRAM_DQ = SW[8] ? (sdram_oe ? camera_dq : 16'bz) : 16'b0;
+
+assign DRAM_ADDR = SW[8] ? camera_dram_addr : hps_dram_addr;
+assign DRAM_BA = SW[8] ? camera_dram_ba : hps_dram_ba;
+assign {DRAM_CAS_N, DRAM_CKE, DRAM_CS_N, DRAM_LDQM, DRAM_RAS_N, DRAM_UDQM, DRAM_WE_N} = SW[8] ? {camera_dram_cas_n, camera_dram_cke, camera_dram_cs_n, camera_dram_ldqm, camera_dram_ras_n, camera_dram_udqm, camera_dram_we_n} : {hps_dram_cas_n, hps_dram_cke, hps_dram_cs_n, hps_dram_ldqm, hps_dram_ras_n, hps_dram_udqm, hps_dram_we_n};
+assign DRAM_CLK = SW[8] ? camera_dram_clk : hps_dram_clk;
+
+wire [6:0] cam_hex0, cam_hex1, cam_hex2, cam_hex3, cam_hex4, cam_hex5, cam_hex6;
+wire [6:0] cpu_hex0, cpu_hex1, cpu_hex2, cpu_hex3, cpu_hex4, cpu_hex5, cpu_hex6;
+assign {HEX6, HEX5, HEX4, HEX3, HEX2, HEX1, HEX0} = SW[8] ? {cam_hex0, cam_hex1, cam_hex2, cam_hex3, cam_hex4, cam_hex5, cam_hex6} : {cpu_hex0, cpu_hex1, cpu_hex2, cpu_hex3, cpu_hex4, cpu_hex5, cpu_hex6};
 
 endmodule
