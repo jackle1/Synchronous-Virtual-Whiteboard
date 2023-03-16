@@ -419,6 +419,12 @@ assign {VGA_HS, VGA_VS} = SW[8] ? {camera_vga_hs, camera_vga_vs} : {hps_vga_hs, 
 assign {VGA_BLANK_N, VGA_SYNC_N} = SW[8] ? {camera_vga_blank_n, camera_vga_sync_n} : {hps_vga_blank_n, hps_vga_sync_n};
 assign VGA_CLK = SW[8] ? camera_vga_clk : hps_vga_clk;
 
+// VGA Multiplex working on NIOS
+// assign {VGA_R, VGA_G, VGA_B} = SW[8] ? {camera_vga_r, camera_vga_g, camera_vga_b} : 24'h7FF;
+// assign {VGA_HS, VGA_VS} = SW[8] ? {camera_vga_hs, camera_vga_vs} : 2'b01;
+// assign {VGA_BLANK_N, VGA_SYNC_N} = SW[8] ? {camera_vga_blank_n, camera_vga_sync_n} : 2'b01;
+// assign VGA_CLK = SW[8] ? camera_vga_clk : 1'b1;
+
 //DE1 DRAM Output
 wire[12:0] camera_dram_addr, hps_dram_addr;
 wire[1:0] camera_dram_ba, hps_dram_ba;
