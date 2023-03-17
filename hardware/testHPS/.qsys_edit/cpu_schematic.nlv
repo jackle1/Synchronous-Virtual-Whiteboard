@@ -1,8 +1,8 @@
 # # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
 # 
-preplace inst cpu.master_0.b2p -pg 1
 preplace inst cpu.master_0.p2b_adapter -pg 1
-preplace inst cpu.sys_clk -pg 1 -lvl 1 -y 750
+preplace inst cpu.master_0.b2p -pg 1
+preplace inst cpu.sys_clk -pg 1 -lvl 1 -y 1290
 preplace inst cpu.hps_0.rstmgr -pg 1
 preplace inst cpu.master_0.fifo -pg 1
 preplace inst cpu.master_0.clk_src -pg 1
@@ -10,7 +10,7 @@ preplace inst cpu.master_0.b2p_adapter -pg 1
 preplace inst cpu.sys_clk.reset_from_locked -pg 1
 preplace inst cpu.hps_0.fpga_interfaces -pg 1
 preplace inst cpu.video_pll_0.video_pll -pg 1
-preplace inst cpu.sdram_controller -pg 1 -lvl 4 -y 30
+preplace inst cpu.sdram_controller -pg 1 -lvl 4 -y 570
 preplace inst cpu.hps_0.wd_timer0 -pg 1
 preplace inst cpu.hps_0.sdrctl -pg 1
 preplace inst cpu.hps_0.axi_ocram -pg 1
@@ -25,34 +25,38 @@ preplace inst cpu.hps_0.spim1 -pg 1
 preplace inst cpu.hps_0.i2c2 -pg 1
 preplace inst cpu.hps_0.bridges -pg 1
 preplace inst cpu.hps_0.timer -pg 1
-preplace inst cpu.video_dual_clock_buffer_0 -pg 1 -lvl 6 -y 650
+preplace inst cpu.video_dual_clock_buffer_0 -pg 1 -lvl 6 -y 1110
 preplace inst cpu.hps_0.i2c3 -pg 1
 preplace inst cpu.hps_0.gpio0 -pg 1
 preplace inst cpu.hps_0.gpio1 -pg 1
 preplace inst cpu.hps_0.sysmgr -pg 1
 preplace inst cpu.master_0.clk_rst -pg 1
 preplace inst cpu.hps_0.gpio2 -pg 1
-preplace inst cpu.master_0 -pg 1 -lvl 2 -y 460
+preplace inst cpu.hexes_pio -pg 1 -lvl 4 -y 130
+preplace inst cpu.master_0 -pg 1 -lvl 2 -y 1000
 preplace inst cpu.hps_0.timer0 -pg 1
 preplace inst cpu.hps_0.l3regs -pg 1
 preplace inst cpu.master_0.jtag_phy_embedded_in_jtag_master -pg 1
 preplace inst cpu.hps_0.timer1 -pg 1
 preplace inst cpu -pg 1 -lvl 1 -y 40 -regy -20
 preplace inst cpu.video_pll_0.reset_from_locked -pg 1
-preplace inst cpu.video_pll_0 -pg 1 -lvl 2 -y 670
+preplace inst cpu.video_pll_0 -pg 1 -lvl 2 -y 1140
 preplace inst cpu.hps_0.timer2 -pg 1
+preplace inst cpu.buttons_pio -pg 1 -lvl 4 -y 30
 preplace inst cpu.hps_0.timer3 -pg 1
 preplace inst cpu.hps_0.sdmmc -pg 1
-preplace inst cpu.hps_0 -pg 1 -lvl 3 -y 500
+preplace inst cpu.hps_0 -pg 1 -lvl 3 -y 1000
+preplace inst cpu.switches_pio -pg 1 -lvl 4 -y 860
 preplace inst cpu.hps_0.scu -pg 1
 preplace inst cpu.hps_0.f2s_sdram_ref_clk -pg 1
 preplace inst cpu.hps_0.L2 -pg 1
 preplace inst cpu.hps_0.clkmgr -pg 1
+preplace inst cpu.img_cpu_reader_0 -pg 1 -lvl 4 -y 330
 preplace inst cpu.hps_0.axi_sdram -pg 1
-preplace inst cpu.touchscreen_uart -pg 1 -lvl 4 -y 370
+preplace inst cpu.touchscreen_uart -pg 1 -lvl 4 -y 970
 preplace inst cpu.sys_clk.sys_pll -pg 1
 preplace inst cpu.hps_0.f2s_periph_ref_clk -pg 1
-preplace inst cpu.rgb_resampler -pg 1 -lvl 5 -y 530
+preplace inst cpu.rgb_resampler -pg 1 -lvl 5 -y 1070
 preplace inst cpu.hps_0.usb0 -pg 1
 preplace inst cpu.hps_0.usb1 -pg 1
 preplace inst cpu.hps_0.nand0 -pg 1
@@ -60,41 +64,50 @@ preplace inst cpu.hps_0.arm_a9_0 -pg 1
 preplace inst cpu.hps_0.arm_a9_1 -pg 1
 preplace inst cpu.hps_0.eosc1 -pg 1
 preplace inst cpu.hps_0.clk_0 -pg 1
-preplace inst cpu.switches -pg 1 -lvl 4 -y 130
 preplace inst cpu.hps_0.eosc2 -pg 1
 preplace inst cpu.hps_0.qspi -pg 1
 preplace inst cpu.hps_0.dcan0 -pg 1
 preplace inst cpu.hps_0.arm_gic_0 -pg 1
-preplace inst cpu.pixel_buffer -pg 1 -lvl 4 -y 250
+preplace inst cpu.pixel_buffer -pg 1 -lvl 4 -y 710
 preplace inst cpu.hps_0.dcan1 -pg 1
 preplace inst cpu.hps_0.dma -pg 1
 preplace inst cpu.hps_0.hps_io -pg 1
-preplace inst cpu.vga_controller -pg 1 -lvl 7 -y 670
+preplace inst cpu.vga_controller -pg 1 -lvl 7 -y 1210
 preplace inst cpu.master_0.timing_adt -pg 1
 preplace inst cpu.hps_0.fpgamgr -pg 1
 preplace inst cpu.hps_0.hps_io.border -pg 1
 preplace inst cpu.hps_0.gmac0 -pg 1
 preplace inst cpu.master_0.p2b -pg 1
 preplace inst cpu.hps_0.gmac1 -pg 1
-preplace netloc EXPORT<net_container>cpu</net_container>(SLAVE)cpu.vga,(SLAVE)vga_controller.external_interface) 1 0 7 NJ 850 NJ 850 NJ 850 NJ 850 NJ 850 NJ 850 NJ
-preplace netloc EXPORT<net_container>cpu</net_container>(SLAVE)cpu.reset,(SLAVE)sys_clk.ref_reset) 1 0 1 NJ
-preplace netloc FAN_OUT<net_container>cpu</net_container>(MASTER)sys_clk.reset_source,(SLAVE)rgb_resampler.reset,(SLAVE)master_0.clk_reset,(SLAVE)touchscreen_uart.reset,(SLAVE)switches.reset,(SLAVE)video_pll_0.ref_reset,(SLAVE)sdram_controller.reset,(SLAVE)video_dual_clock_buffer_0.reset_stream_in,(SLAVE)pixel_buffer.reset) 1 1 5 350 560 NJ 440 1010 340 1430 640 1730
-preplace netloc POINT_TO_POINT<net_container>cpu</net_container>(MASTER)rgb_resampler.avalon_rgb_source,(SLAVE)video_dual_clock_buffer_0.avalon_dc_buffer_sink) 1 5 1 1750
-preplace netloc EXPORT<net_container>cpu</net_container>(SLAVE)switches.external_connection,(SLAVE)cpu.switches) 1 0 4 NJ 160 NJ 160 NJ 160 NJ
-preplace netloc EXPORT<net_container>cpu</net_container>(SLAVE)hps_0.memory,(SLAVE)cpu.memory) 1 0 3 NJ 610 NJ 610 NJ
-preplace netloc FAN_IN<net_container>cpu</net_container>(SLAVE)sdram_controller.s1,(MASTER)hps_0.h2f_axi_master,(MASTER)pixel_buffer.avalon_pixel_dma_master) 1 3 2 990 240 1450
-preplace netloc FAN_OUT<net_container>cpu</net_container>(SLAVE)video_dual_clock_buffer_0.clock_stream_out,(MASTER)video_pll_0.vga_clk,(SLAVE)vga_controller.clk) 1 2 5 NJ 700 NJ 700 NJ 700 1750 870 NJ
-preplace netloc POINT_TO_POINT<net_container>cpu</net_container>(MASTER)hps_0.f2h_irq0,(SLAVE)touchscreen_uart.interrupt) 1 3 1 1030
-preplace netloc FAN_OUT<net_container>cpu</net_container>(SLAVE)switches.s1,(SLAVE)pixel_buffer.avalon_control_slave,(SLAVE)rgb_resampler.avalon_rgb_slave,(MASTER)hps_0.h2f_lw_axi_master,(SLAVE)touchscreen_uart.avalon_rs232_slave) 1 3 2 1050 560 NJ
+preplace netloc EXPORT<net_container>cpu</net_container>(SLAVE)cpu.sdram,(SLAVE)sdram_controller.wire) 1 0 4 NJ 640 NJ 640 NJ 640 NJ
+preplace netloc FAN_OUT<net_container>cpu</net_container>(SLAVE)master_0.clk_reset,(SLAVE)touchscreen_uart.reset,(SLAVE)video_dual_clock_buffer_0.reset_stream_in,(SLAVE)img_cpu_reader_0.reset_sink,(SLAVE)pixel_buffer.reset,(SLAVE)rgb_resampler.reset,(MASTER)sys_clk.reset_source,(SLAVE)video_pll_0.ref_reset,(SLAVE)sdram_controller.reset,(SLAVE)buttons_pio.reset,(SLAVE)hexes_pio.reset,(SLAVE)switches_pio.reset) 1 1 5 480 1240 NJ 1230 1210 850 1650 1220 NJ
+preplace netloc EXPORT<net_container>cpu</net_container>(SLAVE)sys_clk.ref_reset,(SLAVE)cpu.reset) 1 0 1 NJ
+preplace netloc EXPORT<net_container>cpu</net_container>(SLAVE)vga_controller.external_interface,(SLAVE)cpu.vga) 1 0 7 NJ 1250 NJ 1260 NJ 1250 NJ 1250 NJ 1260 NJ 1260 NJ
+preplace netloc EXPORT<net_container>cpu</net_container>(SLAVE)img_cpu_reader_0.img_done,(SLAVE)cpu.img_cpu_reader_0_img_done) 1 0 4 NJ 420 NJ 420 NJ 420 NJ
+preplace netloc EXPORT<net_container>cpu</net_container>(SLAVE)cpu.hexes,(SLAVE)hexes_pio.external_connection) 1 0 4 NJ 160 NJ 160 NJ 160 NJ
+preplace netloc FAN_OUT<net_container>cpu</net_container>(SLAVE)switches_pio.s1,(SLAVE)rgb_resampler.avalon_rgb_slave,(SLAVE)touchscreen_uart.avalon_rs232_slave,(SLAVE)img_cpu_reader_0.avalon_slave_0,(SLAVE)buttons_pio.s1,(MASTER)hps_0.h2f_lw_axi_master,(SLAVE)hexes_pio.s1,(SLAVE)pixel_buffer.avalon_control_slave) 1 3 2 1150 830 1670
+preplace netloc FAN_OUT<net_container>cpu</net_container>(SLAVE)img_cpu_reader_0.clock,(SLAVE)video_pll_0.ref_clk,(SLAVE)pixel_buffer.clk,(SLAVE)video_dual_clock_buffer_0.clock_stream_in,(SLAVE)rgb_resampler.clk,(SLAVE)hps_0.h2f_lw_axi_clock,(MASTER)sys_clk.sys_clk,(SLAVE)sdram_controller.clk,(SLAVE)switches_pio.clk,(SLAVE)buttons_pio.clk,(SLAVE)master_0.clk,(SLAVE)hps_0.h2f_axi_clock,(SLAVE)touchscreen_uart.clk,(SLAVE)hps_0.f2h_axi_clock,(SLAVE)hexes_pio.clk) 1 1 5 460 960 840 960 1230 810 1690 1180 NJ
+preplace netloc EXPORT<net_container>cpu</net_container>(SLAVE)hps_0.memory,(SLAVE)cpu.memory) 1 0 3 NJ 1080 NJ 1080 NJ
+preplace netloc EXPORT<net_container>cpu</net_container>(SLAVE)img_cpu_reader_0.pix_rgb_out,(SLAVE)cpu.img_cpu_reader_0_pix_rgb_out) 1 0 4 NJ 500 NJ 500 NJ 500 NJ
+preplace netloc FAN_OUT<net_container>cpu</net_container>(SLAVE)vga_controller.reset,(SLAVE)video_dual_clock_buffer_0.reset_stream_out,(MASTER)video_pll_0.reset_source) 1 2 5 780 1270 NJ 1270 NJ 1280 2050 1280 NJ
+preplace netloc EXPORT<net_container>cpu</net_container>(SLAVE)cpu.buttons,(SLAVE)buttons_pio.external_connection) 1 0 4 NJ 60 NJ 60 NJ 60 NJ
+preplace netloc EXPORT<net_container>cpu</net_container>(SLAVE)img_cpu_reader_0.pix_rdy,(SLAVE)cpu.img_cpu_reader_0_pix_rdy) 1 0 4 NJ 460 NJ 460 NJ 460 NJ
+preplace netloc EXPORT<net_container>cpu</net_container>(SLAVE)img_cpu_reader_0.out_state,(SLAVE)cpu.img_cpu_reader_0_out_state) 1 0 4 NJ 440 NJ 440 NJ 440 NJ
+preplace netloc FAN_IN<net_container>cpu</net_container>(MASTER)pixel_buffer.avalon_pixel_dma_master,(SLAVE)sdram_controller.s1,(MASTER)hps_0.h2f_axi_master) 1 3 2 1170 700 1710
+preplace netloc POINT_TO_POINT<net_container>cpu</net_container>(MASTER)hps_0.f2h_irq0,(SLAVE)touchscreen_uart.interrupt) 1 3 1 1190
+preplace netloc EXPORT<net_container>cpu</net_container>(SLAVE)cpu.switches,(SLAVE)switches_pio.external_connection) 1 0 4 NJ 1100 NJ 1100 NJ 1190 NJ
+preplace netloc EXPORT<net_container>cpu</net_container>(SLAVE)img_cpu_reader_0.cpu_rdy,(SLAVE)cpu.img_cpu_reader_0_cpu_rdy) 1 0 4 NJ 380 NJ 380 NJ 380 NJ
+preplace netloc FAN_OUT<net_container>cpu</net_container>(MASTER)video_pll_0.vga_clk,(SLAVE)video_dual_clock_buffer_0.clock_stream_out,(SLAVE)vga_controller.clk) 1 2 5 N 1170 NJ 1170 NJ 1200 2030 1240 NJ
 preplace netloc EXPORT<net_container>cpu</net_container>(SLAVE)sys_clk.ref_clk,(SLAVE)cpu.clk) 1 0 1 NJ
-preplace netloc POINT_TO_POINT<net_container>cpu</net_container>(MASTER)video_dual_clock_buffer_0.avalon_dc_buffer_source,(SLAVE)vga_controller.avalon_vga_sink) 1 6 1 2060
-preplace netloc POINT_TO_POINT<net_container>cpu</net_container>(MASTER)master_0.master,(SLAVE)hps_0.f2h_axi_slave) 1 2 1 620
-preplace netloc EXPORT<net_container>cpu</net_container>(MASTER)cpu.sdram_clk,(MASTER)sys_clk.sdram_clk) 1 1 7 NJ 780 NJ 780 NJ 780 NJ 780 NJ 780 NJ 780 NJ
-preplace netloc FAN_OUT<net_container>cpu</net_container>(MASTER)video_pll_0.reset_source,(SLAVE)video_dual_clock_buffer_0.reset_stream_out,(SLAVE)vga_controller.reset) 1 2 5 NJ 740 NJ 740 NJ 740 1730 890 NJ
-preplace netloc FAN_OUT<net_container>cpu</net_container>(SLAVE)master_0.clk,(SLAVE)hps_0.h2f_axi_clock,(SLAVE)touchscreen_uart.clk,(MASTER)sys_clk.sys_clk,(SLAVE)video_pll_0.ref_clk,(SLAVE)rgb_resampler.clk,(SLAVE)pixel_buffer.clk,(SLAVE)hps_0.h2f_lw_axi_clock,(SLAVE)switches.clk,(SLAVE)sdram_controller.clk,(SLAVE)video_dual_clock_buffer_0.clock_stream_in,(SLAVE)hps_0.f2h_axi_clock) 1 1 5 330 540 640 460 970 360 1410 680 NJ
-preplace netloc EXPORT<net_container>cpu</net_container>(SLAVE)cpu.touch_uart,(SLAVE)touchscreen_uart.external_interface) 1 0 4 NJ 420 NJ 420 NJ 420 NJ
-preplace netloc POINT_TO_POINT<net_container>cpu</net_container>(MASTER)pixel_buffer.avalon_pixel_source,(SLAVE)rgb_resampler.avalon_rgb_sink) 1 4 1 1450
-preplace netloc EXPORT<net_container>cpu</net_container>(SLAVE)cpu.hps_io,(SLAVE)hps_0.hps_io) 1 0 3 NJ 580 NJ 580 NJ
-preplace netloc EXPORT<net_container>cpu</net_container>(SLAVE)sdram_controller.wire,(SLAVE)cpu.sdram) 1 0 4 NJ 100 NJ 100 NJ 100 NJ
-levelinfo -pg 1 0 80 2390
-levelinfo -hier cpu 90 170 440 780 1100 1480 1780 2150 2300
+preplace netloc EXPORT<net_container>cpu</net_container>(SLAVE)cpu.img_cpu_reader_0_pix_rdy_out,(SLAVE)img_cpu_reader_0.pix_rdy_out) 1 0 4 NJ 480 NJ 480 NJ 480 NJ
+preplace netloc POINT_TO_POINT<net_container>cpu</net_container>(MASTER)video_dual_clock_buffer_0.avalon_dc_buffer_source,(SLAVE)vga_controller.avalon_vga_sink) 1 6 1 2360
+preplace netloc POINT_TO_POINT<net_container>cpu</net_container>(MASTER)master_0.master,(SLAVE)hps_0.f2h_axi_slave) 1 2 1 800
+preplace netloc EXPORT<net_container>cpu</net_container>(SLAVE)cpu.img_cpu_reader_0_pixel_data,(SLAVE)img_cpu_reader_0.pixel_data) 1 0 4 NJ 520 NJ 520 NJ 520 NJ
+preplace netloc EXPORT<net_container>cpu</net_container>(SLAVE)cpu.img_cpu_reader_0_get_next_pix,(SLAVE)img_cpu_reader_0.get_next_pix) 1 0 4 NJ 400 NJ 400 NJ 400 NJ
+preplace netloc EXPORT<net_container>cpu</net_container>(MASTER)cpu.sdram_clk,(MASTER)sys_clk.sdram_clk) 1 1 7 NJ 1320 NJ 1320 NJ 1320 NJ 1320 NJ 1320 NJ 1320 NJ
+preplace netloc EXPORT<net_container>cpu</net_container>(SLAVE)cpu.touch_uart,(SLAVE)touchscreen_uart.external_interface) 1 0 4 NJ 1220 NJ 1220 NJ 1210 NJ
+preplace netloc EXPORT<net_container>cpu</net_container>(SLAVE)cpu.hps_io,(SLAVE)hps_0.hps_io) 1 0 3 NJ 940 NJ 940 NJ
+preplace netloc POINT_TO_POINT<net_container>cpu</net_container>(SLAVE)rgb_resampler.avalon_rgb_sink,(MASTER)pixel_buffer.avalon_pixel_source) 1 4 1 1710
+preplace netloc POINT_TO_POINT<net_container>cpu</net_container>(SLAVE)video_dual_clock_buffer_0.avalon_dc_buffer_sink,(MASTER)rgb_resampler.avalon_rgb_source) 1 5 1 1990
+levelinfo -pg 1 0 190 2630
+levelinfo -hier cpu 200 280 560 960 1320 1740 2080 2390 2540

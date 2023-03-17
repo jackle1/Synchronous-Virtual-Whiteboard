@@ -21,8 +21,6 @@
 		.vga_SYNC                    (<connected-to-vga_SYNC>),                    //                      .SYNC
 		.vga_R                       (<connected-to-vga_R>),                       //                      .R
 		.vga_G                       (<connected-to-vga_G>),                       //                      .G
-		.vga_B                       (<connected-to-vga_B>),                       //                      .B
-		.wifi_uart_RXD               (<connected-to-wifi_uart_RXD>),               //             wifi_uart.RXD
-		.wifi_uart_TXD               (<connected-to-wifi_uart_TXD>)                //                      .TXD
+		.vga_B                       (<connected-to-vga_B>)                        //                      .B
 	);
 

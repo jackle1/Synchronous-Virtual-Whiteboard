@@ -8,6 +8,8 @@ Progress: Adding hexes_pio [altera_avalon_pio 18.1]
 Progress: Parameterizing module hexes_pio
 Progress: Adding hps_0 [altera_hps 18.1]
 Progress: Parameterizing module hps_0
+Progress: Adding img_cpu_reader_0 [img_cpu_reader 1.0]
+Progress: Parameterizing module img_cpu_reader_0
 Progress: Adding master_0 [altera_jtag_avalon_master 18.1]
 Progress: Parameterizing module master_0
 Progress: Adding pixel_buffer [altera_up_avalon_video_pixel_buffer_dma 18.0]
@@ -28,8 +30,6 @@ Progress: Adding video_dual_clock_buffer_0 [altera_up_avalon_video_dual_clock_bu
 Progress: Parameterizing module video_dual_clock_buffer_0
 Progress: Adding video_pll_0 [altera_up_avalon_video_pll 18.0]
 Progress: Parameterizing module video_pll_0
-Progress: Adding wifi_uart [altera_up_avalon_rs232 17.1]
-Progress: Parameterizing module wifi_uart
 Progress: Building connections
 Progress: Parameterizing connections
 Progress: Validating
@@ -58,6 +58,8 @@ Progress: Adding hexes_pio [altera_avalon_pio 18.1]
 Progress: Parameterizing module hexes_pio
 Progress: Adding hps_0 [altera_hps 18.1]
 Progress: Parameterizing module hps_0
+Progress: Adding img_cpu_reader_0 [img_cpu_reader 1.0]
+Progress: Parameterizing module img_cpu_reader_0
 Progress: Adding master_0 [altera_jtag_avalon_master 18.1]
 Progress: Parameterizing module master_0
 Progress: Adding pixel_buffer [altera_up_avalon_video_pixel_buffer_dma 18.0]
@@ -78,8 +80,6 @@ Progress: Adding video_dual_clock_buffer_0 [altera_up_avalon_video_dual_clock_bu
 Progress: Parameterizing module video_dual_clock_buffer_0
 Progress: Adding video_pll_0 [altera_up_avalon_video_pll 18.0]
 Progress: Parameterizing module video_pll_0
-Progress: Adding wifi_uart [altera_up_avalon_rs232 17.1]
-Progress: Parameterizing module wifi_uart
 Progress: Building connections
 Progress: Parameterizing connections
 Progress: Validating
@@ -102,11 +102,11 @@ Warning: hps_0.f2h_irq0: Cannot connect reset for irq_mapper.sender
 Warning: hps_0.f2h_irq1: Cannot connect clock for irq_mapper_001.sender
 Warning: hps_0.f2h_irq1: Cannot connect reset for irq_mapper_001.sender
 Info: buttons_pio: Starting RTL generation for module 'cpu_buttons_pio'
-Info: buttons_pio:   Generation command is [exec D:/programs/intelfpga_lite/18.1/quartus/bin64/perl/bin/perl.exe -I D:/programs/intelfpga_lite/18.1/quartus/bin64/perl/lib -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin/europa -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin/perl_lib -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin -I D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=cpu_buttons_pio --dir=C:/Users/ADMINI~1/AppData/Local/Temp/alt9423_2335088067458814673.dir/0166_buttons_pio_gen/ --quartus_dir=D:/programs/intelfpga_lite/18.1/quartus --verilog --config=C:/Users/ADMINI~1/AppData/Local/Temp/alt9423_2335088067458814673.dir/0166_buttons_pio_gen//cpu_buttons_pio_component_configuration.pl  --do_build_sim=0  ]
+Info: buttons_pio:   Generation command is [exec D:/programs/intelfpga_lite/18.1/quartus/bin64/perl/bin/perl.exe -I D:/programs/intelfpga_lite/18.1/quartus/bin64/perl/lib -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin/europa -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin/perl_lib -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin -I D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=cpu_buttons_pio --dir=C:/Users/ADMINI~1/AppData/Local/Temp/alt9432_2049832652985211092.dir/0002_buttons_pio_gen/ --quartus_dir=D:/programs/intelfpga_lite/18.1/quartus --verilog --config=C:/Users/ADMINI~1/AppData/Local/Temp/alt9432_2049832652985211092.dir/0002_buttons_pio_gen//cpu_buttons_pio_component_configuration.pl  --do_build_sim=0  ]
 Info: buttons_pio: Done RTL generation for module 'cpu_buttons_pio'
 Info: buttons_pio: "cpu" instantiated altera_avalon_pio "buttons_pio"
 Info: hexes_pio: Starting RTL generation for module 'cpu_hexes_pio'
-Info: hexes_pio:   Generation command is [exec D:/programs/intelfpga_lite/18.1/quartus/bin64/perl/bin/perl.exe -I D:/programs/intelfpga_lite/18.1/quartus/bin64/perl/lib -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin/europa -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin/perl_lib -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin -I D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=cpu_hexes_pio --dir=C:/Users/ADMINI~1/AppData/Local/Temp/alt9423_2335088067458814673.dir/0167_hexes_pio_gen/ --quartus_dir=D:/programs/intelfpga_lite/18.1/quartus --verilog --config=C:/Users/ADMINI~1/AppData/Local/Temp/alt9423_2335088067458814673.dir/0167_hexes_pio_gen//cpu_hexes_pio_component_configuration.pl  --do_build_sim=0  ]
+Info: hexes_pio:   Generation command is [exec D:/programs/intelfpga_lite/18.1/quartus/bin64/perl/bin/perl.exe -I D:/programs/intelfpga_lite/18.1/quartus/bin64/perl/lib -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin/europa -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin/perl_lib -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin -I D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=cpu_hexes_pio --dir=C:/Users/ADMINI~1/AppData/Local/Temp/alt9432_2049832652985211092.dir/0003_hexes_pio_gen/ --quartus_dir=D:/programs/intelfpga_lite/18.1/quartus --verilog --config=C:/Users/ADMINI~1/AppData/Local/Temp/alt9432_2049832652985211092.dir/0003_hexes_pio_gen//cpu_hexes_pio_component_configuration.pl  --do_build_sim=0  ]
 Info: hexes_pio: Done RTL generation for module 'cpu_hexes_pio'
 Info: hexes_pio: "cpu" instantiated altera_avalon_pio "hexes_pio"
 Info: hps_0: "Running  for module: hps_0"
@@ -116,17 +116,18 @@ Warning: hps_0: "Configuration/HPS-to-FPGA user 0 clock frequency" (desired_cfg_
 Warning: hps_0: "QSPI clock frequency" (desired_qspi_clk_mhz) requested 400.0 MHz, but only achieved 370.0 MHz
 Warning: hps_0: 1 or more output clock frequencies cannot be achieved precisely, consider revising desired output clock frequencies.
 Info: hps_0: "cpu" instantiated altera_hps "hps_0"
+Info: img_cpu_reader_0: "cpu" instantiated img_cpu_reader "img_cpu_reader_0"
 Info: master_0: "cpu" instantiated altera_jtag_avalon_master "master_0"
 Info: pixel_buffer: Starting Generation of VGA Pixel Buffer
 Info: pixel_buffer: "cpu" instantiated altera_up_avalon_video_pixel_buffer_dma "pixel_buffer"
 Info: rgb_resampler: Starting Generation of Video RGB Resampler
 Info: rgb_resampler: "cpu" instantiated altera_up_avalon_video_rgb_resampler "rgb_resampler"
 Info: sdram_controller: Starting RTL generation for module 'cpu_sdram_controller'
-Info: sdram_controller:   Generation command is [exec D:/programs/intelfpga_lite/18.1/quartus/bin64/perl/bin/perl.exe -I D:/programs/intelfpga_lite/18.1/quartus/bin64/perl/lib -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin/europa -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin/perl_lib -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin -I D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller -- D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller/generate_rtl.pl --name=cpu_sdram_controller --dir=C:/Users/ADMINI~1/AppData/Local/Temp/alt9423_2335088067458814673.dir/0170_sdram_controller_gen/ --quartus_dir=D:/programs/intelfpga_lite/18.1/quartus --verilog --config=C:/Users/ADMINI~1/AppData/Local/Temp/alt9423_2335088067458814673.dir/0170_sdram_controller_gen//cpu_sdram_controller_component_configuration.pl  --do_build_sim=0  ]
+Info: sdram_controller:   Generation command is [exec D:/programs/intelfpga_lite/18.1/quartus/bin64/perl/bin/perl.exe -I D:/programs/intelfpga_lite/18.1/quartus/bin64/perl/lib -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin/europa -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin/perl_lib -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin -I D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller -- D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller/generate_rtl.pl --name=cpu_sdram_controller --dir=C:/Users/ADMINI~1/AppData/Local/Temp/alt9432_2049832652985211092.dir/0007_sdram_controller_gen/ --quartus_dir=D:/programs/intelfpga_lite/18.1/quartus --verilog --config=C:/Users/ADMINI~1/AppData/Local/Temp/alt9432_2049832652985211092.dir/0007_sdram_controller_gen//cpu_sdram_controller_component_configuration.pl  --do_build_sim=0  ]
 Info: sdram_controller: Done RTL generation for module 'cpu_sdram_controller'
 Info: sdram_controller: "cpu" instantiated altera_avalon_new_sdram_controller "sdram_controller"
 Info: switches_pio: Starting RTL generation for module 'cpu_switches_pio'
-Info: switches_pio:   Generation command is [exec D:/programs/intelfpga_lite/18.1/quartus/bin64/perl/bin/perl.exe -I D:/programs/intelfpga_lite/18.1/quartus/bin64/perl/lib -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin/europa -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin/perl_lib -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin -I D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=cpu_switches_pio --dir=C:/Users/ADMINI~1/AppData/Local/Temp/alt9423_2335088067458814673.dir/0171_switches_pio_gen/ --quartus_dir=D:/programs/intelfpga_lite/18.1/quartus --verilog --config=C:/Users/ADMINI~1/AppData/Local/Temp/alt9423_2335088067458814673.dir/0171_switches_pio_gen//cpu_switches_pio_component_configuration.pl  --do_build_sim=0  ]
+Info: switches_pio:   Generation command is [exec D:/programs/intelfpga_lite/18.1/quartus/bin64/perl/bin/perl.exe -I D:/programs/intelfpga_lite/18.1/quartus/bin64/perl/lib -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin/europa -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin/perl_lib -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin -I D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=cpu_switches_pio --dir=C:/Users/ADMINI~1/AppData/Local/Temp/alt9432_2049832652985211092.dir/0008_switches_pio_gen/ --quartus_dir=D:/programs/intelfpga_lite/18.1/quartus --verilog --config=C:/Users/ADMINI~1/AppData/Local/Temp/alt9432_2049832652985211092.dir/0008_switches_pio_gen//cpu_switches_pio_component_configuration.pl  --do_build_sim=0  ]
 Info: switches_pio: Done RTL generation for module 'cpu_switches_pio'
 Info: switches_pio: "cpu" instantiated altera_avalon_pio "switches_pio"
 Info: sys_clk: "cpu" instantiated altera_up_avalon_sys_sdram_pll "sys_clk"
@@ -145,6 +146,7 @@ Info: avalon_st_adapter_002: Inserting error_adapter: error_adapter_0
 Info: avalon_st_adapter_003: Inserting error_adapter: error_adapter_0
 Info: avalon_st_adapter_004: Inserting error_adapter: error_adapter_0
 Info: avalon_st_adapter_005: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_006: Inserting error_adapter: error_adapter_0
 Info: mm_interconnect_1: "cpu" instantiated altera_mm_interconnect "mm_interconnect_1"
 Info: mm_interconnect_2: "cpu" instantiated altera_mm_interconnect "mm_interconnect_2"
 Info: irq_mapper: "cpu" instantiated altera_irq_mapper "irq_mapper"
@@ -211,6 +213,6 @@ Info: Reusing file D:/CPEN391/l2b-25-forks/hardware/testHPS/cpu/synthesis/submod
 Info: border: "hps_io" instantiated altera_interface_generator "border"
 Info: error_adapter_0: "avalon_st_adapter" instantiated error_adapter "error_adapter_0"
 Info: error_adapter_0: "avalon_st_adapter" instantiated error_adapter "error_adapter_0"
-Info: cpu: Done "cpu" with 66 modules, 138 files
+Info: cpu: Done "cpu" with 67 modules, 139 files
 Info: qsys-generate succeeded.
 Info: Finished: Create HDL design files for synthesis

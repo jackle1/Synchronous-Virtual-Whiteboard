@@ -3,7 +3,19 @@
 const express = require("express");
 const WebSocket = require("ws");
 const http = require("http");
-const path = require('path')
+const path = require('path'); // Node.js built-in module for handling file paths
+const fs = require('fs'); // Node.js built-in module for handling file system operations
+const multer = require('multer'); // middleware for handling file uploads
+// Set up multer middleware for handling file uploads
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './uploads'); // specify the directory to save uploaded files
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname)); // specify the filename to save
+  }
+});
+const upload = multer({ storage: storage });
 
 const PORT = process.env.PORT || 8080;
 
@@ -18,7 +30,31 @@ app.get('/', (req, res) => {
     return res.send("Hello World!");
 });
 
+app.post('/upload', upload.single('file'), (req, res) => {
+  const filePath = req.file.path;
+  console.log(req.file);
+  fs.readFile(filePath, (err, data) => {
+    if (err) {
+      console.error(err);
+      res.statusCode = 500;
+      res.end('Error while reading uploaded file');
+    } else {
+      const newFilePath = './saved-files/' + req.file.filename; // specify the location to save the file
+      fs.writeFile(newFilePath, data, (err) => {
+        if (err) {
+          console.error(err);
+          res.statusCode = 500;
+          res.end('Error while saving uploaded file');
+        } else {
+          res.send(`File ${req.file.filename} uploaded and saved successfully!`);
+        }
+      });
+    }
+  });
+});
+
 app.post('/test', (req, res) => {
+    console.log(req.body);
     let toSend = Math.round(Math.random() * 127);
     let x = req.body.substring(0, 4);
     let y = req.body.substring(4, 8);

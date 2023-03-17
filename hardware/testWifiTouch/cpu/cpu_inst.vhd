@@ -22,9 +22,7 @@
 			vga_SYNC                    : out   std_logic;                                        -- SYNC
 			vga_R                       : out   std_logic_vector(7 downto 0);                     -- R
 			vga_G                       : out   std_logic_vector(7 downto 0);                     -- G
-			vga_B                       : out   std_logic_vector(7 downto 0);                     -- B
-			wifi_uart_RXD               : in    std_logic                     := 'X';             -- RXD
-			wifi_uart_TXD               : out   std_logic                                         -- TXD
+			vga_B                       : out   std_logic_vector(7 downto 0)                      -- B
 		);
 	end component cpu;
 
@@ -52,8 +50,6 @@
 			vga_SYNC                    => CONNECTED_TO_vga_SYNC,                    --                      .SYNC
 			vga_R                       => CONNECTED_TO_vga_R,                       --                      .R
 			vga_G                       => CONNECTED_TO_vga_G,                       --                      .G
-			vga_B                       => CONNECTED_TO_vga_B,                       --                      .B
-			wifi_uart_RXD               => CONNECTED_TO_wifi_uart_RXD,               --             wifi_uart.RXD
-			wifi_uart_TXD               => CONNECTED_TO_wifi_uart_TXD                --                      .TXD
+			vga_B                       => CONNECTED_TO_vga_B                        --                      .B
 		);
 

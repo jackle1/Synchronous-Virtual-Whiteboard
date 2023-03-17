@@ -2,10 +2,10 @@ set_global_assignment -entity "cpu" -library "cpu" -name IP_TOOL_NAME "Qsys"
 set_global_assignment -entity "cpu" -library "cpu" -name IP_TOOL_VERSION "18.1"
 set_global_assignment -entity "cpu" -library "cpu" -name IP_TOOL_ENV "Qsys"
 set_global_assignment -library "cpu" -name SOPCINFO_FILE [file join $::quartus(qip_path) "../../cpu.sopcinfo"]
-set_global_assignment -entity "cpu" -library "cpu" -name SLD_INFO "QSYS_NAME cpu HAS_SOPCINFO 1 GENERATION_ID 1678939689"
+set_global_assignment -entity "cpu" -library "cpu" -name SLD_INFO "QSYS_NAME cpu HAS_SOPCINFO 1 GENERATION_ID 1678961446"
 set_global_assignment -library "cpu" -name MISC_FILE [file join $::quartus(qip_path) "../cpu.cmp"]
 set_global_assignment -library "cpu" -name SLD_FILE [file join $::quartus(qip_path) "cpu.regmap"]
-set_global_assignment -library "cpu" -name MISC_FILE [file join $::quartus(qip_path) "../../C"]
+set_global_assignment -library "cpu" -name MISC_FILE [file join $::quartus(qip_path) "../../D"]
 set_global_assignment -library "cpu" -name MISC_FILE [file join $::quartus(qip_path) "cpu_hps_0_hps.svd"]
 set_global_assignment -library "cpu" -name SLD_FILE [file join $::quartus(qip_path) "cpu.debuginfo"]
 set_global_assignment -entity "cpu" -library "cpu" -name IP_TARGETED_DEVICE_FAMILY "Cyclone V"
@@ -18,7 +18,7 @@ set_global_assignment -entity "cpu" -library "cpu" -name IP_COMPONENT_DISPLAY_NA
 set_global_assignment -entity "cpu" -library "cpu" -name IP_COMPONENT_REPORT_HIERARCHY "On"
 set_global_assignment -entity "cpu" -library "cpu" -name IP_COMPONENT_INTERNAL "Off"
 set_global_assignment -entity "cpu" -library "cpu" -name IP_COMPONENT_VERSION "MS4w"
-set_global_assignment -entity "cpu" -library "cpu" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MTY3ODkzOTY4OQ==::QXV0byBHRU5FUkFUSU9OX0lE"
+set_global_assignment -entity "cpu" -library "cpu" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MTY3ODk2MTQ0Ng==::QXV0byBHRU5FUkFUSU9OX0lE"
 set_global_assignment -entity "cpu" -library "cpu" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::Q3ljbG9uZSBW::QXV0byBERVZJQ0VfRkFNSUxZ"
 set_global_assignment -entity "cpu" -library "cpu" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0U=::NUNTRU1BNUYzMUM2::QXV0byBERVZJQ0U="
 set_global_assignment -entity "cpu" -library "cpu" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfU1BFRURHUkFERQ==::Ng==::QXV0byBERVZJQ0VfU1BFRURHUkFERQ=="

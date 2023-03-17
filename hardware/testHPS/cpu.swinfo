@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SopcSystem>
  <!-- An entire SOPC Builder system -->
- <!-- 2023.03.07.02:00:48 -->
+ <!-- 2023.03.16.02:38:28 -->
  <name>cpu</name>
  <version>1.0</version>
  <sopcVersion>1.0</sopcVersion>
@@ -437,6 +437,45 @@
     <interruptControllerID>-1</interruptControllerID>
    </connectedDevice>
    <connectedDevice>
+    <moduleName>img_cpu_reader_0</moduleName>
+    <slaveDesc>img_cpu_reader_0</slaveDesc>
+    <slave>
+     <name>avalon_slave_0</name>
+     <version>18.1</version>
+     <assignment>
+      <name>embeddedsw.configuration.isFlash</name>
+      <value>0</value>
+     </assignment>
+     <assignment>
+      <name>embeddedsw.configuration.isMemoryDevice</name>
+      <value>0</value>
+     </assignment>
+     <assignment>
+      <name>embeddedsw.configuration.isNonVolatileStorage</name>
+      <value>0</value>
+     </assignment>
+     <assignment>
+      <name>embeddedsw.configuration.isPrintableDevice</name>
+      <value>0</value>
+     </assignment>
+     <systemSlaveName>img_cpu_reader_0.avalon_slave_0</systemSlaveName>
+     <addressGroup>0</addressGroup>
+    </slave>
+    <baseAddress>96</baseAddress>
+    <basePhysicalAddress>96</basePhysicalAddress>
+    <span>32</span>
+    <isBigEndian>false</isBigEndian>
+    <isInstructionAccessible>false</isInstructionAccessible>
+    <isDataAccessible>false</isDataAccessible>
+    <isTightlyCoupledInstructionAccessible>false</isTightlyCoupledInstructionAccessible>
+    <isTightlyCoupledDataAccessible>false</isTightlyCoupledDataAccessible>
+    <hasIrq>false</hasIrq>
+    <irqNumber>-1</irqNumber>
+    <irqInterruptControllerID>-1</irqInterruptControllerID>
+    <isConnectedInterruptControllerDevice>false</isConnectedInterruptControllerDevice>
+    <interruptControllerID>-1</interruptControllerID>
+   </connectedDevice>
+   <connectedDevice>
     <moduleName>sdram_controller</moduleName>
     <slaveDesc>sdram_controller</slaveDesc>
     <slave>
@@ -820,6 +859,45 @@
     <baseAddress>80</baseAddress>
     <basePhysicalAddress>80</basePhysicalAddress>
     <span>16</span>
+    <isBigEndian>false</isBigEndian>
+    <isInstructionAccessible>false</isInstructionAccessible>
+    <isDataAccessible>false</isDataAccessible>
+    <isTightlyCoupledInstructionAccessible>false</isTightlyCoupledInstructionAccessible>
+    <isTightlyCoupledDataAccessible>false</isTightlyCoupledDataAccessible>
+    <hasIrq>false</hasIrq>
+    <irqNumber>-1</irqNumber>
+    <irqInterruptControllerID>-1</irqInterruptControllerID>
+    <isConnectedInterruptControllerDevice>false</isConnectedInterruptControllerDevice>
+    <interruptControllerID>-1</interruptControllerID>
+   </connectedDevice>
+   <connectedDevice>
+    <moduleName>img_cpu_reader_0</moduleName>
+    <slaveDesc>img_cpu_reader_0</slaveDesc>
+    <slave>
+     <name>avalon_slave_0</name>
+     <version>18.1</version>
+     <assignment>
+      <name>embeddedsw.configuration.isFlash</name>
+      <value>0</value>
+     </assignment>
+     <assignment>
+      <name>embeddedsw.configuration.isMemoryDevice</name>
+      <value>0</value>
+     </assignment>
+     <assignment>
+      <name>embeddedsw.configuration.isNonVolatileStorage</name>
+      <value>0</value>
+     </assignment>
+     <assignment>
+      <name>embeddedsw.configuration.isPrintableDevice</name>
+      <value>0</value>
+     </assignment>
+     <systemSlaveName>img_cpu_reader_0.avalon_slave_0</systemSlaveName>
+     <addressGroup>0</addressGroup>
+    </slave>
+    <baseAddress>96</baseAddress>
+    <basePhysicalAddress>96</basePhysicalAddress>
+    <span>32</span>
     <isBigEndian>false</isBigEndian>
     <isInstructionAccessible>false</isInstructionAccessible>
     <isDataAccessible>false</isDataAccessible>
@@ -2327,6 +2405,45 @@
     <interruptControllerID>-1</interruptControllerID>
    </connectedDevice>
    <connectedDevice>
+    <moduleName>img_cpu_reader_0</moduleName>
+    <slaveDesc>img_cpu_reader_0</slaveDesc>
+    <slave>
+     <name>avalon_slave_0</name>
+     <version>18.1</version>
+     <assignment>
+      <name>embeddedsw.configuration.isFlash</name>
+      <value>0</value>
+     </assignment>
+     <assignment>
+      <name>embeddedsw.configuration.isMemoryDevice</name>
+      <value>0</value>
+     </assignment>
+     <assignment>
+      <name>embeddedsw.configuration.isNonVolatileStorage</name>
+      <value>0</value>
+     </assignment>
+     <assignment>
+      <name>embeddedsw.configuration.isPrintableDevice</name>
+      <value>0</value>
+     </assignment>
+     <systemSlaveName>img_cpu_reader_0.avalon_slave_0</systemSlaveName>
+     <addressGroup>0</addressGroup>
+    </slave>
+    <baseAddress>4280287328</baseAddress>
+    <basePhysicalAddress>4280287328</basePhysicalAddress>
+    <span>32</span>
+    <isBigEndian>false</isBigEndian>
+    <isInstructionAccessible>false</isInstructionAccessible>
+    <isDataAccessible>false</isDataAccessible>
+    <isTightlyCoupledInstructionAccessible>false</isTightlyCoupledInstructionAccessible>
+    <isTightlyCoupledDataAccessible>false</isTightlyCoupledDataAccessible>
+    <hasIrq>false</hasIrq>
+    <irqNumber>-1</irqNumber>
+    <irqInterruptControllerID>-1</irqInterruptControllerID>
+    <isConnectedInterruptControllerDevice>false</isConnectedInterruptControllerDevice>
+    <interruptControllerID>-1</interruptControllerID>
+   </connectedDevice>
+   <connectedDevice>
     <moduleName>hps_0_gmac0</moduleName>
     <slaveDesc>hps_0_gmac0</slaveDesc>
     <slave>
@@ -3738,6 +3855,45 @@
     <baseAddress>4280287312</baseAddress>
     <basePhysicalAddress>4280287312</basePhysicalAddress>
     <span>16</span>
+    <isBigEndian>false</isBigEndian>
+    <isInstructionAccessible>false</isInstructionAccessible>
+    <isDataAccessible>false</isDataAccessible>
+    <isTightlyCoupledInstructionAccessible>false</isTightlyCoupledInstructionAccessible>
+    <isTightlyCoupledDataAccessible>false</isTightlyCoupledDataAccessible>
+    <hasIrq>false</hasIrq>
+    <irqNumber>-1</irqNumber>
+    <irqInterruptControllerID>-1</irqInterruptControllerID>
+    <isConnectedInterruptControllerDevice>false</isConnectedInterruptControllerDevice>
+    <interruptControllerID>-1</interruptControllerID>
+   </connectedDevice>
+   <connectedDevice>
+    <moduleName>img_cpu_reader_0</moduleName>
+    <slaveDesc>img_cpu_reader_0</slaveDesc>
+    <slave>
+     <name>avalon_slave_0</name>
+     <version>18.1</version>
+     <assignment>
+      <name>embeddedsw.configuration.isFlash</name>
+      <value>0</value>
+     </assignment>
+     <assignment>
+      <name>embeddedsw.configuration.isMemoryDevice</name>
+      <value>0</value>
+     </assignment>
+     <assignment>
+      <name>embeddedsw.configuration.isNonVolatileStorage</name>
+      <value>0</value>
+     </assignment>
+     <assignment>
+      <name>embeddedsw.configuration.isPrintableDevice</name>
+      <value>0</value>
+     </assignment>
+     <systemSlaveName>img_cpu_reader_0.avalon_slave_0</systemSlaveName>
+     <addressGroup>0</addressGroup>
+    </slave>
+    <baseAddress>4280287328</baseAddress>
+    <basePhysicalAddress>4280287328</basePhysicalAddress>
+    <span>32</span>
     <isBigEndian>false</isBigEndian>
     <isInstructionAccessible>false</isInstructionAccessible>
     <isDataAccessible>false</isDataAccessible>
@@ -6515,6 +6671,18 @@
    <frequency>0</frequency>
   </clockConnection>
   <path>hps_0.scu</path>
+ </module>
+ <module>
+  <name>img_cpu_reader_0</name>
+  <version>1.0</version>
+  <className>img_cpu_reader</className>
+  <clockConnection>
+   <moduleName>img_cpu_reader_0</moduleName>
+   <localSlaveName>clock</localSlaveName>
+   <systemConnectionName>img_cpu_reader_0.clock</systemConnectionName>
+   <frequency>0</frequency>
+  </clockConnection>
+  <path>img_cpu_reader_0</path>
  </module>
  <module>
   <name>master_0</name>

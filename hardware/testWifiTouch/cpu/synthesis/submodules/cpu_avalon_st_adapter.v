@@ -7,16 +7,16 @@
 
 `timescale 1 ps / 1 ps
 module cpu_avalon_st_adapter #(
-		parameter inBitsPerSymbol = 10,
+		parameter inBitsPerSymbol = 8,
 		parameter inUsePackets    = 1,
-		parameter inDataWidth     = 30,
-		parameter inChannelWidth  = 2,
+		parameter inDataWidth     = 24,
+		parameter inChannelWidth  = 0,
 		parameter inErrorWidth    = 0,
 		parameter inUseEmptyPort  = 0,
 		parameter inUseValid      = 1,
 		parameter inUseReady      = 1,
-		parameter inReadyLatency  = 0,
-		parameter outDataWidth    = 30,
+		parameter inReadyLatency  = 1,
+		parameter outDataWidth    = 24,
 		parameter outChannelWidth = 0,
 		parameter outErrorWidth   = 0,
 		parameter outUseEmptyPort = 0,
@@ -26,13 +26,12 @@ module cpu_avalon_st_adapter #(
 	) (
 		input  wire        in_clk_0_clk,        // in_clk_0.clk
 		input  wire        in_rst_0_reset,      // in_rst_0.reset
-		input  wire [29:0] in_0_data,           //     in_0.data
+		input  wire [23:0] in_0_data,           //     in_0.data
 		input  wire        in_0_valid,          //         .valid
 		output wire        in_0_ready,          //         .ready
 		input  wire        in_0_startofpacket,  //         .startofpacket
 		input  wire        in_0_endofpacket,    //         .endofpacket
-		input  wire [1:0]  in_0_channel,        //         .channel
-		output wire [29:0] out_0_data,          //    out_0.data
+		output wire [23:0] out_0_data,          //    out_0.data
 		output wire        out_0_valid,         //         .valid
 		input  wire        out_0_ready,         //         .ready
 		output wire        out_0_startofpacket, //         .startofpacket
@@ -45,7 +44,7 @@ module cpu_avalon_st_adapter #(
 		// has been instantiated this module with a set of parameters different
 		// from those it was generated for.  This will usually result in a
 		// non-functioning system.
-		if (inBitsPerSymbol != 10)
+		if (inBitsPerSymbol != 8)
 		begin
 			initial begin
 				$display("Generated module instantiated with wrong parameters");
@@ -63,7 +62,7 @@ module cpu_avalon_st_adapter #(
 			instantiated_with_wrong_parameters_error_see_comment_above
 					inusepackets_check ( .error(1'b1) );
 		end
-		if (inDataWidth != 30)
+		if (inDataWidth != 24)
 		begin
 			initial begin
 				$display("Generated module instantiated with wrong parameters");
@@ -72,7 +71,7 @@ module cpu_avalon_st_adapter #(
 			instantiated_with_wrong_parameters_error_see_comment_above
 					indatawidth_check ( .error(1'b1) );
 		end
-		if (inChannelWidth != 2)
+		if (inChannelWidth != 0)
 		begin
 			initial begin
 				$display("Generated module instantiated with wrong parameters");
@@ -117,7 +116,7 @@ module cpu_avalon_st_adapter #(
 			instantiated_with_wrong_parameters_error_see_comment_above
 					inuseready_check ( .error(1'b1) );
 		end
-		if (inReadyLatency != 0)
+		if (inReadyLatency != 1)
 		begin
 			initial begin
 				$display("Generated module instantiated with wrong parameters");
@@ -126,7 +125,7 @@ module cpu_avalon_st_adapter #(
 			instantiated_with_wrong_parameters_error_see_comment_above
 					inreadylatency_check ( .error(1'b1) );
 		end
-		if (outDataWidth != 30)
+		if (outDataWidth != 24)
 		begin
 			initial begin
 				$display("Generated module instantiated with wrong parameters");
@@ -191,7 +190,7 @@ module cpu_avalon_st_adapter #(
 		end
 	endgenerate
 
-	cpu_avalon_st_adapter_channel_adapter_0 channel_adapter_0 (
+	cpu_avalon_st_adapter_timing_adapter_0 timing_adapter_0 (
 		.clk               (in_clk_0_clk),        //   clk.clk
 		.reset_n           (~in_rst_0_reset),     // reset.reset_n
 		.in_data           (in_0_data),           //    in.data
@@ -199,7 +198,6 @@ module cpu_avalon_st_adapter #(
 		.in_ready          (in_0_ready),          //      .ready
 		.in_startofpacket  (in_0_startofpacket),  //      .startofpacket
 		.in_endofpacket    (in_0_endofpacket),    //      .endofpacket
-		.in_channel        (in_0_channel),        //      .channel
 		.out_data          (out_0_data),          //   out.data
 		.out_valid         (out_0_valid),         //      .valid
 		.out_ready         (out_0_ready),         //      .ready

@@ -15,14 +15,14 @@ module testWifiTouch (
             output logic [7:0] VGA_R, output logic [7:0] VGA_G, output logic [7:0] VGA_B,
             output logic VGA_HS, output logic VGA_VS, output logic VGA_CLK,
             output logic [2:0] VGA_COLOUR, output logic VGA_PLOT, 
-            output logic VGA_BLANK_N, output logic VGA_SYNC_N 
+            output logic VGA_BLANK_N, output logic VGA_SYNC_N,
+				
+				input logic HPS_KEY
         );
     cpu u0(
 		.leds_r_export(LEDR[7:0]),  //     leds_r.export
 		.touch_uart_RXD(GPIO_1[13]), // touch_uart.RXD
 		.touch_uart_TXD(GPIO_1[11]), //           .TXD
-		.wifi_uart_RXD(GPIO_1[27]),  //  wifi_uart.RXD
-		.wifi_uart_TXD(GPIO_1[29]),   //           .TXD
         .sdram_clk_clk(DRAM_CLK),
         .sdram_addr(DRAM_ADDR),
         .sdram_ba(DRAM_BA),
@@ -44,6 +44,7 @@ module testWifiTouch (
         .vga_G(VGA_G),
         .vga_B(VGA_B)
 	);
+	assign LEDR[8] = HPS_KEY;
     assign LEDR[9] = ~KEY[0];
     assign GPIO_1[25] = 1'b1;
     assign GPIO_1[9] = 1'b1;

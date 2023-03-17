@@ -939,8 +939,8 @@
 													<node nodeId="1389812802503" orientation="VERTICAL" divider="0.6704331450094162">
 														<leaf id="-1" nodeId="1389812800464">
 															<placeholders>
-																<placeholder>dock.single.Details</placeholder>
 																<placeholder>dock.single.Parameters</placeholder>
+																<placeholder>dock.single.Details</placeholder>
 																<placeholder>dock.single.Block\ Symbol</placeholder>
 																<placeholder>dock.single.Presets</placeholder>
 															</placeholders>
@@ -954,12 +954,12 @@
 																</entry>
 																<entry>
 																	<key shared="false">
-																		<placeholder>dock.single.Details</placeholder>
+																		<placeholder>dock.single.Parameters</placeholder>
 																	</key>
 																</entry>
 																<entry>
 																	<key shared="false">
-																		<placeholder>dock.single.Parameters</placeholder>
+																		<placeholder>dock.single.Details</placeholder>
 																	</key>
 																</entry>
 																<entry>

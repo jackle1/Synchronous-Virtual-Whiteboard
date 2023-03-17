@@ -241,27 +241,6 @@
          type = "int";
       }
    }
-   element wifi_uart
-   {
-      datum _sortIndex
-      {
-         value = "14";
-         type = "int";
-      }
-   }
-   element wifi_uart.avalon_rs232_slave
-   {
-      datum _lockedAddress
-      {
-         value = "1";
-         type = "boolean";
-      }
-      datum baseAddress
-      {
-         value = "16";
-         type = "String";
-      }
-   }
 }
 ]]></parameter>
  <parameter name="clockCrossingAdapter" value="HANDSHAKE" />
@@ -362,7 +341,6 @@
    internal="vga_controller.external_interface"
    type="conduit"
    dir="end" />
- <interface name="wifi_uart" internal="wifi_uart.external_interface" />
  <module
    name="buttons_pio"
    kind="altera_avalon_pio"
@@ -1084,19 +1062,6 @@
   <parameter name="vga_clk_en" value="true" />
   <parameter name="video_in_clk_en" value="false" />
  </module>
- <module
-   name="wifi_uart"
-   kind="altera_up_avalon_rs232"
-   version="17.1"
-   enabled="0">
-  <parameter name="AUTO_CLK_CLOCK_RATE" value="50000000" />
-  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
-  <parameter name="avalon_bus_type" value="Memory Mapped" />
-  <parameter name="baud" value="115200" />
-  <parameter name="data_bits" value="8" />
-  <parameter name="parity" value="None" />
-  <parameter name="stop_bits" value="1" />
- </module>
  <connection
    kind="avalon"
    version="18.1"
@@ -1140,15 +1105,6 @@
    end="touchscreen_uart.avalon_rs232_slave">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x0018" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="18.1"
-   start="hps_0.h2f_lw_axi_master"
-   end="wifi_uart.avalon_rs232_slave">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0010" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1240,11 +1196,6 @@
    kind="clock"
    version="18.1"
    start="sys_clk.sys_clk"
-   end="wifi_uart.clk" />
- <connection
-   kind="clock"
-   version="18.1"
-   start="sys_clk.sys_clk"
    end="switches_pio.clk" />
  <connection
    kind="clock"
@@ -1304,13 +1255,6 @@
   <parameter name="irqNumber" value="0" />
  </connection>
  <connection
-   kind="interrupt"
-   version="18.1"
-   start="hps_0.f2h_irq0"
-   end="wifi_uart.interrupt">
-  <parameter name="irqNumber" value="1" />
- </connection>
- <connection
    kind="reset"
    version="18.1"
    start="sys_clk.reset_source"
@@ -1340,11 +1284,6 @@
    version="18.1"
    start="video_pll_0.reset_source"
    end="vga_controller.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="sys_clk.reset_source"
-   end="wifi_uart.reset" />
  <connection
    kind="reset"
    version="18.1"

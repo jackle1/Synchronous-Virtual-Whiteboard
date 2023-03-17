@@ -59,6 +59,14 @@
 			hps_io_hps_io_gpio_inst_GPIO53             : inout std_logic                     := 'X';             -- hps_io_gpio_inst_GPIO53
 			hps_io_hps_io_gpio_inst_GPIO54             : inout std_logic                     := 'X';             -- hps_io_gpio_inst_GPIO54
 			hps_io_hps_io_gpio_inst_GPIO61             : inout std_logic                     := 'X';             -- hps_io_gpio_inst_GPIO61
+			img_cpu_reader_0_cpu_rdy_cpu_rdy           : out   std_logic;                                        -- cpu_rdy
+			img_cpu_reader_0_get_next_pix_get_next_pix : out   std_logic;                                        -- get_next_pix
+			img_cpu_reader_0_img_done_img_done         : in    std_logic                     := 'X';             -- img_done
+			img_cpu_reader_0_out_state_out_state       : out   std_logic_vector(3 downto 0);                     -- out_state
+			img_cpu_reader_0_pix_rdy_pix_rdy           : in    std_logic                     := 'X';             -- pix_rdy
+			img_cpu_reader_0_pix_rdy_out_pix_rdy_out   : out   std_logic_vector(31 downto 0);                    -- pix_rdy_out
+			img_cpu_reader_0_pix_rgb_out_pix_rgb_out   : out   std_logic_vector(23 downto 0);                    -- pix_rgb_out
+			img_cpu_reader_0_pixel_data_pixel_data     : in    std_logic_vector(23 downto 0) := (others => 'X'); -- pixel_data
 			memory_mem_a                               : out   std_logic_vector(14 downto 0);                    -- mem_a
 			memory_mem_ba                              : out   std_logic_vector(2 downto 0);                     -- mem_ba
 			memory_mem_ck                              : out   std_logic;                                        -- mem_ck
@@ -96,15 +104,7 @@
 			vga_SYNC                                   : out   std_logic;                                        -- SYNC
 			vga_R                                      : out   std_logic_vector(7 downto 0);                     -- R
 			vga_G                                      : out   std_logic_vector(7 downto 0);                     -- G
-			vga_B                                      : out   std_logic_vector(7 downto 0);                     -- B
-			img_cpu_reader_0_cpu_rdy_cpu_rdy           : out   std_logic;                                        -- cpu_rdy
-			img_cpu_reader_0_get_next_pix_get_next_pix : out   std_logic;                                        -- get_next_pix
-			img_cpu_reader_0_img_done_img_done         : in    std_logic                     := 'X';             -- img_done
-			img_cpu_reader_0_out_state_out_state       : out   std_logic_vector(3 downto 0);                     -- out_state
-			img_cpu_reader_0_pix_rdy_pix_rdy           : in    std_logic                     := 'X';             -- pix_rdy
-			img_cpu_reader_0_pix_rdy_out_pix_rdy_out   : out   std_logic_vector(31 downto 0);                    -- pix_rdy_out
-			img_cpu_reader_0_pix_rgb_out_pix_rgb_out   : out   std_logic_vector(23 downto 0);                    -- pix_rgb_out
-			img_cpu_reader_0_pixel_data_pixel_data     : in    std_logic_vector(23 downto 0) := (others => 'X')  -- pixel_data
+			vga_B                                      : out   std_logic_vector(7 downto 0)                      -- B
 		);
 	end component cpu;
 
@@ -169,6 +169,14 @@
 			hps_io_hps_io_gpio_inst_GPIO53             => CONNECTED_TO_hps_io_hps_io_gpio_inst_GPIO53,             --                              .hps_io_gpio_inst_GPIO53
 			hps_io_hps_io_gpio_inst_GPIO54             => CONNECTED_TO_hps_io_hps_io_gpio_inst_GPIO54,             --                              .hps_io_gpio_inst_GPIO54
 			hps_io_hps_io_gpio_inst_GPIO61             => CONNECTED_TO_hps_io_hps_io_gpio_inst_GPIO61,             --                              .hps_io_gpio_inst_GPIO61
+			img_cpu_reader_0_cpu_rdy_cpu_rdy           => CONNECTED_TO_img_cpu_reader_0_cpu_rdy_cpu_rdy,           --      img_cpu_reader_0_cpu_rdy.cpu_rdy
+			img_cpu_reader_0_get_next_pix_get_next_pix => CONNECTED_TO_img_cpu_reader_0_get_next_pix_get_next_pix, -- img_cpu_reader_0_get_next_pix.get_next_pix
+			img_cpu_reader_0_img_done_img_done         => CONNECTED_TO_img_cpu_reader_0_img_done_img_done,         --     img_cpu_reader_0_img_done.img_done
+			img_cpu_reader_0_out_state_out_state       => CONNECTED_TO_img_cpu_reader_0_out_state_out_state,       --    img_cpu_reader_0_out_state.out_state
+			img_cpu_reader_0_pix_rdy_pix_rdy           => CONNECTED_TO_img_cpu_reader_0_pix_rdy_pix_rdy,           --      img_cpu_reader_0_pix_rdy.pix_rdy
+			img_cpu_reader_0_pix_rdy_out_pix_rdy_out   => CONNECTED_TO_img_cpu_reader_0_pix_rdy_out_pix_rdy_out,   --  img_cpu_reader_0_pix_rdy_out.pix_rdy_out
+			img_cpu_reader_0_pix_rgb_out_pix_rgb_out   => CONNECTED_TO_img_cpu_reader_0_pix_rgb_out_pix_rgb_out,   --  img_cpu_reader_0_pix_rgb_out.pix_rgb_out
+			img_cpu_reader_0_pixel_data_pixel_data     => CONNECTED_TO_img_cpu_reader_0_pixel_data_pixel_data,     --   img_cpu_reader_0_pixel_data.pixel_data
 			memory_mem_a                               => CONNECTED_TO_memory_mem_a,                               --                        memory.mem_a
 			memory_mem_ba                              => CONNECTED_TO_memory_mem_ba,                              --                              .mem_ba
 			memory_mem_ck                              => CONNECTED_TO_memory_mem_ck,                              --                              .mem_ck
@@ -206,14 +214,6 @@
 			vga_SYNC                                   => CONNECTED_TO_vga_SYNC,                                   --                              .SYNC
 			vga_R                                      => CONNECTED_TO_vga_R,                                      --                              .R
 			vga_G                                      => CONNECTED_TO_vga_G,                                      --                              .G
-			vga_B                                      => CONNECTED_TO_vga_B,                                      --                              .B
-			img_cpu_reader_0_cpu_rdy_cpu_rdy           => CONNECTED_TO_img_cpu_reader_0_cpu_rdy_cpu_rdy,           --      img_cpu_reader_0_cpu_rdy.cpu_rdy
-			img_cpu_reader_0_get_next_pix_get_next_pix => CONNECTED_TO_img_cpu_reader_0_get_next_pix_get_next_pix, -- img_cpu_reader_0_get_next_pix.get_next_pix
-			img_cpu_reader_0_img_done_img_done         => CONNECTED_TO_img_cpu_reader_0_img_done_img_done,         --     img_cpu_reader_0_img_done.img_done
-			img_cpu_reader_0_out_state_out_state       => CONNECTED_TO_img_cpu_reader_0_out_state_out_state,       --    img_cpu_reader_0_out_state.out_state
-			img_cpu_reader_0_pix_rdy_pix_rdy           => CONNECTED_TO_img_cpu_reader_0_pix_rdy_pix_rdy,           --      img_cpu_reader_0_pix_rdy.pix_rdy
-			img_cpu_reader_0_pix_rdy_out_pix_rdy_out   => CONNECTED_TO_img_cpu_reader_0_pix_rdy_out_pix_rdy_out,   --  img_cpu_reader_0_pix_rdy_out.pix_rdy_out
-			img_cpu_reader_0_pix_rgb_out_pix_rgb_out   => CONNECTED_TO_img_cpu_reader_0_pix_rgb_out_pix_rgb_out,   --  img_cpu_reader_0_pix_rgb_out.pix_rgb_out
-			img_cpu_reader_0_pixel_data_pixel_data     => CONNECTED_TO_img_cpu_reader_0_pixel_data_pixel_data      --   img_cpu_reader_0_pixel_data.pixel_data
+			vga_B                                      => CONNECTED_TO_vga_B                                       --                              .B
 		);
 

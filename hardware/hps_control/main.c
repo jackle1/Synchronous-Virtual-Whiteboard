@@ -32,6 +32,7 @@ unsigned short convertHex(unsigned short num);
 int waitRoomID();
 unsigned short getSWColour (volatile unsigned short * switches); 
 unsigned short getKeyAH (volatile unsigned short * keys);
+void getCameraPicture(const char * path);
 
 #define RESET_SLEEP 2000 // Need to wait for reset on FPGA side
 
@@ -64,6 +65,11 @@ unsigned short getKeyAH (volatile unsigned short * keys);
 #define SERVER_SOCKET_PORT (3001)
 #define SERVER_IPV4 "192.168.137.1"
 
+// Camera PIO
+#define PIXEL_RDY_OFF 0
+#define ACK_PIXEL_OFF 1
+#define PIXEL_DATA_OFF 2
+
 void * virtual_base_lw ;
 void * virtual_base_sdram ;
 volatile unsigned int * BUFFER_BASE ; 
@@ -72,6 +78,10 @@ volatile unsigned char * TOUCHSCREEN_UART ;
 volatile unsigned short * SW_BASE ;
 volatile unsigned short * KEY_BASE ;
 volatile unsigned short * HEX_BASE ;  
+// Camera
+volatile int * PIX_RDY_PTR ;
+volatile int * ACK_PTR ;
+volatile int * PIX_DATA_PTR ;
 int SOCKET_FD = -1;
 
 int main()
@@ -80,7 +90,9 @@ int main()
     initBridge();
     paintVGAPicture(ROOM_NUMBER_REQ, VGA_BASE);
     roomID = waitRoomID();
-    getCloudPicture(GET_PIXEL_ROOM_FILE);   
+    getCloudPicture(GET_PIXEL_ROOM_FILE);
+    pixel_t * head = NULL;
+    pixel_t * tail = NULL;   
     while (1)
     {
         // Paint pixels
@@ -97,23 +109,63 @@ int main()
                 {
                     unsigned short colour = getSWColour(SW_BASE);
                     paintPixel(VGA_BASE, vga_x, vga_y, colour);
-                    putRoomPixels(roomID, vga_x, vga_y, colour); 
+                    pixel_t * new_pixel = (pixel_t *) malloc(sizeof(pixel_t));
+                    new_pixel->x = vga_x;
+                    new_pixel->y = vga_y;
+                    new_pixel->colour = colour;
+                    new_pixel->next = NULL;
+                    if (head == NULL) {
+                        head = new_pixel;
+                        tail = new_pixel;
+                    } else
+                    {
+                        tail->next = new_pixel;
+                        tail = new_pixel;
+                    }
+                    // putRoomPixels(roomID, vga_x, vga_y, colour); 
                 }
             }
         }
         // Start camera taking operation
-        else if (0)
+        else if (GET_SW_VAL() == 256)
         {
-            printf("... wait on camera\n"); 
+            int flag = 1;
+            while (!(getKeyAH(KEY_BASE) & KEY3_MASK)) if (!(GET_SW_VAL() & 256)) flag = 0; // Wait down
+            if (flag)
+            {
+                while (getKeyAH(KEY_BASE) & KEY3_MASK);    // Wait up
+                getCameraPicture("camera.txt");
+                printf("Flip switch\n");
+                while(GET_SW_VAL() == 256);
+                sleep(1);
+                // FILE * fp = fopen("camera.txt", "r");
+                // for (int i  = 0; i < VGA_X * VGA_Y;i++)
+                // {
+                //     unsigned short colour;
+                //     fscanf(fp, "%hu,", &colour);
+                //     VGA_BASE[i] = colour;
+                // }
+                // fclose(fp);
+            }
         }
         // If Reset is pressed
         else if (getKeyAH(KEY_BASE) & KEY3_MASK)
         {
-            printf("Got reset signal!!!\n");
-            while (getKeyAH(KEY_BASE) & KEY3_MASK); // Wait for key-up
-            paintVGAPicture(ROOM_NUMBER_REQ, VGA_BASE);
-            roomID = waitRoomID();
-            getCloudPicture(GET_PIXEL_ROOM_FILE); 
+            getCloudPicture(GET_PIXEL_ROOM_FILE);
+            // printf("Got reset signal!!!\n");
+            // while (getKeyAH(KEY_BASE) & KEY3_MASK); // Wait for key-up
+            // paintVGAPicture(ROOM_NUMBER_REQ, VGA_BASE);
+            // roomID = waitRoomID();
+            // getCloudPicture(GET_PIXEL_ROOM_FILE); 
+        } 
+        else if (getKeyAH(KEY_BASE) & KEY2_MASK) // Send pixels
+        {
+            while (getKeyAH(KEY_BASE) & KEY2_MASK);
+            printf("Sending bulk pixels\n");
+            sendBulkPixel(head, 8862);
+            printf("Done sending!!!\n");
+            head = NULL;
+            tail = NULL;
         }
     }
      
@@ -127,11 +179,15 @@ void initBridge(void)
     virtual_base_lw = mmap(NULL, LW_BRIDGE_SPAN, (PROT_READ | PROT_WRITE), MAP_SHARED, hps_f, LW_BRIDGE_BASE);
     virtual_base_sdram = mmap(NULL, SDRAM_SPAN, (PROT_READ | PROT_WRITE), MAP_SHARED, hps_f, SDRAM_BASE);
     BUFFER_BASE = (volatile unsigned int *) (virtual_base_lw + PIXEL_BUFFER_BASE);
-    VGA_BASE  = (volatile unsigned short *) virtual_base_sdram; // + (0x8000000); 
+    VGA_BASE  = ((volatile unsigned short *) virtual_base_sdram);//  + 0x3000000; 
+    printf("Pixel Buffer in: 0x%08x\n", *BUFFER_BASE);
     TOUCHSCREEN_UART = (volatile unsigned char *) (virtual_base_lw + TOUCHSCREEN_UART_BASE);
     SW_BASE = (volatile unsigned short *) (virtual_base_lw + SWITCHES_PIO_BASE);
     KEY_BASE = (volatile unsigned short *) (virtual_base_lw + BUTTONS_PIO_BASE);
     HEX_BASE = (volatile unsigned short *) (virtual_base_lw + HEXES_PIO_BASE); 
+    PIX_RDY_PTR = (volatile int *) (virtual_base_lw + IMG_CPU_READER_0_BASE + PIXEL_RDY_OFF);
+    ACK_PTR  = (volatile int *) (virtual_base_lw + IMG_CPU_READER_0_BASE + ACK_PIXEL_OFF);
+    PIX_DATA_PTR = (volatile int *) (virtual_base_lw + IMG_CPU_READER_0_BASE + PIXEL_DATA_OFF);
 
     if (virtual_base_lw == MAP_FAILED | virtual_base_sdram == MAP_FAILED)
     {
@@ -172,6 +228,10 @@ void translateTouchscreenVGACoords(unsigned short * x, unsigned short * new_x, u
 {
     *new_x = *x * VGA_X / TOUCHSCREEN_X;
     *new_y = *y * VGA_Y / TOUCHSCREEN_Y;
+    if (*new_x == VGA_Y)
+        *new_x = *new_x - 1;
+    if (*new_y == VGA_X)
+        *new_y = *new_y - 1;
 }
 
 
@@ -311,24 +371,18 @@ void paintCloudPicture (const char * file, volatile unsigned short * vga_base)
         fscanf(file_fd, "%c", &read); // get [ - start of array
         while (i < VGA_X * VGA_Y)
         {
-            int j = 0;
-            while (j < VGA_X)
+            int ret = fscanf(file_fd, "%hu, ", &colour);
+            if (ret <= 0)
             {
-                int ret = fscanf(file_fd, "%hu, ", &colour);
-                if (ret > 0)
-                    vga_base[i++] = colour;
-                else
-                {
-                    ret = fscanf(file_fd, "%hu], [", &colour);
-                    vga_base[i++] = colour;
-                }
-                j++;
+                ret = fscanf(file_fd, "%hu], [", &colour);
+                read = '0';
+                while (read != '[') fscanf(file_fd, "%c", &read);
             }
+            ((unsigned short *) vga_base)[i++] = colour;
         }
     }
 
 }
-
 
 void getCloudPicture(const char * file)
 {
@@ -336,7 +390,7 @@ void getCloudPicture(const char * file)
     get_pixel_res->done = CLOUD_WAIT; 
     FILE * pixel_file = fopen(GET_PIXEL_ROOM_FILE, "w");
     get_pixel_res->file = pixel_file;
-    getRoomPixels(get_pixel_res, GET_SW_VAL());
+    getRoomPixels(get_pixel_res, 8862); //GET_SW_VAL());
     printf("CLOUD WAIT\n");
     while (get_pixel_res->done == CLOUD_WAIT);
     printf("DONE CLOUD WAIT\n");
@@ -347,4 +401,66 @@ void getCloudPicture(const char * file)
         paintCloudPicture(GET_PIXEL_ROOM_FILE, VGA_BASE);
         printf("Done painting cloud\n");
     }
+}
+
+void getCameraPicture(const char * path)
+{
+    unsigned int pixel_ready;
+    unsigned int pixel_count = 0;
+    unsigned int curr_pixel_data;
+    int row = 0;
+    int col = 0;
+    // image transfer monitor
+    pixel_ready = *PIX_RDY_PTR;
+    FILE * fp = NULL;
+    fp = fopen(path, "w");
+    printf("Starting to read camera\n");
+    int base = 0xa00000;
+    char * camera_ptr = base + VGA_BASE;
+    int j = 0;
+    for (int i = 0; i < 640 * 480; i++)
+    {
+        unsigned short colour = ((camera_ptr[j + 2] & 248) << 8) | ((camera_ptr[j + 1] & 252) << 3) | (camera_ptr[j] >> 3);
+        // = (curr_pixel_data & 0xF800) | (curr_pixel_data & 0x7E0) | (curr_pixel_data & 0x1F);
+        fprintf(fp, "%hu,", colour);
+        //VGA_BASE[i] = colour;
+        // printf("%x = %x\n", VGA_BASE[i], colour);
+        j += 3;
+    }
+    fflush(fp);
+    fclose(fp);
+    
+    // if (pixel_ready == 1) 
+    // {
+    //     // turn LED
+    //     while (pixel_ready != 2) 
+    //     {
+    //         if (pixel_ready == 0) 
+    //             pixel_ready = *PIX_RDY_PTR;
+    //         else 
+    //         {
+    //             *ACK_PTR = 1;
+    //             curr_pixel_data = *PIX_DATA_PTR;
+    //             if (row < 640) 
+    //             {
+    //                 if(col < 480) 
+    //                 {   //((red & 248) << 8) | ((green & 252) << 3) | (blue >> 3)
+    //                     unsigned short colour = (curr_pixel_data & 0xF800) | (curr_pixel_data & 0x7E0) | (curr_pixel_data & 0x1F);
+    //                     fprintf(fp, "%hu,", colour);
+    //                     // printf("pixel %x %hu\n", curr_pixel_data, colour);
+    //                     col++;
+    //                 } else 
+    //                 {
+    //                     col = 0;
+    //                     row++;
+    //                 }
+    //             } else 
+    //                 break;
+    //             pixel_count++;
+    //             *ACK_PTR = 0;
+    //             pixel_ready = *PIX_RDY_PTR;
+    //         }
+    //     }
+    // }
+    printf("Done copying camera!\n");
 }

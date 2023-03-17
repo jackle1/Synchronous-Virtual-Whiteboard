@@ -58,6 +58,14 @@
 		.hps_io_hps_io_gpio_inst_GPIO53             (<connected-to-hps_io_hps_io_gpio_inst_GPIO53>),             //                              .hps_io_gpio_inst_GPIO53
 		.hps_io_hps_io_gpio_inst_GPIO54             (<connected-to-hps_io_hps_io_gpio_inst_GPIO54>),             //                              .hps_io_gpio_inst_GPIO54
 		.hps_io_hps_io_gpio_inst_GPIO61             (<connected-to-hps_io_hps_io_gpio_inst_GPIO61>),             //                              .hps_io_gpio_inst_GPIO61
+		.img_cpu_reader_0_cpu_rdy_cpu_rdy           (<connected-to-img_cpu_reader_0_cpu_rdy_cpu_rdy>),           //      img_cpu_reader_0_cpu_rdy.cpu_rdy
+		.img_cpu_reader_0_get_next_pix_get_next_pix (<connected-to-img_cpu_reader_0_get_next_pix_get_next_pix>), // img_cpu_reader_0_get_next_pix.get_next_pix
+		.img_cpu_reader_0_img_done_img_done         (<connected-to-img_cpu_reader_0_img_done_img_done>),         //     img_cpu_reader_0_img_done.img_done
+		.img_cpu_reader_0_out_state_out_state       (<connected-to-img_cpu_reader_0_out_state_out_state>),       //    img_cpu_reader_0_out_state.out_state
+		.img_cpu_reader_0_pix_rdy_pix_rdy           (<connected-to-img_cpu_reader_0_pix_rdy_pix_rdy>),           //      img_cpu_reader_0_pix_rdy.pix_rdy
+		.img_cpu_reader_0_pix_rdy_out_pix_rdy_out   (<connected-to-img_cpu_reader_0_pix_rdy_out_pix_rdy_out>),   //  img_cpu_reader_0_pix_rdy_out.pix_rdy_out
+		.img_cpu_reader_0_pix_rgb_out_pix_rgb_out   (<connected-to-img_cpu_reader_0_pix_rgb_out_pix_rgb_out>),   //  img_cpu_reader_0_pix_rgb_out.pix_rgb_out
+		.img_cpu_reader_0_pixel_data_pixel_data     (<connected-to-img_cpu_reader_0_pixel_data_pixel_data>),     //   img_cpu_reader_0_pixel_data.pixel_data
 		.memory_mem_a                               (<connected-to-memory_mem_a>),                               //                        memory.mem_a
 		.memory_mem_ba                              (<connected-to-memory_mem_ba>),                              //                              .mem_ba
 		.memory_mem_ck                              (<connected-to-memory_mem_ck>),                              //                              .mem_ck
@@ -95,14 +103,6 @@
 		.vga_SYNC                                   (<connected-to-vga_SYNC>),                                   //                              .SYNC
 		.vga_R                                      (<connected-to-vga_R>),                                      //                              .R
 		.vga_G                                      (<connected-to-vga_G>),                                      //                              .G
-		.vga_B                                      (<connected-to-vga_B>),                                      //                              .B
-		.img_cpu_reader_0_cpu_rdy_cpu_rdy           (<connected-to-img_cpu_reader_0_cpu_rdy_cpu_rdy>),           //      img_cpu_reader_0_cpu_rdy.cpu_rdy
-		.img_cpu_reader_0_get_next_pix_get_next_pix (<connected-to-img_cpu_reader_0_get_next_pix_get_next_pix>), // img_cpu_reader_0_get_next_pix.get_next_pix
-		.img_cpu_reader_0_img_done_img_done         (<connected-to-img_cpu_reader_0_img_done_img_done>),         //     img_cpu_reader_0_img_done.img_done
-		.img_cpu_reader_0_out_state_out_state       (<connected-to-img_cpu_reader_0_out_state_out_state>),       //    img_cpu_reader_0_out_state.out_state
-		.img_cpu_reader_0_pix_rdy_pix_rdy           (<connected-to-img_cpu_reader_0_pix_rdy_pix_rdy>),           //      img_cpu_reader_0_pix_rdy.pix_rdy
-		.img_cpu_reader_0_pix_rdy_out_pix_rdy_out   (<connected-to-img_cpu_reader_0_pix_rdy_out_pix_rdy_out>),   //  img_cpu_reader_0_pix_rdy_out.pix_rdy_out
-		.img_cpu_reader_0_pix_rgb_out_pix_rgb_out   (<connected-to-img_cpu_reader_0_pix_rgb_out_pix_rgb_out>),   //  img_cpu_reader_0_pix_rgb_out.pix_rgb_out
-		.img_cpu_reader_0_pixel_data_pixel_data     (<connected-to-img_cpu_reader_0_pixel_data_pixel_data>)      //   img_cpu_reader_0_pixel_data.pixel_data
+		.vga_B                                      (<connected-to-vga_B>)                                       //                              .B
 	);
 

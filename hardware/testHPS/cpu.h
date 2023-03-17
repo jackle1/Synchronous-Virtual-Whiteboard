@@ -127,6 +127,17 @@
 #define HEXES_PIO_RESET_VALUE 268435455
 
 /*
+ * Macros for device 'img_cpu_reader_0', class 'img_cpu_reader'
+ * The macros are prefixed with 'IMG_CPU_READER_0_'.
+ * The prefix is the slave descriptor.
+ */
+#define IMG_CPU_READER_0_COMPONENT_TYPE img_cpu_reader
+#define IMG_CPU_READER_0_COMPONENT_NAME img_cpu_reader_0
+#define IMG_CPU_READER_0_BASE 0x60
+#define IMG_CPU_READER_0_SPAN 32
+#define IMG_CPU_READER_0_END 0x7f
+
+/*
  * Macros for device 'sdram_controller', class 'altera_avalon_new_sdram_controller'
  * The macros are prefixed with 'SDRAM_CONTROLLER_'.
  * The prefix is the slave descriptor.

@@ -22,9 +22,7 @@ module cpu (
 	vga_SYNC,
 	vga_R,
 	vga_G,
-	vga_B,
-	wifi_uart_RXD,
-	wifi_uart_TXD);	
+	vga_B);	
 
 	output	[7:0]	leds_r_export;
 	output	[12:0]	sdram_addr;
@@ -49,6 +47,4 @@ module cpu (
 	output	[7:0]	vga_R;
 	output	[7:0]	vga_G;
 	output	[7:0]	vga_B;
-	input		wifi_uart_RXD;
-	output		wifi_uart_TXD;
 endmodule
