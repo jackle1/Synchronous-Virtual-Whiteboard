@@ -3,13 +3,13 @@
  <debug showDebugMenu="0" />
  <systemtable filter="All Interfaces">
   <columns>
-   <connections preferredWidth="287" />
+   <connections preferredWidth="255" />
    <irq preferredWidth="34" />
    <inputclock preferredWidth="148" />
   </columns>
  </systemtable>
  <library
-   expandedCategories="Library/Basic Functions,Library/Processors and Peripherals,Library/University Program,Library/Tri-State Components,Library/Qsys Interconnect,Library/University Program/Audio &amp; Video,Library/University Program/Audio &amp; Video/Video,Library/Basic Functions/Bridges and Adaptors/Streaming,Library/Interface Protocols/Transceiver PLL,Library/Interface Protocols,Library/Processors and Peripherals/Co-Processors/Nios II Custom Instructions,Library/Basic Functions/Bridges and Adaptors,Project,Library,Library/Interface Protocols/Transceiver PHY,Library/Processors and Peripherals/Co-Processors,Library/Qsys Interconnect/Memory-Mapped" />
+   expandedCategories="Project,Library/DSP/Video and Image Processing,Library,Library/DSP" />
  <window width="1920" height="1030" x="0" y="0" />
  <hdlexample language="VERILOG" />
 </preferences>

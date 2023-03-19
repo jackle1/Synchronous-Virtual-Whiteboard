@@ -29,3 +29,9 @@ DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/simulation/
 DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/output_files/
 DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/software/.metadata
 DE1_SOC_D8M_RTL_nios_pix_xfer/DE1_SOC_D8M_RTL/camera_eclipse/.metadata
+
+DE1_SOC_D8M_VIP/db/
+DE1_SOC_D8M_VIP/incremental_db/
+DE1_SOC_D8M_VIP/simulation/
+DE1_SOC_D8M_VIP/output_files/
+DE1_SOC_D8M_VIP/software/.metadata

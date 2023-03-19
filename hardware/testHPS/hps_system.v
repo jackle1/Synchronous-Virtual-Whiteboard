@@ -1,4 +1,5 @@
 // https://people.ece.cornell.edu/land/courses/ece5760/DE1_SOC/HPS_FPGA/pio_test/ghrd_top.v
+`define CAMERA_MEM_BASE 32'h0
 module hps_system (
        //////////// ADC //////////
 	output		          		ADC_CONVST,
@@ -433,10 +434,14 @@ wire[15:0] camera_dq, dram_dq_interconnect, hps_dram_dq;
 wire camera_dram_cas_n, camera_dram_cke, camera_dram_cs_n, camera_dram_ldqm, camera_dram_ras_n, camera_dram_udqm, camera_dram_we_n, hps_dram_cas_n, hps_dram_cke, hps_dram_cs_n, hps_dram_ldqm, hps_dram_ras_n, hps_dram_udqm, hps_dram_we_n;
 wire camera_dram_clk, hps_dram_clk; 
 
-assign DRAM_ADDR = SW[8] ? camera_dram_addr : hps_dram_addr;
-assign DRAM_BA = SW[8] ? camera_dram_ba : hps_dram_ba;
-assign {DRAM_CAS_N, DRAM_CKE, DRAM_CS_N, DRAM_LDQM, DRAM_RAS_N, DRAM_UDQM, DRAM_WE_N} = SW[8] ? {camera_dram_cas_n, camera_dram_cke, camera_dram_cs_n, camera_dram_ldqm, camera_dram_ras_n, camera_dram_udqm, camera_dram_we_n} : {hps_dram_cas_n, hps_dram_cke, hps_dram_cs_n, hps_dram_ldqm, hps_dram_ras_n, hps_dram_udqm, hps_dram_we_n};
-assign DRAM_CLK = SW[8] ? camera_dram_clk : hps_dram_clk;
+assign DRAM_ADDR = camera_dram_addr;
+assign DRAM_BA = camera_dram_ba;
+assign {DRAM_CAS_N, DRAM_CKE, DRAM_CS_N, DRAM_LDQM, DRAM_RAS_N, DRAM_UDQM, DRAM_WE_N} = {camera_dram_cas_n, camera_dram_cke, camera_dram_cs_n, camera_dram_ldqm, camera_dram_ras_n, camera_dram_udqm, camera_dram_we_n};
+assign DRAM_CLK = camera_dram_clk;
+// assign DRAM_ADDR = SW[8] ? camera_dram_addr : hps_dram_addr;
+// assign DRAM_BA = SW[8] ? camera_dram_ba : hps_dram_ba;
+// assign {DRAM_CAS_N, DRAM_CKE, DRAM_CS_N, DRAM_LDQM, DRAM_RAS_N, DRAM_UDQM, DRAM_WE_N} = SW[8] ? {camera_dram_cas_n, camera_dram_cke, camera_dram_cs_n, camera_dram_ldqm, camera_dram_ras_n, camera_dram_udqm, camera_dram_we_n} : {hps_dram_cas_n, hps_dram_cke, hps_dram_cs_n, hps_dram_ldqm, hps_dram_ras_n, hps_dram_udqm, hps_dram_we_n};
+// assign DRAM_CLK = SW[8] ? camera_dram_clk : hps_dram_clk;
 
 wire sdram_oe;
 assign camera_dq = ~sdram_oe ? DRAM_DQ : 16'bz;
@@ -465,8 +470,8 @@ img_cpu_reader sdram_pix_reader (
     .BLUE2(img_b),
     .rd2_data(rd2_pixel_data),
     .rd2_req(rd2_req),
-    .start_addr(PIC_START_ADDR),
-    .max_addr(PIC_START_ADDR + 640*480),
+    .start_addr(CAMERA_MEM_BASE),
+    .max_addr(CAMERA_MEM_BASE + 640*480),
     .rd_len(256),
 	.curr_state(curr_state),
 	.rst_n(KEY[0]),
