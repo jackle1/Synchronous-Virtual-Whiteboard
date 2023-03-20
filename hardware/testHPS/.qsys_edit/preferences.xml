@@ -8,6 +8,6 @@
   </columns>
  </systemtable>
  <library
-   expandedCategories="Library/Basic Functions/On Chip Memory,Library/Basic Functions,Project,Library" />
- <window width="1920" height="1030" x="0" y="0" />
+   expandedCategories="Library,Library/University Program/Clock,Library/Memory Interfaces and Controllers/SDRAM,Library/University Program,Library/Memory Interfaces and Controllers/Memory Interfaces with UniPHY,Project,Library/Memory Interfaces and Controllers/Memory Interfaces with ALTMEMPHY,Library/Memory Interfaces and Controllers" />
+ <window width="1618" height="1248" x="-1609" y="-9" />
 </preferences>

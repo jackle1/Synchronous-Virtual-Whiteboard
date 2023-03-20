@@ -51,17 +51,17 @@ architecture rtl of Qsys_alt_vip_vfb_0_tb is
 			read_master_av_readdata      : in  std_logic_vector(31 downto 0) := (others => 'X');
 			read_master_av_readdatavalid : in  std_logic                     := 'X';
 			read_master_av_waitrequest   : in  std_logic                     := 'X';
+			reader_control_av_address    : in  std_logic_vector(1 downto 0)  := (others => 'X');
+			reader_control_av_chipselect : in  std_logic                     := 'X';
+			reader_control_av_readdata   : out std_logic_vector(15 downto 0);
+			reader_control_av_write      : in  std_logic                     := 'X';
+			reader_control_av_writedata  : in  std_logic_vector(15 downto 0) := (others => 'X');
 			reset                        : in  std_logic                     := 'X';
 			write_master_av_address      : out std_logic_vector(31 downto 0);
 			write_master_av_burstcount   : out std_logic_vector(2 downto 0);
 			write_master_av_waitrequest  : in  std_logic                     := 'X';
 			write_master_av_write        : out std_logic;
-			write_master_av_writedata    : out std_logic_vector(31 downto 0);
-			writer_control_av_address    : in  std_logic_vector(1 downto 0)  := (others => 'X');
-			writer_control_av_chipselect : in  std_logic                     := 'X';
-			writer_control_av_readdata   : out std_logic_vector(15 downto 0);
-			writer_control_av_write      : in  std_logic                     := 'X';
-			writer_control_av_writedata  : in  std_logic_vector(15 downto 0) := (others => 'X')
+			write_master_av_writedata    : out std_logic_vector(31 downto 0)
 		);
 	end component Qsys_alt_vip_vfb_0;
 
@@ -83,7 +83,7 @@ begin
 
 	dut : component Qsys_alt_vip_vfb_0
 		generic map (
-			PARAMETERISATION                      => "<frameBufferParams><VFB_NAME>MyFrameBuffer</VFB_NAME><VFB_MAX_WIDTH>640</VFB_MAX_WIDTH><VFB_MAX_HEIGHT>480</VFB_MAX_HEIGHT><VFB_BPS>8</VFB_BPS><VFB_CHANNELS_IN_SEQ>1</VFB_CHANNELS_IN_SEQ><VFB_CHANNELS_IN_PAR>3</VFB_CHANNELS_IN_PAR><VFB_WRITER_RUNTIME_CONTROL>true</VFB_WRITER_RUNTIME_CONTROL><VFB_DROP_FRAMES>true</VFB_DROP_FRAMES><VFB_READER_RUNTIME_CONTROL>0</VFB_READER_RUNTIME_CONTROL><VFB_REPEAT_FRAMES>true</VFB_REPEAT_FRAMES><VFB_FRAMEBUFFERS_ADDR>00000000</VFB_FRAMEBUFFERS_ADDR><VFB_MEM_PORT_WIDTH>32</VFB_MEM_PORT_WIDTH><VFB_MEM_MASTERS_USE_SEPARATE_CLOCK>false</VFB_MEM_MASTERS_USE_SEPARATE_CLOCK><VFB_RDATA_FIFO_DEPTH>1024</VFB_RDATA_FIFO_DEPTH><VFB_RDATA_BURST_TARGET>4</VFB_RDATA_BURST_TARGET><VFB_WDATA_FIFO_DEPTH>1024</VFB_WDATA_FIFO_DEPTH><VFB_WDATA_BURST_TARGET>4</VFB_WDATA_BURST_TARGET><VFB_MAX_NUMBER_PACKETS>1</VFB_MAX_NUMBER_PACKETS><VFB_MAX_SYMBOLS_IN_PACKET>10</VFB_MAX_SYMBOLS_IN_PACKET><VFB_INTERLACED_SUPPORT>0</VFB_INTERLACED_SUPPORT><VFB_CONTROLLED_DROP_REPEAT>0</VFB_CONTROLLED_DROP_REPEAT><VFB_BURST_ALIGNMENT>0</VFB_BURST_ALIGNMENT><VFB_DROP_INVALID_FIELDS>true</VFB_DROP_INVALID_FIELDS></frameBufferParams>",
+			PARAMETERISATION                      => "<frameBufferParams><VFB_NAME>MyFrameBuffer</VFB_NAME><VFB_MAX_WIDTH>640</VFB_MAX_WIDTH><VFB_MAX_HEIGHT>480</VFB_MAX_HEIGHT><VFB_BPS>8</VFB_BPS><VFB_CHANNELS_IN_SEQ>1</VFB_CHANNELS_IN_SEQ><VFB_CHANNELS_IN_PAR>3</VFB_CHANNELS_IN_PAR><VFB_WRITER_RUNTIME_CONTROL>false</VFB_WRITER_RUNTIME_CONTROL><VFB_DROP_FRAMES>true</VFB_DROP_FRAMES><VFB_READER_RUNTIME_CONTROL>true</VFB_READER_RUNTIME_CONTROL><VFB_REPEAT_FRAMES>true</VFB_REPEAT_FRAMES><VFB_FRAMEBUFFERS_ADDR>00000000</VFB_FRAMEBUFFERS_ADDR><VFB_MEM_PORT_WIDTH>32</VFB_MEM_PORT_WIDTH><VFB_MEM_MASTERS_USE_SEPARATE_CLOCK>false</VFB_MEM_MASTERS_USE_SEPARATE_CLOCK><VFB_RDATA_FIFO_DEPTH>1024</VFB_RDATA_FIFO_DEPTH><VFB_RDATA_BURST_TARGET>4</VFB_RDATA_BURST_TARGET><VFB_WDATA_FIFO_DEPTH>1024</VFB_WDATA_FIFO_DEPTH><VFB_WDATA_BURST_TARGET>4</VFB_WDATA_BURST_TARGET><VFB_MAX_NUMBER_PACKETS>1</VFB_MAX_NUMBER_PACKETS><VFB_MAX_SYMBOLS_IN_PACKET>10</VFB_MAX_SYMBOLS_IN_PACKET><VFB_INTERLACED_SUPPORT>0</VFB_INTERLACED_SUPPORT><VFB_CONTROLLED_DROP_REPEAT>0</VFB_CONTROLLED_DROP_REPEAT><VFB_BURST_ALIGNMENT>0</VFB_BURST_ALIGNMENT><VFB_DROP_INVALID_FIELDS>true</VFB_DROP_INVALID_FIELDS></frameBufferParams>",
 			AUTO_DEVICE_FAMILY                    => "Cyclone V",
 			AUTO_READER_CONTROL_CLOCKS_SAME       => "0",
 			AUTO_READ_MASTER_CLOCKS_SAME          => "0",
@@ -120,11 +120,11 @@ begin
 			write_master_av_writedata    => open,              --               .writedata
 			write_master_av_waitrequest  => open,              --               .waitrequest
 			write_master_av_burstcount   => open,              --               .burstcount
-			writer_control_av_chipselect => open,              -- writer_control.chipselect
-			writer_control_av_write      => open,              --               .write
-			writer_control_av_address    => open,              --               .address
-			writer_control_av_writedata  => open,              --               .writedata
-			writer_control_av_readdata   => open               --               .readdata
+			reader_control_av_chipselect => open,              -- reader_control.chipselect
+			reader_control_av_write      => open,              --               .write
+			reader_control_av_address    => open,              --               .address
+			reader_control_av_writedata  => open,              --               .writedata
+			reader_control_av_readdata   => open               --               .readdata
 		);
 
 	din_tester : process (clocksource_clock, clocksource_reset)

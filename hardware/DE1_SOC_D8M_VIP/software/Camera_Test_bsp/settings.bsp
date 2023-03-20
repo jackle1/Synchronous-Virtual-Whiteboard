@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Mar 19, 2023 12:33:46 AM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1679211226322</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Mar 19, 2023 2:25:31 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1679261131539</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>D:\CPEN391\l2b-25-forks\hardware\DE1_SOC_D8M_VIP\software\Camera_Test_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\Qsys.sopcinfo</SopcDesignFile>
@@ -902,18 +902,6 @@
                 <slaveDescriptor>alt_vip_vfb_0</slaveDescriptor>
                 <addressRange>0x00000000 - 0x0000000F</addressRange>
                 <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>video_pixel_buffer_dma_0</slaveDescriptor>
-                <addressRange>0x00000010 - 0x0000001F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>video_rgb_resampler_0</slaveDescriptor>
-                <addressRange>0x00000020 - 0x00000023</addressRange>
-                <addressSpan>4</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>

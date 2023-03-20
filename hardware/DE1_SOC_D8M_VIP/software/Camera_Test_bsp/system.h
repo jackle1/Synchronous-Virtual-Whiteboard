@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_gen2' in SOPC Builder design 'Qsys'
  * SOPC Builder design path: ../../Qsys.sopcinfo
  *
- * Generated: Sun Mar 19 00:32:12 PDT 2023
+ * Generated: Sun Mar 19 14:25:18 PDT 2023
  */
 
 /*
@@ -148,8 +148,6 @@
 #define __ALTERA_AVALON_SYSID_QSYS
 #define __ALTERA_AVALON_TIMER
 #define __ALTERA_NIOS2_GEN2
-#define __ALTERA_UP_AVALON_VIDEO_PIXEL_BUFFER_DMA
-#define __ALTERA_UP_AVALON_VIDEO_RGB_RESAMPLER
 #define __ALT_VIP_VFB
 #define __I2C_OPENCORES
 #define __TERASIC_AUTO_FOCUS
@@ -491,7 +489,7 @@
 #define SYSID_QSYS_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SYSID_QSYS_NAME "/dev/sysid_qsys"
 #define SYSID_QSYS_SPAN 8
-#define SYSID_QSYS_TIMESTAMP 1679209621
+#define SYSID_QSYS_TIMESTAMP 1679260114
 #define SYSID_QSYS_TYPE "altera_avalon_sysid_qsys"
 
 
@@ -519,33 +517,5 @@
 #define TIMER_TICKS_PER_SEC 1000
 #define TIMER_TIMEOUT_PULSE_OUTPUT 0
 #define TIMER_TYPE "altera_avalon_timer"
-
-
-/*
- * video_pixel_buffer_dma_0 configuration
- *
- */
-
-#define ALT_MODULE_CLASS_video_pixel_buffer_dma_0 altera_up_avalon_video_pixel_buffer_dma
-#define VIDEO_PIXEL_BUFFER_DMA_0_BASE 0x10
-#define VIDEO_PIXEL_BUFFER_DMA_0_IRQ -1
-#define VIDEO_PIXEL_BUFFER_DMA_0_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define VIDEO_PIXEL_BUFFER_DMA_0_NAME "/dev/video_pixel_buffer_dma_0"
-#define VIDEO_PIXEL_BUFFER_DMA_0_SPAN 16
-#define VIDEO_PIXEL_BUFFER_DMA_0_TYPE "altera_up_avalon_video_pixel_buffer_dma"
-
-
-/*
- * video_rgb_resampler_0 configuration
- *
- */
-
-#define ALT_MODULE_CLASS_video_rgb_resampler_0 altera_up_avalon_video_rgb_resampler
-#define VIDEO_RGB_RESAMPLER_0_BASE 0x20
-#define VIDEO_RGB_RESAMPLER_0_IRQ -1
-#define VIDEO_RGB_RESAMPLER_0_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define VIDEO_RGB_RESAMPLER_0_NAME "/dev/video_rgb_resampler_0"
-#define VIDEO_RGB_RESAMPLER_0_SPAN 4
-#define VIDEO_RGB_RESAMPLER_0_TYPE "altera_up_avalon_video_rgb_resampler"
 
 #endif /* __SYSTEM_H_ */

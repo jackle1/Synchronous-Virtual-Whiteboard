@@ -108,7 +108,7 @@ bool MIPI_Init(void){
 int main()
 {
 
-  volatile unsigned short * buf_control = ALT_VIP_VFB_0_BASE;
+  volatile unsigned char * buf_control = ALT_VIP_VFB_0_BASE;
   buf_control[0] = 0x01;
   printf("DE1-SoC D8M VGA Demo\n");
   IOWR(MIPI_PWDN_N_BASE, 0x00, 0x00);
@@ -218,13 +218,13 @@ int main()
 			printf("Frame DC %p = %d\n", buf_control + 3, buf_control[3]);
 			printf("Frame CRC %p = %x\n", buf_control + 4, buf_control[4]);
 			volatile unsigned int * sdram = SDRAM_BASE;
-			int start = 1 * 640 * 480;
-			// for (int i = start; i < start + 10; i++)
-			// {
-			// 	printf("SDRAM[%d] = %x\n", i, sdram[i]);
-			// }
-			for (int i = start; i < start + 640 * 480; i++)
-				sdram[i] = sdram[i - start];
+			int start = (buf_control[2] % 3) * 640 * 480;
+			for (int i = start; i < 640 * 480 + start; i++)
+			{
+				sdram[i] = 0xFF6FB7;
+			}
+			// for (int i = start; i < start + 640 * 480; i++)
+			// 	sdram[i] = sdram[i - start];
 		} else
 		{
 			buf_control[0] = 1;

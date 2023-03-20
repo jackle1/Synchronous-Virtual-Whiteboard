@@ -1657,7 +1657,7 @@
 											<placeholder>dock.single.Messages</placeholder>
 											<backup-path>
 												<node location="RIGHT" size="0.7781885397412199" id="1372710005721"/>
-												<node location="BOTTOM" size="0.25" id="1372710005725"/>
+												<node location="BOTTOM" size="0.2716216216216216" id="1372710005725"/>
 												<leaf id="1372710005745"/>
 											</backup-path>
 										</property>

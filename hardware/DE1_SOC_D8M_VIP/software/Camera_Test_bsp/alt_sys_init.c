@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_gen2' in SOPC Builder design 'Qsys'
  * SOPC Builder design path: ../../Qsys.sopcinfo
  *
- * Generated: Sun Mar 19 00:32:12 PDT 2023
+ * Generated: Sun Mar 19 14:25:18 PDT 2023
  */
 
 /*
@@ -62,8 +62,6 @@
 #include "altera_avalon_jtag_uart.h"
 #include "altera_avalon_sysid_qsys.h"
 #include "altera_avalon_timer.h"
-#include "altera_up_avalon_video_pixel_buffer_dma.h"
-#include "altera_up_avalon_video_rgb_resampler.h"
 
 /*
  * Allocate the device storage
@@ -73,8 +71,6 @@ ALTERA_NIOS2_GEN2_IRQ_INSTANCE ( NIOS2_GEN2, nios2_gen2);
 ALTERA_AVALON_JTAG_UART_INSTANCE ( JTAG_UART, jtag_uart);
 ALTERA_AVALON_SYSID_QSYS_INSTANCE ( SYSID_QSYS, sysid_qsys);
 ALTERA_AVALON_TIMER_INSTANCE ( TIMER, timer);
-ALTERA_UP_AVALON_VIDEO_PIXEL_BUFFER_DMA_INSTANCE ( VIDEO_PIXEL_BUFFER_DMA_0, video_pixel_buffer_dma_0);
-ALTERA_UP_AVALON_VIDEO_RGB_RESAMPLER_INSTANCE ( VIDEO_RGB_RESAMPLER_0, video_rgb_resampler_0);
 
 /*
  * Initialize the interrupt controller devices
@@ -100,6 +96,4 @@ void alt_sys_init( void )
     ALTERA_AVALON_TIMER_INIT ( TIMER, timer);
     ALTERA_AVALON_JTAG_UART_INIT ( JTAG_UART, jtag_uart);
     ALTERA_AVALON_SYSID_QSYS_INIT ( SYSID_QSYS, sysid_qsys);
-    ALTERA_UP_AVALON_VIDEO_PIXEL_BUFFER_DMA_INIT ( VIDEO_PIXEL_BUFFER_DMA_0, video_pixel_buffer_dma_0);
-    ALTERA_UP_AVALON_VIDEO_RGB_RESAMPLER_INIT ( VIDEO_RGB_RESAMPLER_0, video_rgb_resampler_0);
 }
