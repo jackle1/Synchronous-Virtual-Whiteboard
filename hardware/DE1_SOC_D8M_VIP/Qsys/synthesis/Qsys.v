@@ -253,11 +253,6 @@ module Qsys (
 	wire         mm_interconnect_1_terasic_auto_focus_0_mm_ctrl_read;               // mm_interconnect_1:TERASIC_AUTO_FOCUS_0_mm_ctrl_read -> TERASIC_AUTO_FOCUS_0:s_read
 	wire         mm_interconnect_1_terasic_auto_focus_0_mm_ctrl_write;              // mm_interconnect_1:TERASIC_AUTO_FOCUS_0_mm_ctrl_write -> TERASIC_AUTO_FOCUS_0:s_write
 	wire  [31:0] mm_interconnect_1_terasic_auto_focus_0_mm_ctrl_writedata;          // mm_interconnect_1:TERASIC_AUTO_FOCUS_0_mm_ctrl_writedata -> TERASIC_AUTO_FOCUS_0:s_writedata
-	wire         mm_interconnect_1_alt_vip_vfb_0_reader_control_chipselect;         // mm_interconnect_1:alt_vip_vfb_0_reader_control_chipselect -> alt_vip_vfb_0:reader_control_av_chipselect
-	wire  [15:0] mm_interconnect_1_alt_vip_vfb_0_reader_control_readdata;           // alt_vip_vfb_0:reader_control_av_readdata -> mm_interconnect_1:alt_vip_vfb_0_reader_control_readdata
-	wire   [1:0] mm_interconnect_1_alt_vip_vfb_0_reader_control_address;            // mm_interconnect_1:alt_vip_vfb_0_reader_control_address -> alt_vip_vfb_0:reader_control_av_address
-	wire         mm_interconnect_1_alt_vip_vfb_0_reader_control_write;              // mm_interconnect_1:alt_vip_vfb_0_reader_control_write -> alt_vip_vfb_0:reader_control_av_write
-	wire  [15:0] mm_interconnect_1_alt_vip_vfb_0_reader_control_writedata;          // mm_interconnect_1:alt_vip_vfb_0_reader_control_writedata -> alt_vip_vfb_0:reader_control_av_writedata
 	wire         mm_interconnect_1_led_s1_chipselect;                               // mm_interconnect_1:led_s1_chipselect -> led:chipselect
 	wire  [31:0] mm_interconnect_1_led_s1_readdata;                                 // led:readdata -> mm_interconnect_1:led_s1_readdata
 	wire   [1:0] mm_interconnect_1_led_s1_address;                                  // mm_interconnect_1:led_s1_address -> led:address
@@ -432,34 +427,29 @@ module Qsys (
 	);
 
 	Qsys_alt_vip_vfb_0 alt_vip_vfb_0 (
-		.clock                        (pll_sys_outclk2_clk),                                       //          clock.clk
-		.reset                        (rst_controller_reset_out_reset),                            //          reset.reset
-		.din_ready                    (terasic_camera_0_avalon_streaming_source_ready),            //            din.ready
-		.din_valid                    (terasic_camera_0_avalon_streaming_source_valid),            //               .valid
-		.din_data                     (terasic_camera_0_avalon_streaming_source_data),             //               .data
-		.din_startofpacket            (terasic_camera_0_avalon_streaming_source_startofpacket),    //               .startofpacket
-		.din_endofpacket              (terasic_camera_0_avalon_streaming_source_endofpacket),      //               .endofpacket
-		.dout_ready                   (alt_vip_vfb_0_dout_ready),                                  //           dout.ready
-		.dout_valid                   (alt_vip_vfb_0_dout_valid),                                  //               .valid
-		.dout_data                    (alt_vip_vfb_0_dout_data),                                   //               .data
-		.dout_startofpacket           (alt_vip_vfb_0_dout_startofpacket),                          //               .startofpacket
-		.dout_endofpacket             (alt_vip_vfb_0_dout_endofpacket),                            //               .endofpacket
-		.read_master_av_address       (alt_vip_vfb_0_read_master_address),                         //    read_master.address
-		.read_master_av_read          (alt_vip_vfb_0_read_master_read),                            //               .read
-		.read_master_av_waitrequest   (alt_vip_vfb_0_read_master_waitrequest),                     //               .waitrequest
-		.read_master_av_readdatavalid (alt_vip_vfb_0_read_master_readdatavalid),                   //               .readdatavalid
-		.read_master_av_readdata      (alt_vip_vfb_0_read_master_readdata),                        //               .readdata
-		.read_master_av_burstcount    (alt_vip_vfb_0_read_master_burstcount),                      //               .burstcount
-		.write_master_av_address      (alt_vip_vfb_0_write_master_address),                        //   write_master.address
-		.write_master_av_write        (alt_vip_vfb_0_write_master_write),                          //               .write
-		.write_master_av_writedata    (alt_vip_vfb_0_write_master_writedata),                      //               .writedata
-		.write_master_av_waitrequest  (alt_vip_vfb_0_write_master_waitrequest),                    //               .waitrequest
-		.write_master_av_burstcount   (alt_vip_vfb_0_write_master_burstcount),                     //               .burstcount
-		.reader_control_av_chipselect (mm_interconnect_1_alt_vip_vfb_0_reader_control_chipselect), // reader_control.chipselect
-		.reader_control_av_write      (mm_interconnect_1_alt_vip_vfb_0_reader_control_write),      //               .write
-		.reader_control_av_address    (mm_interconnect_1_alt_vip_vfb_0_reader_control_address),    //               .address
-		.reader_control_av_writedata  (mm_interconnect_1_alt_vip_vfb_0_reader_control_writedata),  //               .writedata
-		.reader_control_av_readdata   (mm_interconnect_1_alt_vip_vfb_0_reader_control_readdata)    //               .readdata
+		.clock                        (pll_sys_outclk2_clk),                                    //        clock.clk
+		.reset                        (rst_controller_reset_out_reset),                         //        reset.reset
+		.din_ready                    (terasic_camera_0_avalon_streaming_source_ready),         //          din.ready
+		.din_valid                    (terasic_camera_0_avalon_streaming_source_valid),         //             .valid
+		.din_data                     (terasic_camera_0_avalon_streaming_source_data),          //             .data
+		.din_startofpacket            (terasic_camera_0_avalon_streaming_source_startofpacket), //             .startofpacket
+		.din_endofpacket              (terasic_camera_0_avalon_streaming_source_endofpacket),   //             .endofpacket
+		.dout_ready                   (alt_vip_vfb_0_dout_ready),                               //         dout.ready
+		.dout_valid                   (alt_vip_vfb_0_dout_valid),                               //             .valid
+		.dout_data                    (alt_vip_vfb_0_dout_data),                                //             .data
+		.dout_startofpacket           (alt_vip_vfb_0_dout_startofpacket),                       //             .startofpacket
+		.dout_endofpacket             (alt_vip_vfb_0_dout_endofpacket),                         //             .endofpacket
+		.read_master_av_address       (alt_vip_vfb_0_read_master_address),                      //  read_master.address
+		.read_master_av_read          (alt_vip_vfb_0_read_master_read),                         //             .read
+		.read_master_av_waitrequest   (alt_vip_vfb_0_read_master_waitrequest),                  //             .waitrequest
+		.read_master_av_readdatavalid (alt_vip_vfb_0_read_master_readdatavalid),                //             .readdatavalid
+		.read_master_av_readdata      (alt_vip_vfb_0_read_master_readdata),                     //             .readdata
+		.read_master_av_burstcount    (alt_vip_vfb_0_read_master_burstcount),                   //             .burstcount
+		.write_master_av_address      (alt_vip_vfb_0_write_master_address),                     // write_master.address
+		.write_master_av_write        (alt_vip_vfb_0_write_master_write),                       //             .write
+		.write_master_av_writedata    (alt_vip_vfb_0_write_master_writedata),                   //             .writedata
+		.write_master_av_waitrequest  (alt_vip_vfb_0_write_master_waitrequest),                 //             .waitrequest
+		.write_master_av_burstcount   (alt_vip_vfb_0_write_master_burstcount)                   //             .burstcount
 	);
 
 	Qsys_hexes_pio hexes_pio (
@@ -914,11 +904,6 @@ module Qsys (
 		.hps_0_h2f_lw_axi_master_agent_clk_reset_reset_bridge_in_reset_reset (rst_controller_003_reset_out_reset),                                 // hps_0_h2f_lw_axi_master_agent_clk_reset_reset_bridge_in_reset.reset
 		.TERASIC_AUTO_FOCUS_0_reset_reset_bridge_in_reset_reset              (rst_controller_reset_out_reset),                                     //              TERASIC_AUTO_FOCUS_0_reset_reset_bridge_in_reset.reset
 		.touchscreen_uart_reset_reset_bridge_in_reset_reset                  (rst_controller_001_reset_out_reset),                                 //                  touchscreen_uart_reset_reset_bridge_in_reset.reset
-		.alt_vip_vfb_0_reader_control_address                                (mm_interconnect_1_alt_vip_vfb_0_reader_control_address),             //                                  alt_vip_vfb_0_reader_control.address
-		.alt_vip_vfb_0_reader_control_write                                  (mm_interconnect_1_alt_vip_vfb_0_reader_control_write),               //                                                              .write
-		.alt_vip_vfb_0_reader_control_readdata                               (mm_interconnect_1_alt_vip_vfb_0_reader_control_readdata),            //                                                              .readdata
-		.alt_vip_vfb_0_reader_control_writedata                              (mm_interconnect_1_alt_vip_vfb_0_reader_control_writedata),           //                                                              .writedata
-		.alt_vip_vfb_0_reader_control_chipselect                             (mm_interconnect_1_alt_vip_vfb_0_reader_control_chipselect),          //                                                              .chipselect
 		.hexes_pio_s1_address                                                (mm_interconnect_1_hexes_pio_s1_address),                             //                                                  hexes_pio_s1.address
 		.hexes_pio_s1_write                                                  (mm_interconnect_1_hexes_pio_s1_write),                               //                                                              .write
 		.hexes_pio_s1_readdata                                               (mm_interconnect_1_hexes_pio_s1_readdata),                            //                                                              .readdata

@@ -29,33 +29,41 @@
 //                     email: support@terasic.com
 //
 // --------------------------------------------------------------------
-
-#ifndef TERASIC_INCLUDES_H_
-#define TERASIC_INCLUDES_H_
-
+#ifndef _TERASIC_INCLUDES_H_
+#define _TERASIC_INCLUDES_H_
 #include <stdio.h>
 #include <stdlib.h> // malloc, free
 #include <string.h>
 #include <stddef.h>
-#include <unistd.h>  // usleep (unix standard?)
-#include "sys/alt_flash.h"
-#include "sys/alt_flash_types.h"
-#include "io.h"
-#include "alt_types.h"  // alt_u32
-#include "altera_avalon_pio_regs.h" //IOWR_ALTERA_AVALON_PIO_DATA
-#include "sys/alt_irq.h"  // interrupt
-#include "sys/alt_alarm.h" // time tick function (alt_nticks(), alt_ticks_per_second())
-#include "sys/alt_timestamp.h" 
-#include "sys/alt_stdio.h"
-#include "system.h"
-//#include <fcntl.h>
-//#include "debug.h"
-
-#define DEBUG_DUMP  /*printf */ 
-
+#include <unistd.h>  // sleep_us (unix standard?)
+#include <stdint.h>
+#include <fcntl.h>
+#include <sys/mman.h>
+#include <time.h>
+#include <string.h>
+#include "Qsys.h"
 
 typedef int bool;
 #define TRUE    1
 #define FALSE   0
 
-#endif /*TERASIC_INCLUDES_H_*/
+#define DEFAULT_LEVEL 3
+
+#define LW_BRIDGE_BASE (0xff200000)
+#define LW_BRIDGE_SPAN (0x00200000) // 2MB
+#define HPS_SDRAM_BASE     (0xC0000000)
+#define HPS_SDRAM_SPAN     (0x03FFFFFF)
+
+void * lw_bridge_ptr;
+void IOWR(uint32_t base_addr, uint32_t offset, uint32_t data);
+uint32_t IORD(uint32_t base_addr, uint32_t offset);
+void sleep_us(unsigned int sleep);
+
+void mipi_clear_error(void);
+void mipi_show_error_info(void);
+void mipi_show_error_info_more(void);
+bool MIPI_Init(void);
+
+#define DEBUG_DUMP  /*printf */ 
+
+#endif

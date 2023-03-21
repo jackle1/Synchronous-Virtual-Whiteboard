@@ -206,7 +206,7 @@ SYMBOL TABLE:
 00000000 l    df *ABS*	00000000 alt_sbrk.c
 00034668 l     O .rwdata	00000004 heap_end
 00000000 l    df *ABS*	00000000 alt_tick.c
-00000000 l    df *ABS*	00000000 alt_usleep.c
+00000000 l    df *ABS*	00000000 alt_sleep_us.c
 00000000 l    df *ABS*	00000000 alt_write.c
 0002fb60 l     F .text	0000003c alt_get_errno
 00000000 l    df *ABS*	00000000 alt_sys_init.c
@@ -290,7 +290,7 @@ SYMBOL TABLE:
 00029f24 g     F .text	00000008 __seofread
 00036934 g     O .bss	00000004 alt_argv
 0003c62c g       *ABS*	00000000 _gp
-0002fb30 g     F .text	00000030 usleep
+0002fb30 g     F .text	00000030 sleep_us
 0003344c g     O .rwdata	00000180 alt_fd_list
 00023228 g     F .text	00000008 _putchar_r
 000313b8 g     F .text	00000090 alt_find_dev
@@ -776,9 +776,9 @@ void alt_irq_handler (void)
   ALT_OS_INT_ENTER();
    2010c:	0001883a 	nop
 #ifndef NIOS2_EIC_PRESENT
-static ALT_INLINE alt_u32 ALT_ALWAYS_INLINE alt_irq_pending (void)
+static ALT_INLINE uint32_t ALT_ALWAYS_INLINE alt_irq_pending (void)
 {
-  alt_u32 active;
+  uint32_t active;
 
   NIOS2_READ_IPENDING (active);
    20110:	0005313a 	rdctl	r2,ipending
@@ -835,9 +835,9 @@ static ALT_INLINE alt_u32 ALT_ALWAYS_INLINE alt_irq_pending (void)
         break;
    20178:	0001883a 	nop
 #ifndef NIOS2_EIC_PRESENT
-static ALT_INLINE alt_u32 ALT_ALWAYS_INLINE alt_irq_pending (void)
+static ALT_INLINE uint32_t ALT_ALWAYS_INLINE alt_irq_pending (void)
 {
-  alt_u32 active;
+  uint32_t active;
 
   NIOS2_READ_IPENDING (active);
    2017c:	0005313a 	rdctl	r2,ipending
@@ -885,7 +885,7 @@ static ALT_INLINE alt_u32 ALT_ALWAYS_INLINE alt_irq_pending (void)
  * break break or hang as discussed below.
  */
 int 
-alt_instruction_exception_entry (alt_u32 exception_pc)
+alt_instruction_exception_entry (uint32_t exception_pc)
 {
    201d0:	defffb04 	addi	sp,sp,-20
    201d4:	dfc00415 	stw	ra,16(sp)
@@ -1041,7 +1041,7 @@ alt_after_alt_main:
 #define TRUE 1
 #define FALSE 0
 
-bool Write32_Data(alt_32 base_address, alt_32 offset_address, alt_32 Data){
+bool Write32_Data(uint32_t base_address, uint32_t offset_address, uint32_t Data){
    20290:	defffb04 	addi	sp,sp,-20
    20294:	df000415 	stw	fp,16(sp)
    20298:	df000404 	addi	fp,sp,16
@@ -1049,7 +1049,7 @@ bool Write32_Data(alt_32 base_address, alt_32 offset_address, alt_32 Data){
    202a0:	e17ffe15 	stw	r5,-8(fp)
    202a4:	e1bfff15 	stw	r6,-4(fp)
 	bool bPass;
-    IOWR(base_address, offset_address,Data);
+    IOWR_A(base_address, offset_address,Data);
    202a8:	e0bffe17 	ldw	r2,-8(fp)
    202ac:	1085883a 	add	r2,r2,r2
    202b0:	1085883a 	add	r2,r2,r2
@@ -1074,7 +1074,7 @@ bool Write32_Data(alt_32 base_address, alt_32 offset_address, alt_32 Data){
 
 
 
-bool  Read32_Data(alt_32 base_address, alt_32 offset_address, alt_32 *pData32){
+bool  Read32_Data(uint32_t base_address, uint32_t offset_address, uint32_t *pData32){
    202e8:	defffb04 	addi	sp,sp,-20
    202ec:	df000415 	stw	fp,16(sp)
    202f0:	df000404 	addi	fp,sp,16
@@ -1082,7 +1082,7 @@ bool  Read32_Data(alt_32 base_address, alt_32 offset_address, alt_32 *pData32){
    202f8:	e17ffe15 	stw	r5,-8(fp)
    202fc:	e1bfff15 	stw	r6,-4(fp)
 	bool bPass;
-	*pData32 =IORD(base_address ,offset_address  );
+	*pData32 =IORD_A(base_address ,offset_address  );
    20300:	e0bffe17 	ldw	r2,-8(fp)
    20304:	1085883a 	add	r2,r2,r2
    20308:	1085883a 	add	r2,r2,r2
@@ -1105,18 +1105,18 @@ bool  Read32_Data(alt_32 base_address, alt_32 offset_address, alt_32 *pData32){
 
 00020340 <oc_i2c_init>:
 
-bool oc_i2c_init(alt_32 i2c_base){
+bool oc_i2c_init(uint32_t i2c_base){
    20340:	defffa04 	addi	sp,sp,-24
    20344:	dfc00515 	stw	ra,20(sp)
    20348:	df000415 	stw	fp,16(sp)
    2034c:	df000404 	addi	fp,sp,16
    20350:	e13fff15 	stw	r4,-4(fp)
 	bool bSuccess;
-	const alt_32 ref_clk = 50*1000*1000; // 50MHz
+	const uint32_t ref_clk = 50*1000*1000; // 50MHz
    20354:	0080bef4 	movhi	r2,763
    20358:	10bc2004 	addi	r2,r2,-3968
    2035c:	e0bffc15 	stw	r2,-16(fp)
-	const alt_32 i2c_clk = 400*1000; // 400KHz
+	const uint32_t i2c_clk = 400*1000; // 400KHz
    20360:	008001b4 	movhi	r2,6
    20364:	1086a004 	addi	r2,r2,6784
    20368:	e0bffd15 	stw	r2,-12(fp)
@@ -1139,7 +1139,7 @@ bool oc_i2c_init(alt_32 i2c_base){
 
 00020398 <oc_i2c_init_ex>:
 
-bool  oc_i2c_init_ex(alt_32 i2c_base, alt_32 ref_clk, alt_32 i2c_clk)
+bool  oc_i2c_init_ex(uint32_t i2c_base, uint32_t ref_clk, uint32_t i2c_clk)
 {
    20398:	defff604 	addi	sp,sp,-40
    2039c:	dfc00915 	stw	ra,36(sp)
@@ -1151,11 +1151,11 @@ bool  oc_i2c_init_ex(alt_32 i2c_base, alt_32 ref_clk, alt_32 i2c_clk)
 	bool bSuccess=TRUE;
    203b4:	00800044 	movi	r2,1
    203b8:	e0bff815 	stw	r2,-32(fp)
-	alt_32 read_data;
-	alt_32 prescale;
-	alt_u8 prescale_high;
-	alt_u8 prescale_low;
-	const alt_u8 ControlValue = 0x80;
+	uint32_t read_data;
+	uint32_t prescale;
+	uint8_t prescale_high;
+	uint8_t prescale_low;
+	const uint8_t ControlValue = 0x80;
    203bc:	00bfe004 	movi	r2,-128
    203c0:	e0bff905 	stb	r2,-28(fp)
 
@@ -1178,11 +1178,11 @@ bool  oc_i2c_init_ex(alt_32 i2c_base, alt_32 ref_clk, alt_32 i2c_clk)
    203ec:	1005d23a 	srai	r2,r2,8
    203f0:	e0bffb45 	stb	r2,-19(fp)
 
-   IOWR(i2c_base, 0, prescale_low);//write low byte of  prescale (reg 0)
+   IOWR_A(i2c_base, 0, prescale_low);//write low byte of  prescale (reg 0)
    203f4:	e0bffd17 	ldw	r2,-12(fp)
    203f8:	e0fffb03 	ldbu	r3,-20(fp)
    203fc:	10c00035 	stwio	r3,0(r2)
-   IOWR(i2c_base, 1, prescale_high);//write high byte of prescale (reg 1)
+   IOWR_A(i2c_base, 1, prescale_high);//write high byte of prescale (reg 1)
    20400:	e0bffd17 	ldw	r2,-12(fp)
    20404:	10800104 	addi	r2,r2,4
    20408:	1007883a 	mov	r3,r2
@@ -1190,7 +1190,7 @@ bool  oc_i2c_init_ex(alt_32 i2c_base, alt_32 ref_clk, alt_32 i2c_clk)
    20410:	18800035 	stwio	r2,0(r3)
 
    //enable the I2C core, but disable the IRQ
-   IOWR( i2c_base, 2, ControlValue);
+   IOWR_A( i2c_base, 2, ControlValue);
    20414:	e0bffd17 	ldw	r2,-12(fp)
    20418:	10800204 	addi	r2,r2,8
    2041c:	1007883a 	mov	r3,r2
@@ -1202,7 +1202,7 @@ bool  oc_i2c_init_ex(alt_32 i2c_base, alt_32 ref_clk, alt_32 i2c_clk)
     if (bSuccess){
    20428:	e0bff817 	ldw	r2,-32(fp)
    2042c:	10000826 	beq	r2,zero,20450 <oc_i2c_init_ex+0xb8>
-    	read_data =IORD(i2c_base, 0);
+    	read_data =IORD_A(i2c_base, 0);
    20430:	e0bffd17 	ldw	r2,-12(fp)
    20434:	10800037 	ldwio	r2,0(r2)
    20438:	e0bffc15 	stw	r2,-16(fp)
@@ -1220,7 +1220,7 @@ bool  oc_i2c_init_ex(alt_32 i2c_base, alt_32 ref_clk, alt_32 i2c_clk)
     if (bSuccess){
    20450:	e0bff817 	ldw	r2,-32(fp)
    20454:	10000926 	beq	r2,zero,2047c <oc_i2c_init_ex+0xe4>
-    	read_data =IORD(i2c_base, 1);
+    	read_data =IORD_A(i2c_base, 1);
    20458:	e0bffd17 	ldw	r2,-12(fp)
    2045c:	10800104 	addi	r2,r2,4
    20460:	10800037 	ldwio	r2,0(r2)
@@ -1239,7 +1239,7 @@ bool  oc_i2c_init_ex(alt_32 i2c_base, alt_32 ref_clk, alt_32 i2c_clk)
     if (bSuccess){
    2047c:	e0bff817 	ldw	r2,-32(fp)
    20480:	10000926 	beq	r2,zero,204a8 <oc_i2c_init_ex+0x110>
-    	read_data =IORD(i2c_base, 2);
+    	read_data =IORD_A(i2c_base, 2);
    20484:	e0bffd17 	ldw	r2,-12(fp)
    20488:	10800204 	addi	r2,r2,8
    2048c:	10800037 	ldwio	r2,0(r2)
@@ -1277,7 +1277,7 @@ bool  oc_i2c_init_ex(alt_32 i2c_base, alt_32 ref_clk, alt_32 i2c_clk)
 
 000204d4 <oc_i2c_uninit>:
 
-bool oc_i2c_uninit(alt_32 i2c_base)
+bool oc_i2c_uninit(uint32_t i2c_base)
 {
    204d4:	defffa04 	addi	sp,sp,-24
    204d8:	dfc00515 	stw	ra,20(sp)
@@ -1287,17 +1287,17 @@ bool oc_i2c_uninit(alt_32 i2c_base)
 	bool bSuccess=TRUE;
    204e8:	00800044 	movi	r2,1
    204ec:	e0bffc15 	stw	r2,-16(fp)
-	alt_32 read_data;
-	const alt_u8 ControlValue = 0x00;
+	uint32_t read_data;
+	const uint8_t ControlValue = 0x00;
    204f0:	e03ffd05 	stb	zero,-12(fp)
 
-    IOWR( i2c_base, 2, ControlValue);
+    IOWR_A( i2c_base, 2, ControlValue);
    204f4:	e0bfff17 	ldw	r2,-4(fp)
    204f8:	10800204 	addi	r2,r2,8
    204fc:	1007883a 	mov	r3,r2
    20500:	e0bffd03 	ldbu	r2,-12(fp)
    20504:	18800035 	stwio	r2,0(r3)
-   	read_data =IORD(i2c_base, 2);
+   	read_data =IORD_A(i2c_base, 2);
    20508:	e0bfff17 	ldw	r2,-4(fp)
    2050c:	10800204 	addi	r2,r2,8
    20510:	10800037 	ldwio	r2,0(r2)
@@ -1337,7 +1337,7 @@ bool oc_i2c_uninit(alt_32 i2c_base)
 
 
 
-bool  ACK_single_check(alt_32 i2c_base)
+bool  ACK_single_check(uint32_t i2c_base)
 {
    20558:	defffb04 	addi	sp,sp,-20
    2055c:	dfc00415 	stw	ra,16(sp)
@@ -1347,12 +1347,12 @@ bool  ACK_single_check(alt_32 i2c_base)
 	bool bSuccess=TRUE;
    2056c:	00800044 	movi	r2,1
    20570:	e0bffd15 	stw	r2,-12(fp)
-	alt_32 read_data;
+	uint32_t read_data;
 
-    usleep(ACK_SLEEP_TIME);
+    sleep_us(ACK_SLEEP_TIME);
    20574:	01003e84 	movi	r4,250
-   20578:	002fb300 	call	2fb30 <usleep>
-    read_data =IORD(i2c_base, 4);
+   20578:	002fb300 	call	2fb30 <sleep_us>
+    read_data =IORD_A(i2c_base, 4);
    2057c:	e0bfff17 	ldw	r2,-4(fp)
    20580:	10800404 	addi	r2,r2,16
    20584:	10800037 	ldwio	r2,0(r2)
@@ -1366,10 +1366,10 @@ bool  ACK_single_check(alt_32 i2c_base)
      if (bSuccess){
    2059c:	e0bffd17 	ldw	r2,-12(fp)
    205a0:	10000a26 	beq	r2,zero,205cc <ACK_single_check+0x74>
-            usleep(ACK_SLEEP_TIME);
+            sleep_us(ACK_SLEEP_TIME);
    205a4:	01003e84 	movi	r4,250
-   205a8:	002fb300 	call	2fb30 <usleep>
-            read_data =IORD(i2c_base, 4);
+   205a8:	002fb300 	call	2fb30 <sleep_us>
+            read_data =IORD_A(i2c_base, 4);
    205ac:	e0bfff17 	ldw	r2,-4(fp)
    205b0:	10800404 	addi	r2,r2,16
    205b4:	10800037 	ldwio	r2,0(r2)
@@ -1393,7 +1393,7 @@ bool  ACK_single_check(alt_32 i2c_base)
 000205e4 <ACK_check>:
 
 
-bool  ACK_check(alt_32 i2c_base){
+bool  ACK_check(uint32_t i2c_base){
    205e4:	defffb04 	addi	sp,sp,-20
    205e8:	dfc00415 	stw	ra,16(sp)
    205ec:	df000315 	stw	fp,12(sp)
@@ -1411,7 +1411,7 @@ bool  ACK_check(alt_32 i2c_base){
    20608:	00205580 	call	20558 <ACK_single_check>
    2060c:	e0bffd15 	stw	r2,-12(fp)
 
-bool  ACK_check(alt_32 i2c_base){
+bool  ACK_check(uint32_t i2c_base){
     bool bSuccess = FALSE;
     int i=0;
 
@@ -1437,7 +1437,7 @@ bool  ACK_check(alt_32 i2c_base){
 
 00020644 <OC_I2C_Write>:
 
-bool  OC_I2C_Write(alt_32 i2c_base,alt_u8 device_address,alt_u8 sub_address, alt_u8 *pData, int nWriteLength)
+bool  OC_I2C_Write(uint32_t i2c_base,uint8_t device_address,uint8_t sub_address, uint8_t *pData, int nWriteLength)
 {
    20644:	defff904 	addi	sp,sp,-28
    20648:	dfc00615 	stw	ra,24(sp)
@@ -1634,9 +1634,9 @@ bool  OC_I2C_Write(alt_32 i2c_base,alt_u8 device_address,alt_u8 sub_address, alt
      }
          //Sleep(10);
      //OS_msleep(1);
-     usleep(SLEEP_TIME);
+     sleep_us(SLEEP_TIME);
    20824:	01003e84 	movi	r4,250
-   20828:	002fb300 	call	2fb30 <usleep>
+   20828:	002fb300 	call	2fb30 <sleep_us>
 
   // printf("\n receive ACK-data! \n");
 
@@ -1653,7 +1653,7 @@ bool  OC_I2C_Write(alt_32 i2c_base,alt_u8 device_address,alt_u8 sub_address, alt
 00020844 <ACK_judge_for_read>:
 
 
-bool ACK_judge_for_read(alt_32 i2c_base)
+bool ACK_judge_for_read(uint32_t i2c_base)
 {
    20844:	defffb04 	addi	sp,sp,-20
    20848:	dfc00415 	stw	ra,16(sp)
@@ -1661,12 +1661,12 @@ bool ACK_judge_for_read(alt_32 i2c_base)
    20850:	df000304 	addi	fp,sp,12
    20854:	e13fff15 	stw	r4,-4(fp)
 	bool bSuccess;
-    alt_32 this_data;
+    uint32_t this_data;
 
    // OS_msleep( SLEEP_TIME );
-     usleep(ACK_SLEEP_TIME);
+     sleep_us(ACK_SLEEP_TIME);
    20858:	01003e84 	movi	r4,250
-   2085c:	002fb300 	call	2fb30 <usleep>
+   2085c:	002fb300 	call	2fb30 <sleep_us>
     //   while(this_data & 0x02)
 //   {
 //      this_data =  Read32_Data ( hPCIe, i2c_base, 4);
@@ -1702,7 +1702,7 @@ bool ACK_judge_for_read(alt_32 i2c_base)
 
 000208a8 <OC_I2C_Read>:
 
-bool  OC_I2C_Read(alt_32 i2c_base,alt_u8 device_address,alt_u8 sub_address, alt_u8 *pData8, int nReadLength){
+bool  OC_I2C_Read(uint32_t i2c_base,uint8_t device_address,uint8_t sub_address, uint8_t *pData8, int nReadLength){
    208a8:	defff804 	addi	sp,sp,-32
    208ac:	dfc00715 	stw	ra,28(sp)
    208b0:	df000615 	stw	fp,24(sp)
@@ -1714,18 +1714,18 @@ bool  OC_I2C_Read(alt_32 i2c_base,alt_u8 device_address,alt_u8 sub_address, alt_
    208c8:	e0fffd05 	stb	r3,-12(fp)
    208cc:	e0bffe05 	stb	r2,-8(fp)
     //BYTE data = 0x0;
-    alt_32 Data32;
+    uint32_t Data32;
     int i;
 
    //set the tx reg audio chip dev address with write bit
-   IOWR( i2c_base, 3,device_address);
+   IOWR_A( i2c_base, 3,device_address);
    208d0:	e0bffc17 	ldw	r2,-16(fp)
    208d4:	10800304 	addi	r2,r2,12
    208d8:	1007883a 	mov	r3,r2
    208dc:	e0bffd03 	ldbu	r2,-12(fp)
    208e0:	18800035 	stwio	r2,0(r3)
    //set STA and WR bits(bit7 and bit4)
-   IOWR( i2c_base, 4,0x90);
+   IOWR_A( i2c_base, 4,0x90);
    208e4:	e0bffc17 	ldw	r2,-16(fp)
    208e8:	10800404 	addi	r2,r2,16
    208ec:	1007883a 	mov	r3,r2
@@ -1744,7 +1744,7 @@ bool  OC_I2C_Read(alt_32 i2c_base,alt_u8 device_address,alt_u8 sub_address, alt_
    20910:	0005883a 	mov	r2,zero
    20914:	00005206 	br	20a60 <OC_I2C_Read+0x1b8>
    }
-   IOWR(i2c_base, 3,sub_address);
+   IOWR_A(i2c_base, 3,sub_address);
    20918:	e0bffc17 	ldw	r2,-16(fp)
    2091c:	10800304 	addi	r2,r2,12
    20920:	1007883a 	mov	r3,r2
@@ -1752,7 +1752,7 @@ bool  OC_I2C_Read(alt_32 i2c_base,alt_u8 device_address,alt_u8 sub_address, alt_
    20928:	18800035 	stwio	r2,0(r3)
 
    //set WR bits(bit4)
-   IOWR( i2c_base, 4,0x10);
+   IOWR_A( i2c_base, 4,0x10);
    2092c:	e0bffc17 	ldw	r2,-16(fp)
    20930:	10800404 	addi	r2,r2,16
    20934:	1007883a 	mov	r3,r2
@@ -1775,7 +1775,7 @@ bool  OC_I2C_Read(alt_32 i2c_base,alt_u8 device_address,alt_u8 sub_address, alt_
    //read
     //set the tx reg audio chip dev address with read bit 1
 
-    IOWR(i2c_base, 3,device_address|0x01);
+    IOWR_A(i2c_base, 3,device_address|0x01);
    20960:	e0bffc17 	ldw	r2,-16(fp)
    20964:	10800304 	addi	r2,r2,12
    20968:	1007883a 	mov	r3,r2
@@ -1785,7 +1785,7 @@ bool  OC_I2C_Read(alt_32 i2c_base,alt_u8 device_address,alt_u8 sub_address, alt_
    20978:	18800035 	stwio	r2,0(r3)
 
    //set STA and WR bits(bit7 and bit4)
-    IOWR( i2c_base, 4,0x90);
+    IOWR_A( i2c_base, 4,0x90);
    2097c:	e0bffc17 	ldw	r2,-16(fp)
    20980:	10800404 	addi	r2,r2,16
    20984:	1007883a 	mov	r3,r2
@@ -1811,7 +1811,7 @@ bool  OC_I2C_Read(alt_32 i2c_base,alt_u8 device_address,alt_u8 sub_address, alt_
    209b4:	00001f06 	br	20a34 <OC_I2C_Read+0x18c>
   // printf("\n read receive ACK-device address(read)! \n");
    //set the RD and ACK bit(bit5 and bit3)
-    	IOWR( i2c_base, 4,((i+1) == nReadLength)?0x28:0x20);
+    	IOWR_A( i2c_base, 4,((i+1) == nReadLength)?0x28:0x20);
    209b8:	e0bffc17 	ldw	r2,-16(fp)
    209bc:	10800404 	addi	r2,r2,16
    209c0:	1009883a 	mov	r4,r2
@@ -1838,7 +1838,7 @@ bool  OC_I2C_Read(alt_32 i2c_base,alt_u8 device_address,alt_u8 sub_address, alt_
         }
    // printf("\n read receive ACK-device address(read)! \n");
 
-        Data32=IORD( i2c_base, 3);
+        Data32=IORD_A( i2c_base, 3);
    20a04:	e0bffc17 	ldw	r2,-16(fp)
    20a08:	10800304 	addi	r2,r2,12
    20a0c:	10800037 	ldwio	r2,0(r2)
@@ -1862,11 +1862,11 @@ bool  OC_I2C_Read(alt_32 i2c_base,alt_u8 device_address,alt_u8 sub_address, alt_
    20a38:	e0800217 	ldw	r2,8(fp)
    20a3c:	18bfde16 	blt	r3,r2,209b8 <__alt_mem_sdram+0xfc0209b8>
 
-        Data32=IORD( i2c_base, 3);
+        Data32=IORD_A( i2c_base, 3);
         *(pData8+i) =  Data32 & 0xff;
     }
 
-    IOWR( i2c_base, 4,0x40);
+    IOWR_A( i2c_base, 4,0x40);
    20a40:	e0bffc17 	ldw	r2,-16(fp)
    20a44:	10800404 	addi	r2,r2,16
    20a48:	1007883a 	mov	r3,r2
@@ -1875,9 +1875,9 @@ bool  OC_I2C_Read(alt_32 i2c_base,alt_u8 device_address,alt_u8 sub_address, alt_
 
   // Sleep(10);
    //OS_msleep(1);
-    usleep(SLEEP_TIME);
+    sleep_us(SLEEP_TIME);
    20a54:	01003e84 	movi	r4,250
-   20a58:	002fb300 	call	2fb30 <usleep>
+   20a58:	002fb300 	call	2fb30 <sleep_us>
  //  printf(" Read  [%02X] = %02Xh\r\n", sub_address, data);
 
 
@@ -1894,7 +1894,7 @@ bool  OC_I2C_Read(alt_32 i2c_base,alt_u8 device_address,alt_u8 sub_address, alt_
 00020a74 <OC_I2C_Read_Continue>:
 
 
-bool  OC_I2C_Read_Continue(alt_32 i2c_base,alt_u8 device_address, alt_u8 *pData8, int nReadLength){
+bool  OC_I2C_Read_Continue(uint32_t i2c_base,uint8_t device_address, uint8_t *pData8, int nReadLength){
    20a74:	defff804 	addi	sp,sp,-32
    20a78:	dfc00715 	stw	ra,28(sp)
    20a7c:	df000615 	stw	fp,24(sp)
@@ -1905,9 +1905,9 @@ bool  OC_I2C_Read_Continue(alt_32 i2c_base,alt_u8 device_address, alt_u8 *pData8
    20a90:	e1ffff15 	stw	r7,-4(fp)
    20a94:	e0bffd05 	stb	r2,-12(fp)
 	int i;
-	alt_u32 Data32;
+	uint32_t Data32;
 
-    IOWR(i2c_base, 3,device_address|0x01);
+    IOWR_A(i2c_base, 3,device_address|0x01);
    20a98:	e0bffc17 	ldw	r2,-16(fp)
    20a9c:	10800304 	addi	r2,r2,12
    20aa0:	1007883a 	mov	r3,r2
@@ -1917,13 +1917,13 @@ bool  OC_I2C_Read_Continue(alt_32 i2c_base,alt_u8 device_address, alt_u8 *pData8
    20ab0:	18800035 	stwio	r2,0(r3)
 
    //set STA and WR bits(bit7 and bit4)
-    IOWR( i2c_base, 4,0x90);
+    IOWR_A( i2c_base, 4,0x90);
    20ab4:	e0bffc17 	ldw	r2,-16(fp)
    20ab8:	10800404 	addi	r2,r2,16
    20abc:	1007883a 	mov	r3,r2
    20ac0:	00802404 	movi	r2,144
    20ac4:	18800035 	stwio	r2,0(r3)
-//usleep(5*1000);
+//sleep_us(5*1000);
    //wait TIP bit go to 0 to end Tx
     if (!ACK_check( i2c_base)){
    20ac8:	e13ffc17 	ldw	r4,-16(fp)
@@ -1943,7 +1943,7 @@ bool  OC_I2C_Read_Continue(alt_32 i2c_base,alt_u8 device_address, alt_u8 *pData8
    20aec:	00001f06 	br	20b6c <OC_I2C_Read_Continue+0xf8>
   // printf("\n read receive ACK-device address(read)! \n");
    //set the RD and ACK bit(bit5 and bit3)
-    	IOWR( i2c_base, 4,((i+1) == nReadLength)?0x28:0x20);
+    	IOWR_A( i2c_base, 4,((i+1) == nReadLength)?0x28:0x20);
    20af0:	e0bffc17 	ldw	r2,-16(fp)
    20af4:	10800404 	addi	r2,r2,16
    20af8:	1009883a 	mov	r4,r2
@@ -1970,7 +1970,7 @@ bool  OC_I2C_Read_Continue(alt_32 i2c_base,alt_u8 device_address, alt_u8 *pData8
         }
    // printf("\n read receive ACK-device address(read)! \n");
 
-        Data32=IORD( i2c_base, 3);
+        Data32=IORD_A( i2c_base, 3);
    20b3c:	e0bffc17 	ldw	r2,-16(fp)
    20b40:	10800304 	addi	r2,r2,12
    20b44:	10800037 	ldwio	r2,0(r2)
@@ -1994,11 +1994,11 @@ bool  OC_I2C_Read_Continue(alt_32 i2c_base,alt_u8 device_address, alt_u8 *pData8
    20b70:	e0bfff17 	ldw	r2,-4(fp)
    20b74:	18bfde16 	blt	r3,r2,20af0 <__alt_mem_sdram+0xfc020af0>
 
-        Data32=IORD( i2c_base, 3);
+        Data32=IORD_A( i2c_base, 3);
         *(pData8+i) =  Data32 & 0xff;
     }
 
-    IOWR( i2c_base, 4,0x40);
+    IOWR_A( i2c_base, 4,0x40);
    20b78:	e0bffc17 	ldw	r2,-16(fp)
    20b7c:	10800404 	addi	r2,r2,16
    20b80:	1007883a 	mov	r3,r2
@@ -2007,9 +2007,9 @@ bool  OC_I2C_Read_Continue(alt_32 i2c_base,alt_u8 device_address, alt_u8 *pData8
 
   // Sleep(10);
    //OS_msleep(1);
-    usleep(SLEEP_TIME);
+    sleep_us(SLEEP_TIME);
    20b8c:	01003e84 	movi	r4,250
-   20b90:	002fb300 	call	2fb30 <usleep>
+   20b90:	002fb300 	call	2fb30 <sleep_us>
  //  printf(" Read  [%02X] = %02Xh\r\n", sub_address, data);
 
 
@@ -2027,7 +2027,7 @@ bool  OC_I2C_Read_Continue(alt_32 i2c_base,alt_u8 device_address, alt_u8 *pData8
 
 
 //  size > 2Kb
-bool  OC_I2CL_Write(alt_32 i2c_base,alt_u8 device_address,alt_u16 sub_address,alt_u8 *pData, int nWriteLength)
+bool  OC_I2CL_Write(uint32_t i2c_base,uint8_t device_address,uint16_t sub_address,uint8_t *pData, int nWriteLength)
     {
    20bac:	defff804 	addi	sp,sp,-32
    20bb0:	dfc00715 	stw	ra,28(sp)
@@ -2040,7 +2040,7 @@ bool  OC_I2CL_Write(alt_32 i2c_base,alt_u8 device_address,alt_u16 sub_address,al
    20bcc:	e0fffd05 	stb	r3,-12(fp)
    20bd0:	e0bffe0d 	sth	r2,-8(fp)
     //DWORD reg_data = 0x0;
-	alt_u8 AddrHigh, AddrLow;
+	uint8_t AddrHigh, AddrLow;
     //int count= 0;
 
     AddrHigh = (sub_address >> 8) & 0xFF;
@@ -2235,9 +2235,9 @@ bool  OC_I2CL_Write(alt_32 i2c_base,alt_u8 device_address,alt_u16 sub_address,al
    20d98:	00000306 	br	20da8 <OC_I2CL_Write+0x1fc>
 
      //OS_msleep(1);
-      usleep(SLEEP_TIME);
+      sleep_us(SLEEP_TIME);
    20d9c:	01003e84 	movi	r4,250
-   20da0:	002fb300 	call	2fb30 <usleep>
+   20da0:	002fb300 	call	2fb30 <sleep_us>
   //  printf("\n receive ACK-data! \n");
 
      return TRUE;
@@ -2255,7 +2255,7 @@ bool  OC_I2CL_Write(alt_32 i2c_base,alt_u8 device_address,alt_u16 sub_address,al
 
 } */
 
-bool  OC_I2CL_Read(alt_32 i2c_base,alt_u8 device_address, alt_u16 sub_address, alt_u8 *pData8, int nReadLength){
+bool  OC_I2CL_Read(uint32_t i2c_base,uint8_t device_address, uint16_t sub_address, uint8_t *pData8, int nReadLength){
    20dbc:	defff704 	addi	sp,sp,-36
    20dc0:	dfc00815 	stw	ra,32(sp)
    20dc4:	df000715 	stw	fp,28(sp)
@@ -2268,8 +2268,8 @@ bool  OC_I2CL_Read(alt_32 i2c_base,alt_u8 device_address, alt_u16 sub_address, a
    20de0:	e0bffe0d 	sth	r2,-8(fp)
     int i;
 
-    alt_u8 AddrHigh, AddrLow;
-    alt_u8 DataHigh, DataLow;
+    uint8_t AddrHigh, AddrLow;
+    uint8_t DataHigh, DataLow;
 
     AddrHigh = (sub_address >> 8) & 0xFF;
    20de4:	e0bffe0b 	ldhu	r2,-8(fp)
@@ -2442,7 +2442,7 @@ bool  OC_I2CL_Read(alt_32 i2c_base,alt_u8 device_address, alt_u16 sub_address, a
    20f74:	00001f06 	br	20ff4 <OC_I2CL_Read+0x238>
   // printf("\n read receive ACK-device address(read)! \n");
    //set the RD and ACK bit(bit5 and bit3)
-    	IOWR( i2c_base, 4,((i+1) == nReadLength)?0x28:0x20);
+    	IOWR_A( i2c_base, 4,((i+1) == nReadLength)?0x28:0x20);
    20f78:	e0bffc17 	ldw	r2,-16(fp)
    20f7c:	10800404 	addi	r2,r2,16
    20f80:	1009883a 	mov	r4,r2
@@ -2469,7 +2469,7 @@ bool  OC_I2CL_Read(alt_32 i2c_base,alt_u8 device_address, alt_u16 sub_address, a
         }
    // printf("\n read receive ACK-device address(read)! \n");
 
-        Data32=IORD( i2c_base, 3);
+        Data32=IORD_A( i2c_base, 3);
    20fc4:	e0bffc17 	ldw	r2,-16(fp)
    20fc8:	10800304 	addi	r2,r2,12
    20fcc:	10800037 	ldwio	r2,0(r2)
@@ -2508,9 +2508,9 @@ bool  OC_I2CL_Read(alt_32 i2c_base,alt_u8 device_address, alt_u16 sub_address, a
    21018:	00000306 	br	21028 <OC_I2CL_Read+0x26c>
 
    //OS_msleep(1);
-    usleep(SLEEP_TIME);
+    sleep_us(SLEEP_TIME);
    2101c:	01003e84 	movi	r4,250
-   21020:	002fb300 	call	2fb30 <usleep>
+   21020:	002fb300 	call	2fb30 <sleep_us>
 
    return TRUE;
    21024:	00800044 	movi	r2,1
@@ -2524,9 +2524,9 @@ bool  OC_I2CL_Read(alt_32 i2c_base,alt_u8 device_address, alt_u16 sub_address, a
 
 0002103c <Focus_Init>:
 // please observe focus performance when change the scal ,scal_f. or when change camera frame rate
-alt_u8  focus_scal   =   4;  // scan 0 -> 1023 , step: SCAL , to find STEP_UP
-alt_u8  focus_scal_f =   1;  //  scan STEP_UP + - SCAL/2 , step: SCAL_F
-alt_u8  focus_th     =   20;
+uint8_t  focus_scal   =   4;  // scan 0 -> 1023 , step: SCAL , to find STEP_UP
+uint8_t  focus_scal_f =   1;  //  scan STEP_UP + - SCAL/2 , step: SCAL_F
+uint8_t  focus_th     =   20;
 
 void Focus_Init(void){
    2103c:	defffe04 	addi	sp,sp,-8
@@ -2534,24 +2534,24 @@ void Focus_Init(void){
    21044:	df000015 	stw	fp,0(sp)
    21048:	d839883a 	mov	fp,sp
   // please look at TERASIC_AUTO_FOCUS IP to see register's detail.
-  IOWR(TERASIC_AUTO_FOCUS_0_BASE,REG_CTRL, 0);// focus mode : 1: window-screen, 0: full-screen
+  IOWR_A(TERASIC_AUTO_FOCUS_0_BASE,REG_CTRL, 0);// focus mode : 1: window-screen, 0: full-screen
    2104c:	0007883a 	mov	r3,zero
    21050:	00800134 	movhi	r2,4
    21054:	10840104 	addi	r2,r2,4100
    21058:	10c00035 	stwio	r3,0(r2)
-  IOWR(TERASIC_AUTO_FOCUS_0_BASE,REG_FOCUS_W, focus_width);// focus_width
+  IOWR_A(TERASIC_AUTO_FOCUS_0_BASE,REG_FOCUS_W, focus_width);// focus_width
    2105c:	d0a0010b 	ldhu	r2,-32764(gp)
    21060:	10ffffcc 	andi	r3,r2,65535
    21064:	00800134 	movhi	r2,4
    21068:	10840204 	addi	r2,r2,4104
    2106c:	10c00035 	stwio	r3,0(r2)
-  IOWR(TERASIC_AUTO_FOCUS_0_BASE,REG_FOCUS_H, focus_height);// focus_height
+  IOWR_A(TERASIC_AUTO_FOCUS_0_BASE,REG_FOCUS_H, focus_height);// focus_height
    21070:	d0a0018b 	ldhu	r2,-32762(gp)
    21074:	10ffffcc 	andi	r3,r2,65535
    21078:	00800134 	movhi	r2,4
    2107c:	10840304 	addi	r2,r2,4108
    21080:	10c00035 	stwio	r3,0(r2)
-  IOWR(TERASIC_AUTO_FOCUS_0_BASE,REG_FOCUS_X_START, video_w/2-focus_width/2);//x_start
+  IOWR_A(TERASIC_AUTO_FOCUS_0_BASE,REG_FOCUS_X_START, video_w/2-focus_width/2);//x_start
    21084:	d0a0000b 	ldhu	r2,-32768(gp)
    21088:	10bfffcc 	andi	r2,r2,65535
    2108c:	1004d07a 	srli	r2,r2,1
@@ -2564,7 +2564,7 @@ void Focus_Init(void){
    210a8:	00800134 	movhi	r2,4
    210ac:	10840404 	addi	r2,r2,4112
    210b0:	10c00035 	stwio	r3,0(r2)
-  IOWR(TERASIC_AUTO_FOCUS_0_BASE,REG_FOCUS_Y_START, video_h/2-focus_height/2);// y_start
+  IOWR_A(TERASIC_AUTO_FOCUS_0_BASE,REG_FOCUS_Y_START, video_h/2-focus_height/2);// y_start
    210b4:	d0a0008b 	ldhu	r2,-32766(gp)
    210b8:	10bfffcc 	andi	r2,r2,65535
    210bc:	1004d07a 	srli	r2,r2,1
@@ -2578,7 +2578,7 @@ void Focus_Init(void){
    210dc:	10840504 	addi	r2,r2,4116
    210e0:	10c00035 	stwio	r3,0(r2)
 
-  IOWR(TERASIC_AUTO_FOCUS_0_BASE,REG_SCAL, focus_scal*256 + focus_scal_f); // scan 0 -> 1023 , step: SCAL , to find STEP_UP
+  IOWR_A(TERASIC_AUTO_FOCUS_0_BASE,REG_SCAL, focus_scal*256 + focus_scal_f); // scan 0 -> 1023 , step: SCAL , to find STEP_UP
    210e4:	d0a00203 	ldbu	r2,-32760(gp)
    210e8:	10803fcc 	andi	r2,r2,255
    210ec:	1006923a 	slli	r3,r2,8
@@ -2589,7 +2589,7 @@ void Focus_Init(void){
    21100:	10840604 	addi	r2,r2,4120
    21104:	10c00035 	stwio	r3,0(r2)
                                                                           //  scan STEP_UP + - SCAL/2 , step: SCAL_F
-  IOWR(TERASIC_AUTO_FOCUS_0_BASE,REG_TH, focus_th);
+  IOWR_A(TERASIC_AUTO_FOCUS_0_BASE,REG_TH, focus_th);
    21108:	d0a00283 	ldbu	r2,-32758(gp)
    2110c:	10c03fcc 	andi	r3,r2,255
    21110:	00800134 	movhi	r2,4
@@ -2597,18 +2597,18 @@ void Focus_Init(void){
    21118:	10c00035 	stwio	r3,0(r2)
 
   //////////// focus at initial time
-  usleep(100);
+  sleep_us(100);
    2111c:	01001904 	movi	r4,100
-   21120:	002fb300 	call	2fb30 <usleep>
-  IOWR(TERASIC_AUTO_FOCUS_0_BASE,REG_GO, 1);
+   21120:	002fb300 	call	2fb30 <sleep_us>
+  IOWR_A(TERASIC_AUTO_FOCUS_0_BASE,REG_GO, 1);
    21124:	00c00044 	movi	r3,1
    21128:	00800134 	movhi	r2,4
    2112c:	10840004 	addi	r2,r2,4096
    21130:	10c00035 	stwio	r3,0(r2)
-  usleep(2);
+  sleep_us(2);
    21134:	01000084 	movi	r4,2
-   21138:	002fb300 	call	2fb30 <usleep>
-  IOWR(TERASIC_AUTO_FOCUS_0_BASE,REG_GO, 0);
+   21138:	002fb300 	call	2fb30 <sleep_us>
+  IOWR_A(TERASIC_AUTO_FOCUS_0_BASE,REG_GO, 0);
    2113c:	0007883a 	mov	r3,zero
    21140:	00800134 	movhi	r2,4
    21144:	10840004 	addi	r2,r2,4096
@@ -2623,20 +2623,20 @@ void Focus_Init(void){
 
 00021164 <Focus_Window>:
 
-alt_u16 Focus_Window(int x,int y){
+uint16_t Focus_Window(int x,int y){
    21164:	defffa04 	addi	sp,sp,-24
    21168:	dfc00515 	stw	ra,20(sp)
    2116c:	df000415 	stw	fp,16(sp)
    21170:	df000404 	addi	fp,sp,16
    21174:	e13ffe15 	stw	r4,-8(fp)
    21178:	e17fff15 	stw	r5,-4(fp)
-   alt_u16 x_start,y_start;
-   alt_u16 end_focus;
+   uint16_t x_start,y_start;
+   uint16_t end_focus;
 
    if(Focus_Released()) { // pre focus done
    2117c:	00213440 	call	21344 <Focus_Released>
    21180:	10006a26 	beq	r2,zero,2132c <Focus_Window+0x1c8>
-	   IOWR(TERASIC_AUTO_FOCUS_0_BASE,REG_CTRL, 1);// focus mode : 1: window-screen, 0: full-screen
+	   IOWR_A(TERASIC_AUTO_FOCUS_0_BASE,REG_CTRL, 1);// focus mode : 1: window-screen, 0: full-screen
    21184:	00c00044 	movi	r3,1
    21188:	00800134 	movhi	r2,4
    2118c:	10840104 	addi	r2,r2,4100
@@ -2721,30 +2721,30 @@ alt_u16 Focus_Window(int x,int y){
    212a0:	21074b04 	addi	r4,r4,7468
    212a4:	00231ec0 	call	231ec <printf>
 
-	   IOWR(TERASIC_AUTO_FOCUS_0_BASE,REG_FOCUS_X_START, x_start);//x_start
+	   IOWR_A(TERASIC_AUTO_FOCUS_0_BASE,REG_FOCUS_X_START, x_start);//x_start
    212a8:	e0fffc0b 	ldhu	r3,-16(fp)
    212ac:	00800134 	movhi	r2,4
    212b0:	10840404 	addi	r2,r2,4112
    212b4:	10c00035 	stwio	r3,0(r2)
-	   IOWR(TERASIC_AUTO_FOCUS_0_BASE,REG_FOCUS_Y_START, y_start);//y_start
+	   IOWR_A(TERASIC_AUTO_FOCUS_0_BASE,REG_FOCUS_Y_START, y_start);//y_start
    212b8:	e0fffc8b 	ldhu	r3,-14(fp)
    212bc:	00800134 	movhi	r2,4
    212c0:	10840504 	addi	r2,r2,4116
    212c4:	10c00035 	stwio	r3,0(r2)
 
-	   usleep(10);
+	   sleep_us(10);
    212c8:	01000284 	movi	r4,10
-   212cc:	002fb300 	call	2fb30 <usleep>
+   212cc:	002fb300 	call	2fb30 <sleep_us>
 
-	   IOWR(TERASIC_AUTO_FOCUS_0_BASE,REG_GO, 1);
+	   IOWR_A(TERASIC_AUTO_FOCUS_0_BASE,REG_GO, 1);
    212d0:	00c00044 	movi	r3,1
    212d4:	00800134 	movhi	r2,4
    212d8:	10840004 	addi	r2,r2,4096
    212dc:	10c00035 	stwio	r3,0(r2)
-	   usleep(2);
+	   sleep_us(2);
    212e0:	01000084 	movi	r4,2
-   212e4:	002fb300 	call	2fb30 <usleep>
-	   IOWR(TERASIC_AUTO_FOCUS_0_BASE,REG_GO, 0);
+   212e4:	002fb300 	call	2fb30 <sleep_us>
+	   IOWR_A(TERASIC_AUTO_FOCUS_0_BASE,REG_GO, 0);
    212e8:	0007883a 	mov	r3,zero
    212ec:	00800134 	movhi	r2,4
    212f0:	10840004 	addi	r2,r2,4096
@@ -2752,7 +2752,7 @@ alt_u16 Focus_Window(int x,int y){
 	   Focus_Released();
    212f8:	00213440 	call	21344 <Focus_Released>
 
-	   end_focus = IORD(TERASIC_AUTO_FOCUS_0_BASE,REG_STATUS)&0x0FFF;
+	   end_focus = IORD_A(TERASIC_AUTO_FOCUS_0_BASE,REG_STATUS)&0x0FFF;
    212fc:	00800134 	movhi	r2,4
    21300:	10840004 	addi	r2,r2,4096
    21304:	10800037 	ldwio	r2,0(r2)
@@ -2792,25 +2792,25 @@ int Focus_Released(void){
  * alt_nticks() returns the elapsed number of system clock ticks since reset.
  */
 
-static ALT_INLINE alt_u32 ALT_ALWAYS_INLINE alt_nticks (void)
+static ALT_INLINE uint32_t ALT_ALWAYS_INLINE alt_nticks (void)
 {
   return _alt_nticks;
    21358:	d0e8c517 	ldw	r3,-23788(gp)
  * Obtain the system clock rate in ticks/s. 
  */
 
-static ALT_INLINE alt_u32 ALT_ALWAYS_INLINE alt_ticks_per_second (void)
+static ALT_INLINE uint32_t ALT_ALWAYS_INLINE alt_ticks_per_second (void)
 {
   return _alt_tick_rate;
    2135c:	d0a8c417 	ldw	r2,-23792(gp)
-  alt_u32 TimeOut;
+  uint32_t TimeOut;
 
   TimeOut = alt_nticks() + alt_ticks_per_second()*8;
    21360:	100490fa 	slli	r2,r2,3
    21364:	1885883a 	add	r2,r3,r2
    21368:	e0bfff15 	stw	r2,-4(fp)
 
-  while((IORD(TERASIC_AUTO_FOCUS_0_BASE,REG_STATUS)&0x8000) ==0 && alt_nticks() < TimeOut ); // waiting for VCM release I2C bus
+  while((IORD_A(TERASIC_AUTO_FOCUS_0_BASE,REG_STATUS)&0x8000) ==0 && alt_nticks() < TimeOut ); // waiting for VCM release I2C bus
    2136c:	0001883a 	nop
    21370:	00800134 	movhi	r2,4
    21374:	10840004 	addi	r2,r2,4096
@@ -2820,7 +2820,7 @@ static ALT_INLINE alt_u32 ALT_ALWAYS_INLINE alt_ticks_per_second (void)
  * alt_nticks() returns the elapsed number of system clock ticks since reset.
  */
 
-static ALT_INLINE alt_u32 ALT_ALWAYS_INLINE alt_nticks (void)
+static ALT_INLINE uint32_t ALT_ALWAYS_INLINE alt_nticks (void)
 {
   return _alt_nticks;
    21384:	d0e8c517 	ldw	r3,-23788(gp)
@@ -2834,14 +2834,14 @@ static ALT_INLINE alt_u32 ALT_ALWAYS_INLINE alt_nticks (void)
    2139c:	00800044 	movi	r2,1
    213a0:	e0bffe15 	stw	r2,-8(fp)
    213a4:	00000306 	br	213b4 <Focus_Released+0x70>
-  else printf("\n =>¡¡Released check TimeOut!\n");
+  else printf("\n =>ï¿½ï¿½Released check TimeOut!\n");
    213a8:	010000f4 	movhi	r4,3
    213ac:	21075704 	addi	r4,r4,7516
    213b0:	00233080 	call	23308 <puts>
 
-  usleep(10000);
+  sleep_us(10000);
    213b4:	0109c404 	movi	r4,10000
-   213b8:	002fb300 	call	2fb30 <usleep>
+   213b8:	002fb300 	call	2fb30 <sleep_us>
 
   return Released;
    213bc:	e0bffe17 	ldw	r2,-8(fp)
@@ -2928,7 +2928,7 @@ void mipi_show_error_info(void){
    21494:	df000515 	stw	fp,20(sp)
    21498:	df000504 	addi	fp,sp,20
 
-	alt_u16 PHY_status, SCI_status, MDLSynErr, FrmErrCnt, MDLErrCnt;
+	uint16_t PHY_status, SCI_status, MDLSynErr, FrmErrCnt, MDLErrCnt;
 
 	PHY_status = MipiBridgeRegRead(MIPI_REG_PHYSta);
    2149c:	01001884 	movi	r4,98
@@ -3112,16 +3112,16 @@ bool MIPI_Init(void){
    216d8:	2107a504 	addi	r4,r4,7828
    216dc:	00233080 	call	23308 <puts>
 
-    usleep(50*1000);
+    sleep_us(50*1000);
    216e0:	0130d414 	movui	r4,50000
-   216e4:	002fb300 	call	2fb30 <usleep>
+   216e4:	002fb300 	call	2fb30 <sleep_us>
     MipiBridgeInit();
    216e8:	0021c740 	call	21c74 <MipiBridgeInit>
 
-    usleep(500*1000);
+    sleep_us(500*1000);
    216ec:	01000234 	movhi	r4,8
    216f0:	21284804 	addi	r4,r4,-24288
-   216f4:	002fb300 	call	2fb30 <usleep>
+   216f4:	002fb300 	call	2fb30 <sleep_us>
 
 //	bSuccess = oc_i2c_init_ex(I2C_OPENCORES_CAMERA_BASE, 50*1000*1000,400*1000); //I2C: 400K
 //	if (!bSuccess)
@@ -3137,9 +3137,9 @@ bool MIPI_Init(void){
 //    oc_i2c_uninit(I2C_OPENCORES_CAMERA_BASE);  // Release I2C bus , due to two I2C master shared!
 
 
- 	usleep(1000);
+ 	sleep_us(1000);
    21704:	0100fa04 	movi	r4,1000
-   21708:	002fb300 	call	2fb30 <usleep>
+   21708:	002fb300 	call	2fb30 <sleep_us>
 
 
 //    oc_i2c_uninit(I2C_OPENCORES_MIPI_BASE);
@@ -3175,38 +3175,38 @@ int main()
    21744:	010000f4 	movhi	r4,3
    21748:	2107ae04 	addi	r4,r4,7864
    2174c:	00233080 	call	23308 <puts>
-  IOWR(MIPI_PWDN_N_BASE, 0x00, 0x00);
+  IOWR_A(MIPI_PWDN_N_BASE, 0x00, 0x00);
    21750:	0007883a 	mov	r3,zero
    21754:	00800134 	movhi	r2,4
    21758:	10842004 	addi	r2,r2,4224
    2175c:	10c00035 	stwio	r3,0(r2)
-  IOWR(MIPI_RESET_N_BASE, 0x00, 0x00);
+  IOWR_A(MIPI_RESET_N_BASE, 0x00, 0x00);
    21760:	0007883a 	mov	r3,zero
    21764:	00800134 	movhi	r2,4
    21768:	10842404 	addi	r2,r2,4240
    2176c:	10c00035 	stwio	r3,0(r2)
 
-  usleep(2000);
+  sleep_us(2000);
    21770:	0101f404 	movi	r4,2000
-   21774:	002fb300 	call	2fb30 <usleep>
-  IOWR(MIPI_PWDN_N_BASE, 0x00, 0xFF);
+   21774:	002fb300 	call	2fb30 <sleep_us>
+  IOWR_A(MIPI_PWDN_N_BASE, 0x00, 0xFF);
    21778:	00c03fc4 	movi	r3,255
    2177c:	00800134 	movhi	r2,4
    21780:	10842004 	addi	r2,r2,4224
    21784:	10c00035 	stwio	r3,0(r2)
-  usleep(2000);
+  sleep_us(2000);
    21788:	0101f404 	movi	r4,2000
-   2178c:	002fb300 	call	2fb30 <usleep>
-  IOWR(MIPI_RESET_N_BASE, 0x00, 0xFF);
+   2178c:	002fb300 	call	2fb30 <sleep_us>
+  IOWR_A(MIPI_RESET_N_BASE, 0x00, 0xFF);
    21790:	00c03fc4 	movi	r3,255
    21794:	00800134 	movhi	r2,4
    21798:	10842404 	addi	r2,r2,4240
    2179c:	10c00035 	stwio	r3,0(r2)
 
 
-  usleep(2000);
+  sleep_us(2000);
    217a0:	0101f404 	movi	r4,2000
-   217a4:	002fb300 	call	2fb30 <usleep>
+   217a4:	002fb300 	call	2fb30 <sleep_us>
 
 
   // MIPI Init
@@ -3228,15 +3228,15 @@ int main()
 //   while(1){
  	    mipi_clear_error();
    217cc:	00213d40 	call	213d4 <mipi_clear_error>
-	 	usleep(50*1000);
+	 	sleep_us(50*1000);
    217d0:	0130d414 	movui	r4,50000
-   217d4:	002fb300 	call	2fb30 <usleep>
+   217d4:	002fb300 	call	2fb30 <sleep_us>
  	    mipi_clear_error();
    217d8:	00213d40 	call	213d4 <mipi_clear_error>
-	 	usleep(1000*1000);
+	 	sleep_us(1000*1000);
    217dc:	010003f4 	movhi	r4,15
    217e0:	21109004 	addi	r4,r4,16960
-   217e4:	002fb300 	call	2fb30 <usleep>
+   217e4:	002fb300 	call	2fb30 <sleep_us>
 	    mipi_show_error_info();
    217e8:	002148c0 	call	2148c <mipi_show_error_info>
 //	    mipi_show_error_info_more();
@@ -3247,13 +3247,13 @@ int main()
 
 
     //////////////////////////////////////////////////////////
-        alt_u16 bin_level = DEFAULT_LEVEL;
+        uint16_t bin_level = DEFAULT_LEVEL;
    217f4:	008000c4 	movi	r2,3
    217f8:	e0bff80d 	sth	r2,-32(fp)
-        alt_u8  manual_focus_step = 10;
+        uint8_t  manual_focus_step = 10;
    217fc:	00800284 	movi	r2,10
    21800:	e0bffc05 	stb	r2,-16(fp)
-        alt_u16  current_focus = 300;
+        uint16_t  current_focus = 300;
    21804:	00804b04 	movi	r2,300
    21808:	e0bff88d 	sth	r2,-30(fp)
         printf("Focusing\n");
@@ -3277,7 +3277,7 @@ int main()
    21834:	e0bff915 	stw	r2,-28(fp)
   while(1){
 
-	  if (IORD(SW_BASE, 0) & 512)
+	  if (IORD_A(SW_BASE, 0) & 512)
    21838:	00800134 	movhi	r2,4
    2183c:	10842c04 	addi	r2,r2,4272
    21840:	10800037 	ldwio	r2,0(r2)
@@ -3286,14 +3286,14 @@ int main()
 	  }
 
        // touch KEY0 to trigger Auto focus
-       if((IORD(KEY_BASE,0)&0x0F) == 0x0E){
+       if((IORD_A(KEY_BASE,0)&0x0F) == 0x0E){
    21844:	00800134 	movhi	r2,4
    21848:	10842804 	addi	r2,r2,4256
    2184c:	10800037 	ldwio	r2,0(r2)
    21850:	108003cc 	andi	r2,r2,15
    21854:	10800398 	cmpnei	r2,r2,14
    21858:	1000761e 	bne	r2,zero,21a34 <main+0x310>
-		while((IORD(KEY_BASE,0)&0x0F) == 0x0E);
+		while((IORD_A(KEY_BASE,0)&0x0F) == 0x0E);
    2185c:	0001883a 	nop
    21860:	00800134 	movhi	r2,4
    21864:	10842804 	addi	r2,r2,4256
@@ -3320,14 +3320,14 @@ int main()
    21898:	010000f4 	movhi	r4,3
    2189c:	2107cd04 	addi	r4,r4,7988
    218a0:	00233080 	call	23308 <puts>
-			IOWR(MIPI_PWDN_N_BASE, 0x00, 0x00);
+			IOWR_A(MIPI_PWDN_N_BASE, 0x00, 0x00);
    218a4:	0007883a 	mov	r3,zero
    218a8:	00800134 	movhi	r2,4
    218ac:	10842004 	addi	r2,r2,4224
    218b0:	10c00035 	stwio	r3,0(r2)
-			usleep(2000);
+			sleep_us(2000);
    218b4:	0101f404 	movi	r4,2000
-   218b8:	002fb300 	call	2fb30 <usleep>
+   218b8:	002fb300 	call	2fb30 <sleep_us>
 			// printf("Frame Control %p = %d\n", buf_control + 0, buf_control[0]);
 			printf("Frame Status %p = %d\n", buf_control + 1, buf_control[1]);
    218bc:	e0bffb17 	ldw	r2,-20(fp)
@@ -3433,7 +3433,7 @@ int main()
    219fc:	e0bffb17 	ldw	r2,-20(fp)
    21a00:	00c00044 	movi	r3,1
    21a04:	10c00005 	stb	r3,0(r2)
-			IOWR(MIPI_PWDN_N_BASE, 0x00, 0xFF);
+			IOWR_A(MIPI_PWDN_N_BASE, 0x00, 0xFF);
    21a08:	00c03fc4 	movi	r3,255
    21a0c:	00800134 	movhi	r2,4
    21a10:	10842004 	addi	r2,r2,4224
@@ -3451,7 +3451,7 @@ int main()
        }
 
        // touch KEY1 to trigger Manual focus  - step
-       if((IORD(KEY_BASE,0)&0x0F) == 0x0D){
+       if((IORD_A(KEY_BASE,0)&0x0F) == 0x0D){
    21a34:	00800134 	movhi	r2,4
    21a38:	10842804 	addi	r2,r2,4256
    21a3c:	10800037 	ldwio	r2,0(r2)
@@ -3479,7 +3479,7 @@ int main()
        }
 
        // touch KEY2 to trigger Manual focus  + step
-       if((IORD(KEY_BASE,0)&0x0F) == 0x0B){
+       if((IORD_A(KEY_BASE,0)&0x0F) == 0x0B){
    21a80:	00800134 	movhi	r2,4
    21a84:	10842804 	addi	r2,r2,4256
    21a88:	10800037 	ldwio	r2,0(r2)
@@ -3504,7 +3504,7 @@ int main()
        }
 
        // touch KEY3 to ZOOM
-       if((IORD(KEY_BASE,0)&0x0F) == 0x07){
+       if((IORD_A(KEY_BASE,0)&0x0F) == 0x07){
    21ac8:	00800134 	movhi	r2,4
    21acc:	10842804 	addi	r2,r2,4256
    21ad0:	10800037 	ldwio	r2,0(r2)
@@ -3533,17 +3533,17 @@ int main()
    21b1c:	10803fcc 	andi	r2,r2,255
    21b20:	1009883a 	mov	r4,r2
    21b24:	00220440 	call	22044 <MIPI_BIN_LEVEL>
-    	 	usleep(500000);
+    	 	sleep_us(500000);
    21b28:	01000234 	movhi	r4,8
    21b2c:	21284804 	addi	r4,r4,-24288
-   21b30:	002fb300 	call	2fb30 <usleep>
+   21b30:	002fb300 	call	2fb30 <sleep_us>
 
        }
 
-       usleep(200000);
+       sleep_us(200000);
    21b34:	010000f4 	movhi	r4,3
    21b38:	21035004 	addi	r4,r4,3392
-   21b3c:	002fb300 	call	2fb30 <usleep>
+   21b3c:	002fb300 	call	2fb30 <sleep_us>
 
 
 
@@ -3556,13 +3556,13 @@ int main()
 };
 
 
-alt_u16 nSWAP16(alt_u16 x){
+uint16_t nSWAP16(uint16_t x){
    21b44:	defffd04 	addi	sp,sp,-12
    21b48:	df000215 	stw	fp,8(sp)
    21b4c:	df000204 	addi	fp,sp,8
    21b50:	2005883a 	mov	r2,r4
    21b54:	e0bfff0d 	sth	r2,-4(fp)
-	alt_u16 y;
+	uint16_t y;
 	//y =  (((x) >> 8) & 0xff) | (((x) & 0xff) << 8);
 
 //	y = x;
@@ -3588,7 +3588,7 @@ alt_u16 nSWAP16(alt_u16 x){
 00021b90 <MipiBridgeRegWrite>:
 
 
-void MipiBridgeRegWrite(alt_u16 Addr, alt_u16 Value){
+void MipiBridgeRegWrite(uint16_t Addr, uint16_t Value){
    21b90:	defffa04 	addi	sp,sp,-24
    21b94:	dfc00515 	stw	ra,20(sp)
    21b98:	df000415 	stw	fp,16(sp)
@@ -3597,10 +3597,10 @@ void MipiBridgeRegWrite(alt_u16 Addr, alt_u16 Value){
    21ba4:	2805883a 	mov	r2,r5
    21ba8:	e0fffe0d 	sth	r3,-8(fp)
    21bac:	e0bfff0d 	sth	r2,-4(fp)
-	const alt_u8 device_address = MIPI_BRIDGE_I2C_ADDR;
+	const uint8_t device_address = MIPI_BRIDGE_I2C_ADDR;
    21bb0:	00800704 	movi	r2,28
    21bb4:	e0bffd05 	stb	r2,-12(fp)
-	OC_I2CL_Write(I2C_OPENCORES_MIPI_BASE, device_address, Addr, (alt_u8 *)&Value, sizeof(Value));
+	OC_I2CL_Write(I2C_OPENCORES_MIPI_BASE, device_address, Addr, (uint8_t *)&Value, sizeof(Value));
    21bb8:	e0fffd03 	ldbu	r3,-12(fp)
    21bbc:	e13ffe0b 	ldhu	r4,-8(fp)
    21bc0:	e17fff04 	addi	r5,fp,-4
@@ -3622,19 +3622,19 @@ void MipiBridgeRegWrite(alt_u16 Addr, alt_u16 Value){
 
 00021bfc <MipiBridgeRegRead>:
 
-alt_u16 MipiBridgeRegRead(alt_u16 Addr){
+uint16_t MipiBridgeRegRead(uint16_t Addr){
    21bfc:	defffa04 	addi	sp,sp,-24
    21c00:	dfc00515 	stw	ra,20(sp)
    21c04:	df000415 	stw	fp,16(sp)
    21c08:	df000404 	addi	fp,sp,16
    21c0c:	2005883a 	mov	r2,r4
    21c10:	e0bfff0d 	sth	r2,-4(fp)
-	alt_u16 Value,tValue;
-	const alt_u8 device_address = MIPI_BRIDGE_I2C_ADDR;
+	uint16_t Value,tValue;
+	const uint8_t device_address = MIPI_BRIDGE_I2C_ADDR;
    21c14:	00800704 	movi	r2,28
    21c18:	e0bffd05 	stb	r2,-12(fp)
 
-	OC_I2CL_Read(I2C_OPENCORES_MIPI_BASE,device_address, Addr,(alt_u8 *)&Value,sizeof(Value));
+	OC_I2CL_Read(I2C_OPENCORES_MIPI_BASE,device_address, Addr,(uint8_t *)&Value,sizeof(Value));
    21c1c:	e0fffd03 	ldbu	r3,-12(fp)
    21c20:	e13fff0b 	ldhu	r4,-4(fp)
    21c24:	e17ffe04 	addi	r5,fp,-8
@@ -3674,7 +3674,7 @@ void MipiBridgeInit(void){
    21c7c:	df000315 	stw	fp,12(sp)
    21c80:	df000304 	addi	fp,sp,12
 
-	alt_u16 data;
+	uint16_t data;
     int i, num;
 
 	printf("\nStart MipiBridgeInit!\n");
@@ -3702,7 +3702,7 @@ void MipiBridgeInit(void){
     for(i=0;i<num;i++){
    21cb8:	e03ffd15 	stw	zero,-12(fp)
    21cbc:	00002d06 	br	21d74 <MipiBridgeInit+0x100>
-   	 if (MipiBridgeReg[i].Addr == 0xFFFF)   usleep(MipiBridgeReg[i].Data*1000);
+   	 if (MipiBridgeReg[i].Addr == 0xFFFF)   sleep_us(MipiBridgeReg[i].Data*1000);
    21cc0:	008000f4 	movhi	r2,3
    21cc4:	1088f704 	addi	r2,r2,9180
    21cc8:	e0fffd17 	ldw	r3,-12(fp)
@@ -3724,7 +3724,7 @@ void MipiBridgeInit(void){
    21d08:	10bfffcc 	andi	r2,r2,65535
    21d0c:	1080fa24 	muli	r2,r2,1000
    21d10:	1009883a 	mov	r4,r2
-   21d14:	002fb300 	call	2fb30 <usleep>
+   21d14:	002fb300 	call	2fb30 <sleep_us>
    21d18:	00001306 	br	21d68 <MipiBridgeInit+0xf4>
         else MipiBridgeRegWrite(MipiBridgeReg[i].Addr,  MipiBridgeReg[i].Data);
    21d1c:	008000f4 	movhi	r2,3
@@ -3782,20 +3782,20 @@ void MipiBridgeInit(void){
 
 
 
-alt_u8 OV8865_read_cmos_sensor_8(alt_u16 Addr){
+uint8_t OV8865_read_cmos_sensor_8(uint16_t Addr){
    21da4:	defffb04 	addi	sp,sp,-20
    21da8:	dfc00415 	stw	ra,16(sp)
    21dac:	df000315 	stw	fp,12(sp)
    21db0:	df000304 	addi	fp,sp,12
    21db4:	2005883a 	mov	r2,r4
    21db8:	e0bfff0d 	sth	r2,-4(fp)
-	const alt_u8 device_address = MIPI_I2C_ADDR;
+	const uint8_t device_address = MIPI_I2C_ADDR;
    21dbc:	00801b04 	movi	r2,108
    21dc0:	e0bffe05 	stb	r2,-8(fp)
-	alt_u8 Value;
+	uint8_t Value;
 
-	//OC_I2CL_Write(I2C_OPENCORES_CAMERA_BASE, device_address, SWAP16(Addr), (alt_u8 *)&Value, sizeof(Value));
-	OC_I2CL_Read(I2C_OPENCORES_CAMERA_BASE, device_address, Addr, (alt_u8 *)&Value, sizeof(Value));
+	//OC_I2CL_Write(I2C_OPENCORES_CAMERA_BASE, device_address, SWAP16(Addr), (uint8_t *)&Value, sizeof(Value));
+	OC_I2CL_Read(I2C_OPENCORES_CAMERA_BASE, device_address, Addr, (uint8_t *)&Value, sizeof(Value));
    21dc4:	e0fffe03 	ldbu	r3,-8(fp)
    21dc8:	e13fff0b 	ldhu	r4,-4(fp)
    21dcc:	e17ffe44 	addi	r5,fp,-7
@@ -3820,7 +3820,7 @@ alt_u8 OV8865_read_cmos_sensor_8(alt_u16 Addr){
 00021e08 <OV8865_write_cmos_sensor_8>:
 
 
-void OV8865_write_cmos_sensor_8(alt_u16 Addr, alt_u8 Value){
+void OV8865_write_cmos_sensor_8(uint16_t Addr, uint8_t Value){
    21e08:	defffa04 	addi	sp,sp,-24
    21e0c:	dfc00515 	stw	ra,20(sp)
    21e10:	df000415 	stw	fp,16(sp)
@@ -3829,11 +3829,11 @@ void OV8865_write_cmos_sensor_8(alt_u16 Addr, alt_u8 Value){
    21e1c:	2805883a 	mov	r2,r5
    21e20:	e0fffe0d 	sth	r3,-8(fp)
    21e24:	e0bfff05 	stb	r2,-4(fp)
-	const alt_u8 device_address = MIPI_I2C_ADDR;
+	const uint8_t device_address = MIPI_I2C_ADDR;
    21e28:	00801b04 	movi	r2,108
    21e2c:	e0bffd05 	stb	r2,-12(fp)
-	//OC_I2CL_Write(I2C_OPENCORES_CAMERA_BASE, device_address, SWAP16(Addr), (alt_u8 *)&Value, sizeof(Value));
-	OC_I2CL_Write(I2C_OPENCORES_CAMERA_BASE, device_address, Addr, (alt_u8 *)&Value, sizeof(Value));
+	//OC_I2CL_Write(I2C_OPENCORES_CAMERA_BASE, device_address, SWAP16(Addr), (uint8_t *)&Value, sizeof(Value));
+	OC_I2CL_Write(I2C_OPENCORES_CAMERA_BASE, device_address, Addr, (uint8_t *)&Value, sizeof(Value));
    21e30:	e0fffd03 	ldbu	r3,-12(fp)
    21e34:	e13ffe0b 	ldhu	r4,-8(fp)
    21e38:	e17fff04 	addi	r5,fp,-4
@@ -3856,7 +3856,7 @@ void OV8865_write_cmos_sensor_8(alt_u16 Addr, alt_u8 Value){
 00021e74 <OV8865_write_AF>:
 
 
-void OV8865_write_AF(alt_u8 msb, alt_u8 lsb){
+void OV8865_write_AF(uint8_t msb, uint8_t lsb){
    21e74:	defffa04 	addi	sp,sp,-24
    21e78:	dfc00515 	stw	ra,20(sp)
    21e7c:	df000415 	stw	fp,16(sp)
@@ -3866,10 +3866,10 @@ void OV8865_write_AF(alt_u8 msb, alt_u8 lsb){
    21e8c:	e0fffe05 	stb	r3,-8(fp)
    21e90:	e0bfff05 	stb	r2,-4(fp)
 	// VCM149C
-	const alt_u8 device_address = MIPI_AF_I2C_ADDR;
+	const uint8_t device_address = MIPI_AF_I2C_ADDR;
    21e94:	00800604 	movi	r2,24
    21e98:	e0bffd05 	stb	r2,-12(fp)
-	OC_I2C_Write(I2C_OPENCORES_CAMERA_BASE, device_address, msb, (alt_u8 *)&lsb, sizeof(lsb));
+	OC_I2C_Write(I2C_OPENCORES_CAMERA_BASE, device_address, msb, (uint8_t *)&lsb, sizeof(lsb));
    21e9c:	e0fffd03 	ldbu	r3,-12(fp)
    21ea0:	e13ffe03 	ldbu	r4,-8(fp)
    21ea4:	e17fff04 	addi	r5,fp,-4
@@ -3897,10 +3897,10 @@ void OV8865_read_AF(void){
    21ee8:	df000315 	stw	fp,12(sp)
    21eec:	df000304 	addi	fp,sp,12
 	// VCM149C
-	const alt_u8 device_address = MIPI_AF_I2C_ADDR;
+	const uint8_t device_address = MIPI_AF_I2C_ADDR;
    21ef0:	00800604 	movi	r2,24
    21ef4:	e0bffd05 	stb	r2,-12(fp)
-	alt_u8 szData8[2];
+	uint8_t szData8[2];
 	bool bSuccess;
 
 		bSuccess = OC_I2C_Read_Continue(I2C_OPENCORES_CAMERA_BASE, device_address, szData8, sizeof(szData8));
@@ -3936,7 +3936,7 @@ void OV8865_read_AF(void){
 
 00021f60 <OV8865_FOCUS_Move_to>:
 
-void OV8865_FOCUS_Move_to(alt_u16 a_u2MovePosition)
+void OV8865_FOCUS_Move_to(uint16_t a_u2MovePosition)
 {
    21f60:	defffb04 	addi	sp,sp,-20
    21f64:	dfc00415 	stw	ra,16(sp)
@@ -3979,7 +3979,7 @@ void OV8865_FOCUS_Move_to(alt_u16 a_u2MovePosition)
    21fcc:	010000f4 	movhi	r4,3
    21fd0:	21081a04 	addi	r4,r4,8296
    21fd4:	00231ec0 	call	231ec <printf>
-  alt_u8 msb,lsb;
+  uint8_t msb,lsb;
   msb = (a_u2MovePosition >> 4)&0x00FF;
    21fd8:	e0bfff0b 	ldhu	r2,-4(fp)
    21fdc:	1004d13a 	srli	r2,r2,4
@@ -4001,9 +4001,9 @@ void OV8865_FOCUS_Move_to(alt_u16 a_u2MovePosition)
    2200c:	100b883a 	mov	r5,r2
    22010:	1809883a 	mov	r4,r3
    22014:	0021e740 	call	21e74 <OV8865_write_AF>
-	usleep(1000);
+	sleep_us(1000);
    22018:	0100fa04 	movi	r4,1000
-   2201c:	002fb300 	call	2fb30 <usleep>
+   2201c:	002fb300 	call	2fb30 <sleep_us>
 //	OV8865_read_AF();
 
 	oc_i2c_uninit(I2C_OPENCORES_CAMERA_BASE);  // Release I2C bus , due to two I2C master shared!
@@ -4025,7 +4025,7 @@ void OV8865_FOCUS_Move_to(alt_u16 a_u2MovePosition)
 
 
 //ZOOM
-void MIPI_BIN_LEVEL(alt_u8 level){
+void MIPI_BIN_LEVEL(uint8_t level){
    22044:	defffc04 	addi	sp,sp,-16
    22048:	dfc00315 	stw	ra,12(sp)
    2204c:	df000215 	stw	fp,8(sp)
@@ -4168,9 +4168,9 @@ void MIPI_BIN_LEVEL(alt_u8 level){
    221c4:	010e0d84 	movi	r4,14390
    221c8:	0021e080 	call	21e08 <OV8865_write_cmos_sensor_8>
 	}
-    usleep(10000);
+    sleep_us(10000);
    221cc:	0109c404 	movi	r4,10000
-   221d0:	002fb300 	call	2fb30 <usleep>
+   221d0:	002fb300 	call	2fb30 <sleep_us>
 	OV8865_write_cmos_sensor_8(0x0100, 0x01);
    221d4:	01400044 	movi	r5,1
    221d8:	01004004 	movi	r4,256
@@ -4224,7 +4224,7 @@ void MipiCameraInit(void)
    22240:	010000f4 	movhi	r4,3
    22244:	21081104 	addi	r4,r4,8260
    22248:	00233080 	call	23308 <puts>
-//        usleep(10000);
+//        sleep_us(10000);
 //    }
 //
 
@@ -4247,9 +4247,9 @@ void MipiCameraInit(void)
    22274:	100b883a 	mov	r5,r2
    22278:	010e0244 	movi	r4,14345
    2227c:	0021e080 	call	21e08 <OV8865_write_cmos_sensor_8>
-	      usleep(100);
+	      sleep_us(100);
    22280:	01001904 	movi	r4,100
-   22284:	002fb300 	call	2fb30 <usleep>
+   22284:	002fb300 	call	2fb30 <sleep_us>
 	        printf("%d (%d)\n",OV8865_read_cmos_sensor_8(0x3809),i);
    22288:	010e0244 	movi	r4,14345
    2228c:	0021da40 	call	21da4 <OV8865_read_cmos_sensor_8>
@@ -4259,9 +4259,9 @@ void MipiCameraInit(void)
    2229c:	010000f4 	movhi	r4,3
    222a0:	21082e04 	addi	r4,r4,8376
    222a4:	00231ec0 	call	231ec <printf>
-	      usleep(100);
+	      sleep_us(100);
    222a8:	01001904 	movi	r4,100
-   222ac:	002fb300 	call	2fb30 <usleep>
+   222ac:	002fb300 	call	2fb30 <sleep_us>
 
 
 	 OV8865DB("\nStart MipiCameraInit -OV8865!\r\n");
@@ -4275,9 +4275,9 @@ void MipiCameraInit(void)
    222c0:	10800290 	cmplti	r2,r2,10
    222c4:	103fe91e 	bne	r2,zero,2226c <__alt_mem_sdram+0xfc02226c>
 	       OV8865_write_cmos_sensor_8(0x3809,i);
-	      usleep(100);
+	      sleep_us(100);
 	        printf("%d (%d)\n",OV8865_read_cmos_sensor_8(0x3809),i);
-	      usleep(100);
+	      sleep_us(100);
 	    }
 	 num = sizeof(MipiCameraReg)/sizeof(MipiCameraReg[0]);
    222c8:	00804f44 	movi	r2,317
@@ -4286,7 +4286,7 @@ void MipiCameraInit(void)
    222d0:	e03ffd15 	stw	zero,-12(fp)
    222d4:	00003c06 	br	223c8 <MipiCameraInit+0x1c4>
 
-    	 if (MipiCameraReg[i].Type == TIME_DELAY)   usleep(MipiCameraReg[i].Data*100);
+    	 if (MipiCameraReg[i].Type == TIME_DELAY)   sleep_us(MipiCameraReg[i].Data*100);
    222d8:	008000f4 	movhi	r2,3
    222dc:	10890404 	addi	r2,r2,9232
    222e0:	e0fffd17 	ldw	r3,-12(fp)
@@ -4306,7 +4306,7 @@ void MipiCameraInit(void)
    22318:	10803fcc 	andi	r2,r2,255
    2231c:	10801924 	muli	r2,r2,100
    22320:	1009883a 	mov	r4,r2
-   22324:	002fb300 	call	2fb30 <usleep>
+   22324:	002fb300 	call	2fb30 <sleep_us>
    22328:	00002406 	br	223bc <MipiCameraInit+0x1b8>
     	 else if(MipiCameraReg[i].Type == END_OF_SCRIPT)   break;
    2232c:	008000f4 	movhi	r2,3
@@ -4346,9 +4346,9 @@ void MipiCameraInit(void)
    223b0:	10803fcc 	andi	r2,r2,255
    223b4:	100b883a 	mov	r5,r2
    223b8:	0021e080 	call	21e08 <OV8865_write_cmos_sensor_8>
-	      usleep(100);
+	      sleep_us(100);
 	        printf("%d (%d)\n",OV8865_read_cmos_sensor_8(0x3809),i);
-	      usleep(100);
+	      sleep_us(100);
 	    }
 	 num = sizeof(MipiCameraReg)/sizeof(MipiCameraReg[0]);
      for(i=0;i<num;i++){
@@ -4360,7 +4360,7 @@ void MipiCameraInit(void)
    223d0:	18bfc116 	blt	r3,r2,222d8 <__alt_mem_sdram+0xfc0222d8>
    223d4:	00000106 	br	223dc <MipiCameraInit+0x1d8>
 
-    	 if (MipiCameraReg[i].Type == TIME_DELAY)   usleep(MipiCameraReg[i].Data*100);
+    	 if (MipiCameraReg[i].Type == TIME_DELAY)   sleep_us(MipiCameraReg[i].Data*100);
     	 else if(MipiCameraReg[i].Type == END_OF_SCRIPT)   break;
    223d8:	0001883a 	nop
     	 else if(MipiCameraReg[i].Type == 0x6c)   OV8865_write_cmos_sensor_8(MipiCameraReg[i].Addr, MipiCameraReg[i].Data);
@@ -4401,7 +4401,7 @@ QUEUE_STRUCT* QUEUE_New(int nQueueNum){
    2241c:	e13fff15 	stw	r4,-4(fp)
     int nSize;
     QUEUE_STRUCT *pQueue;
-    nSize = sizeof(QUEUE_STRUCT)+nQueueNum*sizeof(alt_u32);
+    nSize = sizeof(QUEUE_STRUCT)+nQueueNum*sizeof(uint32_t);
    22420:	e0bfff17 	ldw	r2,-4(fp)
    22424:	10800144 	addi	r2,r2,5
    22428:	1085883a 	add	r2,r2,r2
@@ -4509,7 +4509,7 @@ bool QUEUE_IsFull(QUEUE_STRUCT *pQueue){
 
 00022554 <QUEUE_Push>:
 
-bool QUEUE_Push(QUEUE_STRUCT *pQueue, alt_u32 data32){
+bool QUEUE_Push(QUEUE_STRUCT *pQueue, uint32_t data32){
    22554:	defffc04 	addi	sp,sp,-16
    22558:	dfc00315 	stw	ra,12(sp)
    2255c:	df000215 	stw	fp,8(sp)
@@ -4556,13 +4556,13 @@ bool QUEUE_Push(QUEUE_STRUCT *pQueue, alt_u32 data32){
 
 000225e8 <QUEUE_Pop>:
 
-alt_u32 QUEUE_Pop(QUEUE_STRUCT *pQueue){
+uint32_t QUEUE_Pop(QUEUE_STRUCT *pQueue){
    225e8:	defffc04 	addi	sp,sp,-16
    225ec:	dfc00315 	stw	ra,12(sp)
    225f0:	df000215 	stw	fp,8(sp)
    225f4:	df000204 	addi	fp,sp,8
    225f8:	e13fff15 	stw	r4,-4(fp)
-    alt_u32 data32;
+    uint32_t data32;
     if (QUEUE_IsEmpty(pQueue))
    225fc:	e13fff17 	ldw	r4,-4(fp)
    22600:	00224b00 	call	224b0 <QUEUE_IsEmpty>
@@ -18194,9 +18194,9 @@ int ALT_ISATTY (int file)
 0002f480 <alt_load_section>:
  */
 
-static void ALT_INLINE alt_load_section (alt_u32* from, 
-                                         alt_u32* to, 
-                                         alt_u32* end)
+static void ALT_INLINE alt_load_section (uint32_t* from, 
+                                         uint32_t* to, 
+                                         uint32_t* end)
 {
    2f480:	defffc04 	addi	sp,sp,-16
    2f484:	df000315 	stw	fp,12(sp)
@@ -18221,8 +18221,8 @@ static void ALT_INLINE alt_load_section (alt_u32* from,
    2f4bc:	e13ffd15 	stw	r4,-12(fp)
    2f4c0:	18c00017 	ldw	r3,0(r3)
    2f4c4:	10c00015 	stw	r3,0(r2)
-                                         alt_u32* to, 
-                                         alt_u32* end)
+                                         uint32_t* to, 
+                                         uint32_t* end)
 {
   if (to != from)
   {
@@ -18919,7 +18919,7 @@ void alt_tick (void)
    2fa38:	d0a01017 	ldw	r2,-32704(gp)
    2fa3c:	e0bffd15 	stw	r2,-12(fp)
 
-  alt_u32    next_callback;
+  uint32_t    next_callback;
 
   /* update the tick counter */
 
@@ -19040,11 +19040,11 @@ void alt_tick (void)
    2fb28:	dec00204 	addi	sp,sp,8
    2fb2c:	f800283a 	ret
 
-0002fb30 <usleep>:
+0002fb30 <sleep_us>:
 #if defined (__GNUC__) && __GNUC__ >= 4
-int ALT_USLEEP (useconds_t us)
+int ALT_sleep_us (useconds_t us)
 #else
-unsigned int ALT_USLEEP (unsigned int us)
+unsigned int ALT_sleep_us (unsigned int us)
 #endif
 {
    2fb30:	defffd04 	addi	sp,sp,-12
@@ -19446,7 +19446,7 @@ void altera_avalon_jtag_uart_init(altera_avalon_jtag_uart_state* sp,
    2fee8:	00c00044 	movi	r3,1
    2feec:	10c00815 	stw	r3,32(r2)
 
-  IOWR_ALTERA_AVALON_JTAG_UART_CONTROL(sp->base, sp->irq_enable); 
+  IOWR_A_ALTERA_AVALON_JTAG_UART_CONTROL(sp->base, sp->irq_enable); 
    2fef0:	e0bffd17 	ldw	r2,-12(fp)
    2fef4:	10800017 	ldw	r2,0(r2)
    2fef8:	10800104 	addi	r2,r2,4
@@ -19482,7 +19482,7 @@ void altera_avalon_jtag_uart_init(altera_avalon_jtag_uart_state* sp,
  * Obtain the system clock rate in ticks/s. 
  */
 
-static ALT_INLINE alt_u32 ALT_ALWAYS_INLINE alt_ticks_per_second (void)
+static ALT_INLINE uint32_t ALT_ALWAYS_INLINE alt_ticks_per_second (void)
 {
   return _alt_tick_rate;
    2ff40:	d0e8c417 	ldw	r3,-23792(gp)
@@ -19519,7 +19519,7 @@ static ALT_INLINE alt_u32 ALT_ALWAYS_INLINE alt_ticks_per_second (void)
 #ifdef ALT_ENHANCED_INTERRUPT_API_PRESENT
 static void altera_avalon_jtag_uart_irq(void* context)
 #else
-static void altera_avalon_jtag_uart_irq(void* context, alt_u32 id)
+static void altera_avalon_jtag_uart_irq(void* context, uint32_t id)
 #endif
 {
    2ff88:	defff804 	addi	sp,sp,-32
@@ -19538,7 +19538,7 @@ static void altera_avalon_jtag_uart_irq(void* context, alt_u32 id)
 
   for ( ; ; )
   {
-    unsigned int control = IORD_ALTERA_AVALON_JTAG_UART_CONTROL(base);
+    unsigned int control = IORD_A_ALTERA_AVALON_JTAG_UART_CONTROL(base);
    2ffac:	e0bffc17 	ldw	r2,-16(fp)
    2ffb0:	10800104 	addi	r2,r2,4
    2ffb4:	10800037 	ldwio	r2,0(r2)
@@ -19583,7 +19583,7 @@ static void altera_avalon_jtag_uart_irq(void* context, alt_u32 id)
         /* Try to remove a character from the FIFO and find out whether there
          * are any more characters remaining.
          */
-        data = IORD_ALTERA_AVALON_JTAG_UART_DATA(base);
+        data = IORD_A_ALTERA_AVALON_JTAG_UART_DATA(base);
    30000:	e0bffc17 	ldw	r2,-16(fp)
    30004:	10800037 	ldwio	r2,0(r2)
    30008:	e0bff915 	stw	r2,-28(fp)
@@ -19625,7 +19625,7 @@ static void altera_avalon_jtag_uart_irq(void* context, alt_u32 id)
    30058:	00000106 	br	30060 <altera_avalon_jtag_uart_irq+0xd8>
          * are any more characters remaining.
          */
-        data = IORD_ALTERA_AVALON_JTAG_UART_DATA(base);
+        data = IORD_A_ALTERA_AVALON_JTAG_UART_DATA(base);
         
         if ((data & ALTERA_AVALON_JTAG_UART_DATA_RVALID_MSK) == 0)
           break;
@@ -19650,7 +19650,7 @@ static void altera_avalon_jtag_uart_irq(void* context, alt_u32 id)
    30078:	1886703a 	and	r3,r3,r2
    3007c:	e0bffb17 	ldw	r2,-20(fp)
    30080:	10c00815 	stw	r3,32(r2)
-        IOWR_ALTERA_AVALON_JTAG_UART_CONTROL(base, sp->irq_enable);
+        IOWR_A_ALTERA_AVALON_JTAG_UART_CONTROL(base, sp->irq_enable);
    30084:	e0bffc17 	ldw	r2,-16(fp)
    30088:	10800104 	addi	r2,r2,4
    3008c:	1007883a 	mov	r3,r2
@@ -19659,7 +19659,7 @@ static void altera_avalon_jtag_uart_irq(void* context, alt_u32 id)
    30098:	18800035 	stwio	r2,0(r3)
         
         /* Dummy read to ensure IRQ is cleared prior to ISR completion */
-        IORD_ALTERA_AVALON_JTAG_UART_CONTROL(base);
+        IORD_A_ALTERA_AVALON_JTAG_UART_CONTROL(base);
    3009c:	e0bffc17 	ldw	r2,-16(fp)
    300a0:	10800104 	addi	r2,r2,4
    300a4:	10800037 	ldwio	r2,0(r2)
@@ -19680,7 +19680,7 @@ static void altera_avalon_jtag_uart_irq(void* context, alt_u32 id)
       while (space > 0 && sp->tx_out != sp->tx_in)
    300c0:	00001406 	br	30114 <altera_avalon_jtag_uart_irq+0x18c>
       {
-        IOWR_ALTERA_AVALON_JTAG_UART_DATA(base, sp->tx_buf[sp->tx_out]);
+        IOWR_A_ALTERA_AVALON_JTAG_UART_DATA(base, sp->tx_buf[sp->tx_out]);
    300c4:	e0bffc17 	ldw	r2,-16(fp)
    300c8:	e0fffb17 	ldw	r3,-20(fp)
    300cc:	18c00d17 	ldw	r3,52(r3)
@@ -19738,7 +19738,7 @@ static void altera_avalon_jtag_uart_irq(void* context, alt_u32 id)
    30144:	1886703a 	and	r3,r3,r2
    30148:	e0bffb17 	ldw	r2,-20(fp)
    3014c:	10c00815 	stw	r3,32(r2)
-        IOWR_ALTERA_AVALON_JTAG_UART_CONTROL(sp->base, sp->irq_enable);
+        IOWR_A_ALTERA_AVALON_JTAG_UART_CONTROL(sp->base, sp->irq_enable);
    30150:	e0bffb17 	ldw	r2,-20(fp)
    30154:	10800017 	ldw	r2,0(r2)
    30158:	10800104 	addi	r2,r2,4
@@ -19748,7 +19748,7 @@ static void altera_avalon_jtag_uart_irq(void* context, alt_u32 id)
    30168:	18800035 	stwio	r2,0(r3)
         
         /* Dummy read to ensure IRQ is cleared prior to ISR completion */
-        IORD_ALTERA_AVALON_JTAG_UART_CONTROL(base);
+        IORD_A_ALTERA_AVALON_JTAG_UART_CONTROL(base);
    3016c:	e0bffc17 	ldw	r2,-16(fp)
    30170:	10800104 	addi	r2,r2,4
    30174:	10800037 	ldwio	r2,0(r2)
@@ -19757,14 +19757,14 @@ static void altera_avalon_jtag_uart_irq(void* context, alt_u32 id)
   }
    30178:	003f8c06 	br	2ffac <__alt_mem_sdram+0xfc02ffac>
   {
-    unsigned int control = IORD_ALTERA_AVALON_JTAG_UART_CONTROL(base);
+    unsigned int control = IORD_A_ALTERA_AVALON_JTAG_UART_CONTROL(base);
 
     /* Return once nothing more to do */
     if ((control & (ALTERA_AVALON_JTAG_UART_CONTROL_RI_MSK | ALTERA_AVALON_JTAG_UART_CONTROL_WI_MSK)) == 0)
       break;
    3017c:	0001883a 	nop
         /* Dummy read to ensure IRQ is cleared prior to ISR completion */
-        IORD_ALTERA_AVALON_JTAG_UART_CONTROL(base);
+        IORD_A_ALTERA_AVALON_JTAG_UART_CONTROL(base);
       }
     }
   }
@@ -19779,7 +19779,7 @@ static void altera_avalon_jtag_uart_irq(void* context, alt_u32 id)
  * Timeout routine is called every second
  */
 
-static alt_u32 
+static uint32_t 
 altera_avalon_jtag_uart_timeout(void* context) 
 {
    30194:	defff804 	addi	sp,sp,-32
@@ -19790,7 +19790,7 @@ altera_avalon_jtag_uart_timeout(void* context)
    301a4:	e0bffb17 	ldw	r2,-20(fp)
    301a8:	e0bff915 	stw	r2,-28(fp)
 
-  unsigned int control = IORD_ALTERA_AVALON_JTAG_UART_CONTROL(sp->base);
+  unsigned int control = IORD_A_ALTERA_AVALON_JTAG_UART_CONTROL(sp->base);
    301ac:	e0bff917 	ldw	r2,-28(fp)
    301b0:	10800017 	ldw	r2,0(r2)
    301b4:	10800104 	addi	r2,r2,4
@@ -19802,7 +19802,7 @@ altera_avalon_jtag_uart_timeout(void* context)
    301c4:	1081000c 	andi	r2,r2,1024
    301c8:	10000b26 	beq	r2,zero,301f8 <altera_avalon_jtag_uart_timeout+0x64>
   {
-    IOWR_ALTERA_AVALON_JTAG_UART_CONTROL(sp->base, sp->irq_enable | ALTERA_AVALON_JTAG_UART_CONTROL_AC_MSK);
+    IOWR_A_ALTERA_AVALON_JTAG_UART_CONTROL(sp->base, sp->irq_enable | ALTERA_AVALON_JTAG_UART_CONTROL_AC_MSK);
    301cc:	e0bff917 	ldw	r2,-28(fp)
    301d0:	10800017 	ldw	r2,0(r2)
    301d4:	10800104 	addi	r2,r2,4
@@ -20225,7 +20225,7 @@ static ALT_INLINE alt_irq_context ALT_ALWAYS_INLINE
    30528:	10c00054 	ori	r3,r2,1
    3052c:	e0bffc17 	ldw	r2,-16(fp)
    30530:	10c00815 	stw	r3,32(r2)
-    IOWR_ALTERA_AVALON_JTAG_UART_CONTROL(sp->base, sp->irq_enable);
+    IOWR_A_ALTERA_AVALON_JTAG_UART_CONTROL(sp->base, sp->irq_enable);
    30534:	e0bffc17 	ldw	r2,-16(fp)
    30538:	10800017 	ldw	r2,0(r2)
    3053c:	10800104 	addi	r2,r2,4
@@ -20427,7 +20427,7 @@ static ALT_INLINE alt_irq_context ALT_ALWAYS_INLINE
    306ec:	10c00094 	ori	r3,r2,2
    306f0:	e0bffc17 	ldw	r2,-16(fp)
    306f4:	10c00815 	stw	r3,32(r2)
-    IOWR_ALTERA_AVALON_JTAG_UART_CONTROL(sp->base, sp->irq_enable);
+    IOWR_A_ALTERA_AVALON_JTAG_UART_CONTROL(sp->base, sp->irq_enable);
    306f8:	e0bffc17 	ldw	r2,-16(fp)
    306fc:	10800017 	ldw	r2,0(r2)
    30700:	10800104 	addi	r2,r2,4
@@ -20542,7 +20542,7 @@ static ALT_INLINE alt_irq_context ALT_ALWAYS_INLINE
 #ifdef ALT_ENHANCED_INTERRUPT_API_PRESENT
 static void alt_avalon_timer_sc_irq (void* base)
 #else
-static void alt_avalon_timer_sc_irq (void* base, alt_u32 id)
+static void alt_avalon_timer_sc_irq (void* base, uint32_t id)
 #endif
 {
    307cc:	defffa04 	addi	sp,sp,-24
@@ -20553,7 +20553,7 @@ static void alt_avalon_timer_sc_irq (void* base, alt_u32 id)
   alt_irq_context cpu_sr;
   
   /* clear the interrupt */
-  IOWR_ALTERA_AVALON_TIMER_STATUS (base, 0);
+  IOWR_A_ALTERA_AVALON_TIMER_STATUS (base, 0);
    307e0:	0007883a 	mov	r3,zero
    307e4:	e0bfff17 	ldw	r2,-4(fp)
    307e8:	10c00035 	stwio	r3,0(r2)
@@ -20562,7 +20562,7 @@ static void alt_avalon_timer_sc_irq (void* base, alt_u32 id)
    * The control register is read because reading the status
    * register has side-effects per the register map documentation.
    */
-  IORD_ALTERA_AVALON_TIMER_CONTROL (base);
+  IORD_A_ALTERA_AVALON_TIMER_CONTROL (base);
    307ec:	e0bfff17 	ldw	r2,-4(fp)
    307f0:	10800104 	addi	r2,r2,4
    307f4:	10800037 	ldwio	r2,0(r2)
@@ -20615,8 +20615,8 @@ static ALT_INLINE alt_irq_context ALT_ALWAYS_INLINE
  * auto-generated alt_sys_init() function.
  */
 
-void alt_avalon_timer_sc_init (void* base, alt_u32 irq_controller_id, 
-                                alt_u32 irq, alt_u32 freq)
+void alt_avalon_timer_sc_init (void* base, uint32_t irq_controller_id, 
+                                uint32_t irq, uint32_t freq)
 {
    30844:	defff804 	addi	sp,sp,-32
    30848:	dfc00715 	stw	ra,28(sp)
@@ -20631,7 +20631,7 @@ void alt_avalon_timer_sc_init (void* base, alt_u32 irq_controller_id,
  * in order to initialise the value of the clock frequency.
  */
 
-static ALT_INLINE int ALT_ALWAYS_INLINE alt_sysclk_init (alt_u32 nticks)
+static ALT_INLINE int ALT_ALWAYS_INLINE alt_sysclk_init (uint32_t nticks)
 {
   if (! _alt_tick_rate)
    3086c:	d0a8c417 	ldw	r2,-23792(gp)
@@ -20645,7 +20645,7 @@ static ALT_INLINE int ALT_ALWAYS_INLINE alt_sysclk_init (alt_u32 nticks)
   
   /* set to free running mode */
   
-  IOWR_ALTERA_AVALON_TIMER_CONTROL (base, 
+  IOWR_A_ALTERA_AVALON_TIMER_CONTROL (base, 
    3087c:	e0bffc17 	ldw	r2,-16(fp)
    30880:	10800104 	addi	r2,r2,4
    30884:	00c001c4 	movi	r3,7
@@ -20678,8 +20678,8 @@ static ALT_INLINE int ALT_ALWAYS_INLINE alt_sysclk_init (alt_u32 nticks)
 000308c0 <alt_alarm_start>:
  */ 
 
-int alt_alarm_start (alt_alarm* alarm, alt_u32 nticks,
-                     alt_u32 (*callback) (void* context),
+int alt_alarm_start (alt_alarm* alarm, uint32_t nticks,
+                     uint32_t (*callback) (void* context),
                      void* context)
 {
    308c0:	defff504 	addi	sp,sp,-44
@@ -20690,12 +20690,12 @@ int alt_alarm_start (alt_alarm* alarm, alt_u32 nticks,
    308d4:	e1bffe15 	stw	r6,-8(fp)
    308d8:	e1ffff15 	stw	r7,-4(fp)
   alt_irq_context irq_context;
-  alt_u32 current_nticks = 0;
+  uint32_t current_nticks = 0;
    308dc:	e03ff615 	stw	zero,-40(fp)
  * Obtain the system clock rate in ticks/s. 
  */
 
-static ALT_INLINE alt_u32 ALT_ALWAYS_INLINE alt_ticks_per_second (void)
+static ALT_INLINE uint32_t ALT_ALWAYS_INLINE alt_ticks_per_second (void)
 {
   return _alt_tick_rate;
    308e0:	d0a8c417 	ldw	r2,-23792(gp)
@@ -20738,7 +20738,7 @@ static ALT_INLINE alt_irq_context ALT_ALWAYS_INLINE
  * alt_nticks() returns the elapsed number of system clock ticks since reset.
  */
 
-static ALT_INLINE alt_u32 ALT_ALWAYS_INLINE alt_nticks (void)
+static ALT_INLINE uint32_t ALT_ALWAYS_INLINE alt_nticks (void)
 {
   return _alt_nticks;
    30928:	d0a8c517 	ldw	r2,-23788(gp)
@@ -21272,7 +21272,7 @@ void alt_icache_flush_all (void)
   * @param irq              IRQ number
   * @return                 0 if successful, else error (-1)
   */
-int alt_ic_isr_register(alt_u32 ic_id, alt_u32 irq, alt_isr_func isr, 
+int alt_ic_isr_register(uint32_t ic_id, uint32_t irq, alt_isr_func isr, 
   void *isr_context, void *flags)
 {
    30d60:	defff904 	addi	sp,sp,-28
@@ -21303,7 +21303,7 @@ int alt_ic_isr_register(alt_u32 ic_id, alt_u32 irq, alt_isr_func isr,
   * @param irq              IRQ number
   * @return                 0 if successful, else error (-1)
   */
-int alt_ic_irq_enable (alt_u32 ic_id, alt_u32 irq)
+int alt_ic_irq_enable (uint32_t ic_id, uint32_t irq)
 {
    30db0:	defff904 	addi	sp,sp,-28
    30db4:	df000615 	stw	fp,24(sp)
@@ -21329,10 +21329,10 @@ static ALT_INLINE alt_irq_context ALT_ALWAYS_INLINE
   
   return context;
    30de4:	e0bffb17 	ldw	r2,-20(fp)
-static ALT_INLINE int ALT_ALWAYS_INLINE alt_irq_enable (alt_u32 id)
+static ALT_INLINE int ALT_ALWAYS_INLINE alt_irq_enable (uint32_t id)
 {
   alt_irq_context  status;
-  extern volatile alt_u32 alt_irq_active;
+  extern volatile uint32_t alt_irq_active;
 
   status = alt_irq_disable_all ();
    30de8:	e0bffc15 	stw	r2,-16(fp)
@@ -21376,7 +21376,7 @@ static ALT_INLINE int ALT_ALWAYS_INLINE alt_irq_enable (alt_u32 id)
   * @param irq              IRQ number
   * @return                 0 if successful, else error (-1)
   */
-int alt_ic_irq_disable(alt_u32 ic_id, alt_u32 irq)
+int alt_ic_irq_disable(uint32_t ic_id, uint32_t irq)
 {
    30e38:	defff904 	addi	sp,sp,-28
    30e3c:	df000615 	stw	fp,24(sp)
@@ -21402,10 +21402,10 @@ static ALT_INLINE alt_irq_context ALT_ALWAYS_INLINE
   
   return context;
    30e6c:	e0bffb17 	ldw	r2,-20(fp)
-static ALT_INLINE int ALT_ALWAYS_INLINE alt_irq_disable (alt_u32 id)
+static ALT_INLINE int ALT_ALWAYS_INLINE alt_irq_disable (uint32_t id)
 {
   alt_irq_context  status;
-  extern volatile alt_u32 alt_irq_active;
+  extern volatile uint32_t alt_irq_active;
 
   status = alt_irq_disable_all ();
    30e70:	e0bffc15 	stw	r2,-16(fp)
@@ -21450,14 +21450,14 @@ static ALT_INLINE int ALT_ALWAYS_INLINE alt_irq_disable (alt_u32 id)
   * @return                 Zero if corresponding interrupt is disabled and
   *                         non-zero otherwise.
   */
-alt_u32 alt_ic_irq_enabled(alt_u32 ic_id, alt_u32 irq)
+uint32_t alt_ic_irq_enabled(uint32_t ic_id, uint32_t irq)
 {
    30ec4:	defffc04 	addi	sp,sp,-16
    30ec8:	df000315 	stw	fp,12(sp)
    30ecc:	df000304 	addi	fp,sp,12
    30ed0:	e13ffe15 	stw	r4,-8(fp)
    30ed4:	e17fff15 	stw	r5,-4(fp)
-    alt_u32 irq_enabled;
+    uint32_t irq_enabled;
 
     NIOS2_READ_IENABLE(irq_enabled);
    30ed8:	000530fa 	rdctl	r2,ienable
@@ -21482,7 +21482,7 @@ alt_u32 alt_ic_irq_enabled(alt_u32 ic_id, alt_u32 irq)
   * @param flags            
   * @return                 0 if successful, else error (-1)
   */
-int alt_iic_isr_register(alt_u32 ic_id, alt_u32 irq, alt_isr_func isr, 
+int alt_iic_isr_register(uint32_t ic_id, uint32_t irq, alt_isr_func isr, 
   void *isr_context, void *flags)
 {
    30f10:	defff504 	addi	sp,sp,-44
@@ -22017,7 +22017,7 @@ alt_dev* alt_find_dev(const char* name, alt_llist* llist)
    313d0:	e0bfff17 	ldw	r2,-4(fp)
    313d4:	10800017 	ldw	r2,0(r2)
    313d8:	e0bffc15 	stw	r2,-16(fp)
-  alt_32 len;
+  uint32_t len;
 
   len  = strlen(name) + 1;
    313dc:	e13ffe17 	ldw	r4,-8(fp)
@@ -22207,7 +22207,7 @@ int alt_get_fd (alt_dev* dev)
    31554:	df000315 	stw	fp,12(sp)
    31558:	df000304 	addi	fp,sp,12
    3155c:	e13fff15 	stw	r4,-4(fp)
-  alt_32 i;
+  uint32_t i;
   int rc = -EMFILE;
    31560:	00bffa04 	movi	r2,-24
    31564:	e0bffe15 	stw	r2,-8(fp)
@@ -22281,7 +22281,7 @@ int alt_get_fd (alt_dev* dev)
  * region of length "len" bytes, starting at address "start".
  */
 
-void alt_icache_flush (void* start, alt_u32 len)
+void alt_icache_flush (void* start, uint32_t len)
 {
    315f4:	defffb04 	addi	sp,sp,-20
    315f8:	df000415 	stw	fp,16(sp)
@@ -22334,7 +22334,7 @@ void alt_icache_flush (void* start, alt_u32 len)
    * multiple of 2 (which it always is).
    */
 
-  if (((alt_u32) start) & (NIOS2_ICACHE_LINE_SIZE - 1))
+  if (((uint32_t) start) & (NIOS2_ICACHE_LINE_SIZE - 1))
    31658:	e0bffe17 	ldw	r2,-8(fp)
    3165c:	108007cc 	andi	r2,r2,31
    31660:	10000226 	beq	r2,zero,3166c <alt_icache_flush+0x78>

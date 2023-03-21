@@ -1,5 +1,10 @@
 #include "cpu.h"
 #include "cloud.c"
+#include "I2C_core.h"
+#include "terasic_includes.h"
+#include "mipi_camera_config.h"
+#include "mipi_bridge_config.h"
+#include "auto_focus.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
@@ -11,12 +16,6 @@
 #include <arpa/inet.h>
 #include <pthread.h>
 **/
-
-// From DE1 Manual (https://people.ece.cornell.edu/land/courses/ece5760/DE1_SOC/SoC-FPGA%20Design%20Guide_EPFL.pdf)
-#define LW_BRIDGE_BASE (0xff200000)
-#define LW_BRIDGE_SPAN (0x00200000) // 2MB
-#define SDRAM_BASE     (0xC0000000)
-#define SDRAM_SPAN     (0x03FFFFFF)
 
 void initBridge();
 unsigned char getUart (volatile unsigned char * uart);

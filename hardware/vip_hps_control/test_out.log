@@ -1,0 +1,124 @@
+HTTP/1.1 200 OK
+x-amz-id-2: I3Mklhha6iYvaggn3AtycDkP6sOIlmekqRnAnqFUGPNK9QcTMvjrpYXU9orIi6iOWFW5339A+Wg=
+x-amz-request-id: 3FGG40RKK3734DMX
+Date: Wed, 15 Mar 2023 07:21:47 GMT
+Last-Modified: Thu, 26 Aug 2021 03:35:42 GMT
+ETag: "6d5a28f4c5e297e95a29988884c9e896"
+Content-Type: text/html
+Server: AmazonS3
+Content-Length: 4413
+Connection: close
+
+<!DOCTYPE html>
+<html lang="en">
+
+<html lang="en">
+	<head>
+		<!-- Meta, title -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="websocket.org - WebSocket technology, demos, articles, and products.">
+		<meta name="keywords" content="HTML5, WebSocket, real-time, JMS, AMQP, XMPP, MQTT, framework, ESB, message broker, messaging, streaming, stock, KWIC">
+		<meta name="author" content="Kaazing">
+		<title>websocket.org - Powered by Kaazing</title>
+
+		<!-- Google Fonts -->
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:100,200,300,400,400italic,500,600,700,700,800,900italic&amp;subset=latin,greek-ext,cyrillic,latin-ext,greek,cyrillic-ext,vietnamese' rel='stylesheet' type='text/css'/>
+		<link href='https://fonts.googleapis.com/css?family=ABeeZee:100,200,300,400,400italic,500,600,700,700,800,900italic&amp;subset=latin,greek-ext,cyrillic,latin-ext,greek,cyrillic-ext,vietnamese' rel='stylesheet' type='text/css'/>
+
+		<!-- CSS -->
+		<link rel='stylesheet' href='css/bootstrap.css' type='text/css'/>
+		<link rel='stylesheet' href='css/shortcodes.css' type='text/css'/>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+		<link rel='stylesheet' href='css/animate.css' type='text/css'/>
+		<link rel='stylesheet' href='css/style.css' type='text/css'/>
+		<link rel='stylesheet' href='css/skins/orange.css' type='text/css'/>
+		<link rel='stylesheet' href='css/prettify.css' type='text/css'/>
+
+		<!-- Favicons -->
+		<link rel="icon" href="img/favicon.ico">
+
+		
+		<script type="text/javascript">
+		setTimeout(function(){var a=document.createElement("script");
+		var b=document.getElementsByTagName("script")[0];
+		a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0037/0800.js?"+Math.floor(new Date().getTime()/3600000);
+		a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+		</script>
+		
+
+	</head>
+	<body>
+
+<body>
+
+  <!-- BEGIN MENU
+================================================== -->
+
+<div id="navigation" class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">
+        <div class="logo-container">
+         <span class="helper"></span><img class="header-logo" src="img/websocketlogo-medium.png" alt=""/>
+        </div>
+      </a>
+      <a class="navbar-brand" href="index.html">
+      </a>
+    </div>
+  </div>
+</div>
+<!-- END MENU
+================================================== -->
+
+<!-- BEGIN CONTENT
+================================================== -->
+
+ <!--SECTION home (intro)
+================================================== -->
+<section id="home" class="parallax parallax-image dark-bg" style="background-color: #000000; background-image:url(img/saturn.jpg);">
+  <div class="wrapsection">
+    <div class="container">
+      <div class="parallax-content">
+        <div class="row">
+          <div class="wowanimslider fullwidth flexslider clearfix">
+            <ul class="slides">
+              <li>
+              <div class="caption text-center" style="padding-top:120px;padding-bottom:120px; color:#ffffff;">
+                <h1 class="home-slide-content">Service <span class="stresscolor">No</span> Longer Available</h1>
+              </div>
+              </li>
+            </ul>
+          </div><!-- /.wowanimslider -->
+        </div><!-- /.row -->
+      </div><!-- /.parallax-content -->
+    </div><!-- /.container -->
+  </div><!-- /.wrapsection -->
+</section>
+
+<!-- BEGIN FOOTER ================================================== -->
+<section class="nowidgetbottom">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <a class="footer-logo" href="index.html">
+          <div>
+            <img class="footer-logo" src="img/websocketlogo-medium-white.png" width="250" alt="" />
+          </div>
+        </a>
+        <br/>
+        Kaazing &copy; | Copyright | All Rights Reserved.
+      </div>
+    </div>
+  </div>
+</section>
+<!-- END FOOTER ================================================== -->
+
+</body>
+</html>
+

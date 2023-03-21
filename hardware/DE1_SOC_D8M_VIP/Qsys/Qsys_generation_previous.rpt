@@ -12,6 +12,8 @@ Progress: Adding alt_vip_vfb_0 [alt_vip_vfb 13.1]
 Progress: Parameterizing module alt_vip_vfb_0
 Progress: Adding clk_50 [clock_source 18.1]
 Progress: Parameterizing module clk_50
+Progress: Adding hexes_pio [altera_avalon_pio 18.1]
+Progress: Parameterizing module hexes_pio
 Progress: Adding hps_0 [altera_hps 18.1]
 Progress: Parameterizing module hps_0
 Progress: Adding i2c_opencores_camera [i2c_opencores 12.0]
@@ -75,6 +77,8 @@ Progress: Adding alt_vip_vfb_0 [alt_vip_vfb 13.1]
 Progress: Parameterizing module alt_vip_vfb_0
 Progress: Adding clk_50 [clock_source 18.1]
 Progress: Parameterizing module clk_50
+Progress: Adding hexes_pio [altera_avalon_pio 18.1]
+Progress: Parameterizing module hexes_pio
 Progress: Adding hps_0 [altera_hps 18.1]
 Progress: Parameterizing module hps_0
 Progress: Adding i2c_opencores_camera [i2c_opencores 12.0]
@@ -139,6 +143,10 @@ Info: TERASIC_AUTO_FOCUS_0: "Qsys" instantiated TERASIC_AUTO_FOCUS "TERASIC_AUTO
 Info: TERASIC_CAMERA_0: "Qsys" instantiated TERASIC_CAMERA "TERASIC_CAMERA_0"
 Info: alt_vip_itc_0: "Qsys" instantiated alt_vip_itc "alt_vip_itc_0"
 Info: alt_vip_vfb_0: "Qsys" instantiated alt_vip_vfb "alt_vip_vfb_0"
+Info: hexes_pio: Starting RTL generation for module 'Qsys_hexes_pio'
+Info: hexes_pio:   Generation command is [exec D:/programs/intelfpga_lite/18.1/quartus/bin64/perl/bin/perl.exe -I D:/programs/intelfpga_lite/18.1/quartus/bin64/perl/lib -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin/europa -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin/perl_lib -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin -I D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=Qsys_hexes_pio --dir=C:/Users/ADMINI~1/AppData/Local/Temp/alt9435_4998951790174004898.dir/0065_hexes_pio_gen/ --quartus_dir=D:/programs/intelfpga_lite/18.1/quartus --verilog --config=C:/Users/ADMINI~1/AppData/Local/Temp/alt9435_4998951790174004898.dir/0065_hexes_pio_gen//Qsys_hexes_pio_component_configuration.pl  --do_build_sim=0  ]
+Info: hexes_pio: Done RTL generation for module 'Qsys_hexes_pio'
+Info: hexes_pio: "Qsys" instantiated altera_avalon_pio "hexes_pio"
 Info: hps_0: "Running  for module: hps_0"
 Info: hps_0: HPS Main PLL counter settings: n = 0  m = 73
 Info: hps_0: HPS peripherial PLL counter settings: n = 0  m = 39
@@ -148,25 +156,25 @@ Warning: hps_0: 1 or more output clock frequencies cannot be achieved precisely,
 Info: hps_0: "Qsys" instantiated altera_hps "hps_0"
 Info: i2c_opencores_camera: "Qsys" instantiated i2c_opencores "i2c_opencores_camera"
 Info: key: Starting RTL generation for module 'Qsys_key'
-Info: key:   Generation command is [exec D:/programs/intelfpga_lite/18.1/quartus/bin64/perl/bin/perl.exe -I D:/programs/intelfpga_lite/18.1/quartus/bin64/perl/lib -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin/europa -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin/perl_lib -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin -I D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=Qsys_key --dir=C:/Users/ADMINI~1/AppData/Local/Temp/alt9435_4998951790174004898.dir/0009_key_gen/ --quartus_dir=D:/programs/intelfpga_lite/18.1/quartus --verilog --config=C:/Users/ADMINI~1/AppData/Local/Temp/alt9435_4998951790174004898.dir/0009_key_gen//Qsys_key_component_configuration.pl  --do_build_sim=0  ]
+Info: key:   Generation command is [exec D:/programs/intelfpga_lite/18.1/quartus/bin64/perl/bin/perl.exe -I D:/programs/intelfpga_lite/18.1/quartus/bin64/perl/lib -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin/europa -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin/perl_lib -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin -I D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=Qsys_key --dir=C:/Users/ADMINI~1/AppData/Local/Temp/alt9435_4998951790174004898.dir/0067_key_gen/ --quartus_dir=D:/programs/intelfpga_lite/18.1/quartus --verilog --config=C:/Users/ADMINI~1/AppData/Local/Temp/alt9435_4998951790174004898.dir/0067_key_gen//Qsys_key_component_configuration.pl  --do_build_sim=0  ]
 Info: key: Done RTL generation for module 'Qsys_key'
 Info: key: "Qsys" instantiated altera_avalon_pio "key"
 Info: led: Starting RTL generation for module 'Qsys_led'
-Info: led:   Generation command is [exec D:/programs/intelfpga_lite/18.1/quartus/bin64/perl/bin/perl.exe -I D:/programs/intelfpga_lite/18.1/quartus/bin64/perl/lib -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin/europa -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin/perl_lib -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin -I D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=Qsys_led --dir=C:/Users/ADMINI~1/AppData/Local/Temp/alt9435_4998951790174004898.dir/0010_led_gen/ --quartus_dir=D:/programs/intelfpga_lite/18.1/quartus --verilog --config=C:/Users/ADMINI~1/AppData/Local/Temp/alt9435_4998951790174004898.dir/0010_led_gen//Qsys_led_component_configuration.pl  --do_build_sim=0  ]
+Info: led:   Generation command is [exec D:/programs/intelfpga_lite/18.1/quartus/bin64/perl/bin/perl.exe -I D:/programs/intelfpga_lite/18.1/quartus/bin64/perl/lib -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin/europa -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin/perl_lib -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin -I D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=Qsys_led --dir=C:/Users/ADMINI~1/AppData/Local/Temp/alt9435_4998951790174004898.dir/0068_led_gen/ --quartus_dir=D:/programs/intelfpga_lite/18.1/quartus --verilog --config=C:/Users/ADMINI~1/AppData/Local/Temp/alt9435_4998951790174004898.dir/0068_led_gen//Qsys_led_component_configuration.pl  --do_build_sim=0  ]
 Info: led: Done RTL generation for module 'Qsys_led'
 Info: led: "Qsys" instantiated altera_avalon_pio "led"
 Info: master_0: "Qsys" instantiated altera_jtag_avalon_master "master_0"
 Info: mipi_pwdn_n: Starting RTL generation for module 'Qsys_mipi_pwdn_n'
-Info: mipi_pwdn_n:   Generation command is [exec D:/programs/intelfpga_lite/18.1/quartus/bin64/perl/bin/perl.exe -I D:/programs/intelfpga_lite/18.1/quartus/bin64/perl/lib -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin/europa -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin/perl_lib -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin -I D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=Qsys_mipi_pwdn_n --dir=C:/Users/ADMINI~1/AppData/Local/Temp/alt9435_4998951790174004898.dir/0011_mipi_pwdn_n_gen/ --quartus_dir=D:/programs/intelfpga_lite/18.1/quartus --verilog --config=C:/Users/ADMINI~1/AppData/Local/Temp/alt9435_4998951790174004898.dir/0011_mipi_pwdn_n_gen//Qsys_mipi_pwdn_n_component_configuration.pl  --do_build_sim=0  ]
+Info: mipi_pwdn_n:   Generation command is [exec D:/programs/intelfpga_lite/18.1/quartus/bin64/perl/bin/perl.exe -I D:/programs/intelfpga_lite/18.1/quartus/bin64/perl/lib -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin/europa -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin/perl_lib -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin -I D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=Qsys_mipi_pwdn_n --dir=C:/Users/ADMINI~1/AppData/Local/Temp/alt9435_4998951790174004898.dir/0069_mipi_pwdn_n_gen/ --quartus_dir=D:/programs/intelfpga_lite/18.1/quartus --verilog --config=C:/Users/ADMINI~1/AppData/Local/Temp/alt9435_4998951790174004898.dir/0069_mipi_pwdn_n_gen//Qsys_mipi_pwdn_n_component_configuration.pl  --do_build_sim=0  ]
 Info: mipi_pwdn_n: Done RTL generation for module 'Qsys_mipi_pwdn_n'
 Info: mipi_pwdn_n: "Qsys" instantiated altera_avalon_pio "mipi_pwdn_n"
 Info: pll_sys: "Qsys" instantiated altera_pll "pll_sys"
 Info: sdram: Starting RTL generation for module 'Qsys_sdram'
-Info: sdram:   Generation command is [exec D:/programs/intelfpga_lite/18.1/quartus/bin64/perl/bin/perl.exe -I D:/programs/intelfpga_lite/18.1/quartus/bin64/perl/lib -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin/europa -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin/perl_lib -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin -I D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller -- D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller/generate_rtl.pl --name=Qsys_sdram --dir=C:/Users/ADMINI~1/AppData/Local/Temp/alt9435_4998951790174004898.dir/0013_sdram_gen/ --quartus_dir=D:/programs/intelfpga_lite/18.1/quartus --verilog --config=C:/Users/ADMINI~1/AppData/Local/Temp/alt9435_4998951790174004898.dir/0013_sdram_gen//Qsys_sdram_component_configuration.pl  --do_build_sim=0  ]
+Info: sdram:   Generation command is [exec D:/programs/intelfpga_lite/18.1/quartus/bin64/perl/bin/perl.exe -I D:/programs/intelfpga_lite/18.1/quartus/bin64/perl/lib -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin/europa -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin/perl_lib -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin -I D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller -- D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_new_sdram_controller/generate_rtl.pl --name=Qsys_sdram --dir=C:/Users/ADMINI~1/AppData/Local/Temp/alt9435_4998951790174004898.dir/0071_sdram_gen/ --quartus_dir=D:/programs/intelfpga_lite/18.1/quartus --verilog --config=C:/Users/ADMINI~1/AppData/Local/Temp/alt9435_4998951790174004898.dir/0071_sdram_gen//Qsys_sdram_component_configuration.pl  --do_build_sim=0  ]
 Info: sdram: Done RTL generation for module 'Qsys_sdram'
 Info: sdram: "Qsys" instantiated altera_avalon_new_sdram_controller "sdram"
 Info: sw: Starting RTL generation for module 'Qsys_sw'
-Info: sw:   Generation command is [exec D:/programs/intelfpga_lite/18.1/quartus/bin64/perl/bin/perl.exe -I D:/programs/intelfpga_lite/18.1/quartus/bin64/perl/lib -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin/europa -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin/perl_lib -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin -I D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=Qsys_sw --dir=C:/Users/ADMINI~1/AppData/Local/Temp/alt9435_4998951790174004898.dir/0014_sw_gen/ --quartus_dir=D:/programs/intelfpga_lite/18.1/quartus --verilog --config=C:/Users/ADMINI~1/AppData/Local/Temp/alt9435_4998951790174004898.dir/0014_sw_gen//Qsys_sw_component_configuration.pl  --do_build_sim=0  ]
+Info: sw:   Generation command is [exec D:/programs/intelfpga_lite/18.1/quartus/bin64/perl/bin/perl.exe -I D:/programs/intelfpga_lite/18.1/quartus/bin64/perl/lib -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin/europa -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin/perl_lib -I D:/programs/intelfpga_lite/18.1/quartus/sopc_builder/bin -I D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/common -I D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- D:/programs/intelfpga_lite/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=Qsys_sw --dir=C:/Users/ADMINI~1/AppData/Local/Temp/alt9435_4998951790174004898.dir/0072_sw_gen/ --quartus_dir=D:/programs/intelfpga_lite/18.1/quartus --verilog --config=C:/Users/ADMINI~1/AppData/Local/Temp/alt9435_4998951790174004898.dir/0072_sw_gen//Qsys_sw_component_configuration.pl  --do_build_sim=0  ]
 Info: sw: Done RTL generation for module 'Qsys_sw'
 Info: sw: "Qsys" instantiated altera_avalon_pio "sw"
 Info: touchscreen_uart: Starting Generation of RS232 UART
@@ -183,6 +191,7 @@ Info: avalon_st_adapter_006: Inserting error_adapter: error_adapter_0
 Info: avalon_st_adapter_007: Inserting error_adapter: error_adapter_0
 Info: avalon_st_adapter_008: Inserting error_adapter: error_adapter_0
 Info: avalon_st_adapter_009: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_010: Inserting error_adapter: error_adapter_0
 Info: mm_interconnect_1: "Qsys" instantiated altera_mm_interconnect "mm_interconnect_1"
 Info: mm_interconnect_2: "Qsys" instantiated altera_mm_interconnect "mm_interconnect_2"
 Info: rst_controller: "Qsys" instantiated altera_reset_controller "rst_controller"
@@ -273,6 +282,6 @@ Info: Reusing file D:/CPEN391/l2b-25-forks/hardware/DE1_SOC_D8M_VIP/Qsys/synthes
 Info: border: "hps_io" instantiated altera_interface_generator "border"
 Info: error_adapter_0: "avalon_st_adapter" instantiated error_adapter "error_adapter_0"
 Info: error_adapter_0: "avalon_st_adapter" instantiated error_adapter "error_adapter_0"
-Info: Qsys: Done "Qsys" with 78 modules, 195 files
+Info: Qsys: Done "Qsys" with 79 modules, 196 files
 Info: qsys-generate succeeded.
 Info: Finished: Create HDL design files for synthesis
