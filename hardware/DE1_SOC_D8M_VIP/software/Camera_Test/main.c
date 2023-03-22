@@ -14,7 +14,7 @@ int main(void)
 	printf("DE1-SoC D8M VGA Demo\n");
 	IOWR(MIPI_PWDN_N_BASE, 0x00, 0x00);
 	IOWR(MIPI_RESET_N_BASE, 0x00, 0x00);
-
+	
 	sleep_us(2000);
 	IOWR(MIPI_PWDN_N_BASE, 0x00, 0xFF);
 	sleep_us(2000);

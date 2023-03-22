@@ -38,15 +38,16 @@ static int wait_on_socket(curl_socket_t sockfd, int for_recv, long timeout_ms)
 int main(void)
 {
     CURL *curl;
-    volatile CURLcode res, rec_res;
+    CURLcode res;
+    CURLcode rec_res = CURLE_AGAIN;
     curl_socket_t sockfd;
     size_t nsent_total = 0;
     FILE * file = NULL; 
     char request[1024];
     memset(request, 0, sizeof(request));
     sprintf(request, "GET /production HTTP/1.1\r\n"
-        "Host: 192.168.137.1:8080\r\n"
-        // "Host: 7nbl97eho0.execute-api.us-east-1.amazonaws.com/production \r\n"
+        // "Host: 192.168.137.1:8080\r\n"
+        "Host: 7nbl97eho0.execute-api.us-east-1.amazonaws.com \r\n"
         "Upgrade: websocket\r\n"
         "Connection: Upgrade\r\n"
         "Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==\r\n"
@@ -56,13 +57,13 @@ int main(void)
     curl = curl_easy_init();
     if (curl)
     {
-       curl_easy_setopt(curl, CURLOPT_URL, "http://192.168.137.1:8080"); 
-       // curl_easy_setopt(curl, CURLOPT_URL, URL);
+       // curl_easy_setopt(curl, CURLOPT_URL, "http://192.168.137.1:8080"); 
+       curl_easy_setopt(curl, CURLOPT_URL, URL);
        curl_easy_setopt(curl, CURLOPT_CONNECT_ONLY, 1L);
        curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L); 
        curl_easy_setopt(curl, CURLOPT_VERBOSE, 1L);
-       curl_easy_setopt(curl, CURLOPT_HEADER, 0L);  // Don't include response headers in output
-       curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, NULL);  // Disable response body handling
+       // curl_easy_setopt(curl, CURLOPT_HEADER, 0L);  // Don't include response headers in output
+       // curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, NULL);  // Disable response body handling
        res = curl_easy_perform(curl);
        if (res != CURLE_OK)
        {
@@ -76,17 +77,38 @@ int main(void)
             printf("header len %d\n", strlen(request));
             res = curl_easy_send(curl, request, strlen(request), &buf);
             wait_on_socket(sockfd, 0, 60000L);
-            char toSend[] = {0x81, 0x85, 0x00, 0x00, 0x00, 0x00, 'h', 'e', 'l', 'l', 'o'};
-            // char toSend[] = {129, 136, 136, 35, 93, 205, 231, 85, 56, 191, 177, 19, 109, 253};
-            res = curl_easy_send(curl, toSend, sizeof(toSend), &buf);
+            while (rec_res == CURLE_AGAIN) rec_res = curl_easy_recv(curl, recvBuf, sizeof(recvBuf), &recBuf);
+            rec_res = CURLE_AGAIN;
+            memset(recvBuf, 0, recBuf);
+            char sendHeader[] = {0x81, 0x85, 0x00, 0x00, 0x00, 0x00};
+            char toSend[1024];
+            memset(toSend, 0, sizeof(toSend));
+            for (int i = 0; i < sizeof(sendHeader); i++)
+                toSend[i] = sendHeader[i];
+            toSend[1] = (0x80) | sprintf(toSend + sizeof(sendHeader), "{\"action\": \"connect_to_roomID\", \"roomID\": 8862, \"user\": \"Demo\"}");
+            res = curl_easy_send(curl, toSend, sizeof(sendHeader) + toSend[1] & 0x7F, &buf);
+            printf("Sent %d vs Should %d\n", buf, sizeof(sendHeader) + toSend[1]);
             wait_on_socket(sockfd, 0, 60000L);
             while (res != CURLE_OK);
             printf("done sending\n");
-            rec_res = curl_easy_recv(curl, recvBuf, sizeof(recvBuf), &recBuf);
-            wait_on_socket(sockfd, 0, 60000L);
-            while(rec_res == CURLE_AGAIN);
+            while (rec_res == CURLE_AGAIN) rec_res = curl_easy_recv(curl, recvBuf, sizeof(recvBuf), &recBuf);
             printf("done receiving\n");
-            fwrite(recvBuf, sizeof(char), sizeof(recvBuf), stdout);
+            fwrite(recvBuf + 2, sizeof(char), recvBuf[1], stdout);
+            printf("\n");
+            memset(toSend, 0, recBuf);
+            memset(recvBuf, 0, recBuf);
+            for (int i = 0; i < sizeof(sendHeader); i++)
+                toSend[i] = sendHeader[i];
+            toSend[1] = (0x80) | sprintf(toSend + sizeof(sendHeader), "{\"action\": \"disconnect_roomID\", \"roomID\": 8862, \"user\": \"Demo\"}");
+            res = curl_easy_send(curl, toSend, 0x7F & toSend[1] + sizeof(sendHeader), &buf);
+            wait_on_socket(sockfd, 0, 60000L);
+            while (res != CURLE_OK);
+            printf("done sending\n");
+            rec_res = CURLE_AGAIN;
+            while (rec_res == CURLE_AGAIN) rec_res = curl_easy_recv(curl, recvBuf, sizeof(recvBuf), &recBuf);
+            printf("done receiving %d bytes\n", recBuf);
+            fwrite(recvBuf + 2, sizeof(char), recvBuf[1], stdout);
+            printf("\n");
        }
        curl_easy_cleanup(curl);    
     }

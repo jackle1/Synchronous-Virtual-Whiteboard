@@ -19,9 +19,9 @@ typedef struct
 
 typedef struct Pixel
 {
-    unsigned short x;
-    unsigned short y;
-    unsigned short colour;
+    uint16_t x;
+    uint16_t y;
+    uint32_t colour;
     struct Pixel * next;
 } pixel_t;
 
