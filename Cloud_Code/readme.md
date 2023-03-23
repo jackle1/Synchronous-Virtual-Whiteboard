@@ -59,7 +59,7 @@ or ```x : 101```, or ```“roomID”: 101```.
  Dont put None or NULL, otherwise you will receive a error
 
 
-### Web Socket 
+## Web Socket 
 The url for the Web Socket is ```wss://7nbl97eho0.execute-api.us-east-1.amazonaws.com/production```
 
 To connect to the websocket, use standard libraies.
