@@ -80,7 +80,7 @@ Send a messahe to the WebSocket
 ```{"action": "disconnect_roomID", "roomID": 8862, "user": "User"} ```
 
 #### Important points while connected to a Room 
-If a member leaved that room, you will be notified <br>
+If a member leave that room, you will be notified <br>
 If a member joins that room, you will be notified <br>
 If a member updates a pixel/pixels, you will be notified <br>
 If a member updates all pixels on a post request, you will be notified  (Feature Not completed!)<br>
