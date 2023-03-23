@@ -58,3 +58,30 @@ or ```x : 101```, or ```“roomID”: 101```.
 
  Dont put None or NULL, otherwise you will receive a error
 
+
+### Web Socket 
+The url for the Web Socket is ```wss://7nbl97eho0.execute-api.us-east-1.amazonaws.com/production```
+
+To connect to the websocket, use standard libraies.
+However, connecting to the websocket doesnt mean you are connected to the RoomID
+
+#### To Connect to the Room 
+Send a message into the websocket 
+``` {"action": "connect_to_roomID", "roomID": 8862, "user": "User"}```
+Change roomID and User accordingly to your needs
+
+#### To send pixels to the webSocket
+Send a message into the websocket
+``` {"action": "post", "roomID": 8862, "user": "User", "RGB": RGB, "x": x, "y": y}```
+
+#### To disconnect from a Room 
+Send a messahe to the WebSocket 
+```{"action": "disconnect_roomID", "roomID": 8862, "user": "User"} ```
+
+#### Important points while connected to a Room 
+If a member leaved that room, you will be notified 
+If a member joins that room, you will be notified 
+If a member updates a pixel/pixels, you will be notified 
+If a member updates all pixels on a post request, you will be notified  (Feature Not completed!)
+
+At a time, this websocket can only update 2548 pixels, so if you have a bigger data, please divide your pixel data into smaller chunks of 2548
