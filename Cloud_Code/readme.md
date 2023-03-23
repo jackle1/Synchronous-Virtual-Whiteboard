@@ -67,7 +67,8 @@ However, connecting to the websocket doesnt mean you are connected to the RoomID
 
 #### To Connect to the Room 
 Send a message into the websocket 
-``` {"action": "connect_to_roomID", "roomID": 8862, "user": "User"}```
+``` {"action": "connect_to_roomID", "roomID": 8862, "user": "User"}```<br>
+
 Change roomID and User accordingly to your needs
 
 #### To send pixels to the webSocket
@@ -79,9 +80,9 @@ Send a messahe to the WebSocket
 ```{"action": "disconnect_roomID", "roomID": 8862, "user": "User"} ```
 
 #### Important points while connected to a Room 
-If a member leaved that room, you will be notified 
-If a member joins that room, you will be notified 
-If a member updates a pixel/pixels, you will be notified 
-If a member updates all pixels on a post request, you will be notified  (Feature Not completed!)
+If a member leaved that room, you will be notified <br>
+If a member joins that room, you will be notified <br>
+If a member updates a pixel/pixels, you will be notified <br>
+If a member updates all pixels on a post request, you will be notified  (Feature Not completed!)<br>
 
 At a time, this websocket can only update 2548 pixels, so if you have a bigger data, please divide your pixel data into smaller chunks of 2548
