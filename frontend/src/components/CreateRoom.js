@@ -1,66 +1,60 @@
+import React, { useState, useEffect } from 'react';
+import './CreateRoom.css';
+import DrawingCanvas from './DrawingCanvas';
 import axios from 'axios';
-import '../App.css';
 
-import React,{Component} from 'react';
-  
-class CreateRoom extends Component {
+function CreateRoom() {
+  const [backgroundImage, setBackgroundImage] = useState("");
 
-   
-    state = {
-  
-      // Initially, no file is selected
-      selectedFile: null
+  function handleImageUpload(event) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setBackgroundImage(reader.result);
     };
-
-    // On file select (from the pop up)
-    onFileChange = event => {
-     
-      // Update the state
-      this.setState({ selectedFile: event.target.files[0] });
-
-      // // Create an object of formData
-      // const formData = new FormData();
-
-      // // Update the formData object
-      // formData.append(
-      //   "myFile",
-      //   this.state.selectedFile,
-      //   this.state.selectedFile.name
-      // );
-      
-      // // Details of the uploaded file
-      // console.log(this.state.selectedFile);
-
-      // // Request made to the backend api
-      // // Send formData object
-      // axios.post("api/uploadfile", formData);
-
-      const image = event.target.files[0];
-
-      image.addEventListener('change', function() {
-        const bgUrl = URL.createObjectUrl(image);
-
-        const createroom = document.getElementById('create-room');
-
-        createroom.style.backgroundImage = `url(${bgUrl})`;
-      });
-     
-    };
-
-
-     
-    render() {
-      return (
-        <div className='create-room'>
-            <h1>
-               Upload a background to draw on: 
-            </h1>
-            <div>
-                <input type="file" onChange={this.onFileChange} />
-            </div>
-        </div>
-      );
-    }
   }
-  
-  export default CreateRoom;
+
+  const [data, setData] = useState([]);
+
+  var properties = {
+    "member": "Ranbir",
+    "roomID": 2,
+    "RGB" : 1,
+    "request-for": 0,
+    "x": 1,
+    "y": 1
+  }
+
+  useEffect(() => {
+    axios.post('https://hbzwo0rl65.execute-api.us-east-1.amazonaws.com/dev/cpen391', properties)
+      .then(response => {
+        setData(response.data);
+        console.log(response.data);
+        console.log(response.data["RoomID"]);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  }, []);
+
+  return (
+    <div className='createroom-container' style={{ backgroundImage: `url(${backgroundImage})` }}>
+      <h1>
+       Upload a background to draw on: 
+      </h1>
+      <div>
+        <input type="file" onChange={handleImageUpload} />
+      </div>
+
+      <h1>
+        RoomID: 
+        <p>{data["RoomID"]}</p>
+      </h1>
+
+      <DrawingCanvas data={data["RoomID"]}/>
+    </div>
+  )
+}
+
+export default CreateRoom

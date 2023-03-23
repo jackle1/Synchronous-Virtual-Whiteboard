@@ -1,0 +1,49 @@
+.joinroom-container {
+    background: url('/public/images/contactform.jpg') center center/cover no-repeat;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+    object-fit: contain;
+    font-size: 32pt
+  } 
+  
+  
+  .joinroom-container > h1 {
+    color: #fff;
+    text-shadow:0 0 5px #000;
+    font-size: 100px;
+    margin-top: 20px;
+    align-self: center;
+  }
+  
+  .joinroom-container > p {
+    margin-top: 8px;
+    color: #fff;
+    font-size: 32px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+      'Lucida Sans', Arial, sans-serif;
+  }
+
+  .joinroom-textbox {
+    height:100px;
+    width: 200px;
+    font-size:32pt;
+    margin-top: 8px;
+  }
+
+  .joinroom-button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 32px;
+    margin-top: 50px;
+  }
+  

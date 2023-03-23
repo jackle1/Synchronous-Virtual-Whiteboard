@@ -1,0 +1,9 @@
+.createroom-container {
+    background: url('/public/images/whiteboard-home.jpg') center center/cover no-repeat;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-shadow:0 0 5px #fff;
+  }
+  
