@@ -11,6 +11,7 @@ function DrawingCanvas(props) {
   const [RGBData, setRGBData] = useState([]);
   const [XData, setXData] = useState([]);
   const [YData, setYData] = useState([]);
+  const [ws, setWs] = useState(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -23,37 +24,64 @@ function DrawingCanvas(props) {
 
     handleGetRGBData();
 
-    // const roomID = props.data["RoomID"];
+    const ws = new WebSocket('wss://7nbl97eho0.execute-api.us-east-1.amazonaws.com/production');
 
-    var properties = {
-      "member": "Ranbir",
-      "roomID": 5232,
-      "RGB" : RGBData,
-      "request-for": 1,
-      "x": XData,
-      "y": YData
-    }
+    ws.addEventListener('open', () => {
+      console.log(props.data)
+      const data = {
+        action: 'connect_to_roomID',
+        roomID: props.data,
+        user: props.username,
+      };
+      ws.send(JSON.stringify(data));
+      console.log('WebSocket connection established');
+    });
 
-    const intervalId = setInterval(() => {
-      if (RGBData.length > 0) {
-        axios.post('https://hbzwo0rl65.execute-api.us-east-1.amazonaws.com/dev/cpen391', properties)
-        .then(response => {
-          console.log(response.data);
-        })
-        // console.log(roomID)
-        console.log(RGBData)
-        console.log(XData);
-        console.log(YData)
-        setRGBData([]);
-        setXData([]);
-        setYData([]);
-      }
-    }, 2000);
+    ws.addEventListener('message', (event) => {
+      console.log('WebSocket message received', event.data);
+      props.onChildVariable(JSON.parse(event.data)["members"]);
+    });
+
+    ws.addEventListener('close', () => {
+      console.log('WebSocket connection closed');
+    });
+
+    setWs(ws);
 
     return () => {
-      clearInterval(intervalId);
+      const disconnection = {
+        action: 'disconnect_roomID',
+        roomID: props.data,
+        user: props.username,
+      };
+      ws.send(JSON.stringify(disconnection));
+      console.log('WebSocket connection disconnected')
+      setTimeout(() => {
+        ws.close();
+      }, 2000);
     };
-  }, [color, RGBData, XData, YData, props.data]);
+  }, []);
+
+  function sendWebSocketData(RGBData, XData, YData) {
+    if (ws && ws.readyState === WebSocket.OPEN) {
+      const data = {
+        action: 'post',
+        roomID: props.data,
+        user: props.username,
+        RGB: RGBData,
+        x: XData,
+        y: YData,
+      };
+      ws.send(JSON.stringify(data));
+      ws.addEventListener('message', (event) => {
+        if(event.data == "Server and the clients are updated") {
+          setRGBData([]);
+          setXData([]);
+          setYData([]);
+        }
+      });
+    }
+  }
 
   function startDrawing(event) {
     setIsDrawing(true);
@@ -66,6 +94,7 @@ function DrawingCanvas(props) {
 
     const canvas = canvasRef.current;
     const context = canvas.getContext('2d');
+    context.strokeStyle = color;
     context.beginPath();
     context.moveTo(lastX, lastY);
     context.lineTo(event.nativeEvent.offsetX, event.nativeEvent.offsetY);
@@ -73,10 +102,13 @@ function DrawingCanvas(props) {
     setLastX(event.nativeEvent.offsetX);
     setLastY(event.nativeEvent.offsetY);
 
-    // const imageData = context.getImageData(event.nativeEvent.offsetX, event.nativeEvent.offsetY, 1, 1);
-    // const pixel = imageData.data;
-    // const rgb = `rgb(${pixel[0]}${pixel[1]}${pixel[2]})`;
-    const rgb = 0;
+    const imageData = context.getImageData(event.nativeEvent.offsetX, event.nativeEvent.offsetY, 1, 1);
+    const pixel = imageData.data;
+    let red = pixel[0];
+    let green = pixel[1];
+    let blue = pixel[2];
+    const rgb = (red << 16) | (green << 8) | blue;;
+    // const rgb = 0;
 
     if(event.nativeEvent.offsetX > 2 && event.nativeEvent.offsetX < 648
       && event.nativeEvent.offsetY > 2 && event.nativeEvent.offsetY < 478) {
@@ -101,6 +133,8 @@ function DrawingCanvas(props) {
 
   function stopDrawing() {
     setIsDrawing(false);
+    console.log("done drawing, about to send")
+    sendWebSocketData(RGBData, XData, YData);
   }
 
   function handleColorChange(event) {
@@ -184,6 +218,11 @@ function DrawingCanvas(props) {
         onMouseUp={stopDrawing}
         onMouseLeave={stopDrawing}
       />
+      </div>
+
+      <div>
+        <label htmlFor="color-picker">Select color:</label>
+        <input type="color" id="color-picker" value={color} onChange={handleColorChange} />
       </div>
 
       <button onClick={handleGetRGBData}>Refresh Canvas</button>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './JoinRoomDraw.css';
 import { useLocation } from "react-router-dom";
 import axios from 'axios';
@@ -9,6 +9,28 @@ function JoinRoomDraw() {
   const { username, roomID } = location.state;
   const [backgroundImage, setBackgroundImage] = useState("");
 
+  const [childVariable, setChildVariable] = useState(null);
+  const [membersList, setMembersList] = useState(null);
+  const prevChildVariableRef = useRef();
+
+  function handleChildVariable(variable) {
+    console.log(variable);
+    setChildVariable(variable);
+  }
+
+  function handleMembersList(childVariable) {
+    setMembersList(childVariable);
+  }
+
+  useEffect(() => {
+    console.log("Child variable changed:", childVariable);
+    if (childVariable !== prevChildVariableRef.current && childVariable !== undefined) {
+      handleMembersList(childVariable);
+      console.log("Members list updated:", membersList);
+    }
+    prevChildVariableRef.current = childVariable;
+  }, [childVariable]);
+
   function handleImageUpload(event) {
     const file = event.target.files[0];
     const reader = new FileReader();
@@ -18,35 +40,33 @@ function JoinRoomDraw() {
     };
   }
 
-//   const [data, setData] = useState([]);
-
-//   useEffect(() => {
-//     axios.get('`https://hbzwo0rl65.execute-api.us-east-1.amazonaws.com/dev/cpen391?RoomID=${roomID}')
-//       .then(response => {
-//         setData(response.data);
-//         console.log(response.data);
-//         console.log(response.data["RoomID"]);
-//       })
-//       .catch(error => {
-//         console.error('Error fetching data:', error);
-//       });
-//   }, []);
-
   return (
     <div className='createroom-container' style={{ backgroundImage: `url(${backgroundImage})` }}>
-      <h1>
+      {/* <h1>
        Upload a background to draw on: 
       </h1>
       <div>
         <input type="file" onChange={handleImageUpload} />
-      </div>
+      </div> */}
 
       <h1>
         RoomID: 
         <p>{roomID}</p>
       </h1>
 
-      <DrawingCanvas data={roomID}/>
+      <h1>
+        Members:
+        <p>
+          {membersList && membersList.map((member, index) => (
+            <React.Fragment key={index}>
+              {member}
+              <br />
+            </React.Fragment>
+          ))}
+        </p>
+      </h1>
+
+      <DrawingCanvas data={roomID} onChildVariable={handleChildVariable} username={username}/>
     </div>
   )
 }
