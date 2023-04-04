@@ -51,7 +51,6 @@ int main(void)
         "Connection: Upgrade\r\n"
         "Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==\r\n"
         "Sec-WebSocket-Version: 13\r\n"
-        // "Sec-WebSocket-Protocol: chat, superchat\r\n"
         "\r\n");
     curl = curl_easy_init();
     if (curl)

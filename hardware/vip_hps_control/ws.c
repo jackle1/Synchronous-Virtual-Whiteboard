@@ -109,6 +109,19 @@ int main(void)
             printf("done receiving %d bytes\n", recBuf);
             fwrite(recvBuf + 2, sizeof(char), recvBuf[1], stdout);
             printf("\n");
+            printf("Start using WS functions\n");
+            struct curl_ws_frame * info = curl_ws_meta(curl);
+            char ws_buf[5];
+            curl_ws_send(curl, toSend + 2, 0x7F & toSend[1],
+                      &buf, 0x7F & toSend[1],
+                      CURLWS_TEXT);
+            memset(recvBuf, 0, sizeof(recvBuf));
+            do
+            {
+                rec_res = curl_ws_recv(curl, recvBuf, sizeof(recvBuf), &recBuf, &info);
+            } while (rec_res == CURLE_AGAIN);
+            fwrite(recvBuf, sizeof(char), recBuf, stdout);
+            printf("\n");
        }
        curl_easy_cleanup(curl);    
     }

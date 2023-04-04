@@ -10,10 +10,11 @@
 #include <sys/mman.h>
 #include <unistd.h>
 #include <string.h>
+#include <pthread.h>
+
 /**
 #include <sys/socket.h>
 #include <arpa/inet.h>
-#include <pthread.h>
 **/
 
 void initBridge();
@@ -23,12 +24,12 @@ uint8_t checkTouchUartEmpty(volatile uint8_t *uart);
 void getTouchscreenCoords(volatile uint8_t *uart, uint32_t *x, uint32_t *y);
 void translateTouchscreenVGACoords(uint32_t *x, uint32_t *new_x, uint32_t *y, uint32_t *new_y);
 void clearVGA(volatile uint32_t *vga_base, uint32_t colour);
-void drawPixel(volatile uint32_t *vga_base, uint32_t x, uint32_t y, uint32_t colour);
+bool drawPixel(volatile uint32_t *vga_base, uint32_t x, uint32_t y, uint32_t colour);
 void paintPixel(volatile uint32_t *vga_base, uint32_t x, uint32_t y, uint32_t colour);
 int paintVGAPicture(const char *file, volatile uint32_t *vga_base);
 void paintCloudPicture(const char *file, volatile uint32_t *vga_base);
-void saveCurrentPicture(const char * file, volatile uint32_t *vga_base);
-void paintSavedPicture(const char * file, volatile uint32_t *vga_base);
+void saveCurrentPicture(const char *file, volatile uint32_t *vga_base);
+void paintSavedPicture(const char *file, volatile uint32_t *vga_base);
 void getCloudPicture(const char *file);
 uint32_t convertHex(uint32_t num);
 int waitRoomID();
@@ -41,9 +42,8 @@ void getCameraPicture(const char *path);
 #define TOUCHSCREEN_PEN_DOWN (0x81)
 #define TOUCHSCREEN_X (4095)
 #define TOUCHSCREEN_Y (4095)
-#define VGA_X (640)
-#define VGA_Y (480)
 
+#define PIXEL_WIDTH (3)
 #define COLOUR_WHITE (-1)
 #define COLOUR_BLACK (0)
 #define COLOUR_BLUE (0xFF)
@@ -54,7 +54,7 @@ void getCameraPicture(const char *path);
 #define GREEN_MASK (2)
 #define RED_MASK (4)
 
-#define SW_9      (512)
+#define SW_9 (512)
 #define KEY0_MASK (1)
 #define KEY1_MASK (2)
 #define KEY2_MASK (4)
@@ -65,7 +65,7 @@ void getCameraPicture(const char *path);
 
 #define ROOM_NUMBER_REQ "room_number.bin"
 #define GET_PIXEL_ROOM_FILE "pixel_file.txt"
-#define SAVED_PICTURE_FILE  "current_pic.txt"
+#define SAVED_PICTURE_FILE "current_pic.txt"
 #define CAMERA_PICTURE_FILE "camera_pic.txt"
 
 #define COORD_BUF_SIZE (11)
@@ -74,9 +74,9 @@ void getCameraPicture(const char *path);
 
 // Camera Functions
 #define DISABLE_CAMERA() IOWR(MIPI_PWDN_N_BASE, 0x00, 0x00)
-#define ENABLE_CAMERA()  IOWR(MIPI_PWDN_N_BASE, 0x00, 0xFF)
-#define SWAP_CAMERA()    IOWR(MIPI_PWDN_N_BASE, 0x00, ~IORD(MIPI_PWDN_N_BASE, 0))
-#define NUM_FRAME_BUFFERS    3
+#define ENABLE_CAMERA() IOWR(MIPI_PWDN_N_BASE, 0x00, 0xFF)
+#define SWAP_CAMERA() IOWR(MIPI_PWDN_N_BASE, 0x00, ~IORD(MIPI_PWDN_N_BASE, 0))
+#define NUM_FRAME_BUFFERS 3
 #define GET_FRAME_START(frame) (frame * VGA_X * VGA_Y + (frame == 0 ? 4 : (frame == 1 ? 8 : 12)))
 
 void *virtual_base_sdram;
@@ -88,15 +88,27 @@ volatile uint16_t *HEX_BASE_PTR;
 
 int main()
 {
-    int roomID;
+    uint16_t roomID;
+    pthread_t ws_conn;
+    ring_buffer_t * rb = ring_buffer_init();
+    uint8_t * RECV_STOP_FLAG = (uint8_t *)malloc(sizeof(uint8_t));
+    void *ws_conn_args[4];
+
     initBridge();
     initCamera();
     DISABLE_CAMERA();
     paintVGAPicture(ROOM_NUMBER_REQ, VGA_BASE);
     printf("Waiting for Room ID...\n");
     roomID = waitRoomID();
-    getCloudPicture(GET_PIXEL_ROOM_FILE);
-    paintCloudPicture(GET_PIXEL_ROOM_FILE, VGA_BASE);
+    // getCloudPicture(GET_PIXEL_ROOM_FILE);
+    // paintCloudPicture(GET_PIXEL_ROOM_FILE, VGA_BASE);
+
+    ws_conn_args[0] = (void *)initWSConn(8862);
+    ws_conn_args[1] = (void *)VGA_BASE;
+    ws_conn_args[2] = (void *)RECV_STOP_FLAG;
+    ws_conn_args[3] = (void *)rb;
+    pthread_create(&ws_conn, NULL, readWSConn, ws_conn_args);
+
     pixel_t *head = NULL;
     pixel_t *tail = NULL;
     while (1)
@@ -114,23 +126,17 @@ int main()
                 if (vga_x < VGA_X && vga_y < VGA_Y)
                 {
                     uint32_t colour = getSWColour(SW_BASE_PTR);
-                    drawPixel(VGA_BASE, vga_x, vga_y, colour);
-                    pixel_t *new_pixel = (pixel_t *)malloc(sizeof(pixel_t));
-                    new_pixel->x = vga_x;
-                    new_pixel->y = vga_y;
-                    new_pixel->colour = colour;
-                    new_pixel->next = NULL;
-                    if (head == NULL)
-                    {
-                        head = new_pixel;
-                        tail = new_pixel;
-                    }
-                    else
-                    {
-                        tail->next = new_pixel;
-                        tail = new_pixel;
-                    }
-                    // putRoomPixels(roomID, vga_x, vga_y, colour);
+                    int end = PIXEL_WIDTH / 2;
+                    int start = 0 - end;
+                    for (int i = start; i < end; i++)
+                        for (int j = start; j < end; j++)
+                        {
+                            if (drawPixel(VGA_BASE, vga_x + i, vga_y + j, colour))
+                            {
+                                pixel_t *new_pixel = (pixel_t *)malloc(sizeof(pixel_t));
+                                while (!ring_buffer_add(rb, vga_x, vga_y, colour));
+                            }
+                        }
                 }
             }
         }
@@ -139,8 +145,8 @@ int main()
         {
             saveCurrentPicture(SAVED_PICTURE_FILE, VGA_BASE);
             ENABLE_CAMERA();
-            char * toDisplay = SAVED_PICTURE_FILE;
-            while(GET_SW_VAL() & SW_9)
+            char *toDisplay = SAVED_PICTURE_FILE;
+            while (GET_SW_VAL() & SW_9)
             {
                 if (getKeyAH(KEY_BASE_PTR) & KEY3_MASK)
                 {
@@ -150,7 +156,8 @@ int main()
                 }
                 else if (getKeyAH(KEY_BASE_PTR) & KEY2_MASK)
                 {
-                    while (WAIT_KEY_UP(KEY2_MASK));
+                    while (WAIT_KEY_UP(KEY2_MASK))
+                        ;
                     printf("Swap Camera On/Off\n");
                     SWAP_CAMERA();
                 }
@@ -162,7 +169,8 @@ int main()
         // If Reset is pressed
         else if (getKeyAH(KEY_BASE_PTR) & KEY3_MASK)
         {
-            while(WAIT_KEY_UP(KEY3_MASK));
+            while (WAIT_KEY_UP(KEY3_MASK))
+                ;
             getCloudPicture(GET_PIXEL_ROOM_FILE);
             // printf("Got reset signal!!!\n");
             // while (getKeyAH(KEY_BASE_PTR) & KEY3_MASK); // Wait for key-up
@@ -172,12 +180,8 @@ int main()
         }
         else if (getKeyAH(KEY_BASE_PTR) & KEY2_MASK) // Send pixels
         {
-            while (WAIT_KEY_UP(KEY2_MASK));
-            printf("Sending bulk pixels\n");
-            sendBulkPixel(head, 5232);
-            printf("Done sending!!!\n");
-            head = NULL;
-            tail = NULL;
+            while (WAIT_KEY_UP(KEY2_MASK))
+                ;
         }
     }
 
@@ -243,7 +247,7 @@ void translateTouchscreenVGACoords(uint32_t *x, uint32_t *new_x, uint32_t *y, ui
         *new_y = *new_y - 1;
 }
 
-void drawPixel(volatile uint32_t *vga_base, uint32_t x, uint32_t y, uint32_t colour)
+bool drawPixel(volatile uint32_t *vga_base, uint32_t x, uint32_t y, uint32_t colour)
 {
     int block = 3;
     int end = block / 2;
@@ -251,18 +255,16 @@ void drawPixel(volatile uint32_t *vga_base, uint32_t x, uint32_t y, uint32_t col
 
     for (int frame = 0; frame < NUM_FRAME_BUFFERS; frame++)
     {
-        for (int i = start; i < end; i++)
+        int offset = frame * VGA_X * VGA_Y;
+        if (x >= 0 && x < VGA_X &&
+            y >= 0 && y < VGA_Y)
         {
-            for (int j = start; j < end; j++)
-            {
-                int offset = frame * VGA_X * VGA_Y;
-                if ((int)x + i >= 0 && x + i < VGA_X &&
-                    (int)y + j >= 0 && y + j < VGA_Y)
-                    ((uint32_t *)vga_base)[(x + i) + VGA_X * (y - j) + offset] = colour;
-            }
+            ((uint32_t *)vga_base)[x + VGA_X * y + offset] = colour;
         }
+        else
+            return FALSE;
     }
-    
+    return TRUE;
 }
 
 void clearVGA(volatile uint32_t *vga_base, uint32_t colour)
@@ -378,7 +380,7 @@ void paintCloudPicture(const char *file, volatile uint32_t *vga_base)
     uint32_t colour;
     char read;
     FILE *file_fd = NULL;
-    FILE * debug = NULL;
+    FILE *debug = NULL;
     debug = fopen("debug.txt", "w");
     fprintf(debug, "[[");
 
@@ -414,7 +416,7 @@ void paintCloudPicture(const char *file, volatile uint32_t *vga_base)
                     vga_base[start + x + VGA_X * y] = colour;
                 }
             }
-                
+
             fseek(file_fd, pic_start, SEEK_SET);
         }
     }
@@ -432,7 +434,8 @@ void getCloudPicture(const char *file)
     get_pixel_res->file = pixel_file;
     getRoomPixels(get_pixel_res, 5232); // GET_SW_VAL());
     printf("CLOUD WAIT\n");
-    while (get_pixel_res->done == CLOUD_WAIT);
+    while (get_pixel_res->done == CLOUD_WAIT)
+        ;
     printf("DONE CLOUD WAIT\n");
     if (get_pixel_res->done == CLOUD_DONE)
     {
@@ -446,37 +449,37 @@ void getCloudPicture(const char *file)
 void initCamera(void)
 {
     IOWR(MIPI_PWDN_N_BASE, 0x00, 0x00);
-	IOWR(MIPI_RESET_N_BASE, 0x00, 0x00);
-	
-	sleep_us(2000);
-	IOWR(MIPI_PWDN_N_BASE, 0x00, 0xFF);
-	sleep_us(2000);
-	IOWR(MIPI_RESET_N_BASE, 0x00, 0xFF);
+    IOWR(MIPI_RESET_N_BASE, 0x00, 0x00);
 
-	sleep_us(2000);
+    sleep_us(2000);
+    IOWR(MIPI_PWDN_N_BASE, 0x00, 0xFF);
+    sleep_us(2000);
+    IOWR(MIPI_RESET_N_BASE, 0x00, 0xFF);
 
-	// MIPI Init
-	if (!MIPI_Init())
-	{
-		printf("MIPI_Init Init failed!\r\n");
-	}
-	else
-	{
-		printf("MIPI_Init Init successfully!\r\n");
-	}
+    sleep_us(2000);
 
-	mipi_clear_error();
-	sleep_us(50 * 1000);
-	mipi_clear_error();
-	sleep_us(1000 * 1000);
-	mipi_show_error_info();
-	//	    mipi_show_error_info_more();
-	printf("\n");
+    // MIPI Init
+    if (!MIPI_Init())
+    {
+        printf("MIPI_Init Init failed!\r\n");
+    }
+    else
+    {
+        printf("MIPI_Init Init successfully!\r\n");
+    }
+
+    mipi_clear_error();
+    sleep_us(50 * 1000);
+    mipi_clear_error();
+    sleep_us(1000 * 1000);
+    mipi_show_error_info();
+    //	    mipi_show_error_info_more();
+    printf("\n");
 }
 
-void saveCurrentPicture(const char * file, volatile uint32_t *vga_base)
+void saveCurrentPicture(const char *file, volatile uint32_t *vga_base)
 {
-    FILE * fd = fopen(file, "w");
+    FILE *fd = fopen(file, "w");
     if (fd == NULL)
     {
         printf("ERROR: Could not save current picture!!!\n");
@@ -489,9 +492,9 @@ void saveCurrentPicture(const char * file, volatile uint32_t *vga_base)
     printf("Saved Current Picture!\n");
 }
 
-void paintSavedPicture(const char * file, volatile uint32_t *vga_base)
+void paintSavedPicture(const char *file, volatile uint32_t *vga_base)
 {
-    FILE * fd = fopen(file, "r");
+    FILE *fd = fopen(file, "r");
     if (fd == NULL)
     {
         printf("ERROR: Could not save current picture!!!\n");
@@ -508,7 +511,7 @@ void paintSavedPicture(const char * file, volatile uint32_t *vga_base)
         }
         fseek(fd, 0, SEEK_SET);
     }
-    
+
     fclose(fd);
     printf("Repainted Current Picture\n");
 }

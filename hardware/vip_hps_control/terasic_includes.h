@@ -54,6 +54,8 @@ typedef int bool;
 #define LW_BRIDGE_SPAN (0x00200000) // 2MB
 #define HPS_SDRAM_BASE     (0xC0000000)
 #define HPS_SDRAM_SPAN     (0x03FFFFFF)
+#define VGA_X (640)
+#define VGA_Y (480)
 
 void * lw_bridge_ptr;
 void IOWR(uint32_t base_addr, uint32_t offset, uint32_t data);
