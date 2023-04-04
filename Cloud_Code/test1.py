@@ -20,7 +20,20 @@ print(url)
 
 # Send the HTTP POST request with the JSON data and headers
 response = requests.get(url)
+RGB = response["RGB"]
+x = response["x"]
+y = response["y"]
 
+width = 640
+height = 480
+
+for i in range(width):
+    for j in range()
+
+
+R = RGB[i][j] >> 16
+G = (RGB[i][j] >> 8) & 255
+B = RGB[i][j] & 255
 
 
 # check if the request was successful (HTTP status code 200)

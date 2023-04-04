@@ -4,14 +4,14 @@ m = 640
 n = 480
 
 # Define the file path and name for the CSV file
-file_path = 'sample_file.csv'
+file_path = 'roomID_8862.csv'
 
 my_array = []
 
-for i in range(m):
+for i in range(n):
     tmp = []
-    for j in range(n):
-        tmp.append(101010)
+    for j in range(m):
+        tmp.append(16777215)
     my_array.append(tmp)
     
 

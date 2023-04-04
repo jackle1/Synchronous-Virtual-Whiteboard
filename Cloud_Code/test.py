@@ -13,14 +13,23 @@ url = "https://hbzwo0rl65.execute-api.us-east-1.amazonaws.com/dev/cpen391"
 #     "roomID": 0
 
 # }
+RGB = []
+x = []
+y = []
+for i in range(480):
+    for j in range(640):
+        RGB.append(16777215)
+        x.append(j)
+        y.append(i)
+
 
 data = {
                   "member": "Ranbir",
                   "roomID": 8862,
-                  'RGB': 12,
+                  'RGB': RGB,
                   "request-for": 1,
-                  "x": 1,
-                  "y": 1
+                  "x": x,
+                  "y": y
                 }
 
 # Convert the data to a JSON string
