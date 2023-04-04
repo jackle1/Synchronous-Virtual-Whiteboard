@@ -65,8 +65,8 @@ module cpu_pixel_buffer (
  *****************************************************************************/
 
 // Parameters
-parameter DEFAULT_BUFFER_ADDRESS		= 32'd134217728;
-parameter DEFAULT_BACK_BUF_ADDRESS	= 32'd134217728;
+parameter DEFAULT_BUFFER_ADDRESS		= 32'd0;
+parameter DEFAULT_BACK_BUF_ADDRESS	= 32'd0;
 
 parameter AW						= 18; // Image size's address width
 

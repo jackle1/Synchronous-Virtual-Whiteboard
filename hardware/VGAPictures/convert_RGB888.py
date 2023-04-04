@@ -20,14 +20,16 @@ if __name__ == "__main__":
                 red = data[i + 2]
                 green = data[i + 1]
                 blue = data[i]
-                pixel = ((red & 248) << 8) | ((green & 252) << 3) | (blue >> 3)
+                # pixel = ((red & 248) << 8) | ((green & 252) << 3) | (blue >> 3)
+                pixel = (red << 16) | (green << 8) | (blue)
                 offset = int(i / 3)
                 x = offset % VGA_X
                 y = int(offset / VGA_X)
                 new_x = x 
                 new_y = VGA_Y - y - 1
                 idx = new_x + VGA_X * new_y
-                pic[idx] = pixel.to_bytes(length=2, byteorder='little')
+                # pic[idx] = pixel.to_bytes(length=2, byteorder='little')
+                pic[idx] = pixel.to_bytes(length=4, byteorder='little')
             for i, pixel in enumerate(pic):
                 try:
                     saved.write(pixel)

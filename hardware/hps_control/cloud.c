@@ -10,6 +10,7 @@ enum res_state_e {CLOUD_WAIT, CLOUD_DONE, CLOUD_ERROR};
 #define COLOUR_PIXEL_URL "https://hbzwo0rl65.execute-api.us-east-1.amazonaws.com/dev/cpen391"
 #define COLOUR_PIXEL_BODY_LEN 130 
 #define BULK_PIXEL_FILE "bulk_send.json"
+#define WS_URL "https://7nbl97eho0.execute-api.us-east-1.amazonaws.com/production"
 
 typedef struct 
 {
@@ -19,16 +20,23 @@ typedef struct
 
 typedef struct Pixel
 {
-    unsigned short x;
-    unsigned short y;
-    unsigned short colour;
+    uint16_t x;
+    uint16_t y;
+    uint32_t colour;
     struct Pixel * next;
 } pixel_t;
 
-void getRoomPixels(volatile http_res_t * res, unsigned short roomID);
+typedef struct WS_Conn
+{
+    CURL * curl;
+    curl_socket_t sockfd;
+} ws_conn_t;
+
+void getRoomPixels(volatile http_res_t * res, uint16_t roomID);
 static size_t getRoomPixelsCallBack(char *ptr, size_t size, size_t nmemb, void *userdata);
-void putRoomPixels(unsigned short roomID, unsigned short x, unsigned short y, unsigned short colour);
-void sendBulkPixel(pixel_t * head, unsigned short roomID);
+void putRoomPixels(uint16_t roomID, uint16_t x, uint16_t y, uint32_t colour);
+void sendBulkPixel(pixel_t * head, uint16_t roomID);
+ws_conn_t initWSConn(uint16_t roomID);
 
 static size_t resToBuf(char *ptr, size_t size, size_t nmemb, void *userdata)
 {
@@ -47,7 +55,7 @@ static size_t getRoomPixelsCallBack(char *ptr, size_t size, size_t nmemb, void *
     return size * nmemb;
 }
 
-void getRoomPixels(volatile http_res_t * res, unsigned short roomID)
+void getRoomPixels(volatile http_res_t * res, uint16_t roomID)
 {
     CURL *curl; 
     CURLcode http_res; 
@@ -73,7 +81,7 @@ void getRoomPixels(volatile http_res_t * res, unsigned short roomID)
         fprintf(stderr, "CURL FAILED!!!\n");
 }
 
-void putRoomPixels(unsigned short roomID, unsigned short x, unsigned short y, unsigned short colour)
+void putRoomPixels(uint16_t roomID, uint16_t x, uint16_t y, uint32_t colour)
 {
     CURL *curl;
     CURLcode res;
@@ -143,7 +151,7 @@ void sendCameraPic(const char * path)
     }
 }
 
-void sendBulkPixel(pixel_t * head, unsigned short roomID)
+void sendBulkPixel(pixel_t * head, uint16_t roomID)
 {
     /** Format example
         {
@@ -211,6 +219,42 @@ void sendBulkPixel(pixel_t * head, unsigned short roomID)
         fclose(fp);
         sendCameraPic(BULK_PIXEL_FILE);
     }
+}
+
+ws_conn_t initWSConn(uint16_t roomID)
+{
+    char request[1024];
+    int frame_size;
+    ws_conn_t * conn = NULL;
+    size_t recBuf;
+
+    conn = (ws_conn_t *) malloc(sizeof(ws_conn_t));
+    conn->curl = curl_easy_init();
+    memset(request, 0, sizeof(request));
+    frame_size = sprintf(request, "GET /production HTTP/1.1\r\n"
+        "Host: 7nbl97eho0.execute-api.us-east-1.amazonaws.com/production \r\n"
+        "Upgrade: websocket\r\n"
+        "Connection: Upgrade\r\n"
+        "Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==\r\n"
+        "Sec-WebSocket-Version: 13\r\n"
+        "\r\n");
+    if (conn->curl)
+    {
+        curl_easy_setopt(curl, CURLOPT_URL, WS_URL);
+        curl_easy_setopt(curl, CURLOPT_CONNECT_ONLY, 1L);
+        curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L); 
+        // curl_easy_setopt(curl, CURLOPT_VERBOSE, 1L);
+        curl_easy_setopt(curl, CURLOPT_HEADER, 0L);  // Don't include response headers in output
+        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, NULL);  // Disable response body handling
+        res = curl_easy_perform(curl);
+        res = curl_easy_send(curl, request, frame_size, &recBuf);
+    } else
+    {
+        printf("Curl Init Failed For Socket???\n");
+        curl_easy_cleanup(conn->curl);
+        free(conn);
+    }
+    
 }
 
 /**
