@@ -1,13 +1,20 @@
 import websocket
 import json
+RGB = []
+x = []
+y = []
+for i in range(250, 300):
+    RGB.append(1111)
+    x.append(i)
+    y.append(i)
 
 def on_message(ws, message):
-    print("Received message: {}".format(message))
-    print("Hellpo")
+    print(f"Received message: {message}")
+    # print("Hellpo")
 
-    res = input("Enter again?")
-
-    obj = {"action": "post", "roomID": 8862, "user": "Demo", "RGB": [1,12], "x": [0, 12], "y": [0, 12]}
+    # res = input("Enter again?")
+    name = input("WHATYTTTTT")
+    obj = {"action": "post", "roomID": 8862, "user": "De1Soccccc", "RGB": RGB, "x": x, "y": y}
     ws.send(json.dumps(obj))
     
 
@@ -21,7 +28,7 @@ def on_close(ws):
 
 def on_open(ws):
     # Send a message over the WebSocket
-    obj = {"action": "connect_to_roomID", "roomID": 8862, "user": "Demo"}
+    obj = {"action": "connect_to_roomID", "roomID": 8862, "user": "De1Soccccc"}
     ws.send(json.dumps(obj))
 
 

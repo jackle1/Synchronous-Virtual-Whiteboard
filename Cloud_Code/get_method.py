@@ -11,8 +11,8 @@ def lambda_handler(event, context):
     # if checking(event) == -1:
     #     return wrong_arguments("The Parameters given to the rquest are wrong. Please follow the type or the numebr of parameters required!")
 
-    # param = event['params']
-    # event = param['querystring']
+    param = event['params']
+    event = param['querystring']
 
 
     member = event.get('member', "De1-Soc")
@@ -31,17 +31,6 @@ def lambda_handler(event, context):
         if data["room_password"] == room_password:
             # Found the table data we wanted 
             members = data["members"]
-            if member not in members:
-                members.add(member)
-                # Updating the server as well 
-                table.update_item(Key={"room_id": data["room_id"]},
-                          UpdateExpression = "set members = :newmembers",
-                          ExpressionAttributeValues = {":newmembers": members},
-                        ReturnValues="UPDATED_NEW"
-                )
-            
-
-
             response = {}
             response["statusCode"] = 200
             response["RGB"] = get_values()

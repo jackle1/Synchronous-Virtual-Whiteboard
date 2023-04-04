@@ -8,7 +8,23 @@ import csv
 
 client = boto3.client('apigatewaymanagementapi', endpoint_url="https://7nbl97eho0.execute-api.us-east-1.amazonaws.com/production")
 
+# Defining the storage
+bucket_name = 'cpen391'
+file_key = '/tmp/roomID_8862.csv'
+s3 = boto3.client('s3')
 
+# Retrieve the CSV file from S3
+s3_object = s3.get_object(Bucket=bucket_name, Key=file_key)
+csv_content = s3_object['Body'].read().decode('utf-8')
+
+# Process the CSV data
+Current_RoomID = 8862
+csv_reader = csv.reader(StringIO(csv_content))
+rows = []
+for row in csv_reader:
+    # Convert the row to integers and append it to the list
+    int_row = [int(x) for x in row]
+    rows.append(int_row)
 
 # Preparing the dynamoDB
 dynamodb = boto3.resource("dynamodb", region_name='us-east-1')
@@ -166,6 +182,8 @@ def lambda_handler(event, context):
     # client.post_to_connection(ConnectionId=connectionId, Data=json.dumps(event).encode('utf-8'))
 
 
+
+
 def find_table(roomID):
       # Finding the room with the password as given in the request header
     tables = table.scan()
@@ -286,39 +304,22 @@ def padding(value: str, pad: int):
     return padd_done + value
 
 def data_structuring(RGB, x, y):
-    data = []      
-    for i in range(len(RGB)):
-        value_RGB = padding(str(RGB[i]), 10)
-        value_x = padding(str(x[i]), 3)
-        value_y = padding(str(y[i]), 3)
-                        
+    data = []     
+    if type(RGB) == list: 
+        for i in range(len(RGB)):
+            value_RGB = padding(str(RGB[i]), 10)
+            value_x = padding(str(x[i]), 3)
+            value_y = padding(str(y[i]), 3)
+                            
+            result = value_RGB + ',' + value_x + ',' + value_y
+            data.append(result)
+    else:
+        value_RGB = padding(str(RGB), 10)
+        value_x = padding(str(x), 3)
+        value_y = padding(str(y), 3)
+                            
         result = value_RGB + ',' + value_x + ',' + value_y
         data.append(result)
     
     return data
-
-def finding_data(roomID):
-    # Defining the storage
-    bucket_name = 'cpen391'
-    file_key = f'/tmp/roomID_{roomID}.csv'
-    s3 = boto3.client('s3')
-
-    # Retrieve the CSV file from S3
-    try:
-        s3_object = s3.get_object(Bucket=bucket_name, Key=file_key)
-    except:
-        return -1
-
-    csv_content = s3_object['Body'].read().decode('utf-8')
-
-    # Process the CSV data
-    csv_reader = csv.reader(StringIO(csv_content))
-    rows = []
-    for row in csv_reader:
-        # Convert the row to integers and append it to the list
-        int_row = [int(x) for x in row]
-        rows.append(int_row)
-    pass
-
-
 
