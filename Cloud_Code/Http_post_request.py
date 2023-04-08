@@ -5,8 +5,10 @@ import json
 import random
 import csv
 
+rows = []
+
 bucket_name = 'cpen391'
-file_key = '/tmp/roomID_8862.csv'
+file_key = '/tmp/room_index_1.csv'
 s3 = boto3.client('s3')
 
 # Retrieve the CSV file from S3
@@ -15,16 +17,24 @@ csv_content = s3_object['Body'].read().decode('utf-8')
 
 # Process the CSV data
 csv_reader = csv.reader(StringIO(csv_content))
-rows = []
+
 for row in csv_reader:
     # Convert the row to integers and append it to the list
     int_row = [int(x) for x in row]
     rows.append(int_row)
 
+global_room_index = 1
 
-# This is the dimension of the array m x n pixels
-m = 10
-n = 10
+m = 480
+n = 640
+# Define the data you want to write to the CSV file
+data = []
+for i in range(m):
+    tmp = []
+    for j in range(n):
+        tmp.append(16777215)
+    data.append(tmp)
+
 
 def lambda_handler(event: any, context: any):
 
@@ -101,6 +111,8 @@ def update_pixels(table, data, member, RGB, x, y):
     # First getting the pixel
     # RGB_table = data["RGB"]
 
+    getting_things(data['room_id'])
+
     if type(RGB) == list:
         for i in range(len(RGB)):
             rows[x[i]][y[i]] = RGB[i]
@@ -144,15 +156,6 @@ def create_new_room(table, member):
     password = random.randrange(1000, 10000)
     members = {member}
 
-    # # Making a new Array of size m and n
-    # RBG = []
-    # tmp = []
-    # for i in range(n):
-    #     tmp.append(101010)
-    # for i in range(m):
-    #     RBG.append(tmp)
-    
-
     # Creating and putting this new room
     table.put_item(
             Item={
@@ -161,6 +164,9 @@ def create_new_room(table, member):
                 'room_password': password
             }
     )
+
+    # Putting the csv file in
+    new_file(room_id)
 
     response = {}
     response['StatusCode'] = 200
@@ -214,18 +220,56 @@ def putting_it_back():
     # s3_object = s3.Object(bucket_name, file_key)
     s3_object.put(Body=csv_string)
 
+def new_file(roomID):
+    global data
+    # Define the S3 bucket name and CSV file name
+    bucket_name = 'cpen391'
+    file_name = f'/tmp/room_index_{roomID}.csv' 
 
+    # Write the data to the CSV file
+    with open(file_name, 'w', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerows(data)
 
-if __name__ == "__main__":
-    os.environ["TABLE_NAME"] = "Cpen391"
-    test_event = {
-                  "member": "Ranbir",
-                  "roomID": 8862,
-                  'RGB': 121212,
-                  "request-for": 1,
-                  "x": 1,
-                  "y": 1
-                }
-    result = lambda_handler(test_event, None)
-    print(result)
+    # Upload the CSV file to S3
+    s3 = boto3.resource('s3')
+    bucket = s3.Bucket(bucket_name)
+    bucket.upload_file(file_name, file_name)
+
+def getting_things(roomID):
+    global global_room_index
+    if global_room_index == roomID:
+        return
+    
+    global rows
+    bucket_name = 'cpen391'
+    file_key = f'/tmp/room_index_{roomID}.csv'
+    s3 = boto3.client('s3')
+
+    # Retrieve the CSV file from S3
+    s3_object = s3.get_object(Bucket=bucket_name, Key=file_key)
+    csv_content = s3_object['Body'].read().decode('utf-8')
+
+    # Process the CSV data
+    csv_reader = csv.reader(StringIO(csv_content))
+    rows = []
+    global_room_index = roomID
+    for row in csv_reader:
+        # Convert the row to integers and append it to the list
+        int_row = [int(x) for x in row]
+        rows.append(int_row)
+        
+
+# if __name__ == "__main__":
+#     os.environ["TABLE_NAME"] = "Cpen391"
+#     test_event = {
+#                   "member": "Ranbir",
+#                   "roomID": 8862,
+#                   'RGB': 121212,
+#                   "request-for": 1,
+#                   "x": 1,
+#                   "y": 1
+#                 }
+#     result = lambda_handler(test_event, None)
+#     print(result)
     

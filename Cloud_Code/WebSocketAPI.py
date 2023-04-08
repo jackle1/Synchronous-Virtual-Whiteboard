@@ -10,7 +10,7 @@ client = boto3.client('apigatewaymanagementapi', endpoint_url="https://7nbl97eho
 
 # Defining the storage
 bucket_name = 'cpen391'
-file_key = '/tmp/roomID_8862.csv'
+file_key = '/tmp/room_index_1.csv'
 s3 = boto3.client('s3')
 
 # Retrieve the CSV file from S3
@@ -18,7 +18,7 @@ s3_object = s3.get_object(Bucket=bucket_name, Key=file_key)
 csv_content = s3_object['Body'].read().decode('utf-8')
 
 # Process the CSV data
-Current_RoomID = 8862
+global_room_index = 1
 csv_reader = csv.reader(StringIO(csv_content))
 rows = []
 for row in csv_reader:

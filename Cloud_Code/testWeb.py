@@ -28,7 +28,7 @@ def on_close(ws):
 
 def on_open(ws):
     # Send a message over the WebSocket
-    obj = {"action": "connect_to_roomID", "roomID": 8862, "user": "De1Soccccc"}
+    obj = {"action": "connect_to_roomID", "roomID": 8862, "user": "Demo"}
     ws.send(json.dumps(obj))
 
 
