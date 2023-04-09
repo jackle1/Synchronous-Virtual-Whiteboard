@@ -9,10 +9,12 @@
 #include <stdio.h>
 #include <curl/curl.h>
 #include <string.h>
+#include <time.h>
 #include "terasic_includes.h"
-#include "ring_buffer.c"
+#include "pixel_buffer.c"
+#include "main.h"
 
-#define WS_DEBUG 1
+#define WS_DEBUG 0
 
 enum res_state_e
 {
@@ -32,9 +34,9 @@ enum res_state_e
 #define WS_SIZE_MASK (0x7F)
 #define WS_REC_HEADER_SIZE (2)
 #define WS_ROOM_CONNECT_SIZE (45)
-char WS_HEADER[] = {0x81, 0x85, 0x00, 0x00, 0x00, 0x00}; // 2nd Byte is (0x80 | Size) for mask and size
-#define WS_PIXEL_SEND_F "{\"action\": \"post\", \"roomID\": %d, \"user\": \"User\", \"RGB\": RGB, %hu: x, \"y\": %hu}"
-#define WS_PIXEL_RECV_SIZE (WS_REC_HEADER_SIZE + 10 + 3 + 3 + 2) // 10-Digit RGB + 3 Digit X + 3 Digit Y + 2 Commas + 2 Spaces
+static uint8_t WS_HEADER[] = {0x81, 0x80, 0x00, 0x00, 0x00, 0x00}; // 2nd Byte is (0x80 | Size) for mask and size
+#define WS_PIXEL_SEND_F "{\"action\": \"post\", \"roomID\": %d, \"user\": \"De1\", \"RGB\": [%u], \"x\": [%hu], \"y\": [%hu]}"
+#define WS_PIXEL_RECV_SIZE (WS_REC_HEADER_SIZE + 10 + 3 + 3 + 2 + 2) // 10-Digit RGB + 3 Digit X + 3 Digit Y + 2 Commas + 2 Spaces
 
 typedef struct
 {
@@ -49,6 +51,10 @@ void sendBulkPixel(pixel_t *head, uint16_t roomID);
 CURL *initWSConn(uint16_t roomID);
 void *readWSConn(void * args_pointer);
 void sendWSPixel(uint16_t x, uint16_t y, uint32_t colour, CURL * curl);
+static int wait_on_socket(curl_socket_t sockfd, int for_recv, long timeout_ms);
+void changeWSMask();
+void maskWSMsg(char * buf, size_t buflen);
+
 
 static size_t resToBuf(char *ptr, size_t size, size_t nmemb, void *userdata)
 {
@@ -168,6 +174,26 @@ void sendCameraPic(const char *path)
     }
 }
 
+void changeWSMask()
+{
+    uint32_t * mask_ptr = (uint32_t *) (WS_HEADER + 2);
+    *mask_ptr = (rand() << 15) | rand();
+#if WS_DEBUG == 1
+    printf("New mask: %x\n", *mask_ptr);
+#endif
+}
+
+void maskWSMsg(char * buf, size_t buflen)
+{
+    int WS_MSK_END = 5;
+    int ws_idx = 3;
+    for (size_t i = 0; i < buflen; i++)
+    {
+        buf[i] = buf[i] ^ WS_HEADER[ws_idx];
+        ws_idx = (ws_idx == WS_MSK_END) ? 3 : ws_idx + 1;
+    }
+}
+
 CURL *initWSConn(uint16_t roomID)
 {
     char request[1024] = {0};
@@ -176,7 +202,7 @@ CURL *initWSConn(uint16_t roomID)
     size_t recBuf;
     CURLcode res = CURLE_AGAIN;
     printf("Init Web Socket Connection\n");
-
+    srand(time(NULL));
     curl = curl_easy_init();
     frame_size = sprintf(request, "GET /production HTTP/1.1\r\n"
                                   "Host: 7nbl97eho0.execute-api.us-east-1.amazonaws.com \r\n"
@@ -215,7 +241,7 @@ CURL *initWSConn(uint16_t roomID)
         do {res = curl_easy_recv(curl, request, WS_ROOM_CONNECT_SIZE + WS_REC_HEADER_SIZE, &recBuf);} while (res != CURLE_OK);
 #if WS_DEBUG == 1
         printf("Room Connect Command got %zu\n", recBuf);
-        fwrite(request + WS_REC_HEADER_SIZE, sizeof(char), recBuf - WS_REC_HEADER_SIZE, stdout);
+        fwrite(request, sizeof(char), recBuf, stdout);
         fflush(stdout);
         printf("\n");
 #endif
@@ -235,10 +261,13 @@ void *readWSConn(void * args_pointer)
     CURL * curl = (CURL *) args[0];
     volatile uint32_t * vga_base = (volatile uint32_t *) args[1];
     volatile uint8_t * stop = (volatile uint8_t *) args[2];
-    ring_buffer_t * rb = (ring_buffer_t *) args[3];
+    pixel_buffer_t * rb = (pixel_buffer_t *) args[3];
+    uint16_t * roomID = (uint16_t *) args[4];
     
-    CURLcode rec = CURLE_AGAIN;
+    CURLcode rec;
     size_t rec_size, send_size;
+    curl_socket_t sockfd;
+    rec = curl_easy_getinfo(curl, CURLINFO_ACTIVESOCKET, &sockfd);
 
     if (curl == NULL)
     {
@@ -254,26 +283,53 @@ void *readWSConn(void * args_pointer)
             {
                 uint16_t x, y;
                 uint32_t colour;
-                fwrite(recv, sizeof(char), rec_size, stdout);
-                printf("\n");
-                if (3 == sscanf(recv + WS_REC_HEADER_SIZE, "%u,%hu,%hu", &colour, &x, &y))
-                    vga_base[x + VGA_X * y] = colour;
+                if (rec_size > 0)
+                {
+                    fwrite(recv, sizeof(char), rec_size, stdout);
+                    printf("\n");
+                }
+                if (3 == sscanf(recv + WS_REC_HEADER_SIZE + 1, "%u,%hu,%hu", &colour, &x, &y))
+                {
+                    printf("(%hu, %hu) = %u\n", x, y, colour);
+                    drawPixel(VGA_BASE, x, y, colour);
+                }
+                    
             }
-            // } else if (ring_buffer_size(rb) > 0)
-            // {
-            //     pixel_t pixel;
-            //     ring_buffer_remove(rb, &pixel);
-            //     int coord_colour_size = 3 + 3 + 10;
-            //     char send_buf[sizeof(WS_HEADER) + sizeof(WS_PIXEL_SEND_F) + coord_colour_size + 1];
-            //     for (int i = 0; i < sizeof(WS_HEADER); i++)
-            //         send_buf[i] = WS_HEADER[i];
-            //     size_t buf_len = sprintf(send_buf + sizeof(WS_HEADER), WS_PIXEL_SEND_F, pixel.x, pixel.y, pixel.colour);
-            //     rec = curl_easy_send(curl, send_buf, sizeof(WS_HEADER) + buf_len, &send_size);
-            //     if (rec != CURLE_OK)
-            //     {
-            //         printf("ERROR: Something went wrong with sending the pixel");
-            //     }
-            // }
+            if (pixel_buffer_size(rb) > 0)
+            {
+                pixel_t pixel;
+                pixel_buffer_remove(rb, &pixel);
+                int coord_colour_size = 3 + 3 + 10;
+                char send_buf[sizeof(WS_HEADER) + sizeof(WS_PIXEL_SEND_F) + coord_colour_size + 1];
+                for (int i = 0; i < sizeof(WS_HEADER); i++)
+                    send_buf[i] = WS_HEADER[i];
+                size_t buf_len = sprintf(send_buf + sizeof(WS_HEADER), WS_PIXEL_SEND_F, *roomID, pixel.colour, pixel.x, pixel.y);
+                send_buf[1] |= buf_len;
+                fwrite(send_buf + sizeof(WS_HEADER), sizeof(char), buf_len, stdout);
+                printf("\n");
+                // maskWSMsg(send_buf + sizeof(WS_HEADER), buf_len);
+                int sent_total = 0;
+                do
+                {
+                    int sent = 0;
+                    rec = curl_easy_send(curl, send_buf + sent_total, sizeof(WS_HEADER) + buf_len - sent_total, &send_size);
+                    sent_total += send_size;
+                    if (rec == CURLE_AGAIN && !wait_on_socket(sockfd, 0, 60000L))
+                    {
+                        printf("ERROR: Timeout!!!\n");
+                        break;
+                    }
+                    if (rec != CURLE_OK && rec != CURLE_AGAIN)
+                    {
+                        printf("ERROR: Something went wrong with sending the pixel -  %s\n", curl_easy_strerror(rec));
+                        curl_easy_cleanup(curl);
+                        curl = initWSConn(*roomID);
+                        rec = curl_easy_getinfo(curl, CURLINFO_ACTIVESOCKET, &sockfd);
+                    }
+                } while (rec == CURLE_AGAIN);
+                //changeWSMask();
+                // rec = curl_easy_send(curl, send_buf, sizeof(WS_HEADER) + buf_len, &send_size);
+            }
         }
     }
 }
@@ -289,3 +345,31 @@ int main(void)
     // putRoomPixels(8862, 0, 0, 0);
 }
 **/
+
+/* Auxiliary function that waits on the socket. */
+static int wait_on_socket(curl_socket_t sockfd, int for_recv, long timeout_ms)
+{
+  struct timeval tv;
+  fd_set infd, outfd, errfd;
+  int res;
+ 
+  tv.tv_sec = timeout_ms / 1000;
+  tv.tv_usec = (timeout_ms % 1000) * 1000;
+ 
+  FD_ZERO(&infd);
+  FD_ZERO(&outfd);
+  FD_ZERO(&errfd);
+ 
+  FD_SET(sockfd, &errfd); /* always check for error */
+ 
+  if(for_recv) {
+    FD_SET(sockfd, &infd);
+  }
+  else {
+    FD_SET(sockfd, &outfd);
+  }
+ 
+  /* select() returns the number of signalled sockets or -1 */
+  res = select((int)sockfd + 1, &infd, &outfd, &errfd, &tv);
+  return res;
+}

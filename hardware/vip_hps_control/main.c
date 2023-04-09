@@ -1,112 +1,42 @@
 #include "cloud.c"
 #include "I2C_core.h"
+#include "main.h"
 #include "terasic_includes.h"
 #include "mipi_camera_config.h"
 #include "mipi_bridge_config.h"
 #include "auto_focus.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <fcntl.h>
-#include <sys/mman.h>
-#include <unistd.h>
-#include <string.h>
-#include <pthread.h>
+
 
 /**
 #include <sys/socket.h>
 #include <arpa/inet.h>
 **/
 
-void initBridge();
-void initCamera();
-uint8_t getUart(volatile uint8_t *uart);
-uint8_t checkTouchUartEmpty(volatile uint8_t *uart);
-void getTouchscreenCoords(volatile uint8_t *uart, uint32_t *x, uint32_t *y);
-void translateTouchscreenVGACoords(uint32_t *x, uint32_t *new_x, uint32_t *y, uint32_t *new_y);
-void clearVGA(volatile uint32_t *vga_base, uint32_t colour);
-bool drawPixel(volatile uint32_t *vga_base, uint32_t x, uint32_t y, uint32_t colour);
-void paintPixel(volatile uint32_t *vga_base, uint32_t x, uint32_t y, uint32_t colour);
-int paintVGAPicture(const char *file, volatile uint32_t *vga_base);
-void paintCloudPicture(const char *file, volatile uint32_t *vga_base);
-void saveCurrentPicture(const char *file, volatile uint32_t *vga_base);
-void paintSavedPicture(const char *file, volatile uint32_t *vga_base);
-void getCloudPicture(const char *file);
-uint32_t convertHex(uint32_t num);
-int waitRoomID();
-uint32_t getSWColour(volatile uint16_t *switches);
-uint16_t getKeyAH(volatile uint16_t *keys);
-void getCameraPicture(const char *path);
 
-#define RESET_SLEEP 2000 // Need to wait for reset on FPGA side
-
-#define TOUCHSCREEN_PEN_DOWN (0x81)
-#define TOUCHSCREEN_X (4095)
-#define TOUCHSCREEN_Y (4095)
-
-#define PIXEL_WIDTH (3)
-#define COLOUR_WHITE (-1)
-#define COLOUR_BLACK (0)
-#define COLOUR_BLUE (0xFF)
-#define COLOUR_GREEN (0xFF << 8)
-#define COLOUR_RED (0xFF << 16)
-#define WHITE_MASK (7)
-#define BLUE_MASK (1)
-#define GREEN_MASK (2)
-#define RED_MASK (4)
-
-#define SW_9 (512)
-#define KEY0_MASK (1)
-#define KEY1_MASK (2)
-#define KEY2_MASK (4)
-#define KEY3_MASK (8)
-
-#define GET_SW_VAL() (*SW_BASE_PTR & 0x3FF)
-#define WAIT_KEY_UP(KEY_MASK) ((~(*KEY_BASE_PTR) & 0xF) & KEY_MASK)
-
-#define ROOM_NUMBER_REQ "room_number.bin"
-#define GET_PIXEL_ROOM_FILE "pixel_file.txt"
-#define SAVED_PICTURE_FILE "current_pic.txt"
-#define CAMERA_PICTURE_FILE "camera_pic.txt"
-
-#define COORD_BUF_SIZE (11)
-#define SERVER_SOCKET_PORT (3001)
-#define SERVER_IPV4 "192.168.137.1"
-
-// Camera Functions
-#define DISABLE_CAMERA() IOWR(MIPI_PWDN_N_BASE, 0x00, 0x00)
-#define ENABLE_CAMERA() IOWR(MIPI_PWDN_N_BASE, 0x00, 0xFF)
-#define SWAP_CAMERA() IOWR(MIPI_PWDN_N_BASE, 0x00, ~IORD(MIPI_PWDN_N_BASE, 0))
-#define NUM_FRAME_BUFFERS 3
-#define GET_FRAME_START(frame) (frame * VGA_X * VGA_Y + (frame == 0 ? 4 : (frame == 1 ? 8 : 12)))
-
-void *virtual_base_sdram;
-volatile uint32_t *VGA_BASE;
-volatile uint8_t *TOUCHSCREEN_UART;
-volatile uint16_t *SW_BASE_PTR;
-volatile uint16_t *KEY_BASE_PTR;
-volatile uint16_t *HEX_BASE_PTR;
 
 int main()
 {
-    uint16_t roomID;
+    uint16_t * roomID = (uint16_t *) malloc(sizeof(uint16_t));
     pthread_t ws_conn;
-    ring_buffer_t * rb = ring_buffer_init();
+    pixel_buffer_t * rb = pixel_buffer_init();
     uint8_t * RECV_STOP_FLAG = (uint8_t *)malloc(sizeof(uint8_t));
-    void *ws_conn_args[4];
+    void *ws_conn_args[5];
 
     initBridge();
     initCamera();
     DISABLE_CAMERA();
     paintVGAPicture(ROOM_NUMBER_REQ, VGA_BASE);
     printf("Waiting for Room ID...\n");
-    roomID = waitRoomID();
-    // getCloudPicture(GET_PIXEL_ROOM_FILE);
+    *roomID = waitRoomID();
+    *roomID = 8862;
+    // getCloudPicture(GET_PIXEL_ROOM_FILE, *roomID);
     // paintCloudPicture(GET_PIXEL_ROOM_FILE, VGA_BASE);
 
-    ws_conn_args[0] = (void *)initWSConn(8862);
+    ws_conn_args[0] = (void *)initWSConn(*roomID);
     ws_conn_args[1] = (void *)VGA_BASE;
     ws_conn_args[2] = (void *)RECV_STOP_FLAG;
     ws_conn_args[3] = (void *)rb;
+    ws_conn_args[4] = (void *) roomID;
     pthread_create(&ws_conn, NULL, readWSConn, ws_conn_args);
 
     pixel_t *head = NULL;
@@ -134,7 +64,7 @@ int main()
                             if (drawPixel(VGA_BASE, vga_x + i, vga_y + j, colour))
                             {
                                 pixel_t *new_pixel = (pixel_t *)malloc(sizeof(pixel_t));
-                                while (!ring_buffer_add(rb, vga_x, vga_y, colour));
+                                while (!pixel_buffer_add(rb, vga_x + i, vga_y + j, colour));
                             }
                         }
                 }
@@ -171,7 +101,7 @@ int main()
         {
             while (WAIT_KEY_UP(KEY3_MASK))
                 ;
-            getCloudPicture(GET_PIXEL_ROOM_FILE);
+            getCloudPicture(GET_PIXEL_ROOM_FILE, *roomID);
             // printf("Got reset signal!!!\n");
             // while (getKeyAH(KEY_BASE_PTR) & KEY3_MASK); // Wait for key-up
             // paintVGAPicture(ROOM_NUMBER_REQ, VGA_BASE);
@@ -249,10 +179,6 @@ void translateTouchscreenVGACoords(uint32_t *x, uint32_t *new_x, uint32_t *y, ui
 
 bool drawPixel(volatile uint32_t *vga_base, uint32_t x, uint32_t y, uint32_t colour)
 {
-    int block = 3;
-    int end = block / 2;
-    int start = 0 - end;
-
     for (int frame = 0; frame < NUM_FRAME_BUFFERS; frame++)
     {
         int offset = frame * VGA_X * VGA_Y;
@@ -319,9 +245,9 @@ int waitRoomID()
         *(HEX_BASE_PTR + 1) = result >> 16;
     }
     printf("Got Switches!!! %d\n", GET_SW_VAL());
-    sleep_us(2000);
+    sleep_us(3000);
     *HEX_BASE_PTR = -1;
-    sleep_us(2000);
+    sleep_us(3000);
     *(HEX_BASE_PTR + 1) = -1;
     return GET_SW_VAL();
 }
@@ -426,13 +352,13 @@ void paintCloudPicture(const char *file, volatile uint32_t *vga_base)
     fclose(debug);
 }
 
-void getCloudPicture(const char *file)
+void getCloudPicture(const char *file, uint16_t roomID)
 {
     volatile http_res_t *get_pixel_res = (http_res_t *)malloc(sizeof(http_res_t));
     get_pixel_res->done = CLOUD_WAIT;
     FILE *pixel_file = fopen(GET_PIXEL_ROOM_FILE, "w");
     get_pixel_res->file = pixel_file;
-    getRoomPixels(get_pixel_res, 5232); // GET_SW_VAL());
+    getRoomPixels(get_pixel_res, roomID); // GET_SW_VAL());
     printf("CLOUD WAIT\n");
     while (get_pixel_res->done == CLOUD_WAIT)
         ;
