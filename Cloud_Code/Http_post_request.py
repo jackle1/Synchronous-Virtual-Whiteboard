@@ -154,7 +154,7 @@ def create_new_room(table, member):
     # Therefore, a new_room_id is room_id
     # Setting up a new passsword
     password = random.randrange(1000, 10000)
-    members = {member}
+    members = None
 
     # Creating and putting this new room
     table.put_item(
@@ -171,8 +171,6 @@ def create_new_room(table, member):
     response = {}
     response['StatusCode'] = 200
     response['RoomID'] = password
-    response['members'] = list(members)
-
     return response
 
 def checking(event):

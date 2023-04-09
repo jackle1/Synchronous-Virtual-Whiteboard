@@ -68,10 +68,13 @@ def lambda_handler(event, context):
                 message = "You are not a member in this RoomID, first connect: do action: connect_to_roomID" 
                 client.post_to_connection(ConnectionId=connectionId, Data=json.dumps(message).encode('utf-8'))
                 return {"statusCode": 200}
-
+            
+            getting_values(data['room_id'])
             try:
                 update_pixels(RGB,x,y)
                 putting_it_back()
+                send_to_de1(members, data_structuring(RGB, x, y), connectionId)
+                send_to_all(members, response, connectionId)
             except Exception as error:
                     message = f"Something is wrong: {error}"
                     client.post_to_connection(ConnectionId=connectionId, Data=json.dumps(message).encode('utf-8'))
@@ -84,8 +87,7 @@ def lambda_handler(event, context):
                 "y": y,
                 "members": list(members.keys())
             }
-            send_to_de1(members, data_structuring(RGB, x, y), connectionId)
-            send_to_all(members, response, connectionId)
+
 
             message = "Server and the clients are updated"
             client.post_to_connection(ConnectionId=connectionId, Data=json.dumps(message).encode('utf-8'))
@@ -323,3 +325,28 @@ def data_structuring(RGB, x, y):
     
     return data
 
+
+
+def getting_values(roomID):
+    global global_room_index, rows
+
+    if global_room_index == roomID:
+        return
+    
+    global_room_index = roomID
+    # Defining the storage
+    bucket_name = 'cpen391'
+    file_key = f'/tmp/room_index_{roomID}.csv'
+    s3 = boto3.client('s3')
+
+    # Retrieve the CSV file from S3
+    s3_object = s3.get_object(Bucket=bucket_name, Key=file_key)
+    csv_content = s3_object['Body'].read().decode('utf-8')
+
+    # Process the CSV data
+    csv_reader = csv.reader(StringIO(csv_content))
+    rows = []
+    for row in csv_reader:
+        # Convert the row to integers and append it to the list
+        int_row = [int(x) for x in row]
+        rows.append(int_row)
