@@ -4,10 +4,14 @@ import time
 RGB = []
 x = []
 y = []
-for i in range(250, 450):
-    RGB.append(1111)
+pixel = []
+for i in range(0, 480):
+    RGB.append(121212)
     x.append(i)
     y.append(i)
+    pixel.append(i)
+    pixel.append(i)
+    pixel.append(1111)
 
 def on_message(ws, message):
     print(f"Received message: {message}")
@@ -17,7 +21,8 @@ def on_message(ws, message):
 
     
 
-roomID = 3008 # 8197
+roomID = 5007  # 8862 # 3008 # 8197
+name =  "HIII" #"De1" 
 
 def on_error(ws, error):
     print(error)
@@ -27,7 +32,7 @@ def on_close(ws):
 
 def on_open(ws):
     # Send a message over the WebSocket
-    obj = {"action": "connect_to_roomID", "roomID": roomID, "user": "HIII"}
+    obj = {"action": "connect_to_roomID", "roomID": roomID, "user": name}
     ws.send(json.dumps(obj).encode('utf-8'))
     time.sleep(0.5)
     # for i in range(len(RGB)):
@@ -36,13 +41,20 @@ def on_open(ws):
     #     ws.send(json.dumps(obj).encode('utf-8'))
 
 
-    obj = {"action": "post", "roomID": roomID, "user": "HIII", "RGB": [], "x": [], "y": []}
+    obj = {"action": "post", "roomID": roomID, "user": name, "RGB": RGB, "x": x, "y": y}
     ws.send(json.dumps(obj).encode('utf-8'))
+
+    # obj = {"action": "post", "roomID": roomID, "user": name, "pixel": pixel}
+    # ws.send(json.dumps(obj).encode('utf-8'))
 
 
     time.sleep(4)
-    obj = obj = {"action": "disconnect_roomID", "roomID": roomID, "user": "HIII"}
+    obj = obj = {"action": "disconnect_roomID", "roomID": roomID, "user": name}
     ws.send(json.dumps(obj).encode('utf-8'))
+
+    time.sleep(1)
+    
+    
 
 
 
@@ -55,10 +67,10 @@ if __name__ == "__main__":
                               on_error = on_error,
                               on_close = on_close)
     ws.on_open = on_open
-    ws.close()
+    # ws.close()
     ws.run_forever()
     # Receive a message from the WebSocket
 
-    ws.close()
+
 
 

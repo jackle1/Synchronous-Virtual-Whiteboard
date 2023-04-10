@@ -9,7 +9,7 @@ base_url = "https://hbzwo0rl65.execute-api.us-east-1.amazonaws.com/dev/cpen391"
 
 # Define the query string parameters
 params = {
-    "RoomID": 8197
+    "RoomID": 5007 #8197
 }
 
 # Encode the parameters and append them to the base URL

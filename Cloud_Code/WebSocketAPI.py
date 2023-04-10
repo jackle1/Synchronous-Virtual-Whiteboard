@@ -76,7 +76,7 @@ def lambda_handler(event, context):
                 message = "You are not a member in this RoomID, first connect: do action: connect_to_roomID" 
                 client.post_to_connection(ConnectionId=connectionId, Data=json.dumps(message).encode('utf-8'))
                 return {"statusCode": 200}
-            members.pop(member)
+            
             
             getting_values(data['room_id'], connectionId)
             message = "Got values"
@@ -87,6 +87,7 @@ def lambda_handler(event, context):
                 "y": y,
                 "members": list(members.keys())
             }
+            members.pop(member)
 
             try:
                 # message = "Pixels updated"
@@ -250,62 +251,22 @@ def put_back(members, data):
 
 
 def putting_it_back(roomID):
-
-    # global rows
-
-    # # Create a CSV string from the 2D array
-    # csv_string = ''
-    # for row in rows:
-    #     csv_string += ','.join(map(str, row)) + '\n'
-
-    # # Overwrite the existing CSV file in the S3 bucket with the updated CSV data
-    # s3 = boto3.resource('s3')
-    # bucket_name = 'cpen391'
-    # key = f'/tmp/room_index_{roomID}.csv'
-
-    # s3_object = s3.Object(bucket_name, key)
-    # #s3.put_object(Bucket=bucket_name, Key=key, Body=csv_string.encode())
-    # s3_object.put(Body=csv_string)
-
-    # # s3_object = s3.Object(bucket_name, file_key)
-    # s3_object.put(Body=csv_string)
-
-
-
-    # global rows
-    # # Define the S3 bucket name and CSV file name
-    # bucket_name = 'cpen391'
-    # file_name = f'/tmp/room_index_{roomID}.csv' 
-
-    # # Write the data to the CSV file
-    # with open(file_name, 'w', newline='') as file:
-    #     writer = csv.writer(file)
-    #     writer.writerows(rows)
-
-    # # Upload the CSV file to S3
-    # s3 = boto3.resource('s3')
-    # s3.put_object(Bucket=bucket_name, Key=file_name, Body=csv_str.encode())
-    # bucket = s3.Bucket(bucket_name)
-    # bucket.upload_file(file_name, file_name)
-
-
     global rows
-
-    # Create a CSV string from the 2D array
-    csv_string = ''
-    for row in rows:
-        csv_string += ','.join(map(str, row)) + '\n'
-
-    # Overwrite the existing CSV file in the S3 bucket with the updated CSV data
-    s3 = boto3.resource('s3')
+    # Define the S3 bucket name and CSV file name
     bucket_name = 'cpen391'
-    key = f'/tmp/room_index_{roomID}.csv'
+    file_name = f'/tmp/room_index_{roomID}.csv'
 
-    s3_object = s3.Object(bucket_name, key)
-    s3_object.put(Body=csv_string)
+    # Write the data to the CSV file
+    with open(file_name, 'w', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerows(rows)
 
-    # s3_object = s3.Object(bucket_name, file_key)
-    s3_object.put(Body=csv_string)
+    # Upload the CSV file to S3
+    s3 = boto3.resource('s3')
+    bucket = s3.Bucket(bucket_name)
+    bucket.upload_file(file_name, file_name)
+
+
 
 
 def update_pixels(RGB, x, y):
