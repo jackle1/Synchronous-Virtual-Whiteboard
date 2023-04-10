@@ -49,11 +49,9 @@ def lambda_handler(event, context):
     for data in tables["Items"]:
         if data["room_password"] == room_password:
             # Found the table data we wanted 
-            members = data["members"]
             response = {}
             response["statusCode"] = 200
             response["RGB"] = get_values(data['room_id'])
-            response["members"] = list(members)
             return response
         
     # At this point, we know the data isnt in the server with the matching room_password

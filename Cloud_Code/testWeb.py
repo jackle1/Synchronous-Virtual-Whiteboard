@@ -1,9 +1,10 @@
 import websocket
 import json
+import time
 RGB = []
 x = []
 y = []
-for i in range(250, 300):
+for i in range(250, 450):
     RGB.append(1111)
     x.append(i)
     y.append(i)
@@ -13,12 +14,10 @@ def on_message(ws, message):
     # print("Hellpo")
 
     # res = input("Enter again?")
-    name = input("WHATYTTTTT")
-    obj = {"action": "post", "roomID": 8862, "user": "De1Soccccc", "RGB": RGB, "x": x, "y": y}
-    ws.send(json.dumps(obj))
+
     
 
-
+roomID = 3008 # 8197
 
 def on_error(ws, error):
     print(error)
@@ -28,8 +27,22 @@ def on_close(ws):
 
 def on_open(ws):
     # Send a message over the WebSocket
-    obj = {"action": "connect_to_roomID", "roomID": 8862, "user": "Demo"}
-    ws.send(json.dumps(obj))
+    obj = {"action": "connect_to_roomID", "roomID": roomID, "user": "HIII"}
+    ws.send(json.dumps(obj).encode('utf-8'))
+    time.sleep(0.5)
+    # for i in range(len(RGB)):
+    #     time.sleep(0.3)
+    #     obj = {"action": "post", "roomID": 5447, "user": "HIII", "RGB": RGB[i], "x": x[i], "y": y[i]}
+    #     ws.send(json.dumps(obj).encode('utf-8'))
+
+
+    obj = {"action": "post", "roomID": roomID, "user": "HIII", "RGB": [], "x": [], "y": []}
+    ws.send(json.dumps(obj).encode('utf-8'))
+
+
+    time.sleep(4)
+    obj = obj = {"action": "disconnect_roomID", "roomID": roomID, "user": "HIII"}
+    ws.send(json.dumps(obj).encode('utf-8'))
 
 
 
@@ -42,6 +55,7 @@ if __name__ == "__main__":
                               on_error = on_error,
                               on_close = on_close)
     ws.on_open = on_open
+    ws.close()
     ws.run_forever()
     # Receive a message from the WebSocket
 

@@ -5,13 +5,16 @@ import random
 import os
 from io import StringIO
 import csv
+import time
+# from botocore.exceptions import GoneException
 
 client = boto3.client('apigatewaymanagementapi', endpoint_url="https://7nbl97eho0.execute-api.us-east-1.amazonaws.com/production")
 
 # Defining the storage
 bucket_name = 'cpen391'
-file_key = '/tmp/room_index_1.csv'
 s3 = boto3.client('s3')
+file_key = '/tmp/room_index_1.csv'
+
 
 # Retrieve the CSV file from S3
 s3_object = s3.get_object(Bucket=bucket_name, Key=file_key)
@@ -52,9 +55,14 @@ def lambda_handler(event, context):
             values1 = json.loads(values1)
             roomID = values1['roomID']
             member = values1['user']
-            RGB = values1['RGB']
-            x = values1['x']
-            y = values1['y']
+
+            if member[:3] == "De1":
+                RGB, x, y = buffering(values1['pixel'])
+            else:
+                RGB = values1['RGB']
+                x = values1['x']
+                y = values1['y']
+                
             data = find_table(roomID)
             # Find the data in DynamoDB table
             if data == None:
@@ -68,25 +76,57 @@ def lambda_handler(event, context):
                 message = "You are not a member in this RoomID, first connect: do action: connect_to_roomID" 
                 client.post_to_connection(ConnectionId=connectionId, Data=json.dumps(message).encode('utf-8'))
                 return {"statusCode": 200}
+            members.pop(member)
             
-            getting_values(data['room_id'])
-            try:
-                update_pixels(RGB,x,y)
-                putting_it_back()
-                send_to_de1(members, data_structuring(RGB, x, y), connectionId)
-                send_to_all(members, response, connectionId)
-            except Exception as error:
-                    message = f"Something is wrong: {error}"
-                    client.post_to_connection(ConnectionId=connectionId, Data=json.dumps(message).encode('utf-8'))
-                    return {"statusCode": 200}
-            
-
+            getting_values(data['room_id'], connectionId)
+            message = "Got values"
+            client.post_to_connection(ConnectionId=connectionId, Data=json.dumps(message).encode('utf-8'))
             response = {
                 "RGB": RGB,
                 "x": x,
                 "y": y,
                 "members": list(members.keys())
             }
+
+            try:
+                # message = "Pixels updated"
+                # client.post_to_connection(ConnectionId=connectionId, Data=json.dumps(message).encode('utf-8'))
+                update_pixels(RGB,x,y)
+
+                # message = "putting"
+                # client.post_to_connection(ConnectionId=connectionId, Data=json.dumps(message).encode('utf-8'))
+                putting_it_back(data['room_id'])
+
+                # message = "Done with transmitting"
+                # client.post_to_connection(ConnectionId=connectionId, Data=json.dumps(message).encode('utf-8'))
+
+
+                problem = send_to_all(members, response, connectionId)
+                if len(problem) != 0:
+                    message = "Problem in their connectionIDs : "
+                    client.post_to_connection(ConnectionId=connectionId, Data=json.dumps(message).encode('utf-8'))
+                    for name in problem:
+                            client.post_to_connection(ConnectionId=connectionId, Data=json.dumps(name).encode('utf-8'))
+
+                problem = send_to_de1(members, data_structuring(RGB, x, y), connectionId)
+
+                # message = "Done with De1"
+                # client.post_to_connection(ConnectionId=connectionId, Data=json.dumps(message).encode('utf-8'))
+                if len(problem) != 0:
+                    message = "Problem in their connectionIDs : "
+                    client.post_to_connection(ConnectionId=connectionId, Data=json.dumps(message).encode('utf-8'))
+                    for name in problem:
+                        client.post_to_connection(ConnectionId=connectionId, Data=json.dumps(name).encode('utf-8'))
+
+
+
+                
+            except Exception as error:
+                    message = f"Something is wrong: {error}"
+                    client.post_to_connection(ConnectionId=connectionId, Data=json.dumps(message).encode('utf-8'))
+                    return {"statusCode": 200}
+            
+
 
 
             message = "Server and the clients are updated"
@@ -209,7 +249,45 @@ def put_back(members, data):
     )
 
 
-def putting_it_back():
+def putting_it_back(roomID):
+
+    # global rows
+
+    # # Create a CSV string from the 2D array
+    # csv_string = ''
+    # for row in rows:
+    #     csv_string += ','.join(map(str, row)) + '\n'
+
+    # # Overwrite the existing CSV file in the S3 bucket with the updated CSV data
+    # s3 = boto3.resource('s3')
+    # bucket_name = 'cpen391'
+    # key = f'/tmp/room_index_{roomID}.csv'
+
+    # s3_object = s3.Object(bucket_name, key)
+    # #s3.put_object(Bucket=bucket_name, Key=key, Body=csv_string.encode())
+    # s3_object.put(Body=csv_string)
+
+    # # s3_object = s3.Object(bucket_name, file_key)
+    # s3_object.put(Body=csv_string)
+
+
+
+    # global rows
+    # # Define the S3 bucket name and CSV file name
+    # bucket_name = 'cpen391'
+    # file_name = f'/tmp/room_index_{roomID}.csv' 
+
+    # # Write the data to the CSV file
+    # with open(file_name, 'w', newline='') as file:
+    #     writer = csv.writer(file)
+    #     writer.writerows(rows)
+
+    # # Upload the CSV file to S3
+    # s3 = boto3.resource('s3')
+    # s3.put_object(Bucket=bucket_name, Key=file_name, Body=csv_str.encode())
+    # bucket = s3.Bucket(bucket_name)
+    # bucket.upload_file(file_name, file_name)
+
 
     global rows
 
@@ -221,7 +299,7 @@ def putting_it_back():
     # Overwrite the existing CSV file in the S3 bucket with the updated CSV data
     s3 = boto3.resource('s3')
     bucket_name = 'cpen391'
-    key = '/tmp/roomID_8862.csv'
+    key = f'/tmp/room_index_{roomID}.csv'
 
     s3_object = s3.Object(bucket_name, key)
     s3_object.put(Body=csv_string)
@@ -261,10 +339,12 @@ def update_pixels(RGB, x, y):
     
 def send_to_all(members, message, connectionID):
     name = "De1"
+    problem = []
     if members == None:
-        return 
+        return problem
     if len(members) == 0:
-        return
+        return problem
+
     for key, value in members.items():
         if value == connectionID:
             continue
@@ -273,29 +353,57 @@ def send_to_all(members, message, connectionID):
             continue
         try:
             client.post_to_connection(ConnectionId=value, Data=json.dumps(message).encode('utf-8'))
-        except Exception as error:
-            print(f"Happened in Client send sent {error}")
+        except:
+            print(f"Problem in send_all {key}")
+            problem.append(key)
+    return problem
+        
+    # Handle the error appropriately
 # {"action": "connect_to_roomID", "roomID": 8862, "user": "Demo"}
 # {"action": "disconnect_roomID", "roomID": 8862, "user": "Demo"}
 # {"action": "post", "roomID": 8862, "user": "Demo", "RGB": {0}, "x": {0}, "y": {0}}
 def send_to_de1(members, data, connectionID):
     name = "De1"
-
+    problem = []
     if members == None:
-        return 
+        return problem
     if len(members) == 0:
-        return
+        return problem
+    message = "Inside De1 fun"
+    client.post_to_connection(ConnectionId=connectionID, Data=json.dumps(message).encode('utf-8'))
     for key, value in members.items():
         if value == connectionID:
             continue
         if key[:3] != name:
             continue
-                    
+
+        message = f"Sending it to {key}"
+        client.post_to_connection(ConnectionId=connectionID, Data=json.dumps(message).encode('utf-8'))
+        count = 0 
         for tmp in data:
             try:
                 client.post_to_connection(ConnectionId=value, Data=json.dumps(tmp).encode('utf-8'))
+                client.post_to_connection(ConnectionId=connectionID, Data=json.dumps(count).encode('utf-8'))
+                count+=1
+            except client.exceptions.LimitExceededException:
+                # If the rate limit is exceeded, wait for a few seconds and try again
+                time.sleep(1)
+                client.post_to_connection(ConnectionId=value, Data=json.dumps(tmp).encode('utf-8'))
+                client.post_to_connection(ConnectionId=connectionID, Data=json.dumps(count).encode('utf-8'))
+                count+=1
+            
             except:
-                print(f"Error happend at De1SoC")
+                print(f"Problem in send_de1 {key}")
+                problem.append(key)
+                break
+                #Handle the error appropriately
+            
+        # try:
+        #         client.post_to_connection(ConnectionId=value, Data=json.dumps(data).encode('utf-8'))
+
+    message = "Inside De1 fun"
+    client.post_to_connection(ConnectionId=connectionID, Data=json.dumps(message).encode('utf-8'))
+    return problem
                     
     
 def padding(value: str, pad: int):
@@ -306,38 +414,69 @@ def padding(value: str, pad: int):
     return padd_done + value
 
 def data_structuring(RGB, x, y):
-    data = []     
+    data = []
+    #result = ''
     if type(RGB) == list: 
         for i in range(len(RGB)):
             value_RGB = padding(str(RGB[i]), 10)
             value_x = padding(str(x[i]), 3)
             value_y = padding(str(y[i]), 3)
                             
-            result = value_RGB + ',' + value_x + ',' + value_y
+            # result = result + value_RGB + ',' + value_x + ',' + value_y + '@'
+            result = value_RGB + ',' + value_x + ',' + value_y 
             data.append(result)
     else:
         value_RGB = padding(str(RGB), 10)
         value_x = padding(str(x), 3)
         value_y = padding(str(y), 3)
                             
-        result = value_RGB + ',' + value_x + ',' + value_y
-        data.append(result)
+        #result = result + value_RGB + ',' + value_x + ',' + value_y
+        data = value_RGB + ',' + value_x + ',' + value_y
     
     return data
 
 
+def getting_values(roomID, connectionId):
+    # global global_room_index, rows, bucket_name, file_key, s3, s3_object, csv_content, csv_reader
 
-def getting_values(roomID):
+    # message = "Lets start"
+    # client.post_to_connection(ConnectionId=connectionId, Data=json.dumps(message).encode('utf-8'))
+
+    # if global_room_index == roomID:
+    #     return
+    
+    # global_room_index = roomID
+    # # Defining the storage
+    # bucket_name = 'cpen391'
+    # file_key = f'/tmp/room_index_{roomID}.csv'
+    # s3 = boto3.client('s3')
+
+    # # Retrieve the CSV file from S3
+    # s3_object = s3.get_object(Bucket=bucket_name, Key=file_key)
+    # message = "some"
+    # client.post_to_connection(ConnectionId=connectionId, Data=json.dumps(message).encode('utf-8'))
+    # csv_content = s3_object['Body'].read().decode('utf-8')
+
+    # message = "okay!"
+    # client.post_to_connection(ConnectionId=connectionId, Data=json.dumps(message).encode('utf-8'))
+
+    # # Process the CSV data
+    # csv_reader = csv.reader(StringIO(csv_content))
+    # message = "okay?"
+    # client.post_to_connection(ConnectionId=connectionId, Data=json.dumps(message).encode('utf-8'))
+    # print(csv_reader)
+    # rows = []
+    # for row in csv_reader:
+    #     # Convert the row to integers and append it to the list
+    #     int_row = [int(x) for x in row]
+    #     rows.append(int_row)
+
     global global_room_index, rows
 
     if global_room_index == roomID:
-        return
-    
-    global_room_index = roomID
-    # Defining the storage
+        return rows
     bucket_name = 'cpen391'
     file_key = f'/tmp/room_index_{roomID}.csv'
-    s3 = boto3.client('s3')
 
     # Retrieve the CSV file from S3
     s3_object = s3.get_object(Bucket=bucket_name, Key=file_key)
@@ -350,3 +489,17 @@ def getting_values(roomID):
         # Convert the row to integers and append it to the list
         int_row = [int(x) for x in row]
         rows.append(int_row)
+    global_room_index = roomID
+    # Return the integer 2D array
+    return rows
+
+def buffering(data):
+    RGB = []
+    x = []
+    y = []
+    for i in range(0, len(data), 3):
+        x.append(data[i])
+        y.append(data[i+1])
+        RGB.append(data[i+2])
+    
+    return RGB, x, y
