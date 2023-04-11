@@ -5,14 +5,20 @@ import csv
 from io import StringIO
 
 s3 = boto3.client('s3')
+rows = []
+
+bucket_name = 'cpen391'
+file_key = '/tmp/room_index_1.csv'
+s3 = boto3.client('s3')
+
 
 def lambda_handler(event, context):
 
     # if checking(event) == -1:
     #     return wrong_arguments("The Parameters given to the rquest are wrong. Please follow the type or the numebr of parameters required!")
 
-    # param = event['params']
-    # event = param['querystring']
+    param = event['params']
+    event = param['querystring']
 
 
     member = event.get('member', "De1-Soc")
@@ -30,22 +36,9 @@ def lambda_handler(event, context):
     for data in tables["Items"]:
         if data["room_password"] == room_password:
             # Found the table data we wanted 
-            members = data["members"]
-            if member not in members:
-                members.add(member)
-                # Updating the server as well 
-                table.update_item(Key={"room_id": data["room_id"]},
-                          UpdateExpression = "set members = :newmembers",
-                          ExpressionAttributeValues = {":newmembers": members},
-                        ReturnValues="UPDATED_NEW"
-                )
-            
-
-
             response = {}
             response["statusCode"] = 200
-            response["RGB"] = get_values()
-            response["members"] = list(members)
+            response["RGB"] = get_values(data['room_id'])
             return response
         
     # At this point, we know the data isnt in the server with the matching room_password
@@ -71,9 +64,10 @@ def wrong_arguments(message):
             "error" : message
          }
 
-def get_values():
+def get_values(roomID):
+
     bucket_name = 'cpen391'
-    file_key = '/tmp/roomID_8862.csv'
+    file_key = f'/tmp/room_index_{roomID}.csv'
 
     # Retrieve the CSV file from S3
     s3_object = s3.get_object(Bucket=bucket_name, Key=file_key)
@@ -89,15 +83,3 @@ def get_values():
 
     # Return the integer 2D array
     return rows
-
-if __name__ == "__main__":
-    os.environ["TABLE_NAME"] = "Cpen391"
-
-    test_event = {
-	"RoomID": 8862,
-	"member": "Ranbir",
-
-}
-    result = lambda_handler(test_event, None)
-    print(result)
-    

@@ -19,15 +19,15 @@ y = []
 for i in range(480):
     for j in range(640):
         RGB.append(16777215)
-        x.append(j)
-        y.append(i)
+        x.append(i)
+        y.append(j)
 
 
 data = {
                   "member": "Ranbir",
                   "roomID": 8862,
                   'RGB': RGB,
-                  "request-for": 1,
+                  "request-for": 0,
                   "x": x,
                   "y": y
                 }
