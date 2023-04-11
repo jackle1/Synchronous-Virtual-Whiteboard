@@ -5,26 +5,6 @@ import json
 import random
 import csv
 
-rows = []
-
-bucket_name = 'cpen391'
-file_key = '/tmp/room_index_1.csv'
-s3 = boto3.client('s3')
-
-# Retrieve the CSV file from S3
-s3_object = s3.get_object(Bucket=bucket_name, Key=file_key)
-csv_content = s3_object['Body'].read().decode('utf-8')
-
-# Process the CSV data
-csv_reader = csv.reader(StringIO(csv_content))
-
-for row in csv_reader:
-    # Convert the row to integers and append it to the list
-    int_row = [int(x) for x in row]
-    rows.append(int_row)
-
-global_room_index = 1
-
 m = 480
 n = 640
 # Define the data you want to write to the CSV file
@@ -132,7 +112,7 @@ def update_pixels(table, data, member, RGB, x, y):
     )
 
     # Putting the change values back to the S3 bucket
-    putting_it_back(rows, roomID)
+    putting_it_back(rows, data['room_id'])
 
     return {
                 'stausCode': 200,
@@ -152,7 +132,7 @@ def create_new_room(table, member):
 
     # Therefore, a new_room_id is room_id
     # Setting up a new passsword
-    password = random.randrange(1000, 10000)
+    password = random.randrange(100, 1023)
     members = None
 
     # Creating and putting this new room

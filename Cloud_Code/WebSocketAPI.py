@@ -371,7 +371,7 @@ def data_structuring(RGB, x, y):
             # value_x = padding(str(x[i]), 3)
             # value_y = padding(str(y[i]), 3)
 
-            if i % 20 == 0 and i != 0:
+            if i % 100 == 0 and i != 0:
                 data.append(result)
                 result = ''
                             
