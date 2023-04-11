@@ -15,6 +15,7 @@
 ## VGA Picture Converter
 * BMP File Format Guide - https://www.file-recovery.com/bmp-signature-format.htm
 * Sampling Algorithm To Convert From RGB888 to RGB565 - https://www.barth-dev.de/about-rgb565-and-how-to-convert-into-it/
+* Background Picture: https://pixabay.com/illustrations/acrylic-paint-canvas-background-2198458/ 
 
 # Notes
 ## D8M Camera

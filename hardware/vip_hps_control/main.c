@@ -18,28 +18,36 @@
 int main()
 {
     uint16_t * roomID = (uint16_t *) malloc(sizeof(uint16_t));
+    uint16_t * userNum = (uint16_t *) malloc(sizeof(uint16_t));
     pthread_t ws_conn, progress_bar;
     pixel_buffer_t * rb = pixel_buffer_init();
     uint8_t * RECV_STOP_FLAG = (uint8_t *)malloc(sizeof(uint8_t));
-    void *ws_conn_args[5];
+    void *ws_conn_args[6];
 
     initBridge();
     initCamera();
     DISABLE_CAMERA();
-    paintVGAPicture(ROOM_NUMBER_REQ, VGA_BASE);
     pthread_create(&progress_bar, NULL, ledProgressBar, NULL);
+
+    paintVGAPicture(USER_NUMBER_REQ, VGA_BASE);
+    printf("Waiting for User Number...\n");
+    *userNum = waitRoomID();
+
+    paintVGAPicture(ROOM_NUMBER_REQ, VGA_BASE);
     printf("Waiting for Room ID...\n");
     *roomID = waitRoomID();
     *roomID = 5228;
+
     PROGRESS_STOP_FLAG = FALSE;
     getCloudPicture(GET_PIXEL_ROOM_FILE, *roomID);
     paintCloudPicture(GET_PIXEL_ROOM_FILE, VGA_BASE);
     
-    ws_conn_args[0] = (void *)initWSConn(*roomID);
+    ws_conn_args[0] = (void *)initWSConn(*roomID, *userNum);
     ws_conn_args[1] = (void *)VGA_BASE;
     ws_conn_args[2] = (void *)RECV_STOP_FLAG;
     ws_conn_args[3] = (void *)rb;
     ws_conn_args[4] = (void *)roomID;
+    ws_conn_args[5] = (void *)userNum;
     pthread_create(&ws_conn, NULL, readWSConn, ws_conn_args);
 
     PROGRESS_STOP_FLAG = TRUE;
@@ -105,7 +113,7 @@ int main()
             paintSavedPicture(toDisplay, VGA_BASE);
             
             if (send_camera_pic)
-                sendBulkPixel(CAMERA_PICTURE_FILE, *roomID);
+                sendBulkPixel(CAMERA_PICTURE_FILE, *roomID, *userNum);
             PROGRESS_STOP_FLAG = TRUE;
         }
         // If Reset is pressed
@@ -477,7 +485,7 @@ void *ledProgressBar(void * args)
             if (progress == 0)
                 progress = 1;
             else
-                progress = (progress << 1) % 1024;
+                progress = (progress << 1) < 1024 ? (progress << 1) : 1;
         } else
         {
             *LEDR_BASE_PTR = 0;

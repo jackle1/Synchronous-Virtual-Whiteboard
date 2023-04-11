@@ -54,7 +54,8 @@ void *ledProgressBar(void *);
 #define GET_SW_VAL() (*SW_BASE_PTR & 0x3FF)
 #define WAIT_KEY_UP(KEY_MASK) ((~(*KEY_BASE_PTR) & 0xF) & KEY_MASK)
 
-#define ROOM_NUMBER_REQ "room_number.bin"
+#define ROOM_NUMBER_REQ "room_number_pic.bin"
+#define USER_NUMBER_REQ "user_number_pic.bin"
 #define GET_PIXEL_ROOM_FILE "pixel_file.txt"
 #define SAVED_PICTURE_FILE "current_pic.txt"
 #define CAMERA_PICTURE_FILE "camera_pic.txt"
