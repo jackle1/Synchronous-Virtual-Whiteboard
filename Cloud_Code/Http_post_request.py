@@ -111,16 +111,16 @@ def update_pixels(table, data, member, RGB, x, y):
     # First getting the pixel
     # RGB_table = data["RGB"]
 
-    getting_things(data['room_id'])
+    rows = getting_things(data['room_id'])
 
     if type(RGB) == list:
         for i in range(len(RGB)):
-            rows[x[i]][y[i]] = RGB[i]
+            rows[y[i]][x[i]] = RGB[i]
 
                        
     else:
         # Updating the local copy of the pixels
-        rows[x][y] = RGB
+        rows[y][x] = RGB
                 
     # I am updating the pixels here
     table.put_item(
@@ -132,12 +132,11 @@ def update_pixels(table, data, member, RGB, x, y):
     )
 
     # Putting the change values back to the S3 bucket
-    putting_it_back()
+    putting_it_back(rows, roomID)
 
     return {
                 'stausCode': 200,
                 'message': ("The server has been updated!"),
-                'members': (list(data["members"]))
     }
 
 def create_new_room(table, member):
@@ -200,7 +199,7 @@ def wrong_arguments(message):
             "error" : message
         }
     
-def putting_it_back():
+def putting_it_back(rows, roomID):
 
     # Create a CSV string from the 2D array
     csv_string = ''
@@ -210,7 +209,7 @@ def putting_it_back():
     # Overwrite the existing CSV file in the S3 bucket with the updated CSV data
     s3 = boto3.resource('s3')
     bucket_name = 'cpen391'
-    key = '/tmp/roomID_8862.csv'
+    key = f'/tmp/room_index_{roomID}.csv'
 
     s3_object = s3.Object(bucket_name, key)
     s3_object.put(Body=csv_string)
@@ -235,11 +234,7 @@ def new_file(roomID):
     bucket.upload_file(file_name, file_name)
 
 def getting_things(roomID):
-    global global_room_index
-    if global_room_index == roomID:
-        return
-    
-    global rows
+
     bucket_name = 'cpen391'
     file_key = f'/tmp/room_index_{roomID}.csv'
     s3 = boto3.client('s3')
@@ -256,6 +251,7 @@ def getting_things(roomID):
         # Convert the row to integers and append it to the list
         int_row = [int(x) for x in row]
         rows.append(int_row)
+    return rows
         
 
 # if __name__ == "__main__":

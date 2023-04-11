@@ -5,7 +5,6 @@ import csv
 from io import StringIO
 
 s3 = boto3.client('s3')
-rows = []
 
 bucket_name = 'cpen391'
 file_key = '/tmp/room_index_1.csv'
