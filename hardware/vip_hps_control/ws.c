@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <curl/curl.h>
+#include <curl/easy.h>
 
 #define URL "https://7nbl97eho0.execute-api.us-east-1.amazonaws.com/production"
 
@@ -46,8 +47,8 @@ int main(void)
     char request[1024];
     memset(request, 0, sizeof(request));
     sprintf(request, "GET /production HTTP/1.1\r\n"
-        // "Host: 192.168.137.1:8080\r\n"
-        "Host: 7nbl97eho0.execute-api.us-east-1.amazonaws.com \r\n"
+        "Host: 192.168.137.1:8080\r\n"
+        // "Host: 7nbl97eho0.execute-api.us-east-1.amazonaws.com \r\n"
         "Upgrade: websocket\r\n"
         "Connection: Upgrade\r\n"
         "Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==\r\n"
@@ -57,8 +58,8 @@ int main(void)
     curl = curl_easy_init();
     if (curl)
     {
-       // curl_easy_setopt(curl, CURLOPT_URL, "http://192.168.137.1:8080"); 
-       curl_easy_setopt(curl, CURLOPT_URL, URL);
+       curl_easy_setopt(curl, CURLOPT_URL, "http://192.168.137.1:8080"); 
+       // curl_easy_setopt(curl, CURLOPT_URL, URL);
        curl_easy_setopt(curl, CURLOPT_CONNECT_ONLY, 1L);
        curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L); 
        curl_easy_setopt(curl, CURLOPT_VERBOSE, 1L);
@@ -110,18 +111,42 @@ int main(void)
             fwrite(recvBuf + 2, sizeof(char), recvBuf[1], stdout);
             printf("\n");
             printf("Start using WS functions\n");
-            struct curl_ws_frame * info = curl_ws_meta(curl);
-            char ws_buf[5];
-            curl_ws_send(curl, toSend + 2, 0x7F & toSend[1],
-                      &buf, 0x7F & toSend[1],
-                      CURLWS_TEXT);
-            memset(recvBuf, 0, sizeof(recvBuf));
-            do
-            {
-                rec_res = curl_ws_recv(curl, recvBuf, sizeof(recvBuf), &recBuf, &info);
-            } while (rec_res == CURLE_AGAIN);
+            memset(toSend, 0, recBuf);
+            memset(recvBuf, 0, recBuf);
+            for (int i = 0; i < sizeof(sendHeader); i++)
+                toSend[i] = sendHeader[i];
+            toSend[1] = (0x80) | sprintf(toSend + sizeof(sendHeader), "long");
+            res = curl_easy_send(curl, toSend, 0x7F & toSend[1] + sizeof(sendHeader), &buf);
+            rec_res = CURLE_AGAIN;
+            while (rec_res == CURLE_AGAIN) rec_res = curl_easy_recv(curl, recvBuf, sizeof(recvBuf), &recBuf);
+            printf("done receiving %d bytes\n", recBuf);
             fwrite(recvBuf, sizeof(char), recBuf, stdout);
             printf("\n");
+            memset(toSend, 0, sizeof(toSend));
+            toSend[0] = sendHeader[0];
+            toSend[1] = 0x80 | 126;
+            toSend[2] = 5 >> 8;
+            toSend[3] = 5 & 0xFF;
+            size_t long_msg = (toSend[2] << 8 | toSend[3]) + 4 + 4;
+            printf("Long msg length: %u\n", long_msg);
+            res = curl_easy_send(curl, toSend, long_msg, &buf);
+            printf("Sent size %d\n", buf);
+            if (res != CURLE_OK)
+            {
+                printf("ERROR: Something went wrong with sending the msg -  %s\n", curl_easy_strerror(res));
+            }
+            // struct curl_ws_frame * info = curl_ws_meta(curl);
+            // char ws_buf[5];
+            // curl_ws_send(curl, toSend + 2, 0x7F & toSend[1],
+            //           &buf, 0x7F & toSend[1],
+            //           CURLWS_TEXT);
+            // memset(recvBuf, 0, sizeof(recvBuf));
+            // do
+            // {
+            //     rec_res = curl_ws_recv(curl, recvBuf, sizeof(recvBuf), &recBuf, &info);
+            // } while (rec_res == CURLE_AGAIN);
+            // fwrite(recvBuf, sizeof(char), recBuf, stdout);
+            // printf("\n");
        }
        curl_easy_cleanup(curl);    
     }

@@ -12,12 +12,13 @@
 #include <arpa/inet.h>
 **/
 
+#define MAIN_DEBUG 0
 
 
 int main()
 {
     uint16_t * roomID = (uint16_t *) malloc(sizeof(uint16_t));
-    pthread_t ws_conn;
+    pthread_t ws_conn, progress_bar;
     pixel_buffer_t * rb = pixel_buffer_init();
     uint8_t * RECV_STOP_FLAG = (uint8_t *)malloc(sizeof(uint8_t));
     void *ws_conn_args[5];
@@ -26,21 +27,22 @@ int main()
     initCamera();
     DISABLE_CAMERA();
     paintVGAPicture(ROOM_NUMBER_REQ, VGA_BASE);
+    pthread_create(&progress_bar, NULL, ledProgressBar, NULL);
     printf("Waiting for Room ID...\n");
     *roomID = waitRoomID();
-    *roomID = 8862;
-    // getCloudPicture(GET_PIXEL_ROOM_FILE, *roomID);
-    // paintCloudPicture(GET_PIXEL_ROOM_FILE, VGA_BASE);
-
+    *roomID = 5228;
+    PROGRESS_STOP_FLAG = FALSE;
+    getCloudPicture(GET_PIXEL_ROOM_FILE, *roomID);
+    paintCloudPicture(GET_PIXEL_ROOM_FILE, VGA_BASE);
+    
     ws_conn_args[0] = (void *)initWSConn(*roomID);
     ws_conn_args[1] = (void *)VGA_BASE;
     ws_conn_args[2] = (void *)RECV_STOP_FLAG;
     ws_conn_args[3] = (void *)rb;
-    ws_conn_args[4] = (void *) roomID;
+    ws_conn_args[4] = (void *)roomID;
     pthread_create(&ws_conn, NULL, readWSConn, ws_conn_args);
 
-    pixel_t *head = NULL;
-    pixel_t *tail = NULL;
+    PROGRESS_STOP_FLAG = TRUE;
     while (1)
     {
         // Paint pixels
@@ -52,7 +54,9 @@ int main()
                 uint32_t x, y, vga_x, vga_y;
                 getTouchscreenCoords(TOUCHSCREEN_UART, &x, &y);
                 translateTouchscreenVGACoords(&x, &vga_x, &y, &vga_y);
+#if MAIN_DEBUG == 1
                 printf("Coords: Touch (%04d, %04d) | VGA (%04d, %04d)\n", x, y, vga_x, vga_y);
+#endif
                 if (vga_x < VGA_X && vga_y < VGA_Y)
                 {
                     uint32_t colour = getSWColour(SW_BASE_PTR);
@@ -76,13 +80,15 @@ int main()
             saveCurrentPicture(SAVED_PICTURE_FILE, VGA_BASE);
             ENABLE_CAMERA();
             char *toDisplay = SAVED_PICTURE_FILE;
+            bool send_camera_pic = FALSE;
             while (GET_SW_VAL() & SW_9)
             {
                 if (getKeyAH(KEY_BASE_PTR) & KEY3_MASK)
                 {
                     saveCurrentPicture(CAMERA_PICTURE_FILE, VGA_BASE);
                     toDisplay = CAMERA_PICTURE_FILE;
-                    printf("To take Picture\n");
+                    printf("Saving Picture\n");
+                    send_camera_pic = TRUE;
                 }
                 else if (getKeyAH(KEY_BASE_PTR) & KEY2_MASK)
                 {
@@ -92,16 +98,27 @@ int main()
                     SWAP_CAMERA();
                 }
             }
+            PROGRESS_STOP_FLAG = FALSE;
+
             DISABLE_CAMERA();
             sleep_us(2000);
             paintSavedPicture(toDisplay, VGA_BASE);
+            
+            if (send_camera_pic)
+                sendBulkPixel(CAMERA_PICTURE_FILE, *roomID);
+            PROGRESS_STOP_FLAG = TRUE;
         }
         // If Reset is pressed
         else if (getKeyAH(KEY_BASE_PTR) & KEY3_MASK)
         {
             while (WAIT_KEY_UP(KEY3_MASK))
                 ;
+            PROGRESS_STOP_FLAG = FALSE;
+            *roomID = waitRoomID();
+            *roomID = 8862;
             getCloudPicture(GET_PIXEL_ROOM_FILE, *roomID);
+            paintCloudPicture(GET_PIXEL_ROOM_FILE, VGA_BASE);
+            PROGRESS_STOP_FLAG = TRUE;
             // printf("Got reset signal!!!\n");
             // while (getKeyAH(KEY_BASE_PTR) & KEY3_MASK); // Wait for key-up
             // paintVGAPicture(ROOM_NUMBER_REQ, VGA_BASE);
@@ -129,6 +146,8 @@ void initBridge(void)
     SW_BASE_PTR = (volatile uint16_t *)(lw_bridge_ptr + SW_BASE);
     KEY_BASE_PTR = (volatile uint16_t *)(lw_bridge_ptr + KEY_BASE);
     HEX_BASE_PTR = (volatile uint16_t *)(lw_bridge_ptr + HEXES_PIO_BASE);
+    LEDR_BASE_PTR = (volatile uint16_t *)(lw_bridge_ptr + LED_BASE);
+    *LEDR_BASE_PTR = 0;
 
     if (lw_bridge_ptr == MAP_FAILED | virtual_base_sdram == MAP_FAILED)
     {
@@ -245,10 +264,14 @@ int waitRoomID()
         *(HEX_BASE_PTR + 1) = result >> 16;
     }
     printf("Got Switches!!! %d\n", GET_SW_VAL());
-    sleep_us(3000);
-    *HEX_BASE_PTR = -1;
-    sleep_us(3000);
-    *(HEX_BASE_PTR + 1) = -1;
+    // The HEX displays don't get set properly sometimes, set them twice
+    for (int i = 0; i < 2; i++)
+    {
+        sleep_us(3000);
+        *HEX_BASE_PTR = -1;
+        sleep_us(3000);
+        *(HEX_BASE_PTR + 1) = -1;
+    }
     return GET_SW_VAL();
 }
 
@@ -284,16 +307,17 @@ inline uint32_t convertHex(uint32_t num)
 uint32_t getSWColour(volatile uint16_t *switches)
 {
     uint32_t value = GET_SW_VAL();
-    if (value & WHITE_MASK)
+    if ((value & WHITE_MASK) == WHITE_MASK)
         return COLOUR_WHITE;
+
+    uint32_t colour = 0;
     if (value & RED_MASK)
-        return COLOUR_RED;
-    else if (value & BLUE_MASK)
-        return COLOUR_BLUE;
-    else if (value & GREEN_MASK)
-        return COLOUR_GREEN;
-    else
-        return COLOUR_BLACK;
+        colour |= COLOUR_RED;
+    if (value & BLUE_MASK)
+        colour |= COLOUR_BLUE;
+    if (value & GREEN_MASK)
+        colour |= COLOUR_GREEN;
+    return colour;
 }
 
 uint16_t getKeyAH(volatile uint16_t *keys)
@@ -440,4 +464,25 @@ void paintSavedPicture(const char *file, volatile uint32_t *vga_base)
 
     fclose(fd);
     printf("Repainted Current Picture\n");
+}
+
+void *ledProgressBar(void * args)
+{
+    uint16_t progress = 0;
+    while (1)
+    {
+        if (!PROGRESS_STOP_FLAG)
+        {
+            *LEDR_BASE_PTR = progress;
+            if (progress == 0)
+                progress = 1;
+            else
+                progress = (progress << 1) % 1024;
+        } else
+        {
+            *LEDR_BASE_PTR = 0;
+            progress = 0;
+        }
+        sleep_us(500000);
+    }
 }

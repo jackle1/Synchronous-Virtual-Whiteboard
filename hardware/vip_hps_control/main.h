@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <pthread.h>
+#include "Qsys.h"
 
 void initBridge();
 void initCamera();
@@ -25,6 +26,7 @@ int waitRoomID();
 uint32_t getSWColour(volatile uint16_t *switches);
 uint16_t getKeyAH(volatile uint16_t *keys);
 void getCameraPicture(const char *path);
+void *ledProgressBar(void *);
 
 #define RESET_SLEEP 2000 // Need to wait for reset on FPGA side
 
@@ -68,9 +70,11 @@ void getCameraPicture(const char *path);
 #define NUM_FRAME_BUFFERS 3
 #define GET_FRAME_START(frame) (frame * VGA_X * VGA_Y + (frame == 0 ? 4 : (frame == 1 ? 8 : 12)))
 
+uint8_t PROGRESS_STOP_FLAG;
 void *virtual_base_sdram;
 volatile uint32_t *VGA_BASE;
 volatile uint8_t *TOUCHSCREEN_UART;
 volatile uint16_t *SW_BASE_PTR;
 volatile uint16_t *KEY_BASE_PTR;
 volatile uint16_t *HEX_BASE_PTR;
+volatile uint16_t *LEDR_BASE_PTR;
