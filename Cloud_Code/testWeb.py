@@ -21,7 +21,7 @@ def on_message(ws, message):
 
     
 
-roomID = 5228  # 8862 # 3008 # 8197
+roomID = 885  
 name =  "HIII" #"De1" 
 
 def on_error(ws, error):
@@ -49,8 +49,8 @@ def on_open(ws):
 
 
     time.sleep(4)
-    obj = obj = {"action": "disconnect_roomID", "roomID": roomID, "user": name}
-    ws.send(json.dumps(obj).encode('utf-8'))
+    # obj = obj = {"action": "disconnect_roomID", "roomID": roomID, "user": name}
+    # ws.send(json.dumps(obj).encode('utf-8'))
 
     time.sleep(1)
     

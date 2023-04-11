@@ -82,7 +82,7 @@ def sign_out(table, data, member):
         )
     return response
 
-def update_pixels(table, data, member, RGB, x, y):
+def update_pixels(table, data1, member, RGB, x, y):
     # If the password also match that means, that we can update the pixels
     # Before that, lets check if the member is actually inside this room
     # if member not in data["members"]:
@@ -90,8 +90,14 @@ def update_pixels(table, data, member, RGB, x, y):
                 
     # First getting the pixel
     # RGB_table = data["RGB"]
+    global data
+    # create a shallow copy of the outer list using the copy() method
+    data = [[1,2], [3, 4]]
+    rows = data.copy()
 
-    rows = getting_things(data['room_id'])
+    # create a shallow copy of each inner list using a list comprehension
+    rows = [inner_list.copy() for inner_list in rows]
+
 
     if type(RGB) == list:
         for i in range(len(RGB)):
@@ -102,17 +108,17 @@ def update_pixels(table, data, member, RGB, x, y):
         # Updating the local copy of the pixels
         rows[y][x] = RGB
                 
-    # I am updating the pixels here
-    table.put_item(
-        Item={
-                'room_id': data["room_id"],
-                'room_password': data["room_password"],
-                'members': data["members"]
-            }
-    )
+    # # I am updating the pixels here
+    # table.put_item(
+    #     Item={
+    #             'room_id': data["room_id"],
+    #             'room_password': data["room_password"],
+    #             'members': data["members"]
+    #         }
+    # )
 
     # Putting the change values back to the S3 bucket
-    putting_it_back(rows, data['room_id'])
+    putting_it_back(rows, data1['room_id'])
 
     return {
                 'stausCode': 200,
@@ -238,7 +244,7 @@ def getting_things(roomID):
 #     os.environ["TABLE_NAME"] = "Cpen391"
 #     test_event = {
 #                   "member": "Ranbir",
-#                   "roomID": 8862,
+#                   "roomID": 885,
 #                   'RGB': 121212,
 #                   "request-for": 1,
 #                   "x": 1,

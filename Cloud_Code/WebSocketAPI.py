@@ -82,7 +82,7 @@ def lambda_handler(event, context):
 
                 # message = "putting"
                 # client.post_to_connection(ConnectionId=connectionId, Data=json.dumps(message).encode('utf-8'))
-                putting_it_back(data['room_id'], rows)
+
 
                 # message = "Done with transmitting"
                 # client.post_to_connection(ConnectionId=connectionId, Data=json.dumps(message).encode('utf-8'))
@@ -104,6 +104,8 @@ def lambda_handler(event, context):
                     client.post_to_connection(ConnectionId=connectionId, Data=json.dumps(message).encode('utf-8'))
                     for name in problem:
                         client.post_to_connection(ConnectionId=connectionId, Data=json.dumps(name).encode('utf-8'))
+                
+                putting_it_back(data['room_id'], rows)
 
 
 
@@ -198,6 +200,22 @@ def lambda_handler(event, context):
 
             return {"statusCode": 200}
         
+        elif (routeKey == '$disconnect'):
+            tmp = table.scan()
+            for data in tmp["Items"]:
+                members = data['members']
+                if members == None:
+                    continue
+                if connectionId in members.values():
+                    for key, value in members.items():
+                        if connectionId == value:
+                            del members[key]
+                            response = {"members": list(members.keys())}
+                            send_to_all(members, response, connectionId)
+                            return  {"statusCode": 200}
+                
+            return {"statusCode": 200}
+
         else:
             return {"statusCode": 200}
         
@@ -371,7 +389,7 @@ def data_structuring(RGB, x, y):
             # value_x = padding(str(x[i]), 3)
             # value_y = padding(str(y[i]), 3)
 
-            if i % 100 == 0 and i != 0:
+            if i % 400 == 0 and i != 0:
                 data.append(result)
                 result = ''
                             
