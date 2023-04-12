@@ -14,8 +14,10 @@ function Title() {
             To join a shared whiteboard, DE1 users will enter the ID number using the switches on the DE1-SoC, 
             while web app users can type in the ID on the application.</p>
 
+        
 
-        <div className='title-description'>The web application will give users the option to either create or join a room. 
+        <div className='title-description'>
+        The web application will give users the option to either create or join a room. 
         If create room is selected, a room password will be generated and users can input the ID onto their De1-SoC boards 
         to join the room and start drawing. If users want to join the room from another computer, they can also input the room 
         password onto their web application. The web server will use a database to synchronize the current view of the communal 

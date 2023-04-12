@@ -1,6 +1,9 @@
 import { useRef, useState, useEffect } from 'react';
 import axios from 'axios';
 import './DrawingCanvas.css';
+import { FaSpinner } from 'react-icons/fa';
+import { IconContext } from 'react-icons';
+import throttle from 'lodash/throttle';
 
 function DrawingCanvas(props) {
   const canvasRef = useRef(null);
@@ -26,11 +29,11 @@ function DrawingCanvas(props) {
 
     const ws = new WebSocket('wss://7nbl97eho0.execute-api.us-east-1.amazonaws.com/production');
 
+    console.log(props.roomNumber)
     ws.addEventListener('open', () => {
-      console.log(props.data)
       const data = {
         action: 'connect_to_roomID',
-        roomID: props.data,
+        roomID: props.roomNumber,
         user: props.username,
       };
       ws.send(JSON.stringify(data));
@@ -40,6 +43,24 @@ function DrawingCanvas(props) {
     ws.addEventListener('message', (event) => {
       console.log('WebSocket message received', event.data);
       props.onChildVariable(JSON.parse(event.data)["members"]);
+      if (JSON.parse(event.data)["RGB"] && JSON.parse(event.data)["x"] && JSON.parse(event.data)["y"]) {
+        console.log(JSON.parse(event.data)["RGB"])
+        console.log('Received message with RGB:', JSON.parse(event.data)["RGB"], 'x:', JSON.parse(event.data)["x"], 'y:', JSON.parse(event.data)["y"]);
+        for (let i = 0; i < JSON.parse(event.data)["x"].length; i++) {
+          const x = JSON.parse(event.data)["x"][i];
+          const y = JSON.parse(event.data)["y"][i];
+          const redComponent = (JSON.parse(event.data)["RGB"][i] >> 16) & 0xFF;
+          const greenComponent = (JSON.parse(event.data)["RGB"][i] >> 8) & 0xFF;
+          const blueComponent = JSON.parse(event.data)["RGB"][i] & 0xFF;
+          const color = `rgb(${redComponent}, ${greenComponent}, ${blueComponent})`;
+          context.fillStyle = color;
+          context.fillRect(x, y, 1, 1);
+        }
+      }
+      if(JSON.parse(event.data) == "Please do a whole GET Request") {
+        console.log("New picture uploaded, doing GET")
+        handleGetRGBData();
+      }
     });
 
     ws.addEventListener('close', () => {
@@ -51,7 +72,7 @@ function DrawingCanvas(props) {
     return () => {
       const disconnection = {
         action: 'disconnect_roomID',
-        roomID: props.data,
+        roomID: props.roomNumber,
         user: props.username,
       };
       ws.send(JSON.stringify(disconnection));
@@ -62,24 +83,65 @@ function DrawingCanvas(props) {
     };
   }, []);
 
-  function sendWebSocketData(RGBData, XData, YData) {
+  // function sendWebSocketData(RGBData, XData, YData) {
+  //   if (ws && ws.readyState === WebSocket.OPEN) {
+  //     console.log(XData);
+  //     const data = {
+  //       action: 'post',
+  //       roomID: props.roomNumber,
+  //       user: props.username,
+  //       RGB: RGBData,
+  //       x: XData,
+  //       y: YData,
+  //     };
+  //     ws.send(JSON.stringify(data));
+  //     ws.addEventListener('message', (event) => {
+  //         setRGBData([]);
+  //         setXData([]);
+  //         setYData([]);
+  //     });
+  //   }
+  // }
+
+  function sendWebSocketData(RGBData, XData, YData, callback) {
+    const MAX_ARRAY_LENGTH = 5000;
     if (ws && ws.readyState === WebSocket.OPEN) {
-      const data = {
-        action: 'post',
-        roomID: props.data,
-        user: props.username,
-        RGB: RGBData,
-        x: XData,
-        y: YData,
-      };
-      ws.send(JSON.stringify(data));
-      ws.addEventListener('message', (event) => {
-        if(event.data == "Server and the clients are updated") {
-          setRGBData([]);
-          setXData([]);
-          setYData([]);
+      const dataLength = RGBData.length;
+      let startIndex = 0;
+      let endIndex = Math.min(MAX_ARRAY_LENGTH, dataLength);
+      console.log(XData)
+      
+      const sendNextChunk = () => {
+        const limitedRGBData = RGBData.slice(startIndex, endIndex);
+        const limitedXData = XData.slice(startIndex, endIndex);
+        const limitedYData = YData.slice(startIndex, endIndex);
+        
+        const data = {
+          action: 'post',
+          roomID: props.roomNumber,
+          user: props.username,
+          RGB: limitedRGBData,
+          x: limitedXData,
+          y: limitedYData,
+        };
+        
+        console.log(`Sending chunk from index ${startIndex} to ${endIndex}...`);
+        ws.send(JSON.stringify(data));
+        console.log(`Sent chunk from index ${startIndex} to ${endIndex}.`);
+        
+        startIndex = endIndex;
+        endIndex = Math.min(endIndex + MAX_ARRAY_LENGTH, dataLength);
+        
+        if (startIndex < dataLength) {
+          setTimeout(() => {
+            sendNextChunk();
+          }, 100);
+        } else {
+          callback();
         }
-      });
+      };
+      
+      sendNextChunk();
     }
   }
 
@@ -88,6 +150,8 @@ function DrawingCanvas(props) {
     setLastX(event.nativeEvent.offsetX);
     setLastY(event.nativeEvent.offsetY);
   }
+
+  const throttledDraw = throttle(draw, 500);
 
   function draw(event) {
     if (!isDrawing) return;
@@ -134,7 +198,13 @@ function DrawingCanvas(props) {
   function stopDrawing() {
     setIsDrawing(false);
     console.log("done drawing, about to send")
-    sendWebSocketData(RGBData, XData, YData);
+    sendWebSocketData(RGBData, XData, YData, () => {
+      console.log('All chunks sent!');
+      setRGBData([]);
+      setXData([]);
+      setYData([]);
+    });
+    // sendWebSocketData(RGBData, XData, YData);
   }
 
   function handleColorChange(event) {
@@ -173,42 +243,98 @@ function DrawingCanvas(props) {
     };
   }
 
+  // async function handleGetRGBData() {
+  //   const canvas = canvasRef.current;
+  //   const context = canvas.getContext('2d');
+  //   const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+  //   const pixelData = imageData.data;
+  //   console.log(pixelData)
+  
+  //   const response = await axios.get(`https://hbzwo0rl65.execute-api.us-east-1.amazonaws.com/dev/cpen391?RoomID=${props.roomNumber}`);
+  //   const receivedRGBData = response.data.RGB;
+  //   console.log(response.data);
+  //   console.log(receivedRGBData);
+
+  //   const { redData, greenData, blueData } = separateRGBData(receivedRGBData);
+
+  //   console.log(redData.length);
+
+  //   let j = 0;
+  
+  //   for (let i = 0; i < pixelData.length; i += 4) {
+  //     let r = redData[j];
+  //     let g = greenData[j];
+  //     let b = blueData[j];
+  //     j++;
+  //     let alpha = 255;
+  //     pixelData[i] = r;
+  //     pixelData[i + 1] = g;
+  //     pixelData[i + 2] = b;
+  //     pixelData[i + 3] = alpha;
+  //   }
+  
+  //   console.log(imageData)
+  //   context.putImageData(imageData, 0, 0);
+  // }
+
+  const [loading, setLoading] = useState(false);
+
   async function handleGetRGBData() {
     const canvas = canvasRef.current;
     const context = canvas.getContext('2d');
     const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
     const pixelData = imageData.data;
     console.log(pixelData)
-  
-    const response = await axios.get(`https://hbzwo0rl65.execute-api.us-east-1.amazonaws.com/dev/cpen391?RoomID=5232`);
-    const receivedRGBData = response.data.RGB;
-    console.log(receivedRGBData);
 
-    const { redData, greenData, blueData } = separateRGBData(receivedRGBData);
+    // Display loading icon
+    setLoading(true);
 
-    console.log(redData.length);
+    try {
+      const response = await axios.get(`https://hbzwo0rl65.execute-api.us-east-1.amazonaws.com/dev/cpen391?RoomID=${props.roomNumber}`);
 
-    let j = 0;
-  
-    for (let i = 0; i < pixelData.length; i += 4) {
-      let r = redData[j];
-      let g = greenData[j];
-      let b = blueData[j];
-      j++;
-      let alpha = 255;
-      pixelData[i] = r;
-      pixelData[i + 1] = g;
-      pixelData[i + 2] = b;
-      pixelData[i + 3] = alpha;
+      const receivedRGBData = response.data.RGB;
+      console.log(response.data);
+      console.log(receivedRGBData);
+
+      const { redData, greenData, blueData } = separateRGBData(receivedRGBData);
+
+      console.log(redData.length);
+
+      let j = 0;
+
+      for (let i = 0; i < pixelData.length; i += 4) {
+        let r = redData[j];
+        let g = greenData[j];
+        let b = blueData[j];
+        j++;
+        let alpha = 255;
+        pixelData[i] = r;
+        pixelData[i + 1] = g;
+        pixelData[i + 2] = b;
+        pixelData[i + 3] = alpha;
+      }
+
+      console.log(imageData)
+      context.putImageData(imageData, 0, 0);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      // Hide loading icon
+      setLoading(false);
     }
-  
-    console.log(imageData)
-    context.putImageData(imageData, 0, 0);
   }
 
   return (
     <div>
       <div className="canvas-container">
+      <IconContext.Provider value={{ className: 'spinner', style: { verticalAlign: 'middle', display: 'inline-block' } }}>
+        {loading && (
+          <div className="loading-container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '50px' }}>
+            <FaSpinner className="icon-spin" /> Loading...
+          </div>
+        )}
+      </IconContext.Provider>
+
       <canvas
         ref={canvasRef}
         width={640}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import './CreateRoom.css';
+import './JoinRoomDraw.css';
 import DrawingCanvas from './DrawingCanvas';
 import axios from 'axios';
 
@@ -11,7 +11,6 @@ function CreateRoom() {
   const prevChildVariableRef = useRef();
 
   function handleChildVariable(variable) {
-    console.log(variable);
     setChildVariable(variable);
   }
 
@@ -20,7 +19,7 @@ function CreateRoom() {
   }
 
   useEffect(() => {
-    console.log("Child variable changed:", childVariable);
+    console.log(childVariable)
     if (childVariable !== prevChildVariableRef.current && childVariable !== undefined) {
       handleMembersList(childVariable);
       console.log("Members list updated:", membersList);
@@ -48,12 +47,17 @@ function CreateRoom() {
     "y": 1
   }
 
+  const [propsLoaded, setPropsLoaded] = useState(false);
+  const [roomNumber, setRoomNumber] = useState('');
+
   useEffect(() => {
     axios.post('https://hbzwo0rl65.execute-api.us-east-1.amazonaws.com/dev/cpen391', properties)
       .then(response => {
         setData(response.data);
         console.log(response.data);
         console.log(response.data["RoomID"]);
+        setRoomNumber(response.data["RoomID"]);
+        setPropsLoaded(true);
       })
       .catch(error => {
         console.error('Error fetching data:', error);
@@ -61,7 +65,8 @@ function CreateRoom() {
   }, []);
 
   return (
-    <div className='createroom-container' style={{ backgroundImage: `url(${backgroundImage})` }}>
+    <div className='createroom-container'>
+      {/* style={{ backgroundImage: `url(${backgroundImage})` }} */}
       {/* <h1>
        Upload a background to draw on: 
       </h1>
@@ -71,24 +76,24 @@ function CreateRoom() {
 
       <h1>
         RoomID: 
-        <p>{data["RoomID"]}</p>
       </h1>
+      <h2>{roomNumber}</h2>
 
       <h1>
         Members:
-        <p>
+      </h1>
+
+      <h2>
           {membersList && membersList.map((member, index) => (
             <React.Fragment key={index}>
               {member}
               <br />
             </React.Fragment>
           ))}
-        </p>
-      </h1>
+        </h2>
+      
+      {propsLoaded && <DrawingCanvas roomNumber={roomNumber} onChildVariable={handleChildVariable} username={"Web Host"}/>}
 
-      <DrawingCanvas data={8862} onChildVariable={handleChildVariable} username={"CreateroomUser"}/>
-
-      {/* data={data["RoomID"]} */}
     </div>
   )
 }

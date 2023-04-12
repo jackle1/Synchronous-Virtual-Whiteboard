@@ -14,7 +14,6 @@ function JoinRoomDraw() {
   const prevChildVariableRef = useRef();
 
   function handleChildVariable(variable) {
-    console.log(variable);
     setChildVariable(variable);
   }
 
@@ -23,7 +22,6 @@ function JoinRoomDraw() {
   }
 
   useEffect(() => {
-    console.log("Child variable changed:", childVariable);
     if (childVariable !== prevChildVariableRef.current && childVariable !== undefined) {
       handleMembersList(childVariable);
       console.log("Members list updated:", membersList);
@@ -41,7 +39,8 @@ function JoinRoomDraw() {
   }
 
   return (
-    <div className='createroom-container' style={{ backgroundImage: `url(${backgroundImage})` }}>
+    <div className='createroom-container'>
+      {/* style={{ backgroundImage: `url(${backgroundImage})` }} */}
       {/* <h1>
        Upload a background to draw on: 
       </h1>
@@ -51,22 +50,22 @@ function JoinRoomDraw() {
 
       <h1>
         RoomID: 
-        <p>{roomID}</p>
       </h1>
+      <h2>{roomID}</h2>
 
       <h1>
         Members:
-        <p>
+      </h1>
+      <h2>
           {membersList && membersList.map((member, index) => (
             <React.Fragment key={index}>
               {member}
               <br />
             </React.Fragment>
           ))}
-        </p>
-      </h1>
+        </h2>
 
-      <DrawingCanvas data={roomID} onChildVariable={handleChildVariable} username={username}/>
+      <DrawingCanvas roomNumber={parseInt(roomID)} onChildVariable={handleChildVariable} username={username}/>
     </div>
   )
 }

@@ -12,17 +12,18 @@
   
   
   .contact-container > h1 {
-    color: #fff;
-    text-shadow:0 0 5px #000;
-    font-size: 100px;
+    color: black;
+    text-shadow:0 0 5px #fff;
+    font-size: 80px;
     margin-top: 20px;
     align-self: center;
   }
   
-  .contact-container > p {
+  .contact-container > h2 {
     margin-top: 8px;
     color: #fff;
-    font-size: 32px;
+    text-shadow:0 0 5px #000;
+    font-size: 20px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
       'Lucida Sans', Arial, sans-serif;
   }
