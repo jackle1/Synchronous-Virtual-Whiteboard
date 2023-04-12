@@ -49,8 +49,8 @@ function DrawingCanvas(props) {
         for (let i = 0; i < JSON.parse(event.data)["x"].length; i++) {
           const x = JSON.parse(event.data)["x"][i];
           const y = JSON.parse(event.data)["y"][i];
-          const redComponent = (JSON.parse(event.data)["RGB"][i] >> 16) & 0xFF;
-          const greenComponent = (JSON.parse(event.data)["RGB"][i] >> 8) & 0xFF;
+          const redComponent = (JSON.parse(event.data)["RGB"][i] >>> 16) & 0xFF;
+          const greenComponent = (JSON.parse(event.data)["RGB"][i] >>> 8) & 0xFF;
           const blueComponent = JSON.parse(event.data)["RGB"][i] & 0xFF;
           const color = `rgb(${redComponent}, ${greenComponent}, ${blueComponent})`;
           context.fillStyle = color;
@@ -220,8 +220,8 @@ function DrawingCanvas(props) {
       const greenRow = [];
       const blueRow = [];
       for (let j = 0; j < rgbData[i].length; j++) {
-        const r = (rgbData[i][j] >> 16);
-        const g = (rgbData[i][j] >> 8) & 255;
+        const r = (rgbData[i][j] >>> 16);
+        const g = (rgbData[i][j] >>> 8) & 255;
         const b = (rgbData[i][j] & 255);
         redRow.push(r);
         greenRow.push(g);
