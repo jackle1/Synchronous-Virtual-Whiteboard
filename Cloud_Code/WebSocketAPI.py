@@ -75,6 +75,26 @@ def lambda_handler(event, context):
             members.pop(member)
 
             try:
+
+                # Updating at the backend
+                # Before that, I need to acquire the lock at the database
+                lock(data['room_id'], 1, request_id)
+                # Now getting the values 
+                rows = getting_values(data['room_id'], connectionId)
+                message = "Got values"
+                client.post_to_connection(ConnectionId=connectionId, Data=json.dumps(message).encode('utf-8'))
+                
+                # Updating locally
+                rows = update_pixels(RGB,x,y, rows)
+
+                # Updating at the back end
+                putting_it_back(data['room_id'], rows)
+
+
+                # Releasing the lock
+                lock(data['room_id'], 0, request_id)
+
+
                 # message = "Pixels updated"
                 # client.post_to_connection(ConnectionId=connectionId, Data=json.dumps(message).encode('utf-8'))
 
@@ -104,24 +124,6 @@ def lambda_handler(event, context):
                     for name in problem:
                         client.post_to_connection(ConnectionId=connectionId, Data=json.dumps(name).encode('utf-8'))
 
-
-                # Updating at the backend
-                # Before that, I need to acquire the lock at the database
-                # lock(data['room_id'], 1, request_id)
-                # Now getting the values 
-                rows = getting_values(data['room_id'], connectionId)
-                message = "Got values"
-                client.post_to_connection(ConnectionId=connectionId, Data=json.dumps(message).encode('utf-8'))
-                
-                # Updating locally
-                rows = update_pixels(RGB,x,y, rows)
-
-                # Updating at the back end
-                putting_it_back(data['room_id'], rows)
-
-
-                # Releasing the lock
-                # lock(data['room_id'], 0, request_id)
 
 
                 
@@ -468,7 +470,7 @@ def buffering(data):
     return RGB, x, y
 
 
-# def lock(roomID, acquire, requestID):
+def lock(roomID, acquire, requestID):
     sleep = 3
     # Define the item key for the record you want to lock
     item_key = {'room_id': roomID}
