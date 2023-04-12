@@ -110,6 +110,7 @@ function DrawingCanvas(props) {
       let startIndex = 0;
       let endIndex = Math.min(MAX_ARRAY_LENGTH, dataLength);
       console.log(XData)
+      console.log(YData)
       
       const sendNextChunk = () => {
         const limitedRGBData = RGBData.slice(startIndex, endIndex);
@@ -135,7 +136,7 @@ function DrawingCanvas(props) {
         if (startIndex < dataLength) {
           setTimeout(() => {
             sendNextChunk();
-          }, 100);
+          }, 20);
         } else {
           callback();
         }
@@ -174,8 +175,8 @@ function DrawingCanvas(props) {
     const rgb = (red << 16) | (green << 8) | blue;;
     // const rgb = 0;
 
-    if(event.nativeEvent.offsetX > 2 && event.nativeEvent.offsetX < 648
-      && event.nativeEvent.offsetY > 2 && event.nativeEvent.offsetY < 478) {
+    if(event.nativeEvent.offsetX > 3 && event.nativeEvent.offsetX < 637
+      && event.nativeEvent.offsetY > 3 && event.nativeEvent.offsetY < 477) {
       setRGBData(prevRGBData => [...prevRGBData, rgb, rgb, rgb, rgb, rgb, rgb, rgb, rgb, rgb, rgb, rgb, rgb, rgb, rgb, rgb, rgb, rgb, rgb, rgb, rgb, rgb, rgb, rgb, rgb, rgb]);
       setXData(prevXData => [...prevXData, event.nativeEvent.offsetX-2, event.nativeEvent.offsetX-2, event.nativeEvent.offsetX-2, event.nativeEvent.offsetX-2, event.nativeEvent.offsetX-2,
         event.nativeEvent.offsetX-1, event.nativeEvent.offsetX-1, event.nativeEvent.offsetX-1, event.nativeEvent.offsetX-1, event.nativeEvent.offsetX-1,
@@ -188,7 +189,8 @@ function DrawingCanvas(props) {
         event.nativeEvent.offsetY-2, event.nativeEvent.offsetY-1, event.nativeEvent.offsetY-0, event.nativeEvent.offsetY+1, event.nativeEvent.offsetY+2,
         event.nativeEvent.offsetY-2, event.nativeEvent.offsetY-1, event.nativeEvent.offsetY-0, event.nativeEvent.offsetY+1, event.nativeEvent.offsetY+2]);
     }
-    else {
+    else if(event.nativeEvent.offsetX >= 0 && event.nativeEvent.offsetX <= 640
+      && event.nativeEvent.offsetY >= 0 && event.nativeEvent.offsetY <= 480){
       setRGBData(prevRGBData => [...prevRGBData, rgb]);
       setXData(prevXData => [...prevXData, event.nativeEvent.offsetX]);
       setYData(prevYData => [...prevYData, event.nativeEvent.offsetY]);
