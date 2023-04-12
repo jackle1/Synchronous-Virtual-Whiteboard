@@ -6,7 +6,7 @@ x = []
 y = []
 pixel = []
 for i in range(0, 480):
-    RGB.append(121212)
+    RGB.append(11111111)
     x.append(i)
     y.append(i)
     pixel.append(i)
@@ -21,7 +21,7 @@ def on_message(ws, message):
 
     
 
-roomID = 5007  # 8862 # 3008 # 8197
+roomID = 885  
 name =  "HIII" #"De1" 
 
 def on_error(ws, error):
@@ -49,8 +49,8 @@ def on_open(ws):
 
 
     time.sleep(4)
-    obj = obj = {"action": "disconnect_roomID", "roomID": roomID, "user": name}
-    ws.send(json.dumps(obj).encode('utf-8'))
+    # obj = obj = {"action": "disconnect_roomID", "roomID": roomID, "user": name}
+    # ws.send(json.dumps(obj).encode('utf-8'))
 
     time.sleep(1)
     

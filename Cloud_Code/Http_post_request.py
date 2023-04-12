@@ -5,26 +5,6 @@ import json
 import random
 import csv
 
-rows = []
-
-bucket_name = 'cpen391'
-file_key = '/tmp/room_index_1.csv'
-s3 = boto3.client('s3')
-
-# Retrieve the CSV file from S3
-s3_object = s3.get_object(Bucket=bucket_name, Key=file_key)
-csv_content = s3_object['Body'].read().decode('utf-8')
-
-# Process the CSV data
-csv_reader = csv.reader(StringIO(csv_content))
-
-for row in csv_reader:
-    # Convert the row to integers and append it to the list
-    int_row = [int(x) for x in row]
-    rows.append(int_row)
-
-global_room_index = 1
-
 m = 480
 n = 640
 # Define the data you want to write to the CSV file
@@ -102,7 +82,7 @@ def sign_out(table, data, member):
         )
     return response
 
-def update_pixels(table, data, member, RGB, x, y):
+def update_pixels(table, data1, member, RGB, x, y):
     # If the password also match that means, that we can update the pixels
     # Before that, lets check if the member is actually inside this room
     # if member not in data["members"]:
@@ -110,34 +90,39 @@ def update_pixels(table, data, member, RGB, x, y):
                 
     # First getting the pixel
     # RGB_table = data["RGB"]
+    global data
+    # create a shallow copy of the outer list using the copy() method
+    data = [[1,2], [3, 4]]
+    rows = data.copy()
 
-    getting_things(data['room_id'])
+    # create a shallow copy of each inner list using a list comprehension
+    rows = [inner_list.copy() for inner_list in rows]
+
 
     if type(RGB) == list:
         for i in range(len(RGB)):
-            rows[x[i]][y[i]] = RGB[i]
+            rows[y[i]][x[i]] = RGB[i]
 
                        
     else:
         # Updating the local copy of the pixels
-        rows[x][y] = RGB
+        rows[y][x] = RGB
                 
-    # I am updating the pixels here
-    table.put_item(
-        Item={
-                'room_id': data["room_id"],
-                'room_password': data["room_password"],
-                'members': data["members"]
-            }
-    )
+    # # I am updating the pixels here
+    # table.put_item(
+    #     Item={
+    #             'room_id': data["room_id"],
+    #             'room_password': data["room_password"],
+    #             'members': data["members"]
+    #         }
+    # )
 
     # Putting the change values back to the S3 bucket
-    putting_it_back()
+    putting_it_back(rows, data1['room_id'])
 
     return {
                 'stausCode': 200,
                 'message': ("The server has been updated!"),
-                'members': (list(data["members"]))
     }
 
 def create_new_room(table, member):
@@ -153,7 +138,7 @@ def create_new_room(table, member):
 
     # Therefore, a new_room_id is room_id
     # Setting up a new passsword
-    password = random.randrange(1000, 10000)
+    password = random.randrange(100, 1023)
     members = None
 
     # Creating and putting this new room
@@ -200,7 +185,7 @@ def wrong_arguments(message):
             "error" : message
         }
     
-def putting_it_back():
+def putting_it_back(rows, roomID):
 
     # Create a CSV string from the 2D array
     csv_string = ''
@@ -210,7 +195,7 @@ def putting_it_back():
     # Overwrite the existing CSV file in the S3 bucket with the updated CSV data
     s3 = boto3.resource('s3')
     bucket_name = 'cpen391'
-    key = '/tmp/roomID_8862.csv'
+    key = f'/tmp/room_index_{roomID}.csv'
 
     s3_object = s3.Object(bucket_name, key)
     s3_object.put(Body=csv_string)
@@ -235,11 +220,7 @@ def new_file(roomID):
     bucket.upload_file(file_name, file_name)
 
 def getting_things(roomID):
-    global global_room_index
-    if global_room_index == roomID:
-        return
-    
-    global rows
+
     bucket_name = 'cpen391'
     file_key = f'/tmp/room_index_{roomID}.csv'
     s3 = boto3.client('s3')
@@ -256,13 +237,14 @@ def getting_things(roomID):
         # Convert the row to integers and append it to the list
         int_row = [int(x) for x in row]
         rows.append(int_row)
+    return rows
         
 
 # if __name__ == "__main__":
 #     os.environ["TABLE_NAME"] = "Cpen391"
 #     test_event = {
 #                   "member": "Ranbir",
-#                   "roomID": 8862,
+#                   "roomID": 885,
 #                   'RGB': 121212,
 #                   "request-for": 1,
 #                   "x": 1,
