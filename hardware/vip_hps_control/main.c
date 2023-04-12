@@ -19,10 +19,11 @@ int main()
 {
     uint16_t * roomID = (uint16_t *) malloc(sizeof(uint16_t));
     uint16_t * userNum = (uint16_t *) malloc(sizeof(uint16_t));
+    volatile bool * restartConn = (bool *) malloc(sizeof(bool));
     pthread_t ws_conn, progress_bar;
     pixel_buffer_t * rb = pixel_buffer_init();
     uint8_t * RECV_STOP_FLAG = (uint8_t *)malloc(sizeof(uint8_t));
-    void *ws_conn_args[6];
+    void *ws_conn_args[7];
 
     initBridge();
     initCamera();
@@ -36,11 +37,13 @@ int main()
     paintVGAPicture(ROOM_NUMBER_REQ, VGA_BASE);
     printf("Waiting for Room ID...\n");
     *roomID = waitRoomID();
-    *roomID = 5228;
+    // *roomID = 885;
 
     PROGRESS_STOP_FLAG = FALSE;
     getCloudPicture(GET_PIXEL_ROOM_FILE, *roomID);
     paintCloudPicture(GET_PIXEL_ROOM_FILE, VGA_BASE);
+
+    *restartConn = FALSE;
     
     ws_conn_args[0] = (void *)initWSConn(*roomID, *userNum);
     ws_conn_args[1] = (void *)VGA_BASE;
@@ -48,6 +51,7 @@ int main()
     ws_conn_args[3] = (void *)rb;
     ws_conn_args[4] = (void *)roomID;
     ws_conn_args[5] = (void *)userNum;
+    ws_conn_args[6] = (void *)restartConn;
     pthread_create(&ws_conn, NULL, readWSConn, ws_conn_args);
 
     PROGRESS_STOP_FLAG = TRUE;
@@ -114,6 +118,7 @@ int main()
             
             if (send_camera_pic)
                 sendBulkPixel(CAMERA_PICTURE_FILE, *roomID, *userNum);
+            clearTouchscreenUART();
             PROGRESS_STOP_FLAG = TRUE;
         }
         // If Reset is pressed
@@ -122,10 +127,20 @@ int main()
             while (WAIT_KEY_UP(KEY3_MASK))
                 ;
             PROGRESS_STOP_FLAG = FALSE;
+            *restartConn = TRUE;
+            while (*restartConn == TRUE)
+                sleep(1);
+            paintVGAPicture(USER_NUMBER_REQ, VGA_BASE);
+            printf("Waiting for User Number...\n");
+            *userNum = waitRoomID();
+            paintVGAPicture(ROOM_NUMBER_REQ, VGA_BASE);
+            printf("Waiting for Room ID...\n");
             *roomID = waitRoomID();
-            *roomID = 8862;
             getCloudPicture(GET_PIXEL_ROOM_FILE, *roomID);
             paintCloudPicture(GET_PIXEL_ROOM_FILE, VGA_BASE);
+            *restartConn = TRUE;
+            while (*restartConn == TRUE)
+                sleep(1);
             PROGRESS_STOP_FLAG = TRUE;
             // printf("Got reset signal!!!\n");
             // while (getKeyAH(KEY_BASE_PTR) & KEY3_MASK); // Wait for key-up
@@ -165,11 +180,7 @@ void initBridge(void)
     else
         printf("Opened HPS FD Successfully! %p %p NOT %d\n", lw_bridge_ptr, virtual_base_sdram, (int)MAP_FAILED);
 
-    while (checkTouchUartEmpty(TOUCHSCREEN_UART)) // Ensure touchscreen uart buffer is clear before starting
-    {
-        uint32_t x, y, vga_x, vga_y;
-        getTouchscreenCoords(TOUCHSCREEN_UART, &x, &y);
-    }
+    clearTouchscreenUART();
 
     close(hps_f);
 }
@@ -226,6 +237,15 @@ void clearVGA(volatile uint32_t *vga_base, uint32_t colour)
     for (i = 0; i < VGA_X * VGA_Y; i++)
     {
         vga_base[i] = colour;
+    }
+}
+
+void clearTouchscreenUART(void)
+{
+    while (checkTouchUartEmpty(TOUCHSCREEN_UART)) // Ensure touchscreen uart buffer is clear before starting
+    {
+        uint32_t x, y, vga_x, vga_y;
+        getTouchscreenCoords(TOUCHSCREEN_UART, &x, &y);
     }
 }
 

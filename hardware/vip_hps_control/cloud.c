@@ -34,7 +34,7 @@ enum res_state_e
 #else
 #define WS_URL "https://7nbl97eho0.execute-api.us-east-1.amazonaws.com/production"
 #endif
-#define SEND_PIXEL_BUF 4096
+#define SEND_PIXEL_BUF 16384
 
 #define WS_SIZE_BYTE 1
 #define WS_SIZE_MASK (0x7F)
@@ -42,8 +42,9 @@ enum res_state_e
 #define WS_ROOM_CONNECT_SIZE (45)
 static uint8_t WS_HEADER[] = {0x81, 0x80, 0x00, 0x00, 0x00, 0x00}; // 2nd Byte is (0x80 | Size) for mask and size
 #define WS_PIXEL_SEND_F "{\"action\":\"post\",\"roomID\":%d,\"user\":\"De1-%hu\",\"pixel\":["
-#define WS_PIXEL_RECV_SIZE 2056
+#define WS_PIXEL_RECV_SIZE 12000
 #define WS_EX_PAYLOAD_BASE 8
+#define WS_WAIT_TIME 700
 
 typedef struct
 {
@@ -65,6 +66,7 @@ void maskWSMsg(char * buf, size_t buflen);
 
 static uint8_t WS_RECV_BUF[WS_PIXEL_RECV_SIZE];
 static uint8_t WS_SEND_BUF[SEND_PIXEL_BUF];
+static bool send_get_req = FALSE;
 
 
 static size_t resToBuf(char *ptr, size_t size, size_t nmemb, void *userdata)
@@ -173,9 +175,9 @@ void sendBulkPixel(const char * camera_pic, uint16_t roomID, uint16_t userID)
         {
             fscanf(camera_fd, "%u,", &colour);
             if (i < VGA_X * VGA_Y - 1)
-                fprintf(fp, "%hu,", colour);
+                fprintf(fp, "%u,", colour);
             else
-                fprintf(fp, "%hu],", colour);
+                fprintf(fp, "%u],", colour);
         }
 
         // Write x values
@@ -205,6 +207,7 @@ void sendBulkPixel(const char * camera_pic, uint16_t roomID, uint16_t userID)
         fflush(fp);
         fclose(fp);
         sendCameraPic(BULK_PIXEL_FILE);
+        send_get_req = TRUE;
     } else
     {
         printf("ERROR: sendBulkPixel() could not open files\n");
@@ -347,12 +350,15 @@ void *readWSConn(void * args_pointer)
     volatile uint32_t * vga_base = (volatile uint32_t *) args[1];
     volatile uint8_t * stop = (volatile uint8_t *) args[2];
     pixel_buffer_t * rb = (pixel_buffer_t *) args[3];
-    uint16_t * roomID = (uint16_t *) args[4];
-    uint16_t * userID = (uint16_t *) args[5];
+    volatile uint16_t * roomID = (volatile uint16_t *) args[4];
+    volatile uint16_t * userID = (volatile uint16_t *) args[5];
+    volatile bool * restartConn = (volatile bool *) args[6];
     
     CURLcode rec;
     size_t rec_size, send_size;
     curl_socket_t sockfd;
+    clock_t start = clock();
+
     rec = curl_easy_getinfo(curl, CURLINFO_ACTIVESOCKET, &sockfd);
     if (curl == NULL)
     {
@@ -362,6 +368,27 @@ void *readWSConn(void * args_pointer)
         printf("Waiting on WS Connection for pixels...\n");
         while (1)
         {
+            if (*restartConn)
+            {
+                char buf[100];
+                for (int i = 0; i < sizeof(WS_HEADER); i++)
+                    buf[i] = WS_HEADER[i];
+                size_t buflen = sprintf(buf + sizeof(WS_HEADER), "{\"action\":\"disconnect_roomID\",\"roomID\":%hu,\"user\":\"De1-%hu\"}",
+                                        *roomID, *userID);
+                buf[1] = 0x80 | buflen;
+                curl_easy_send(curl, buf, buflen + sizeof(WS_HEADER), &send_size);
+                sleep(1);
+                curl_easy_cleanup(curl);
+                *restartConn = FALSE;
+                while (*restartConn == FALSE)
+                    sleep(1);
+                printf("INFO: New roomID: %hu and userID: %hu\n", *roomID, *userID);
+                curl = initWSConn(*roomID, *userID);
+                rec = curl_easy_getinfo(curl, CURLINFO_ACTIVESOCKET, &sockfd);
+                *restartConn = FALSE;
+                printf("INFO: Done new connection!\n");
+            }
+            
             uint8_t recv[2];
             rec = curl_easy_recv(curl, recv, sizeof(recv), &rec_size);
             size_t payload_size = recv[1];
@@ -372,7 +399,23 @@ void *readWSConn(void * args_pointer)
                     curl_easy_recv(curl, recv, 2, &rec_size);
                     payload_size = (recv[0] << 8) | recv[1];
                 }
-                curl_easy_recv(curl, WS_RECV_BUF, payload_size, &rec_size);
+                int sent_total = 0;
+                do
+                {
+                    rec = curl_easy_recv(curl, WS_RECV_BUF + sent_total, payload_size - sent_total, &rec_size);
+                    sent_total += rec_size;
+                    if (sent_total == payload_size && WS_RECV_BUF[0] == '"' && WS_RECV_BUF[payload_size - 1] != '"')
+                    {
+                        curl_easy_recv(curl, recv, sizeof(recv), &rec_size);
+                        size_t next_packet_len = recv[1];
+                        if (next_packet_len == 126)
+                        {
+                            curl_easy_recv(curl, recv, 2, &rec_size);
+                            payload_size += (recv[0] << 8) | recv[1];
+                        }
+                    }
+                } while (sent_total < payload_size);
+                
                 // while (got_payload < payload_size)
                 // {
                 //     curl_easy_recv(curl, recv + got_payload, payload_size - got_payload, &rec_size);
@@ -380,7 +423,7 @@ void *readWSConn(void * args_pointer)
                 // }
                 uint16_t x, y;
                 uint32_t colour;
-#if WS_DEBUG == 1 || 1
+#if WS_DEBUG == 1
                 if (rec_size > 3)
                 {
                     printf("GOT: ");
@@ -388,11 +431,11 @@ void *readWSConn(void * args_pointer)
                     printf("\n");
                 }
 #endif
-                char * START_PIXEL = "\"%u,%hu,%hu@";
-                char * MID_PIXEL = "%u,%hu,%hu@";
+                char * START_PIXEL = "\"%hu,%hu,%u@";
+                char * MID_PIXEL = "%hu,%hu,%u@";
                 if (3 == sscanf(WS_RECV_BUF, START_PIXEL, &x, &y, &colour))
                 {
-                    printf("(%hu, %hu) = %u\n", x, y, colour);
+                    // printf("(%hu, %hu) = %u\n", x, y, colour);
                     drawPixel(VGA_BASE, x, y, colour);
                     int i = 1;
                     while (WS_RECV_BUF[i] != '"')
@@ -401,7 +444,7 @@ void *readWSConn(void * args_pointer)
                         {
                             i++;
                             sscanf(WS_RECV_BUF + i, MID_PIXEL,  &x, &y, &colour);
-                            printf("(%hu, %hu) = %u\n", x, y, colour);
+                            // printf("(%hu, %hu) = %u\n", x, y, colour);
                             drawPixel(VGA_BASE, x, y, colour);
                         }
                         i++;
@@ -409,7 +452,19 @@ void *readWSConn(void * args_pointer)
                 }
                     
             }
-            if (pixel_buffer_size(rb) > 50)
+            if (send_get_req)
+            {
+                send_get_req = FALSE;
+                char toSend[100];
+                for (int i = 0; i < sizeof(WS_HEADER); i++)
+                    toSend[i] = WS_HEADER[i];
+                size_t buflen = sprintf(toSend + 6, "{\"action\":\"postDone\",\"roomID\":%hu,\"user\":\"De1-%hu\"}", *roomID, *userID);
+                toSend[1] = 0x80 | buflen;
+                curl_easy_send(curl, toSend, buflen + sizeof(WS_HEADER), &send_size);
+            }
+            if (pixel_buffer_size(rb) > 50 && 
+                ((clock() - start) * 1000 / CLOCKS_PER_SEC) > WS_WAIT_TIME
+            )
             {
                 WS_SEND_BUF[0] = 0x81;
                 WS_SEND_BUF[1] = 0xFE; // MASK | 126 (payload length)
@@ -434,7 +489,8 @@ void *readWSConn(void * args_pointer)
 #endif
                 // maskWSMsg(send_buf + sizeof(WS_HEADER), buf_len);
                 rec = curl_easy_send(curl, WS_SEND_BUF, pixel_count, &send_size);
-                printf("Sent: %d - %d\n", send_size, pixel_count);
+                start = clock();
+                printf("Sent Pixel Bytes: %d - %d\n", send_size, pixel_count);
                 // int sent_total = 0;
                 // do
                 // {
@@ -455,7 +511,7 @@ void *readWSConn(void * args_pointer)
                 //     }
                 // } while (rec == CURLE_AGAIN);
                 // changeWSMask();
-                sleep_us(500000);
+                // sleep_us(500000);
             }
         }
     }

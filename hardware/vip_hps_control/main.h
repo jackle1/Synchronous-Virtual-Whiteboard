@@ -27,6 +27,7 @@ uint32_t getSWColour(volatile uint16_t *switches);
 uint16_t getKeyAH(volatile uint16_t *keys);
 void getCameraPicture(const char *path);
 void *ledProgressBar(void *);
+void clearTouchscreenUART(void);
 
 #define RESET_SLEEP 2000 // Need to wait for reset on FPGA side
 
@@ -34,7 +35,7 @@ void *ledProgressBar(void *);
 #define TOUCHSCREEN_X (4095)
 #define TOUCHSCREEN_Y (4095)
 
-#define PIXEL_WIDTH (3)
+#define PIXEL_WIDTH (4)
 #define COLOUR_WHITE (-1)
 #define COLOUR_BLACK (0)
 #define COLOUR_BLUE (0xFF)
