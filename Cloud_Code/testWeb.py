@@ -21,7 +21,7 @@ def on_message(ws, message):
 
     
 
-roomID = 168  
+roomID = 505  
 name =  "HIII" #"De1" 
 
 def on_error(ws, error):
@@ -47,6 +47,18 @@ def on_open(ws):
     # obj = {"action": "post", "roomID": roomID, "user": name, "pixel": pixel}
     # ws.send(json.dumps(obj).encode('utf-8'))
 
+
+    time.sleep(0.5)
+    obj = {"action": "post", "roomID": roomID, "user": name, "RGB": RGB, "x": x, "y": y}
+    ws.send(json.dumps(obj).encode('utf-8'))
+
+    time.sleep(0.5)
+    obj = {"action": "post", "roomID": roomID, "user": name, "RGB": RGB, "x": x, "y": y}
+    ws.send(json.dumps(obj).encode('utf-8'))
+
+    time.sleep(0.5)
+    obj = {"action": "post", "roomID": roomID, "user": name, "RGB": RGB, "x": x, "y": y}
+    ws.send(json.dumps(obj).encode('utf-8'))
 
     time.sleep(0.5)
     obj = {"action": "post", "roomID": roomID, "user": name, "RGB": RGB, "x": x, "y": y}

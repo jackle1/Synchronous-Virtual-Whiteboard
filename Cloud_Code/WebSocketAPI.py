@@ -77,6 +77,8 @@ def lambda_handler(event, context):
             try:
 
                 # Updating at the backend
+                problem = send_to_all(members, response, connectionId)
+                problem = send_to_de1(members, data_structuring(RGB, x, y), connectionId)
                 # Before that, I need to acquire the lock at the database
                 lock(data['room_id'], 1, request_id)
                 # Now getting the values 
@@ -107,14 +109,14 @@ def lambda_handler(event, context):
                 # client.post_to_connection(ConnectionId=connectionId, Data=json.dumps(message).encode('utf-8'))
 
                 # First send it on the websocket and then update the pixels at the backend
-                problem = send_to_all(members, response, connectionId)
+                
                 if len(problem) != 0:
                     message = "Problem in their connectionIDs : "
                     client.post_to_connection(ConnectionId=connectionId, Data=json.dumps(message).encode('utf-8'))
                     for name in problem:
                             client.post_to_connection(ConnectionId=connectionId, Data=json.dumps(name).encode('utf-8'))
 
-                problem = send_to_de1(members, data_structuring(RGB, x, y), connectionId)
+                
 
                 # message = "Done with De1"
                 # client.post_to_connection(ConnectionId=connectionId, Data=json.dumps(message).encode('utf-8'))
