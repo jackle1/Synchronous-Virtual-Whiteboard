@@ -9,7 +9,7 @@ base_url = "https://hbzwo0rl65.execute-api.us-east-1.amazonaws.com/dev/cpen391"
 
 # Define the query string parameters
 params = {
-    "RoomID": 601
+    "RoomID": 524
 }
 
 # Encode the parameters and append them to the base URL
@@ -51,6 +51,9 @@ import json
 # Define the 2D array to save to the CSV file
 my_data = json.loads(response.text)
 my_data= my_data["RGB"]
+print(len(my_data))
+print(len(my_data[0]))
+print(len(my_data[479]))
 # Define the name of the CSV file to save to
 filename = "my_data.csv"
 

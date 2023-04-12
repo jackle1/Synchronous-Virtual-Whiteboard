@@ -33,6 +33,7 @@ def lambda_handler(event, context):
     # First get the values from the context
     connectionId = event['requestContext']['connectionId']
     routeKey = event['requestContext']['routeKey']
+    request_id = event['requestContext']['requestId']
 
     try:
         
@@ -64,9 +65,7 @@ def lambda_handler(event, context):
                 return {"statusCode": 200}
             
             
-            rows = getting_values(data['room_id'], connectionId)
-            message = "Got values"
-            client.post_to_connection(ConnectionId=connectionId, Data=json.dumps(message).encode('utf-8'))
+
             response = {
                 "RGB": RGB,
                 "x": x,
@@ -78,7 +77,7 @@ def lambda_handler(event, context):
             try:
                 # message = "Pixels updated"
                 # client.post_to_connection(ConnectionId=connectionId, Data=json.dumps(message).encode('utf-8'))
-                rows = update_pixels(RGB,x,y, rows)
+
 
                 # message = "putting"
                 # client.post_to_connection(ConnectionId=connectionId, Data=json.dumps(message).encode('utf-8'))
@@ -87,7 +86,7 @@ def lambda_handler(event, context):
                 # message = "Done with transmitting"
                 # client.post_to_connection(ConnectionId=connectionId, Data=json.dumps(message).encode('utf-8'))
 
-
+                # First send it on the websocket and then update the pixels at the backend
                 problem = send_to_all(members, response, connectionId)
                 if len(problem) != 0:
                     message = "Problem in their connectionIDs : "
@@ -104,9 +103,25 @@ def lambda_handler(event, context):
                     client.post_to_connection(ConnectionId=connectionId, Data=json.dumps(message).encode('utf-8'))
                     for name in problem:
                         client.post_to_connection(ConnectionId=connectionId, Data=json.dumps(name).encode('utf-8'))
+
+
+                # Updating at the backend
+                # Before that, I need to acquire the lock at the database
+                # lock(data['room_id'], 1, request_id)
+                # Now getting the values 
+                rows = getting_values(data['room_id'], connectionId)
+                message = "Got values"
+                client.post_to_connection(ConnectionId=connectionId, Data=json.dumps(message).encode('utf-8'))
                 
+                # Updating locally
+                rows = update_pixels(RGB,x,y, rows)
+
+                # Updating at the back end
                 putting_it_back(data['room_id'], rows)
 
+
+                # Releasing the lock
+                # lock(data['room_id'], 0, request_id)
 
 
                 
@@ -210,6 +225,7 @@ def lambda_handler(event, context):
                     for key, value in members.items():
                         if connectionId == value:
                             del members[key]
+                            put_back(members, data)
                             response = {"members": list(members.keys())}
                             send_to_all(members, response, connectionId)
                             return  {"statusCode": 200}
@@ -245,14 +261,25 @@ def find_table(roomID):
     return None
 
 def put_back(members, data):
-    table.put_item(
-            Item={
-                'room_id': data['room_id'],
-                'members': members,
-                'room_password': data["room_password"]
-            }
-    )
+        
+    # Better implementation 
+    # Specify the new value for the attribute to be updated
+    item_key = {
+        'room_id': data['room_id']
+    }
 
+    # Define the update expression to update the attribute
+    update_expression = 'SET members = :new_value'
+
+    # Define the attribute values for the update expression
+    expression_attribute_values = {
+        ':new_value': members
+    }
+    table.update_item(
+        Key=item_key,
+        UpdateExpression=update_expression,
+        ExpressionAttributeValues=expression_attribute_values
+    )
 
 def putting_it_back(roomID, rows):
     
@@ -389,7 +416,7 @@ def data_structuring(RGB, x, y):
             # value_x = padding(str(x[i]), 3)
             # value_y = padding(str(y[i]), 3)
 
-            if i % 400 == 0 and i != 0:
+            if i % 500 == 0 and i != 0:
                 data.append(result)
                 result = ''
                             
@@ -439,3 +466,79 @@ def buffering(data):
         RGB.append(data[i+2])
     
     return RGB, x, y
+
+
+# def lock(roomID, acquire, requestID):
+    sleep = 3
+    # Define the item key for the record you want to lock
+    item_key = {'room_id': roomID}
+
+    # Define the update expression to acquire the lock
+    update_expression = 'SET #lock = :new_lock_value, #lock_acquired = :request_id'
+
+    # Define the condition expression to ensure that the lock is not already acquired
+    condition_expression = '#lock = :old_value AND #lock_acquired = :old_request'
+
+    expression_attribute_names = {
+    '#lock': 'lock',
+    '#lock_acquired': 'lock_acquired'
+    }
+    
+    if acquire == 1:
+        # Acquire the lock 
+        # Define the attribute values for the update expression and condition expression
+        expression_attribute_values = {
+            ':new_lock_value': 1,
+            ':request_id': requestID,
+            ':old_value': 0,
+            ':old_request': None  # set this to the previous request_id if it exists
+        }
+
+        # Acquring the lock now 
+
+        while(True):
+            try:
+                # Acquire the lock by updating the record with the specified key and expression
+                table.update_item(
+                    Key=item_key,
+                    UpdateExpression=update_expression,
+                    ConditionExpression=condition_expression,
+                    ExpressionAttributeValues=expression_attribute_values,
+                    ExpressionAttributeNames=expression_attribute_names,
+                    ReturnValues='ALL_NEW'
+                )
+                # print("lock acquired")
+                return
+            except:
+                # print("No worries for 1!")
+                # time.sleep(sleep)
+                continue
+
+
+    else:
+        # Release the lock
+        expression_attribute_values = {
+        ':new_lock_value': 0,
+        ':request_id': None,
+        ':old_value': 1,
+        ':old_request': requestID  # set this to the previous request_id if it exists
+        }
+
+        while(True):
+            try:
+                # Acquire the lock by updating the record with the specified key and expression
+                table.update_item(
+                    Key=item_key,
+                    UpdateExpression=update_expression,
+                    ConditionExpression=condition_expression,
+                    ExpressionAttributeValues=expression_attribute_values,
+                    ExpressionAttributeNames=expression_attribute_names,
+                    ReturnValues='ALL_NEW'
+                )
+
+                print("lock released")
+                return
+
+            except:
+                # time.sleep(1)
+                continue

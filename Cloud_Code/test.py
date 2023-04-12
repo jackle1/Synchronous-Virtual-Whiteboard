@@ -16,11 +16,11 @@ url = "https://hbzwo0rl65.execute-api.us-east-1.amazonaws.com/dev/cpen391"
 RGB = []
 x = []
 y = []
-for i in range(480):
-    for j in range(640):
-        RGB.append(16777215)
-        x.append(i)
-        y.append(j)
+# for i in range(480):
+#     for j in range(640):
+#         RGB.append(16777215)
+#         x.append(i)
+#         y.append(j)
 
 
 data = {
@@ -50,6 +50,7 @@ if response.status_code == 200:
 else:
     # handle error cases
     print("Error:", response.status_code)
+    print(response.text)
 
 end_time = time.time()
 elapsed_time = end_time - start_time

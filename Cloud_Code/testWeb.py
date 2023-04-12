@@ -21,7 +21,7 @@ def on_message(ws, message):
 
     
 
-roomID = 885  
+roomID = 505  
 name =  "HIII" #"De1" 
 
 def on_error(ws, error):

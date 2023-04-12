@@ -15,7 +15,6 @@ for i in range(m):
         tmp.append(16777215)
     data.append(tmp)
 
-
 def lambda_handler(event: any, context: any):
 
     # if checking(event) == -1:
@@ -92,7 +91,6 @@ def update_pixels(table, data1, member, RGB, x, y):
     # RGB_table = data["RGB"]
     global data
     # create a shallow copy of the outer list using the copy() method
-    data = [[1,2], [3, 4]]
     rows = data.copy()
 
     # create a shallow copy of each inner list using a list comprehension
@@ -126,7 +124,6 @@ def update_pixels(table, data1, member, RGB, x, y):
     }
 
 def create_new_room(table, member):
-    print(member)
     tmp = table.scan()
     room_id = -1
     for data in tmp["Items"]:
@@ -146,7 +143,9 @@ def create_new_room(table, member):
             Item={
                 'room_id': room_id,
                 'members': members,
-                'room_password': password
+                'room_password': password,
+                'lock': 0,
+                'lock_acquired': None
             }
     )
 
@@ -242,13 +241,21 @@ def getting_things(roomID):
 
 # if __name__ == "__main__":
 #     os.environ["TABLE_NAME"] = "Cpen391"
+#     RGB = []
+#     x = []
+#     y = []
+#     # for i in range(m):
+#     #     for j in range(n):
+#     #         RGB.append(16777215)
+#     #         x.append(i)
+#     #         y.append(j)
 #     test_event = {
 #                   "member": "Ranbir",
-#                   "roomID": 885,
-#                   'RGB': 121212,
-#                   "request-for": 1,
-#                   "x": 1,
-#                   "y": 1
+#                   "roomID": 1014,
+#                   'RGB': RGB,
+#                   "request-for": 0,
+#                   "x": y,
+#                   "y": x
 #                 }
 #     result = lambda_handler(test_event, None)
 #     print(result)
