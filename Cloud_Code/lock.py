@@ -5,29 +5,31 @@ dynamodb = boto3.resource('dynamodb')
 table = dynamodb.Table('Cpen391')
 
 # Generate a unique requestId to identify the thread acquiring the lock
-request_id = 'BB'
+request_id = 'AA'
 
 # Define the item key for the record you want to lock
-item_key = {'room_id': 6}
+item_key = {'room_id': 0}
 
 # Define the update expression to acquire the lock
-update_expression = 'SET #lock = :new_lock_value, #lock_acquired = :request_id'
+update_expression = 'SET #lock = :new_lock_value, #lock_acquired = :request_id, #acquire = :newvalue'
 
 # Define the condition expression to ensure that the lock is not already acquired
-condition_expression = '#lock = :old_value AND #lock_acquired = :old_request'
+condition_expression = '#lock = :old_value'
 
 # Define the attribute values for the update expression and condition expression
 expression_attribute_values = {
     ':new_lock_value': 1,
     ':request_id': request_id,
     ':old_value': 0,
-    ':old_request': None  # set this to the previous request_id if it exists
+    ':newvalue' : "Ranbir"
+    # ':old_request': None  # set this to the previous request_id if it exists
 }
 
 # Define the attribute names for the update expression and condition expression
 expression_attribute_names = {
     '#lock': 'lock',
-    '#lock_acquired': 'lock_acquired'
+    '#lock_acquired': 'lock_acquired',
+    '#acquire': 'acquire'
 }
 while(True):
     try:
@@ -42,23 +44,32 @@ while(True):
         )
         print("lock acquired")
         break
-    except:
-        print("No worries for 1!")
+    except Exception as e:
+        print(f"No worries for 1! {e}")
         time.sleep(1)
         continue
 
 
 hello = input("Should I???")
 
+# Define the attribute values for the update expression and condition expression
+expression_attribute_values = {
+    ':new_lock_value': 1,
+    ':request_id': request_id,
+    ':old_value': 0,
+    ':newvalue' : None,
+    ':old_request': None  # set this to the previous request_id if it exists
+}
 
 # Define the update expression to acquire the lock
-update_expression = 'SET #lock = :new_lock_value, #lock_acquired = :request_id'
+update_expression = 'SET #lock = :new_lock_value, #lock_acquired = :request_id, #acquire = :newvalue'
 
 # Define the condition expression to ensure that the lock is not already acquired
 condition_expression = '#lock = :old_value AND #lock_acquired = :old_request'
 
 # Define the attribute values for the update expression and condition expression
 expression_attribute_values = {
+    ':newvalue': None,
     ':new_lock_value': 0,
     ':request_id': None,
     ':old_value': 1,
@@ -68,7 +79,8 @@ expression_attribute_values = {
 # Define the attribute names for the update expression and condition expression
 expression_attribute_names = {
     '#lock': 'lock',
-    '#lock_acquired': 'lock_acquired'
+    '#lock_acquired': 'lock_acquired',
+    "#acquire": 'acquire'
 }
 while(True):
     try:

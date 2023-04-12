@@ -50,6 +50,12 @@ def lambda_handler(event, context):
                 x = values1['x']
                 y = values1['y']
                 
+            value = checking(RGB, x, y)
+            if value == -1:
+                message = "Check your values"
+                client.post_to_connection(ConnectionId=connectionId, Data=json.dumps(message).encode('utf-8'))
+                return {"statusCode": 200}
+
             data = find_table(roomID)
             # Find the data in DynamoDB table
             if data == None:
@@ -80,7 +86,14 @@ def lambda_handler(event, context):
                 problem = send_to_all(members, response, connectionId)
                 problem = send_to_de1(members, data_structuring(RGB, x, y), connectionId)
                 # Before that, I need to acquire the lock at the database
-                lock(data['room_id'], 1, request_id)
+
+                message = "Trying to get the lock"
+                client.post_to_connection(ConnectionId=connectionId, Data=json.dumps(message).encode('utf-8'))
+
+                lock(data['room_id'], 1, request_id, connectionId)
+                message = f"Got lock for {request_id}"
+                client.post_to_connection(ConnectionId=connectionId, Data=json.dumps(message).encode('utf-8'))
+
                 # Now getting the values 
                 rows = getting_values(data['room_id'], connectionId)
                 message = "Got values"
@@ -92,13 +105,19 @@ def lambda_handler(event, context):
                 # Updating at the back end
                 putting_it_back(data['room_id'], rows)
 
+                message = "Put it back"
+                client.post_to_connection(ConnectionId=connectionId, Data=json.dumps(message).encode('utf-8'))
+
 
                 # Releasing the lock
-                lock(data['room_id'], 0, request_id)
+                lock(data['room_id'], 0, request_id, connectionId)
+                message = f"Released lock for {request_id}"
+                client.post_to_connection(ConnectionId=connectionId, Data=json.dumps(message).encode('utf-8'))
 
 
-                # message = "Pixels updated"
-                # client.post_to_connection(ConnectionId=connectionId, Data=json.dumps(message).encode('utf-8'))
+
+                message = "Pixels updated"
+                client.post_to_connection(ConnectionId=connectionId, Data=json.dumps(message).encode('utf-8'))
 
 
                 # message = "putting"
@@ -130,6 +149,7 @@ def lambda_handler(event, context):
 
                 
             except Exception as error:
+                    # lock(data['room_id'], 0, request_id)
                     message = f"Something is wrong: {error}"
                     client.post_to_connection(ConnectionId=connectionId, Data=json.dumps(message).encode('utf-8'))
                     return {"statusCode": 200}
@@ -302,6 +322,19 @@ def putting_it_back(roomID, rows):
     bucket.upload_file(file_name, file_name)
 
 
+def checking(RGB, x, y):
+    if type(RGB) == list:
+        if len(RGB) == 0:
+            return -1
+        for i in range(len(RGB)):
+            if not(0 <= y[i] and y[i] < height):
+                return -1
+            if not(0 <= x[i] and x[i] < width):
+                    return -1
+    else:
+        return -1
+    return 1
+
 
 
 def update_pixels(RGB, x, y, rows):
@@ -472,30 +505,37 @@ def buffering(data):
     return RGB, x, y
 
 
-def lock(roomID, acquire, requestID):
+def lock(roomID, acquire, requestID, connectionID):
     sleep = 3
+    message = f"looking for {roomID}"
+    client.post_to_connection(ConnectionId=connectionID, Data=json.dumps(message).encode('utf-8'))
     # Define the item key for the record you want to lock
     item_key = {'room_id': roomID}
 
     # Define the update expression to acquire the lock
-    update_expression = 'SET #lock = :new_lock_value, #lock_acquired = :request_id'
+    update_expression = 'SET #lock = :new_lock_value, #lock_acquired = :request_id, #acquire = :newvalue'
 
     # Define the condition expression to ensure that the lock is not already acquired
-    condition_expression = '#lock = :old_value AND #lock_acquired = :old_request'
+    condition_expression = '#lock = :old_value'
 
-    expression_attribute_names = {
-    '#lock': 'lock',
-    '#lock_acquired': 'lock_acquired'
+    expression_attribute_values = {
+        ':new_lock_value': 1,
+        ':request_id': requestID,
+        ':old_value': 0,
+        ':newvalue' : connectionID
+        # ':old_request': None  # set this to the previous request_id if it exists
     }
+
     
     if acquire == 1:
         # Acquire the lock 
         # Define the attribute values for the update expression and condition expression
-        expression_attribute_values = {
-            ':new_lock_value': 1,
-            ':request_id': requestID,
-            ':old_value': 0,
-            ':old_request': None  # set this to the previous request_id if it exists
+
+
+        expression_attribute_names = {
+            '#lock': 'lock',
+            '#lock_acquired': 'lock_acquired',
+            '#acquire': 'acquire'
         }
 
         # Acquring the lock now 
@@ -512,20 +552,39 @@ def lock(roomID, acquire, requestID):
                     ReturnValues='ALL_NEW'
                 )
                 # print("lock acquired")
-                return
-            except:
+                message = "lock acquired!!!!"
+                client.post_to_connection(ConnectionId=connectionID, Data=json.dumps(message).encode('utf-8'))
+                break
+            except Exception as e:
                 # print("No worries for 1!")
-                # time.sleep(sleep)
+                time.sleep(1)
+                message = f"Nope"
+                client.post_to_connection(ConnectionId=connectionID, Data=json.dumps(message).encode('utf-8'))
                 continue
 
 
     else:
         # Release the lock
+        # Define the update expression to acquire the lock
+        update_expression = 'SET #lock = :new_lock_value, #lock_acquired = :request_id, #acquire = :newvalue'
+
+        # Define the condition expression to ensure that the lock is not already acquired
+        condition_expression = '#lock = :old_value AND #lock_acquired = :old_request'
+
+        # Define the attribute values for the update expression and condition expression
         expression_attribute_values = {
-        ':new_lock_value': 0,
-        ':request_id': None,
-        ':old_value': 1,
-        ':old_request': requestID  # set this to the previous request_id if it exists
+            ':newvalue': None,
+            ':new_lock_value': 0,
+            ':request_id': None,
+            ':old_value': 1,
+            ':old_request': requestID  # set this to the previous request_id if it exists
+        }
+
+        # Define the attribute names for the update expression and condition expression
+        expression_attribute_names = {
+            '#lock': 'lock',
+            '#lock_acquired': 'lock_acquired',
+            "#acquire": 'acquire'
         }
 
         while(True):
@@ -539,10 +598,16 @@ def lock(roomID, acquire, requestID):
                     ExpressionAttributeNames=expression_attribute_names,
                     ReturnValues='ALL_NEW'
                 )
-
+                message = "lock released"
+                client.post_to_connection(ConnectionId=connectionID, Data=json.dumps(message).encode('utf-8'))
                 print("lock released")
                 return
 
             except:
                 # time.sleep(1)
-                continue
+                message = "Nope 222"
+                client.post_to_connection(ConnectionId=connectionID, Data=json.dumps(message).encode('utf-8'))
+                return 
+
+    message = "Out of here"
+    client.post_to_connection(ConnectionId=connectionID, Data=json.dumps(message).encode('utf-8'))
