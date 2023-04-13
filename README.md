@@ -3,7 +3,7 @@
 ## Teammates
 - Ranbir
 - Jack Le (64004500)
-- Jane Wu
+- Jane Wu (47445887)
 - Jacky Le (80260029)
 
 ## Contributions
@@ -17,6 +17,10 @@
   - Web Pages and Components
   - Web App to Cloud WebSocket Connection and HTTP Requests
   - Page Routing
+  
+- Jane
+  - D8M Camera Integration
+  - D8M Camera Test Modules
 
 ## References
 
