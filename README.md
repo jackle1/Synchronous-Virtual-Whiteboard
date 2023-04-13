@@ -2,7 +2,7 @@
 
 ## Teammates
 - Ranbir
-- Jack
+- Jack Le (64004500)
 - Jane Wu
 - Jacky Le (80260029)
 
