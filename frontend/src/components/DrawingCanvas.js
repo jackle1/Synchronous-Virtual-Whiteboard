@@ -353,7 +353,7 @@ function DrawingCanvas(props) {
         <input type="color" id="color-picker" value={color} onChange={handleColorChange} />
       </div>
 
-      <button onClick={handleGetRGBData}>Refresh Canvas</button>
+      {/* <button onClick={handleGetRGBData}>Refresh Canvas</button> */}
     </div>
   );
 }
