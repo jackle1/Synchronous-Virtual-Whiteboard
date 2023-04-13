@@ -20,6 +20,9 @@
 
 ## References
 
+### Quartus
+* Provided many hardware components such as the UART module, PIO's, VGA Controllers, etc.
+
 ### Wifi Adapter
 * wifi/test/test_server.js - https://esp8266-shop.com/iot/websocket-connection-between-esp8266-and-node-js-server/
 * wifi/init.lua - https://nodemcu.readthedocs.io/en/release/upload/
