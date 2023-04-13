@@ -1,7 +1,7 @@
 # L2B - Team #25 - Synchronous Virtual Whiteboard
 
 ## Teammates
-- Ranbir
+- Ranbir Sharma (83481523)
 - Jack Le (64004500)
 - Jane Wu (47445887)
 - Jacky Le (80260029)
@@ -21,6 +21,11 @@
 - Jane
   - D8M Camera Integration
   - D8M Camera Test Modules
+
+- Ranbir Sharma 
+  - Implementing and maintaining AWS services like dyanmoDB, API gateway and S3 bucket
+  - Reaching and sending pixels to the active member on a particular room
+  - maintaining and saving pixels to cloud S3
 
 ## References
 
@@ -53,3 +58,9 @@
 ### Libcurl
 * HTTP Requests & sockets - https://curl.se/libcurl/
 * Sockets Example - https://curl.se/libcurl/c/sendrecv.html 
+
+### AWS Docuemenation 
+* DynamoDB - https://docs.aws.amazon.com/dynamodb/?icmpid=docs_homepage_featuredsvcs
+* S3 - https://docs.aws.amazon.com/s3/?icmpid=docs_homepage_featuredsvcs
+* API Gateway - https://docs.aws.amazon.com/apigateway/?icmpid=docs_homepage_serverless
+* AWS Lambda - https://docs.aws.amazon.com/lambda/?icmpid=docs_homepage_serverless
