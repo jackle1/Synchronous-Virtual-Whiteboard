@@ -11,7 +11,7 @@
   - AR1100 Touchscreen Controller 
   - ESP8266 Wifi Module
   - HPS Software Control
-  - VIP Camera
+  - D8M Camera Integration
 
 - Jack
   - Web Pages and Components
