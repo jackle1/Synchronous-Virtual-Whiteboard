@@ -11,7 +11,5 @@ When joining a room, users must enter their name and the room ID.
 
 Once inside a room, the members in the room will be displayed alongside the room ID.
 
-Users can draw on teh canvas and they can also choose the colour they would like to draw with.
-
-There will also be a button to refresh the canvas.
+Users can draw on the canvas and they can also choose the colour they would like to draw with.
 
