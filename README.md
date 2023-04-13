@@ -13,6 +13,11 @@
   - HPS Software Control
   - VIP Camera
 
+- Jack
+  - Web Pages and Components
+  - Web App to Cloud WebSocket Connection and HTTP Requests
+  - Page Routing
+
 ## References
 
 ### Wifi Adapter
