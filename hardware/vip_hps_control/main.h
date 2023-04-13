@@ -17,7 +17,7 @@ void clearVGA(volatile uint32_t *vga_base, uint32_t colour);
 bool drawPixel(volatile uint32_t *vga_base, uint32_t x, uint32_t y, uint32_t colour);
 void paintPixel(volatile uint32_t *vga_base, uint32_t x, uint32_t y, uint32_t colour);
 int paintVGAPicture(const char *file, volatile uint32_t *vga_base);
-void paintCloudPicture(const char *file, volatile uint32_t *vga_base);
+bool paintCloudPicture(const char *file, volatile uint32_t *vga_base);
 void saveCurrentPicture(const char *file, volatile uint32_t *vga_base);
 void paintSavedPicture(const char *file, volatile uint32_t *vga_base);
 void getCloudPicture(const char *file, uint16_t roomID);

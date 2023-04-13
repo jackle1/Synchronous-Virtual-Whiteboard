@@ -34,14 +34,18 @@ int main()
     printf("Waiting for User Number...\n");
     *userNum = waitRoomID();
 
-    paintVGAPicture(ROOM_NUMBER_REQ, VGA_BASE);
-    printf("Waiting for Room ID...\n");
-    *roomID = waitRoomID();
-    // *roomID = 885;
+    bool ret;
+    do
+    {
+        paintVGAPicture(ROOM_NUMBER_REQ, VGA_BASE);
+        printf("Waiting for Room ID...\n");
+        *roomID = waitRoomID();
 
-    PROGRESS_STOP_FLAG = FALSE;
-    getCloudPicture(GET_PIXEL_ROOM_FILE, *roomID);
-    paintCloudPicture(GET_PIXEL_ROOM_FILE, VGA_BASE);
+        PROGRESS_STOP_FLAG = FALSE;
+        getCloudPicture(GET_PIXEL_ROOM_FILE, *roomID);
+        ret = paintCloudPicture(GET_PIXEL_ROOM_FILE, VGA_BASE);
+    } while (!ret);
+    
 
     *restartConn = FALSE;
     
@@ -133,20 +137,20 @@ int main()
             paintVGAPicture(USER_NUMBER_REQ, VGA_BASE);
             printf("Waiting for User Number...\n");
             *userNum = waitRoomID();
-            paintVGAPicture(ROOM_NUMBER_REQ, VGA_BASE);
-            printf("Waiting for Room ID...\n");
-            *roomID = waitRoomID();
-            getCloudPicture(GET_PIXEL_ROOM_FILE, *roomID);
-            paintCloudPicture(GET_PIXEL_ROOM_FILE, VGA_BASE);
+            do
+            {
+                paintVGAPicture(ROOM_NUMBER_REQ, VGA_BASE);
+                printf("Waiting for Room ID...\n");
+                *roomID = waitRoomID();
+
+                PROGRESS_STOP_FLAG = FALSE;
+                getCloudPicture(GET_PIXEL_ROOM_FILE, *roomID);
+                ret = paintCloudPicture(GET_PIXEL_ROOM_FILE, VGA_BASE);
+            } while (!ret);
             *restartConn = TRUE;
             while (*restartConn == TRUE)
                 sleep(1);
             PROGRESS_STOP_FLAG = TRUE;
-            // printf("Got reset signal!!!\n");
-            // while (getKeyAH(KEY_BASE_PTR) & KEY3_MASK); // Wait for key-up
-            // paintVGAPicture(ROOM_NUMBER_REQ, VGA_BASE);
-            // roomID = waitRoomID();
-            // getCloudPicture(GET_PIXEL_ROOM_FILE);
         }
         else if (getKeyAH(KEY_BASE_PTR) & KEY2_MASK) // Send pixels
         {
@@ -293,12 +297,12 @@ int waitRoomID()
     }
     printf("Got Switches!!! %d\n", GET_SW_VAL());
     // The HEX displays don't get set properly sometimes, set them twice
-    for (int i = 0; i < 2; i++)
+    for (int i = 0; i < 5; i++)
     {
-        sleep_us(3000);
-        *HEX_BASE_PTR = -1;
-        sleep_us(3000);
-        *(HEX_BASE_PTR + 1) = -1;
+        sleep_us(5000);
+        *HEX_BASE_PTR = 0xFFFF;
+        sleep_us(5000);
+        *(HEX_BASE_PTR + 1) = 0xFFFF;
     }
     return GET_SW_VAL();
 }
@@ -353,7 +357,7 @@ uint16_t getKeyAH(volatile uint16_t *keys)
     return ~(*keys) & 0xF;
 }
 
-void paintCloudPicture(const char *file, volatile uint32_t *vga_base)
+bool paintCloudPicture(const char *file, volatile uint32_t *vga_base)
 {
     uint32_t colour;
     char read;
@@ -369,7 +373,9 @@ void paintCloudPicture(const char *file, volatile uint32_t *vga_base)
         // Skip header bytes
         do
         {
-            fscanf(file_fd, "%c", &read);
+            int ret = fscanf(file_fd, "%c", &read);
+            if (ret == EOF)
+                return FALSE;
         } while (read != '[');
         int pic_start = ftell(file_fd);
         printf("Found first array @ %d\n", pic_start);
@@ -402,6 +408,7 @@ void paintCloudPicture(const char *file, volatile uint32_t *vga_base)
     fclose(file_fd);
     fflush(debug);
     fclose(debug);
+    return TRUE;
 }
 
 void getCloudPicture(const char *file, uint16_t roomID)
@@ -419,8 +426,6 @@ void getCloudPicture(const char *file, uint16_t roomID)
     {
         fclose(pixel_file);
         free((void *)get_pixel_res);
-        paintCloudPicture(GET_PIXEL_ROOM_FILE, VGA_BASE);
-        printf("Done painting cloud\n");
     }
 }
 

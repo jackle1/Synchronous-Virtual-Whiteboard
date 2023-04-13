@@ -34,7 +34,7 @@ enum res_state_e
 #else
 #define WS_URL "https://7nbl97eho0.execute-api.us-east-1.amazonaws.com/production"
 #endif
-#define SEND_PIXEL_BUF 16384
+#define SEND_PIXEL_BUF 32768
 
 #define WS_SIZE_BYTE 1
 #define WS_SIZE_MASK (0x7F)
@@ -42,9 +42,9 @@ enum res_state_e
 #define WS_ROOM_CONNECT_SIZE (45)
 static uint8_t WS_HEADER[] = {0x81, 0x80, 0x00, 0x00, 0x00, 0x00}; // 2nd Byte is (0x80 | Size) for mask and size
 #define WS_PIXEL_SEND_F "{\"action\":\"post\",\"roomID\":%d,\"user\":\"De1-%hu\",\"pixel\":["
-#define WS_PIXEL_RECV_SIZE 12000
+#define WS_PIXEL_RECV_SIZE 32768
 #define WS_EX_PAYLOAD_BASE 8
-#define WS_WAIT_TIME 700
+#define WS_WAIT_TIME (500 * 1000000)
 
 typedef struct
 {
@@ -357,7 +357,9 @@ void *readWSConn(void * args_pointer)
     CURLcode rec;
     size_t rec_size, send_size;
     curl_socket_t sockfd;
-    clock_t start = clock();
+    struct timespec start_time;
+
+    clock_gettime(CLOCK_MONOTONIC, &start_time);
 
     rec = curl_easy_getinfo(curl, CURLINFO_ACTIVESOCKET, &sockfd);
     if (curl == NULL)
@@ -423,7 +425,7 @@ void *readWSConn(void * args_pointer)
                 // }
                 uint16_t x, y;
                 uint32_t colour;
-#if WS_DEBUG == 1
+#if WS_DEBUG == 1  || 0
                 if (rec_size > 3)
                 {
                     printf("GOT: ");
@@ -462,8 +464,13 @@ void *readWSConn(void * args_pointer)
                 toSend[1] = 0x80 | buflen;
                 curl_easy_send(curl, toSend, buflen + sizeof(WS_HEADER), &send_size);
             }
+
+            struct timespec end_time;
+            clock_gettime(CLOCK_MONOTONIC, &end_time);
+            uint64_t elapsed_ns = (end_time.tv_sec - start_time.tv_sec) * 1000000000 +
+                              (end_time.tv_nsec - start_time.tv_nsec);
             if (pixel_buffer_size(rb) > 50 && 
-                ((clock() - start) * 1000 / CLOCKS_PER_SEC) > WS_WAIT_TIME
+                elapsed_ns > WS_WAIT_TIME
             )
             {
                 WS_SEND_BUF[0] = 0x81;
@@ -471,11 +478,13 @@ void *readWSConn(void * args_pointer)
                 for (int i = 4; i < 8; i++) // Set mask as 0
                     WS_SEND_BUF[i] = 0;
                 int pixel_count = sprintf(WS_SEND_BUF + WS_EX_PAYLOAD_BASE, WS_PIXEL_SEND_F, *roomID, *userID) + WS_EX_PAYLOAD_BASE;
+                int pixels_sent = 0;
                 while (pixel_buffer_size(rb) > 0 && pixel_count < SEND_PIXEL_BUF - 20)
                 {
                     pixel_t pixel;
                     pixel_buffer_remove(rb, &pixel);
                     pixel_count += sprintf(WS_SEND_BUF + pixel_count, "%hu,%hu,%u,", pixel.x, pixel.y, pixel.colour);
+                    pixels_sent++;
                 }
                 WS_SEND_BUF[pixel_count - 1] = ']';
                 WS_SEND_BUF[pixel_count] = '}';
@@ -488,9 +497,23 @@ void *readWSConn(void * args_pointer)
                 printf("\n");
 #endif
                 // maskWSMsg(send_buf + sizeof(WS_HEADER), buf_len);
-                rec = curl_easy_send(curl, WS_SEND_BUF, pixel_count, &send_size);
-                start = clock();
-                printf("Sent Pixel Bytes: %d - %d\n", send_size, pixel_count);
+                // From libcurl
+                // https://curl.se/libcurl/c/sendrecv.html
+                size_t nsent;
+                size_t nsent_total = 0;
+                do {
+                    nsent = 0;
+                    rec = curl_easy_send(curl, WS_SEND_BUF + nsent_total,
+                        pixel_count - nsent_total, &nsent);
+                    nsent_total += nsent;
+                    if (rec == CURLE_AGAIN && !wait_on_socket(sockfd, 0, 60000L)) 
+                    {
+                        printf("Error: timeout.\n");
+                        break;
+                    }
+                } while (rec == CURLE_AGAIN);
+                clock_gettime(CLOCK_MONOTONIC, &start_time);
+                printf("Sent Pixel Bytes: %d - %d with %d pixels\n", nsent_total, pixel_count, pixels_sent);
                 // int sent_total = 0;
                 // do
                 // {
@@ -530,6 +553,7 @@ int main(void)
 **/
 
 /* Auxiliary function that waits on the socket. */
+// https://curl.se/libcurl/c/sendrecv.html
 static int wait_on_socket(curl_socket_t sockfd, int for_recv, long timeout_ms)
 {
   struct timeval tv;
