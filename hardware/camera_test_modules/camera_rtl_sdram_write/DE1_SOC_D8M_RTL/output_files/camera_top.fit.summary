@@ -1,0 +1,20 @@
+Fitter Status : Failed - Tue Mar 28 03:21:02 2023
+Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+Revision Name : camera_top
+Top-level Entity Name : camera_top
+Family : Cyclone V
+Device : 5CGXFC7C7F23C8
+Timing Models : Final
+Logic utilization (in ALMs) : 1,768 / 56,480 ( 3 % )
+Total registers : 2344
+Total pins : 226 / 268 ( 84 % )
+Total virtual pins : 0
+Total block memory bits : 1,308,772 / 7,024,640 ( 19 % )
+Total RAM Blocks : 0 / 686 ( 0 % )
+Total DSP Blocks : 0 / 156 ( 0 % )
+Total HSSI RX PCSs : 0 / 6 ( 0 % )
+Total HSSI PMA RX Deserializers : 0 / 6 ( 0 % )
+Total HSSI TX PCSs : 0 / 6 ( 0 % )
+Total HSSI PMA TX Serializers : 0 / 6 ( 0 % )
+Total PLLs : 0 / 13 ( 0 % )
+Total DLLs : 0 / 4 ( 0 % )
