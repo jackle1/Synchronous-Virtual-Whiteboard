@@ -23,6 +23,12 @@
 ### Quartus
 * Provided many hardware components such as the UART module, PIO's, VGA Controllers, etc.
 
+### Intel Video & Image Processing (VIP) Suite
+* Provided Qsys IPs: Frame Buffer and Clock Video Output
+
+### Terasic
+* Provided Qsys IPs from DE1_SOC_D8M_VIP code demo: Terasic Camera and Terasic Auto-Focus IPs
+
 ### Wifi Adapter
 * wifi/test/test_server.js - https://esp8266-shop.com/iot/websocket-connection-between-esp8266-and-node-js-server/
 * wifi/init.lua - https://nodemcu.readthedocs.io/en/release/upload/
