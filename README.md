@@ -59,7 +59,7 @@
 * HTTP Requests & sockets - https://curl.se/libcurl/
 * Sockets Example - https://curl.se/libcurl/c/sendrecv.html 
 
-### AWS Docuemenation 
+### AWS Documention 
 * DynamoDB - https://docs.aws.amazon.com/dynamodb/?icmpid=docs_homepage_featuredsvcs
 * S3 - https://docs.aws.amazon.com/s3/?icmpid=docs_homepage_featuredsvcs
 * API Gateway - https://docs.aws.amazon.com/apigateway/?icmpid=docs_homepage_serverless
